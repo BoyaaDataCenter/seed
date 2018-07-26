@@ -1,0 +1,21 @@
+# this file is just for python, with a touch of Flask which means
+# you can inhert and tweek setting to your hearts content
+
+DATABASES = {
+    'default': {
+        'ENGING': '',
+        'NAME': 'seed',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'AUTOCOMMIT': True,
+        'ATOMIC_REQUESTS': False,
+    }
+}
+
+###########
+# General #
+###########
+
+DEBUG = %(debug_flag)s

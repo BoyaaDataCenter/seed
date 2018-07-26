@@ -1,0 +1,22 @@
+# Compiled python files.
+*.py[cod]
+
+# Packages.
+__pycache__
+*.egg-info
+
+
+# Temporary files.
+*~
+*.swp
+
+# Hidden files.
+.*
+!.gitignore
+
+*.log
+config.py
+
+sftp-config.json
+self_script
+*.rdb
