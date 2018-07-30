@@ -1,4 +1,5 @@
 import click
+from flask import current_app
 
 
 class AddressParamType(click.ParamType):
@@ -26,7 +27,6 @@ Address = AddressParamType()
 def run():
     "Run a service."
 
-
 @run.command()
 @click.option(
     '--bind', '-b', default=None, help='Bind address.', type=Address
@@ -41,9 +41,13 @@ def run():
 )
 def web(bind, workers, debug):
     from seed.services.app import SeedHttpServer
-    SeedHttpServer(
+    from seed.runner.setting import discover_configs
+
+    _, config_file, _ = discover_configs()
+    http_server = SeedHttpServer(
         host=bind[0],
         port=bind[1],
         workers=workers,
-        debug=debug
-    ).run()
+        config_file=config_file
+    )
+    http_server.run()

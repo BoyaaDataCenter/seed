@@ -1,18 +1,27 @@
 # this file is just for python, with a touch of Flask which means
 # you can inhert and tweek setting to your hearts content
 
+#############
+# databases #
+#############
 DATABASES = {
     'default': {
-        'ENGING': '',
+        'ENGINE': 'mysql+pymysql',
         'NAME': 'seed',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
-        'AUTOCOMMIT': True,
-        'ATOMIC_REQUESTS': False,
-    }
+        'CHARSET': 'utf8mb4',
+    },
 }
+
+SQLALCHEMY_DATABASE_URI = '{ENGINE}://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}?charset={CHARSET}'.format(**DATABASES['default'])
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SQLALCHEMY_POOL_SIZE = 100
+SQLALCHEMY_POOL_TIMEOUT = 10
+SQLALCHEMY_POOL_RECYCEL = 3600
+
 
 ###########
 # General #

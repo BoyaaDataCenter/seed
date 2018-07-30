@@ -24,7 +24,10 @@ def cli(ctx, config):
 
 
 cmds = [
-    'seed.runner.commands.run.run'
+    'seed.runner.commands.run.run',
+    'seed.runner.commands.init.init',
+    'seed.runner.commands.upgrade.upgrade',
+    'flask_migrate.cli.db'
 ]
 
 for cmd in cmds:
