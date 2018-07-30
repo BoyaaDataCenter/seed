@@ -39,10 +39,10 @@ class SeedHttpServer(object):
     def run(self):
         self.app.run(self.host, self.port, debug=self.debug)
 
-    def upgrade(self):
+    def upgrade(self, sql):
         directory = self.app.extensions['migrate'].directory
         with self.app.app_context():
             if not os.path.exists(os.path.join(directory, 'alembic.ini')):
                 flask_migrate.init()
-            flask_migrate.migrate()
-            flask_migrate.upgrade()
+            flask_migrate.migrate(sql=sql)
+            flask_migrate.upgrade(sql=sql)
