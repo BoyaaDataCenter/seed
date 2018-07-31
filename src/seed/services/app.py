@@ -5,6 +5,7 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from seed.models import db, migrate
+from seed.api.urls import register_api
 
 
 class SeedHttpServer(object):
@@ -18,6 +19,7 @@ class SeedHttpServer(object):
         self.debug = False
 
         self.register_databases()
+        self.register_api()
 
     def create_app(self, config_file):
         app = Flask(__name__)
@@ -30,8 +32,8 @@ class SeedHttpServer(object):
         db.init_app(self.app)
         migrate.init_app(app=self.app, db=db)
 
-    def register_endpoint(self):
-        pass
+    def register_api(self):
+        register_api(self.app)
 
     def register_hook(self):
         pass
