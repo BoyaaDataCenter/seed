@@ -7,6 +7,17 @@ def get_module_members(modules, predicate):
     return map(lambda m: m[1], members)
 
 
+def get_immediate_cls_attr(cls, attrname):
+    if not issubclass(cls, object):
+        return None
+    
+    for base in cls.__mro__:
+        if attrname in base.__dict__ and base is cls:
+            return getattr(base, attrname)
+    
+    return None
+
+
 def get_package_members(package, predicate, pre_url=''):
     from pkgutil import iter_modules
     from importlib import import_module

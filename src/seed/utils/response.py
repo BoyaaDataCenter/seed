@@ -17,6 +17,7 @@ ERROR_DICT = {
 def response(code, message=None, data={}):
     response_content = {'code': code, 'data': data}
     response_content['message'] = message if message else ERROR_DICT.get(code, 'Unknown error code!')
+    return response_content
 
 def response_json(code, msg=None, data={}):
     return jsonify(response(code, msg, data))

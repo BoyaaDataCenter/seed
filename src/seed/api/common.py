@@ -7,7 +7,7 @@ from seed.utils.response import response, HttpErrorCode
 class _MethodView(MethodView):
     """ MethodView base package
     """
-    __abstrcut__ = True
+    __abstract__ = True
 
     HttpErrorCode = HttpErrorCode
 

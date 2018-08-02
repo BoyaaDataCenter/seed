@@ -4,7 +4,7 @@ import flask_migrate
 from flask import Flask
 from flask_migrate import Migrate
 
-from seed.models import db, migrate
+from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 
 
@@ -16,7 +16,6 @@ class SeedHttpServer(object):
         self.workers = workers
 
         self.app = self.create_app(config_file)
-        self.debug = False
 
         self.register_databases()
         self.register_api()
@@ -31,6 +30,11 @@ class SeedHttpServer(object):
     def register_databases(self):
         db.init_app(self.app)
         migrate.init_app(app=self.app, db=db)
+        ma.init_app(self.app)
+
+        with self.app.app_context():
+            session.configure(bind=db.engine)
+        
 
     def register_api(self):
         register_api(self.app)
@@ -39,7 +43,7 @@ class SeedHttpServer(object):
         pass
 
     def run(self):
-        self.app.run(self.host, self.port, debug=self.debug)
+        self.app.run(self.host, self.port)
 
     def upgrade(self, sql):
         directory = self.app.extensions['migrate'].directory
