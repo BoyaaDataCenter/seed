@@ -34,7 +34,9 @@ class RestfulBaseView(_MethodView):
             model_id {int} -- resource id
         """
         if model_id:
-            data = self.session.query(*self.rule['get']['single_columns']).filter_by(id=model_id).first()
+            data = self.session.query(
+                *self.rule['get']['single_columns']
+            ).filter_by(id=model_id).first()
             data = data.row2dict() if data else {}
         else:
             query_session = self.session.query(*self.rule['get']['list_columns'])
@@ -55,10 +57,10 @@ class RestfulBaseView(_MethodView):
         datas, errors = schema.load(input_json)
 
         if errors:
-            return self.response_json(self.HttpErrorCode.ERROR, msg=errors)
+            return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
         
         if isinstance(datas, list):
-            [m.save() for m in datas]
+            [data.save() for data in datas]
         else:
             datas.save()
         return self.response_json(self.HttpErrorCode.SUCCESS)
@@ -72,16 +74,21 @@ class RestfulBaseView(_MethodView):
         """
         input_json = request.get_json()
         if model_id:
-            datas, errors = self.schema_class().load(input_json, instance=self.model_class.query.get(model_id))
+            datas, errors = self.schema_class().load(
+                input_json, instance=self.model_class.query.get(model_id)
+            )
             if errors:
-                return self.response_json(self.HttpErrorCode.ERROR, msg=errors)
-
+                return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
             datas.save()
+            datas = datas.row2dict()
         else:
-            # TODO not finish
-            raise NotImplementedError('No finish')
+            datas, errors = self.schema_class().load(input_json, many=True)
+            if errors:
+                return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
+            [data.save() for data in datas]
+            datas = [data.row2dict() for data in datas]
         
-        return self.response_json(self.HttpErrorCode.SUCCESS)
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
     
     def delete(self, model_id):
         """ DELETE

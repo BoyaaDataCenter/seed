@@ -1,8 +1,6 @@
-
-
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
-from seed.models.rule import Rule
+from seed.models import Rule
 
 
 class RuleSchema(BaseSchema):

@@ -1,4 +1,4 @@
-from ._base import db, BaseModel
+from . import db, BaseModel
 
 __all__ = ['Rule', ]
 
