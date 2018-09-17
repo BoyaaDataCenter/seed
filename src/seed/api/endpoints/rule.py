@@ -1,12 +1,11 @@
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
-from seed.models import Rule
+from seed.models.rule import Rule
 
 
 class RuleSchema(BaseSchema):
     class Meta:
         model = Rule
-
 
 class Rule(RestfulBaseView):
     """ rule

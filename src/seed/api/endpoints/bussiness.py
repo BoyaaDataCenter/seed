@@ -1,17 +1,18 @@
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
-from seed.models import Bussiness
+from seed.api.endpoints.rule import Rule
+from seed.models import Bussiness as BussinessModel
 
 
 class BussinessSchema(BaseSchema):
     class Meta:
-        model = Rule
-    
+        model = BussinessModel
+
 
 class Bussiness(RestfulBaseView):
     """ bussiness
     """
-    model_class = Bussiness
+    model_class = BussinessModel
     schema_class = BussinessSchema
 
     rule = {
