@@ -14,10 +14,3 @@ class Bussiness(RestfulBaseView):
     """
     model_class = BussinessModel
     schema_class = BussinessSchema
-
-    rule = {
-        'get': {
-            'single_columns': [model_class],
-            'list_columns': [model_class],
-        }
-    }

@@ -4,13 +4,17 @@ class HttpErrorCode(object):
     SUCCESS = 200
     
     ERROR = 400
+    UNAUTHORIZED = 401
     FORBIDDEN = 403
     NOT_FUND = 404
     AUTHORIZED_ERROR = 420
     PARAMS_VALID_ERROR = 421
 
+
+
 ERROR_DICT = {
     HttpErrorCode.SUCCESS: 'SUCCESS!',
+    HttpErrorCode.UNAUTHORIZED: 'Unauthorized!',
     HttpErrorCode.PARAMS_VALID_ERROR: 'Params validation error!',
     HttpErrorCode.FORBIDDEN: 'No permission!',
     HttpErrorCode.NOT_FUND: 'Not found!',

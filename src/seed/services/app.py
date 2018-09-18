@@ -1,11 +1,13 @@
 import os
 
+import redis
 import flask_migrate
 from flask import Flask
 from flask_migrate import Migrate
 
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
+from seed.utils.auth import SSOAuth
 
 
 class SeedHttpServer(object):
@@ -35,12 +37,23 @@ class SeedHttpServer(object):
         with self.app.app_context():
             session.configure(bind=db.engine)
         
+    def register_cache(self):
+        redis_client = redis.ConnectionPool(
+            self.app.config.REDIS_URL,
+            decode_response=True
+        )
+        self.app.cache = redis_client
 
     def register_api(self):
         register_api(self.app)
 
     def register_hook(self):
-        pass
+        """ 注册Hook
+        """
+        @self.app.before_request
+        def login_user():
+            g.user = SSOAuth().get_current_user()
+
 
     def run(self):
         self.app.run(self.host, self.port)

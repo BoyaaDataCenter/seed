@@ -35,16 +35,16 @@ class RestfulBaseView(_MethodView):
         """
         if model_id:
             data = self.session.query(
-                *self.rule['get']['single_columns']
+                self.model_class
             ).filter_by(id=model_id).first()
             data = data.row2dict() if data else {}
         else:
-            query_session = self.session.query(*self.rule['get']['list_columns'])
+            query_session = self.session.query(self.model_class)
             data = query_session.all()
             data = [row._asdict() for row in data] if data else []
-        
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
-        
+
     def post(self):
         """ POST
         """
@@ -58,14 +58,13 @@ class RestfulBaseView(_MethodView):
 
         if errors:
             return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
-        
+
         if isinstance(datas, list):
             [data.save() for data in datas]
         else:
             datas.save()
         return self.response_json(self.HttpErrorCode.SUCCESS)
 
-    
     def put(self, model_id=None):
         """ PUT
 
@@ -87,9 +86,9 @@ class RestfulBaseView(_MethodView):
                 return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
             [data.save() for data in datas]
             datas = [data.row2dict() for data in datas]
-        
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
-    
+
     def delete(self, model_id):
         """ DELETE
 
@@ -104,7 +103,11 @@ class RestfulBaseView(_MethodView):
 
     @classmethod
     def register_api(cls, app):
-        url = '/' + cls.__name__.lower()
+        if hasattr(cls, 'url'):
+            url = cls.url or '/' + cls.__name__lower()
+        else:
+            url = cls.__name__.lower()
+
         view_func = cls.as_view(cls.__name__.lower())
 
         app.add_url_rule(
