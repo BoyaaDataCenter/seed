@@ -4,6 +4,7 @@
 # Packages.
 __pycache__
 *.egg-info
+migrations
 
 
 # Temporary files.
