@@ -20,6 +20,7 @@ class SeedHttpServer(object):
         self.app = self.create_app(config_file)
 
         self.register_databases()
+        self.register_cache()
         self.register_api()
         self.register_hook()
 
@@ -39,11 +40,11 @@ class SeedHttpServer(object):
             session.configure(bind=db.engine)
         
     def register_cache(self):
-        redis_client = redis.ConnectionPool(
-            self.app.config.REDIS_URL,
-            decode_response=True
+        redis_pool = redis.ConnectionPool.from_url(
+            self.app.config['REDIS_URL'],
+            decode_components=True
         )
-        self.app.cache = redis_client
+        self.app.cache = redis.Redis(connection_pool=redis_pool)
 
     def register_api(self):
         register_api(self.app)

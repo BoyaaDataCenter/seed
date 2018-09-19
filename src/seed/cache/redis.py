@@ -1,3 +1,5 @@
+import json
+
 from seed.cache.base import BaseCache
 
 class RedisCache(BaseCache):

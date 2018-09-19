@@ -6,6 +6,8 @@ __all__ = ['Account',]
 
 
 class Account(BaseModel):
+    column_filter = ['created', 'updated', 'password']
+
     sso_id = db.Column(db.Integer, default=-1) # SSO_ID
 
     account = db.Column(db.String(40), unique=True, index=True, nullable=False)

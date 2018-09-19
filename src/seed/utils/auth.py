@@ -1,7 +1,10 @@
+import json
+import logging
 import functools
 from datetime import datetime
 
-from flask import session, current_app, jsonify, g
+import requests
+from flask import session, current_app, jsonify, g, request
 
 from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
@@ -12,7 +15,7 @@ class APIRequireRole(object):
         "new": 0,
         "user": 1,
         "admin": 2,
-        "superadmin": 3
+        "super_admin": 3
     }
 
     def __init__(self, role):
@@ -28,6 +31,9 @@ class APIRequireRole(object):
             if g.user.status == -1:
                 # 废弃账号
                 return jsonify((response(HttpErrorCode.FORBIDDEN)))
+
+            if not self.role or g.user.id == 1:
+                return method(*args, **kwargs)
 
             if self.roles[g.user.role] <= self.roles[self.role]:
                 # 没有足够的权限
@@ -74,16 +80,15 @@ class SSOAuth(BaseAuth):
     """
     def get_current_user(self):
         # 获取当前用户信息在redis中存储的信息
-        uid = session.get('uid', None)
-        uid_key = session.get('uid_key', None)
+        uid = request.cookies.get('admin_uid', None)
+        uid_key = request.cookies.get('admin_key', None)
 
         if not (uid and uid_key):
             return None
 
         # 判断信息的有效性
         today = datetime.strftime(datetime.today(), '%Y-%m-%d')
-        login_data = self._get_login_cache(uid) 
-        login_at = login_data['login_at']
+        login_at = self._get_login_cache(uid) 
         if today != login_at:
             # 去SSO中校验用户的有效性
             user_info = self._sso_verification(uid, uid_key)
@@ -119,14 +124,14 @@ class SSOAuth(BaseAuth):
         return account
     
     def _sso_verification(self, uid, uid_key):
-        check_sso_user_url = "http://sso.ifere.com:8871/api?do=getInfo&uid=%s&key=%s&appid=1172" % (uid, key)
+        check_sso_user_url = "http://sso.ifere.com:8871/api?do=getInfo&uid=%s&key=%s&appid=1172" % (uid, uid_key)
 
         try:
             data_str = requests.get(check_sso_user_url, timeout=5)
             ret = json.loads(data_str.text)
 
             if "ret" not in ret or '1' != str(ret['ret']):
-                logging.warning('user is invalid uid:%s key:%s' % (uid, key))
+                logging.warning('user is invalid uid:%s uid_key:%s' % (uid, uid_key))
                 return []
 
             return ret
@@ -136,7 +141,7 @@ class SSOAuth(BaseAuth):
             return []
     
     def _set_login_cache(self, uid, login_at):
-        self.cache().set(':'.join(uid, 'sso_login'), login_at)
+        self.cache().set(':'.join([uid, 'sso_login']), login_at)
     
     def _get_login_cache(self, uid):
-        return self.cache().get(':'.join(uid, 'sso_login'))
+        return self.cache().get(':'.join([uid, 'sso_login']))

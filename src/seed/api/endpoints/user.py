@@ -24,7 +24,7 @@ class User(RestfulBaseView):
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
 
 
-class Menu(RestfulBaseView):
+class UserMenu(RestfulBaseView):
     """ 获取当前用户的菜单
     """
     url = '/user/menu'

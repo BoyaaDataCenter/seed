@@ -41,7 +41,7 @@ class RestfulBaseView(_MethodView):
         else:
             query_session = self.session.query(self.model_class)
             data = query_session.all()
-            data = [row._asdict() for row in data] if data else []
+            data = [row.row2dict() for row in data] if data else []
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
 
