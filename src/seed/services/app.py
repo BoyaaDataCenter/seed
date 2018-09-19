@@ -2,7 +2,7 @@ import os
 
 import redis
 import flask_migrate
-from flask import Flask
+from flask import Flask, g
 from flask_migrate import Migrate
 
 from seed.models import db, migrate, session, ma
@@ -21,6 +21,7 @@ class SeedHttpServer(object):
 
         self.register_databases()
         self.register_api()
+        self.register_hook()
 
     def create_app(self, config_file):
         app = Flask(__name__)

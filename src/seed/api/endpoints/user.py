@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, g
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
@@ -14,9 +14,9 @@ class User(RestfulBaseView):
     """
     model_class = AccountModel
     schema_class = UserSchema
-    decorator = [api_require_login]
+    decorators = [api_require_login]
 
-    def get(self):
+    def get(self, model_id=None):
         """ 获取用户信息, 如果是SSO的校验
         成功后自动添加用户信息到用户列表
         """

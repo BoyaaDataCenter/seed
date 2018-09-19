@@ -1,7 +1,7 @@
 import functools
 from datetime import datetime
 
-from flask import session, current_app, jsonify
+from flask import session, current_app, jsonify, g
 
 from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
