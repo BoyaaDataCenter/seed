@@ -60,7 +60,7 @@ class SeedHttpServer(object):
     
     def register_cors(self):
         from flask_cors import CORS
-        CORS(self.app)
+        CORS(self.app, supports_credentials=True)
 
     def run(self):
         self.app.run(self.host, self.port)
