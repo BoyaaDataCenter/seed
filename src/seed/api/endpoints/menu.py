@@ -71,7 +71,5 @@ class Menu(RestfulBaseView):
         })
         schema = self.schema_class()
         datas, errors = schema.load(menu)
-        # if errors:
-            # return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
         datas.save()
         return datas.id

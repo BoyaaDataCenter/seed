@@ -4,6 +4,7 @@ import redis
 import flask_migrate
 from flask import Flask, g
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
@@ -23,6 +24,7 @@ class SeedHttpServer(object):
         self.register_cache()
         self.register_api()
         self.register_hook()
+        self.register_cors()
 
     def create_app(self, config_file):
         app = Flask(__name__)
@@ -55,7 +57,10 @@ class SeedHttpServer(object):
         @self.app.before_request
         def login_user():
             g.user = SSOAuth().get_current_user()
-
+    
+    def register_cors(self):
+        from flask_cors import CORS
+        CORS(self.app)
 
     def run(self):
         self.app.run(self.host, self.port)
