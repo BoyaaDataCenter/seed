@@ -1,8 +1,10 @@
-from ._base import db, BaseModel
+from ._base import db, BussinessModel
 
-__all__ = ["UserMenu",]
+__all__ = ["RoleMenu",]
 
 
-class RoleMenu(BaseModel):
+class RoleMenu(BussinessModel):
     role_id = db.Column(db.Integer)
     menu_id = db.Column(db.Integer)
+
+    role_permission = db.Column(db.Boolean, default=True)

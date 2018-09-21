@@ -1,7 +1,7 @@
-from . import db, BaseModel
+from . import db, BussinessModel
 
 __all__ = ['Role', ]
 
 
-class Role(BaseModel):
+class Role(BussinessModel):
     role = db.Column(db.Text, default='new')

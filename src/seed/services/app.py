@@ -57,7 +57,9 @@ class SeedHttpServer(object):
         @self.app.before_request
         def login_user():
             g.user = SSOAuth().get_current_user()
-    
+            # TODO 第一版业务区域逻辑暂时不开发, 留接口等到以后更新
+            g.bussiness_id = 1
+
     def register_cors(self):
         from flask_cors import CORS
         CORS(self.app, supports_credentials=True)
@@ -69,6 +71,6 @@ class SeedHttpServer(object):
         directory = self.app.extensions['migrate'].directory
         with self.app.app_context():
             if not os.path.exists(os.path.join(directory, 'alembic.ini')):
-                flask_migrate.init()
+                flask_migrate.init(directory)
             flask_migrate.migrate(sql=sql)
             flask_migrate.upgrade(sql=sql)

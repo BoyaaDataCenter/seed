@@ -22,7 +22,7 @@ class Menu(RestfulBaseView):
     def get(self, model_id=None):
         """ GET
         """
-        query_session = self.session.query(self.model_class)
+        query_session = self.session.query(self.model_class).filter(bussiness_id=g.bussiness_id)
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
@@ -30,7 +30,7 @@ class Menu(RestfulBaseView):
     def post(self):
         """ 更新菜单结构
         """
-        menus = request.get_json()
+        menus = request.get_json()['menu']
         self._decode_menus(menus)
         return self.response_json(self.HttpErrorCode.SUCCESS)
     

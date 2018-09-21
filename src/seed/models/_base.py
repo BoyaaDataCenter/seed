@@ -1,10 +1,11 @@
 from datetime import datetime
 
-from flask_sqlalchemy import SQLAlchemy, BaseQuery, orm
-from flask_marshmallow import Marshmallow
+from flask import g
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy, BaseQuery, orm
 
-__all__ = ['db', 'ma', 'migrate', 'session', 'BaseModel']
+__all__ = ['db', 'ma', 'migrate', 'session', 'BaseModel', 'BussinessModel']
 
 
 
@@ -58,3 +59,16 @@ class BaseModel(db.Model, SessionMixin):
 
     def __init__(self, *args, **kwargs):
         super(BaseModel, self).__init__(*args, **kwargs)
+    
+
+class BussinessModel(BaseModel):
+    """ 与业务绑定的Model
+    """
+    __abstract__ = True
+    column_filter = ['created', 'updated', 'bussiness_id']
+
+    bussiness_id = db.Column(db.Integer, nullable=False, default=1)
+
+    def __init__(self, *args, **kwargs):
+        self.bussiness_id = g.bussiness_id
+        super(BussinessModel, self).__init__(*args, **kwargs)
