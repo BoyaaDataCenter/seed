@@ -3,6 +3,7 @@ from flask import current_app, g
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models.account import Account as AccountModel
+from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_login
 
 class UserSchema(BaseSchema):
@@ -29,5 +30,30 @@ class UserMenu(RestfulBaseView):
     """
     url = '/user/menu'
 
-    def get(self):
-        pass
+    def get(self, model_id=None):
+        # 如果是业务管理员以上，返回当前业务的所有菜单
+        query_session = self.session.query(MenuModel).filter(MenuModel.bussiness_id==g.bussiness_id)
+        menu_data = query_session.all()
+        menus = self._encode_menus(menu_data)
+
+        # 其他角色通过关联用户角色表来获取到当前的菜单
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
+
+    def _encode_menus(self, menu_data):
+        menu_data = {'-'.join([str(row.parent_id), str(row.left_id)]): row.row2dict() for row in menu_data}
+
+        menus = {'id': 0}
+        middle_menu = [menus]
+        while middle_menu:
+            current_menu = middle_menu.pop()
+            parent_id, left_id = current_menu['id'], 0
+
+            while True:
+                current_key = '-'.join([str(parent_id), str(left_id)])
+                if current_key not in menu_data:
+                    break
+                current_menu.setdefault('sub_menus', []).append(menu_data[current_key])
+                middle_menu.append(menu_data[current_key])
+                left_id = menu_data[current_key]['id']
+
+        return menus.get('sub_menus', [])

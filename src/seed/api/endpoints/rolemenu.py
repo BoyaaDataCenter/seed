@@ -23,12 +23,13 @@ class RoleMenu(RestfulBaseView):
     def get(self, model_id):
         """ GET
         """
-        query_session = self.session.query(MenuModel, RoleMenuModel.role_permission) \
-            .outerjoin(RoleMenuModel, and_(MenuModel.id==RoleMenuModel.menu_id, MenuModel.bussiness_id==RoleMenuModel.bussiness_id)) \
-            .filter(RoleMenuModel.role_permission==True) \
-            .filter(RoleMenuModel.role_id==model_id)
+        role_session = self.session.query(RoleMenuModel)\
+            .filter(RoleMenuModel.role_id==model_id).subquery()
+        query_session = self.session.query(MenuModel, role_session.c.role_permission) \
+            .outerjoin(role_session, and_(MenuModel.id==role_session.c.menu_id, MenuModel.bussiness_id==role_session.c.bussiness_id))
 
         menu_data = query_session.all()
+        # TODO 返回参数不对
 
         menus = self._encode_menus(menu_data)
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)

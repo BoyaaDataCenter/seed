@@ -26,6 +26,11 @@ class SessionMixin(object):
         db.session.commit()
         return self
     
+    def flush(self):
+        db.session.flush(self)
+        db.session.commit()
+        return self
+    
     def delete(self):
         db.session.delete(self)
         db.session.commit()
