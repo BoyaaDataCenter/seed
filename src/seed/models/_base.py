@@ -6,6 +6,8 @@ from flask_marshmallow import Marshmallow
 from sqlalchemy.sql import sqltypes
 from flask_sqlalchemy import SQLAlchemy, BaseQuery, orm
 
+from seed.utils.time import convert_utc_to_local
+
 __all__ = ['db', 'ma', 'migrate', 'session', 'BaseModel', 'BussinessModel']
 
 
@@ -17,7 +19,7 @@ class SeedQuery(BaseQuery):
 
 class SessionMixin(object):
     column_filter = []
-    
+
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
             setattr(self, k, v)
@@ -44,7 +46,8 @@ class SessionMixin(object):
                 continue
 
             if isinstance(column.type, sqltypes.DateTime):
-                d[column.name] = getattr(self, column.name).strftime('%Y-%m-%d %H:%M:%S')
+                local_time = convert_utc_to_local(getattr(self, column.name), 'Asia/Shanghai')
+                d[column.name] = local_time.strftime('%Y-%m-%d %H:%M:%S')
             else:
                 d[column.name] = getattr(self, column.name)
         return d

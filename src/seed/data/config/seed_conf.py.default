@@ -35,6 +35,8 @@ DEBUG = %(debug_flag)s
 LOGIN_TYPE = ""
 SSO_URL = ""
 
+DEFAULT_TIME_ZONE = "Asia/Shanghai"
+
 
 #########
 # cache #
