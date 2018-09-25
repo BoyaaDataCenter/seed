@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import g
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
+from sqlalchemy.sql import sqltypes
 from flask_sqlalchemy import SQLAlchemy, BaseQuery, orm
 
 __all__ = ['db', 'ma', 'migrate', 'session', 'BaseModel', 'BussinessModel']
@@ -39,7 +40,12 @@ class SessionMixin(object):
     def row2dict(self):
         d = {}
         for column in self.__table__.columns:
-            if column.name not in self.column_filter:
+            if column.name in self.column_filter:
+                continue
+
+            if isinstance(column.type, sqltypes.DateTime):
+                d[column.name] = getattr(self, column.name).strftime('%Y-%m-%d %H:%M:%S')
+            else:
                 d[column.name] = getattr(self, column.name)
         return d
 

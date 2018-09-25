@@ -1,3 +1,4 @@
+from datetime import datetime
 # from flask.ext.sqlalchemy import Column
 from ._base import db, BaseModel
 
@@ -6,7 +7,7 @@ __all__ = ['Account',]
 
 
 class Account(BaseModel):
-    column_filter = ['created', 'updated', 'password']
+    column_filter = ['updated', 'password']
 
     sso_id = db.Column(db.Integer, default=-1) # SSO_ID
 
@@ -21,3 +22,7 @@ class Account(BaseModel):
 
     role = db.Column(db.String(10), default='new')
     status = db.Column(db.Integer, default=0)  # -1:不可用 0: 未激活 1: 正常使用
+
+    login_at = db.Column(
+        db.DateTime, default=datetime.utcnow()
+    )

@@ -88,7 +88,7 @@ class SSOAuth(BaseAuth):
 
         # 判断信息的有效性
         today = datetime.strftime(datetime.today(), '%Y-%m-%d')
-        login_at = self._get_login_cache(uid) 
+        login_at = self._get_login_cache(uid)
         if today != login_at:
             # 去SSO中校验用户的有效性
             user_info = self._sso_verification(uid, uid_key)
@@ -97,7 +97,7 @@ class SSOAuth(BaseAuth):
             # 创建新用户 或者 获取用户的user_id
             user = self._get_user_id(user_info)
             # 存储用户信息到Redis中
-            self._set_login_cache(uid, login_at)
+            self._set_login_cache(uid, today)
         else:
             user = Account.query.filter_by(sso_id=int(uid)).first()
         return user
@@ -121,7 +121,9 @@ class SSOAuth(BaseAuth):
                 role='user',
                 status=1
             )
-            account.save()
+        else:
+            account.login_at = datetime.utcnow()
+        account.save()
         return account
     
     def _sso_verification(self, uid, uid_key):
