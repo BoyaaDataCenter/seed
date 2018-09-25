@@ -41,7 +41,7 @@ class UserMenu(RestfulBaseView):
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)
 
-        # 其他角色通过关联用户角色表来获取到当前的菜单
+        # TODO 其他角色通过关联用户角色表来获取到当前的菜单
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
     def _encode_menus(self, menu_data):

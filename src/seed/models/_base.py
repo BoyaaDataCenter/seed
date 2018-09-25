@@ -11,6 +11,8 @@ from seed.utils.time import convert_utc_to_local
 __all__ = ['db', 'ma', 'migrate', 'session', 'BaseModel', 'BussinessModel']
 
 
+DEFAULT_DATETIME = '1970-01-01 00:00:00'
+
 
 class SeedQuery(BaseQuery):
     def __init__(self, *args, **kwargs):
@@ -47,7 +49,7 @@ class SessionMixin(object):
 
             if isinstance(column.type, sqltypes.DateTime):
                 local_time = convert_utc_to_local(getattr(self, column.name), 'Asia/Shanghai')
-                d[column.name] = local_time.strftime('%Y-%m-%d %H:%M:%S')
+                d[column.name] = local_time.strftime('%Y-%m-%d %H:%M:%S') if local_time else DEFAULT_DATETIME
             else:
                 d[column.name] = getattr(self, column.name)
         return d
