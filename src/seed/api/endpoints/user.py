@@ -4,6 +4,7 @@ from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models.account import Account as AccountModel
 from seed.models.menu import Menu as MenuModel
+from seed.models.userrole import UserRole as UserRoleModel
 from seed.utils.auth import api_require_login
 
 class UserSchema(BaseSchema):
@@ -22,6 +23,10 @@ class User(RestfulBaseView):
         成功后自动添加用户信息到用户列表
         """
         user = g.user.row2dict()
+
+        roles = self.session.query(UserRoleModel).filter(UserRoleModel.user_id==g.user.id).all()
+        user['role'] = [row.role_id for row in roles] or []
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
 
 

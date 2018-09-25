@@ -116,6 +116,7 @@ class SSOAuth(BaseAuth):
                 sso_id=int(user_info['id']),
                 account=user_info['username'],
                 email=user_info['email'],
+                avatar='http://oahead-static.17c.cn/oahead/' + str(int(user_info['code'])) + '.png',
                 name=user_info['cname'],
                 role='user',
                 status=1

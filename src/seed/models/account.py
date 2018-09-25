@@ -14,6 +14,7 @@ class Account(BaseModel):
     password = db.Column(db.String(256))
     email = db.Column(db.String(40), nullable=False)
 
+    avatar = db.Column(db.Text)
     name = db.Column(db.String(40), unique=True, nullable=False)
     sex = db.Column(db.String(20), nullable=False, default='male')
     depart_id = db.Column(db.Integer, default=-1)  # -1为未知
