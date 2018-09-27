@@ -20,7 +20,7 @@ class Account(BaseModel):
     sex = db.Column(db.String(20), nullable=False, default='male')
     depart_id = db.Column(db.Integer, default=-1)  # -1为未知
 
-    role = db.Column(db.String(10), default='new')
+    role = db.Column(db.String(20), default='new')
     status = db.Column(db.Integer, default=0)  # -1:不可用 0: 未激活 1: 正常使用
 
     login_at = db.Column(

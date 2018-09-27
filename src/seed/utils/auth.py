@@ -4,10 +4,14 @@ import functools
 from datetime import datetime
 
 import requests
+from sqlalchemy import and_
 from flask import session, current_app, jsonify, g, request
 
 from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
+from seed.models.userrole import UserRole
+from seed.models.role import Role
+from seed.models import db
 from seed.cache import DefaultCache
 
 class APIRequireRole(object):
@@ -35,7 +39,7 @@ class APIRequireRole(object):
             if not self.role or g.user.id == 1:
                 return method(*args, **kwargs)
 
-            if self.roles[g.user.role] <= self.roles[self.role]:
+            if self.roles[g.user.role] < self.roles[self.role]:
                 # 没有足够的权限
                 return jsonify(response(HttpErrorCode.FORBIDDEN))
 
@@ -48,6 +52,43 @@ api_require_new = APIRequireRole("new")
 api_require_user = APIRequireRole("user")
 api_require_admin = APIRequireRole("admin")
 api_require_super_admin = APIRequireRole("super_admin")
+
+
+class RequireRole(object):
+    roles = {
+        "new": 0,
+        "user": 1,
+        "admin": 2,
+        "super_admin": 3
+    }
+
+    def __init__(self, role):
+        self.role = role
+
+    def __call__(self):
+        if not g.user:
+            # 未登录
+            return False
+
+        if g.user.status == -1:
+            # 废弃账号
+            return False
+
+        if not self.role or g.user.id == 1:
+            return True
+
+        if self.roles[g.user.role] < self.roles[self.role]:
+            # 没有足够的权限
+            return False
+
+        return True
+
+
+require_login = RequireRole(None)
+require_new = RequireRole("new")
+require_user = RequireRole("user")
+require_admin = RequireRole("admin")
+require_super_admin = RequireRole("super_admin")
 
 
 class BaseAuth(object):
@@ -67,6 +108,24 @@ class BaseAuth(object):
         """ 登出用户
         """
         raise NotImplementedError("Not Implemented")
+
+    def debbuger_user(self):
+        if not require_super_admin() or 'debugger' not in request.args:
+            return g.user
+
+        user = Account.query.filter_by(id=int(request.args['debugger'])).first()
+
+        if self._is_bussiness_admin(user.id, 1):
+            user.role = 'admin'
+
+        return user if user else None
+
+    def _is_bussiness_admin(self, uid, bussiness=1):
+        roles = db.session.query(Role.role)\
+        .join(UserRole, and_(UserRole.role_id==Role.id, UserRole.user_id==uid, UserRole.bussiness_id==bussiness))\
+        .filter(Role.role=='admin')\
+        .all()
+        return True if roles else False
 
 
 class SessionAuth(BaseAuth):

@@ -57,6 +57,10 @@ class SeedHttpServer(object):
         @self.app.before_request
         def login_user():
             g.user = SSOAuth().get_current_user()
+
+            # debugger
+            g.user = SSOAuth().debbuger_user()
+
             # TODO 第一版业务区域逻辑暂时不开发, 留接口等到以后更新
             g.bussiness_id = 1
 

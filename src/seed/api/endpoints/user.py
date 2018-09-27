@@ -1,8 +1,11 @@
+from sqlalchemy import and_
 from flask import current_app, g
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models.account import Account as AccountModel
+from seed.models.role import Role
+from seed.models.userrole import UserRole
 from seed.models.menu import Menu as MenuModel
 from seed.models.userrole import UserRole as UserRoleModel
 from seed.utils.auth import api_require_login
@@ -25,9 +28,15 @@ class User(RestfulBaseView):
         user = g.user.row2dict()
 
         roles = self.session.query(UserRoleModel).filter(UserRoleModel.user_id==g.user.id).all()
-        user['role'] = [row.role_id for row in roles] or []
+        user['brole'] = self._get_role(g.user.id)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
+
+    def _get_role(self, uid):
+        roles = self.session.query(Role.role)\
+            .join(UserRole, and_(UserRole.role_id==Role.id, UserRole.user_id==uid, UserRole.bussiness_id==1))\
+            .all()
+        return roles
 
 
 class UserMenu(RestfulBaseView):
