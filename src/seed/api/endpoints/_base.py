@@ -1,9 +1,18 @@
-from flask import request
+import inspect
 
+from flask import request
 from marshmallow import ValidationError
 
 from seed.models import db
 from seed.api.common import _MethodView
+
+RESTFUL_METHODS = ['GET', 'POST', 'PUT', 'DELETE']
+
+class HttpMethods(object):
+    GET = 'GET'
+    POST = 'POST'
+    PUT = 'PUT'
+    DELETE = 'DELETE'
 
 
 class RestfulBaseView(_MethodView):
@@ -11,13 +20,14 @@ class RestfulBaseView(_MethodView):
     """
     __abstract__ = True
 
-    pk = 'model_id'
     pk_type = 'string'
 
     session = db.session
 
     model_class = None
     schema_class = None
+
+    forbidden_access_methods = []
 
     def __init__(self, *args, **kwargs):
         super(RestfulBaseView, self).__init__(*args, **kwargs)
@@ -104,21 +114,43 @@ class RestfulBaseView(_MethodView):
     @classmethod
     def register_api(cls, app):
         if hasattr(cls, 'url'):
-            url = cls.url or '/' + cls.__name__lower()
+            url = cls.url or '/' + cls.__name__.lower()
         else:
             url = cls.__name__.lower()
 
         view_func = cls.as_view(cls.__name__.lower())
 
-        app.add_url_rule(
-            url, defaults={cls.pk: None},
-            view_func=view_func, methods=['GET', 'PUT'],
-        )
-        app.add_url_rule(url, view_func=view_func, methods=['POST'])
-        app.add_url_rule(
-            '%s/<%s:%s>' % (url, cls.pk_type, cls.pk),
-            view_func=view_func,
-            methods=['GET', 'PUT', 'DELETE']
-        )
+        for method in RESTFUL_METHODS:
+            if method in cls.forbidden_access_methods:
+                continue
+
+            method_params = inspect.signature(getattr(cls, method.lower())).parameters
+            defaults = {
+                param_key: param_value.default
+                for param_key, param_value in method_params.items()
+                if param_key != 'self' and param_value.empty is not param_value.default
+            }
+            pk = list(method_params.keys())[1] if len(method_params.keys()) > 1 else ''
+
+            if defaults:
+                app.add_url_rule(
+                    url, defaults=defaults,
+                    view_func=view_func, methods=[method,],
+                )
+                app.add_url_rule(
+                    '%s/<%s:%s>' % (url, cls.pk_type, pk),
+                    view_func=view_func,
+                    methods=[method,]
+                )
+            elif len(method_params) > 1:
+                app.add_url_rule(
+                    '%s/<%s:%s>' % (url, cls.pk_type, pk),
+                    view_func=view_func,
+                    methods=[method,]
+                )
+            else:
+                app.add_url_rule(
+                    url,view_func=view_func, methods=[method],
+                )
 
         return app

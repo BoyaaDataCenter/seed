@@ -3,7 +3,7 @@ from flask import request, g
 from sqlalchemy import and_
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models.rolemenu import RoleMenu as RoleMenuModel
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_super_admin
@@ -21,24 +21,27 @@ class RoleMenu(RestfulBaseView):
 
     decorators = [api_require_super_admin]
 
-    def get(self, model_id):
+    forbidden_access_methods = [HttpMethods.PUT, HttpMethods.DELETE]
+
+    def get(self, role_id):
         """ GET
         """
-        menu_datas = self._get_role_menu_datas(model_id)
+        role_menu = self._get_role_menu(role_id)
 
-        menus = self._encode_menus(menu_datas)
+        menus = self._encode_menus(role_menu)
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
-    def put(self, model_id=None):
+    def put(self, role_id):
         request_json = request.get_json()
-        role_id, menus = model_id, request_json['menu']
+        menus = request_json['menu']
         self._decode_menus(menus, role_id)
         return self.response_json(self.HttpErrorCode.SUCCESS)
 
-    def _get_role_menu_datas(self, model_id):
+    def _get_role_menu(self, model_id):
         role_datas = self.session.query(RoleMenuModel)\
             .filter(RoleMenuModel.role_id==model_id, RoleMenuModel.bussiness_id==g.bussiness_id).all()
-        role_permission_map = {role_datas.menu_id: role_datas.role_permission for role_data in role_datas}
+        role_permission_map = {role_data.menu_id: role_data.role_permission for role_data in role_datas}
 
         menu_datas = self.session.query(MenuModel)\
             .filter(MenuModel.bussiness_id==g.bussiness_id).all()
