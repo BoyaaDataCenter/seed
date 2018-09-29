@@ -1,4 +1,5 @@
-from flask import request
+import json
+from flask import request, g
 from sqlalchemy import and_
 
 from seed.schema.base import BaseSchema
@@ -11,7 +12,7 @@ from seed.utils.auth import api_require_super_admin
 class RoleMenuSchema(BaseSchema):
     class Meta:
         model = RoleMenuModel
-    
+
 class RoleMenu(RestfulBaseView):
     """ 角色菜单设置
     """
@@ -23,15 +24,9 @@ class RoleMenu(RestfulBaseView):
     def get(self, model_id):
         """ GET
         """
-        role_session = self.session.query(RoleMenuModel)\
-            .filter(RoleMenuModel.role_id==model_id).subquery()
-        query_session = self.session.query(MenuModel, role_session.c.role_permission) \
-            .outerjoin(role_session, and_(MenuModel.id==role_session.c.menu_id, MenuModel.bussiness_id==role_session.c.bussiness_id))
+        menu_datas = self._get_role_menu_datas(model_id)
 
-        menu_data = query_session.all()
-        # TODO 返回参数不对
-
-        menus = self._encode_menus(menu_data)
+        menus = self._encode_menus(menu_datas)
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
     def put(self, model_id=None):
@@ -39,10 +34,25 @@ class RoleMenu(RestfulBaseView):
         role_id, menus = model_id, request_json['menu']
         self._decode_menus(menus, role_id)
         return self.response_json(self.HttpErrorCode.SUCCESS)
-    
-    def _encode_menus(self, menu_data):
-        menu_data = {'-'.join([str(row.parent_id), str(row.left_id)]): row.row2dict() for row in menu_data}
 
+    def _get_role_menu_datas(self, model_id):
+        role_datas = self.session.query(RoleMenuModel)\
+            .filter(RoleMenuModel.role_id==model_id, RoleMenuModel.bussiness_id==g.bussiness_id).all()
+        role_permission_map = {role_datas.menu_id: role_datas.role_permission for role_data in role_datas}
+
+        menu_datas = self.session.query(MenuModel)\
+            .filter(MenuModel.bussiness_id==g.bussiness_id).all()
+
+        menu_datas_with_permission = {}
+
+        for menu_data in menu_datas:
+            menu_data = menu_data.row2dict()
+            menu_data['role_permission'] = role_permission_map.get(menu_data['id'], False)
+            menu_datas_with_permission['-'.join([str(menu_data['parent_id']), str(menu_data['left_id'])])] = menu_data
+
+        return menu_datas_with_permission
+
+    def _encode_menus(self, menu_data):
         menus = {'id': 0}
         middle_menu = [menus]
         while middle_menu:
@@ -70,7 +80,7 @@ class RoleMenu(RestfulBaseView):
             self._insert_or_update_menu(menu, role_id, menu.get('role_permission', False))
             left_id = current_id = menu['menu_id']
             self._decode_menus(menu.get('sub_menus', []), role_id=role_id, parent_id=current_id, left_id=0)
-    
+
     def _insert_or_update_menu(self, menu, role_id, role_permission):
         role_menu = {
             "role_id": role_id,

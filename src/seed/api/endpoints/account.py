@@ -7,7 +7,7 @@ from seed.models.account import Account as AccountModel
 class AccountSchema(BaseSchema):
     class Meta:
         model = AccountModel
-    
+
 class Account(RestfulBaseView):
     """ Account
     """

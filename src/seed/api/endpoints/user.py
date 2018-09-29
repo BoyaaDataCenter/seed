@@ -6,9 +6,10 @@ from seed.api.endpoints._base import RestfulBaseView
 from seed.models.account import Account as AccountModel
 from seed.models.role import Role
 from seed.models.userrole import UserRole
+from seed.models.rolemenu import RoleMenu
 from seed.models.menu import Menu as MenuModel
 from seed.models.userrole import UserRole as UserRoleModel
-from seed.utils.auth import api_require_login
+from seed.utils.auth import api_require_login, require_admin
 
 class UserSchema(BaseSchema):
     class Meta:
@@ -43,14 +44,23 @@ class UserMenu(RestfulBaseView):
     """ 获取当前用户的菜单
     """
     url = '/user/menu'
+    decorators = [api_require_login]
 
     def get(self, model_id=None):
-        # 如果是业务管理员以上，返回当前业务的所有菜单
-        query_session = self.session.query(MenuModel).filter(MenuModel.bussiness_id==g.bussiness_id)
+        if require_admin():
+            # 如果是业务管理员以上，返回当前业务的所有菜单
+            query_session = self.session.query(MenuModel).filter(MenuModel.bussiness_id==g.bussiness_id)
+        else:
+            # 其他角色通过关联用户角色表来获取到当前的菜单
+            # TODO 测试
+            query_session = self.session.query(MenuModel)\
+                .join(RoleMenu, and_(MenuModel.id==RoleMenu.menu_id, RoleMenu.bussiness_id==g.bussiness_id))\
+                .join(UserRole, and_(RoleMenu.role_id==UserRole.role_id, UserRole.bussiness_id==g.bussiness_id, UserRole.user_id==g.user.id))\
+                .all()
+
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)
 
-        # TODO 其他角色通过关联用户角色表来获取到当前的菜单
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
     def _encode_menus(self, menu_data):

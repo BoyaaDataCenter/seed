@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 from flask import g
@@ -18,6 +19,8 @@ class SeedQuery(BaseQuery):
     def __init__(self, *args, **kwargs):
         super(SeedQuery, self).__init__(*args, **kwargs)
 
+    def as_list(self, *columns):
+        return self.options(map(db.defer, columns))
 
 class SessionMixin(object):
     column_filter = []
@@ -30,12 +33,12 @@ class SessionMixin(object):
         db.session.add(self)
         db.session.commit()
         return self
-    
+
     def flush(self):
         db.session.flush(self)
         db.session.commit()
         return self
-    
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
@@ -53,6 +56,7 @@ class SessionMixin(object):
             else:
                 d[column.name] = getattr(self, column.name)
         return d
+
 
 db = SQLAlchemy(query_class=SeedQuery)
 migrate = Migrate()
@@ -75,7 +79,7 @@ class BaseModel(db.Model, SessionMixin):
 
     def __init__(self, *args, **kwargs):
         super(BaseModel, self).__init__(*args, **kwargs)
-    
+
 
 class BussinessModel(BaseModel):
     """ 与业务绑定的Model

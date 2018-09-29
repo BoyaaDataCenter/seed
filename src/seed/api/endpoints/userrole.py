@@ -9,7 +9,7 @@ from seed.utils.auth import api_require_login
 class UserRoleSchema(BaseSchema):
     class Meta:
         model = UserRoleModel
-    
+
 class UserRole(RestfulBaseView):
     """ 用户角色
     """
@@ -23,10 +23,10 @@ class UserRole(RestfulBaseView):
         datas = [row.row2dict() for row in datas] if datas else []
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
-    
+
     def put(self, model_id):
         input_json = request.get_json()
-        
+
         # 删除旧数据
         query_session = self.session.query(self.model_class)
         query_session.filter(self.model_class.user_id==model_id).delete()

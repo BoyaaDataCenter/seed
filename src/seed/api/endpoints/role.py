@@ -12,3 +12,5 @@ class Role(RestfulBaseView):
     """
     model_class = RoleModel
     schema_class = RoleSchema
+
+    decorators = [api_require_super_admin]

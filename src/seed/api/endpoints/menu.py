@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, g
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
@@ -9,7 +9,7 @@ from seed.utils.auth import api_require_super_admin
 class MenuSchema(BaseSchema):
     class Meta:
         model = MenuModel
-    
+
 
 class Menu(RestfulBaseView):
     """ menu
@@ -22,7 +22,7 @@ class Menu(RestfulBaseView):
     def get(self, model_id=None):
         """ GET
         """
-        query_session = self.session.query(self.model_class).filter(bussiness_id=g.bussiness_id)
+        query_session = self.session.query(self.model_class).filter(self.model_class.bussiness_id==g.bussiness_id)
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
@@ -33,7 +33,7 @@ class Menu(RestfulBaseView):
         menus = request.get_json()['menu']
         self._decode_menus(menus)
         return self.response_json(self.HttpErrorCode.SUCCESS)
-    
+
     def _encode_menus(self, menu_data):
         menu_data = {'-'.join([str(row.parent_id), str(row.left_id)]): row.row2dict() for row in menu_data}
 

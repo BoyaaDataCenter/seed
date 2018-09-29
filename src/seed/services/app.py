@@ -40,7 +40,7 @@ class SeedHttpServer(object):
 
         with self.app.app_context():
             session.configure(bind=db.engine)
-        
+
     def register_cache(self):
         redis_pool = redis.ConnectionPool.from_url(
             self.app.config['REDIS_URL'],
