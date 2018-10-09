@@ -2,19 +2,19 @@ from flask import request
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
-from seed.models.userrole import UserRole as UserRoleModel
+from seed.models.buserrole import BUserRole as BUserRoleModel
 from seed.utils.auth import api_require_login
 
 
-class UserRoleSchema(BaseSchema):
+class BUserRoleSchema(BaseSchema):
     class Meta:
-        model = UserRoleModel
+        model = BUserRoleModel
 
-class UserRole(RestfulBaseView):
+class BUserRole(RestfulBaseView):
     """ 用户角色
     """
-    model_class = UserRoleModel
-    schema_class = UserRoleSchema
+    model_class = BUserRoleModel
+    schema_class = BUserRoleSchema
     decoraters = [api_require_login]
 
     def get(self, model_id):

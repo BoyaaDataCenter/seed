@@ -1,8 +1,8 @@
 from ._base import db, BussinessModel
 
-__all__ = ["UserRole", ]
+__all__ = ["BUserRole", ]
 
-class UserRole(BussinessModel):
+class BUserRole(BussinessModel):
     """ 用户权限模型
     """
 

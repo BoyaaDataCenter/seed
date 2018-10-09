@@ -1,7 +1,7 @@
 from flask import request, g
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_super_admin
 
@@ -19,7 +19,9 @@ class Menu(RestfulBaseView):
 
     decorators = [api_require_super_admin]
 
-    def get(self, model_id=None):
+    access_methods = [HttpMethods.GET, HttpMethods.POST]
+
+    def get(self):
         """ GET
         """
         query_session = self.session.query(self.model_class).filter(self.model_class.bussiness_id==g.bussiness_id)

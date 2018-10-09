@@ -9,7 +9,7 @@ from flask import session, current_app, jsonify, g, request
 
 from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
-from seed.models.userrole import UserRole
+from seed.models.buserrole import BUserRole
 from seed.models.role import Role
 from seed.models import db
 from seed.cache import DefaultCache
@@ -122,7 +122,7 @@ class BaseAuth(object):
 
     def _is_bussiness_admin(self, uid, bussiness=1):
         roles = db.session.query(Role.role)\
-        .join(UserRole, and_(UserRole.role_id==Role.id, UserRole.user_id==uid, UserRole.bussiness_id==bussiness))\
+        .join(BUserRole, and_(BUserRole.role_id==Role.id, BUserRole.user_id==uid, BUserRole.bussiness_id==bussiness))\
         .filter(Role.role=='admin')\
         .all()
         return True if roles else False

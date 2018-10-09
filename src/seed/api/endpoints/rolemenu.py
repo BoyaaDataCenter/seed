@@ -21,7 +21,7 @@ class RoleMenu(RestfulBaseView):
 
     decorators = [api_require_super_admin]
 
-    forbidden_access_methods = [HttpMethods.PUT, HttpMethods.DELETE]
+    access_methods = [HttpMethods.GET, HttpMethods.POST]
 
     def get(self, role_id):
         """ GET

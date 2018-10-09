@@ -50,6 +50,7 @@ class SeedHttpServer(object):
 
     def register_api(self):
         register_api(self.app)
+        print(self.app.url_map)
 
     def register_hook(self):
         """ 注册Hook

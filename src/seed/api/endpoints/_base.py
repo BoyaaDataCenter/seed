@@ -27,7 +27,7 @@ class RestfulBaseView(_MethodView):
     model_class = None
     schema_class = None
 
-    forbidden_access_methods = []
+    access_methods = [HttpMethods.GET, HttpMethods.POST, HttpMethods.PUT, HttpMethods.DELETE]
 
     def __init__(self, *args, **kwargs):
         super(RestfulBaseView, self).__init__(*args, **kwargs)
@@ -121,7 +121,7 @@ class RestfulBaseView(_MethodView):
         view_func = cls.as_view(cls.__name__.lower())
 
         for method in RESTFUL_METHODS:
-            if method in cls.forbidden_access_methods:
+            if method not in cls.access_methods:
                 continue
 
             method_params = inspect.signature(getattr(cls, method.lower())).parameters
