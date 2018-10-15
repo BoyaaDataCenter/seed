@@ -105,7 +105,7 @@ class RestfulBaseView(_MethodView):
         Arguments:
             model_id {int} -- resource id
         """
-        data = self.model_class.query.get(model_id).first()
+        data = self.model_class.query.get(model_id)
         if data:
             data.delete()
             return self.response_json(self.HttpErrorCode.SUCCESS, 'Success!')
