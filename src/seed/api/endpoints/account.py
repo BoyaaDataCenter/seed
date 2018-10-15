@@ -2,6 +2,7 @@ from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 
 from seed.models.account import Account as AccountModel
+from seed.utils.auth import api_require_super_admin
 
 
 class AccountSchema(BaseSchema):
@@ -11,5 +12,7 @@ class AccountSchema(BaseSchema):
 class Account(RestfulBaseView):
     """ Account
     """
+    decorators = [api_require_super_admin]
+
     model_class = AccountModel
     schema_class = AccountSchema

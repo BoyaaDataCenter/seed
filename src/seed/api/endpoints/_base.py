@@ -84,7 +84,7 @@ class RestfulBaseView(_MethodView):
         input_json = request.get_json()
         if model_id:
             datas, errors = self.schema_class().load(
-                input_json, instance=self.model_class.query.get(model_id)
+                input_json, instance=self.model_class.query.get(model_id), partial=True
             )
             if errors:
                 return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)

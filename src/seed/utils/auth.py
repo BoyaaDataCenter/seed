@@ -153,8 +153,12 @@ class SSOAuth(BaseAuth):
             user_info = self._sso_verification(uid, uid_key)
             if not user_info:
                 return None
+
             # 创建新用户 或者 获取用户的user_id
             user = self._get_user_id(user_info)
+
+            self._account_valid(user)
+
             # 存储用户信息到Redis中
             self._set_login_cache(uid, today)
         else:
@@ -163,9 +167,13 @@ class SSOAuth(BaseAuth):
 
     def logout_user(self):
         session = []
-    
+
     def cache(self):
         return DefaultCache(current_app.cache)
+
+    def _account_valid(self, user):
+        if user.status == -1:
+            raise Exception("账号已经被注销")
 
     def _get_user_id(self, user_info):
         account = Account.query.filter_by(sso_id=int(user_info['id'])).first()

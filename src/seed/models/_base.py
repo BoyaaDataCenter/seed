@@ -80,6 +80,13 @@ class BaseModel(db.Model, SessionMixin):
     def __init__(self, *args, **kwargs):
         super(BaseModel, self).__init__(*args, **kwargs)
 
+    def delete(self):
+        if hasattr(self, 'status'):
+            self.status = -1
+            self.save()
+        else:
+            super(BaseModel, self).delete()
+
 
 class BussinessModel(BaseModel):
     """ 与业务绑定的Model
