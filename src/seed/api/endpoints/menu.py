@@ -53,7 +53,7 @@ class Menu(RestfulBaseView):
                 middle_menu.append(menu_data[current_key])
                 left_id = menu_data[current_key]['id']
 
-        return menus['sub_menus']
+        return menus.get('sub_menus', [])
 
 
     def _decode_menus(self, menus, parent_id=0, left_id=0):
