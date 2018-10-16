@@ -47,4 +47,10 @@ class BUserRole(RestfulBaseView):
 
         datas = [row.row2dict() for row in datas] if datas else []
 
+        roles = RoleModel.get_roles(g.bussiness_id)
+        role_id_map = {role.id: role.role for role in roles}
+
+        for data in datas:
+            data['role'] = role_id_map.get(data['role_id'], '未知')
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
