@@ -27,7 +27,7 @@ class BUserRole(RestfulBaseView):
         role_id_map = {role.id: role.role for role in roles}
 
         for data in datas:
-            data['role'] = role_id_map[data['role_id']]
+            data['role'] = role_id_map.get(data['role_id'], '未知')
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 
