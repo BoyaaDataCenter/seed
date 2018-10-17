@@ -16,7 +16,7 @@ class BUserRole(RestfulBaseView):
     """
     model_class = BUserRoleModel
     schema_class = BUserRoleSchema
-    decoraters = [api_require_login]
+    decorators = [api_require_login]
 
     def get(self, model_id):
         query_session = self.session.query(self.model_class)

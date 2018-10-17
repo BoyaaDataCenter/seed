@@ -32,7 +32,7 @@ class Menu(RestfulBaseView):
     def post(self):
         """ 更新菜单结构
         """
-        menus = request.get_json()['menu']
+        menus = request.get_json()
         self._decode_menus(menus)
         return self.response_json(self.HttpErrorCode.SUCCESS)
 
@@ -63,15 +63,18 @@ class Menu(RestfulBaseView):
         for menu in menus:
             # 更新或插入新的菜单
             # 获取到菜单对应的ID
-            left_id = current_id = self._insert_or_update_menu(menu, parent_id, left_id)
+            left_id = current_id = self._update_menu_item(menu, parent_id, left_id)
             self._decode_menus(menu.get('sub_menus', []), parent_id=current_id, left_id=0)
 
-    def _insert_or_update_menu(self, menu, parent_id, left_id):
+    def _update_menu_item(self, menu, parent_id, left_id):
         menu.update({
             'parent_id': parent_id,
             'left_id': left_id
         })
         schema = self.schema_class()
         datas, errors = schema.load(menu)
-        datas.save()
+        if menu.get('status', 0) == -1:
+            datas.delete()
+        else:
+            datas.save()
         return datas.id
