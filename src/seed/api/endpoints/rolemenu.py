@@ -41,7 +41,7 @@ class RoleMenu(RestfulBaseView):
     def _get_role_menu(self, model_id):
         role_datas = self.session.query(RoleMenuModel)\
             .filter(RoleMenuModel.role_id==model_id, RoleMenuModel.bussiness_id==g.bussiness_id).all()
-        role_permission_map = {role_data.menu_id: role_data.role_permission for role_data in role_datas}
+        role_data_map = {role_data.menu_id: role_data for role_data in role_datas}
 
         menu_datas = self.session.query(MenuModel)\
             .filter(MenuModel.bussiness_id==g.bussiness_id).all()
@@ -50,7 +50,13 @@ class RoleMenu(RestfulBaseView):
 
         for menu_data in menu_datas:
             menu_data = menu_data.row2dict()
-            menu_data['role_permission'] = role_permission_map.get(menu_data['id'], False)
+            role_data = role_data_map[menu_data['id']] if menu_data['id'] in role_data_map else None
+
+            menu_data['role_permission'] = role_data.role_permission if role_data else False
+            menu_data['menu_id'] = menu_data['id']
+            if role_data:
+                menu_data['id'] = role_data.id
+
             menu_datas_with_permission['-'.join([str(menu_data['parent_id']), str(menu_data['left_id'])])] = menu_data
 
         return menu_datas_with_permission
