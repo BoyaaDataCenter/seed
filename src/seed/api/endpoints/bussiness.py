@@ -41,10 +41,9 @@ class Bussiness(RestfulBaseView):
 
             if g.user.role == 'super_admin':
                 # 所有权限
-                permission_datas = [
+                for data in all_datas:
                     data.update({'edit': True, 'delete': True})
-                    for data in order_datas
-                ]
+                permission_datas = all_datas
                 un_permission_datas = []
 
             else:
@@ -54,10 +53,8 @@ class Bussiness(RestfulBaseView):
                 .filter(BManagerModel.user_id==g.user.id)\
                 .all()
                 order_datas = [data.row2dict() for data in order_datas]
-                order_datas = [
+                for data in order_datas:
                     data.update({'edit': True, 'delete': False})
-                    for data in order_datas
-                ]
 
                 # 有权限的业务
                 permission_datas = self.session.query(self.model_class)\
@@ -66,10 +63,8 @@ class Bussiness(RestfulBaseView):
                 .all()
                 permission_ids = [data.id for data in permission_datas]
                 permission_datas = [data.row2dict() for data in permission_datas]
-                permission_datas = [
+                for data in permission_datas
                     data.update({'edit': False, 'delete': False})
-                    for data in permission_datas
-                ]
 
                 permission_datas = [data for data in order_datas if data['id'] not in permission_ids]
                 permission_datas = order_datas + permission_datas
@@ -77,7 +72,7 @@ class Bussiness(RestfulBaseView):
 
                 un_permission_datas = [data for data in all_datas if data['id'] not in permission_ids]
 
-            datas = {'per_bussiness': permission_datas, 'unper_bussiness': un_permission_datas}
+            datas = {'my_bussiness': permission_datas, 'other_bussiness': un_permission_datas}
 
             return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 
