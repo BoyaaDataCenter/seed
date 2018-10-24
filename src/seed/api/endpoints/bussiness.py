@@ -63,7 +63,7 @@ class Bussiness(RestfulBaseView):
                 .all()
                 permission_ids = [data.id for data in permission_datas]
                 permission_datas = [data.row2dict() for data in permission_datas]
-                for data in permission_datas
+                for data in permission_datas:
                     data.update({'edit': False, 'delete': False})
 
                 permission_datas = [data for data in order_datas if data['id'] not in permission_ids]

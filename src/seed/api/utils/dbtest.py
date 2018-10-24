@@ -1,6 +1,7 @@
 from flask import request
 
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.drives import ALL_DRIVES
 
 class DatabaseTest(RestfulBaseView):
     url = 'database_test'
@@ -8,6 +9,20 @@ class DatabaseTest(RestfulBaseView):
     access_methods = [HttpMethods.POST]
 
     def post(self):
-        input_json = request.get_json()
+        db_conf = request.get_json()
 
-        return self.response_json(self.HttpErrorCode.SUCCESS)
+        try:
+            drive = ALL_DRIVES[db_conf['dtype']]
+            del db_conf['dtype']
+            drive_instance = drive(**db_conf)
+            success = drive_instance.test_connection()
+            message = '数据库连接成功!'
+        except Exception as e:
+            raise
+            success = False
+            message = str(e)
+
+        if success:
+            return self.response_json(self.HttpErrorCode.SUCCESS, msg=message)
+
+        return self.response_json(self.HttpErrorCode.ERROR, msg=message)
