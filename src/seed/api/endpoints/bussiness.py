@@ -7,6 +7,7 @@ from seed.api.endpoints._base import RestfulBaseView
 from seed.models import Bussiness as BussinessModel
 from seed.models import BUser
 from seed.models import BManager as BManagerModel
+from seed.models import Account as AccountModel
 
 
 class BussinessSchema(BaseSchema):
@@ -71,6 +72,19 @@ class Bussiness(RestfulBaseView):
                 permission_ids = [data['id'] for data in permission_datas]
 
                 un_permission_datas = [data for data in all_datas if data['id'] not in permission_ids]
+
+            bmanagers = self.session.query(BManagerModel.bussiness_id, BManagerModel.user_id, AccountModel.name)\
+            .join(AccountModel, BManagerModel.user_id==AccountModel.id)\
+            .as_list()
+
+            b_managers_map = {}
+            for bmanager in bmanagers:
+                b_managers_map.setdefault(bmanager['bussiness_id'], []).append(bmanager)
+
+            for data in permission_datas:
+                data['managers'] = b_managers_map.get(data['id'], [])
+            for data in un_permission_datas:
+                data['managers'] = b_managers_map.get(data['id'], [])
 
             datas = {'my_bussiness': permission_datas, 'other_bussiness': un_permission_datas}
 

@@ -19,8 +19,8 @@ class SeedQuery(BaseQuery):
     def __init__(self, *args, **kwargs):
         super(SeedQuery, self).__init__(*args, **kwargs)
 
-    def as_list(self, *columns):
-        return self.options(map(db.defer, columns))
+    def as_list(self, *clolumns):
+        return [{key: getattr(row, key, None) for key in row.keys()} for row in self]
 
 class SessionMixin(object):
     column_filter = []
