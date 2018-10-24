@@ -94,6 +94,7 @@ class RestfulBaseView(_MethodView):
             datas, errors = self.schema_class().load(input_json, many=True)
             if errors:
                 return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
+
             [data.save() for data in datas]
             datas = [data.row2dict() for data in datas]
 

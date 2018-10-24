@@ -1,14 +1,11 @@
-from . import db, BaseModel
+from . import db, BussinessModel
 
 __all__ = ['Databases']
 
 
-class Databases(BaseModel):
+class Databases(BussinessModel):
     """ databases configure
     """
-
-    bussiness_id = db.Column(db.Integer, db.ForeignKey('bussiness.id'), nullable=False)
-
     dtype = db.Column(db.Text, nullable=False,
         comment='Database type, like mysql, postgresql')
 

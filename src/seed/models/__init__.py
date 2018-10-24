@@ -7,3 +7,5 @@ from .pages import *
 from .report_models import *
 from .menu import *
 from .role import *
+from .bmanager import *
+from .buser import *

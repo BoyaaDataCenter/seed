@@ -24,14 +24,14 @@ class APIRequireRole(object):
 
     def __init__(self, role):
         self.role = role
-    
+
     def __call__(self, method):
         @functools.wraps(method)
         def wrapper(*args, **kwargs):
             if not g.user:
                 # 未登录
                 return jsonify(response(HttpErrorCode.UNAUTHORIZED))
-            
+
             if g.user.status == -1:
                 # 废弃账号
                 return jsonify((response(HttpErrorCode.FORBIDDEN)))
@@ -44,7 +44,7 @@ class APIRequireRole(object):
                 return jsonify(response(HttpErrorCode.FORBIDDEN))
 
             return method(*args, **kwargs)
-        
+
         return wrapper
 
 api_require_login = APIRequireRole(None)
@@ -98,7 +98,7 @@ class BaseAuth(object):
         """ 获取当前用户
         """
         raise NotImplementedError("Not Implemented")
-    
+
     def login_user(self, user):
         """ 登录用户
         """

@@ -8,4 +8,6 @@ class Bussiness(BaseModel):
     """
 
     name = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.Text)
+
+    # create_user_id = db.Column(db.Integer, nullable=False)
