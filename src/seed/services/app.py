@@ -63,7 +63,10 @@ class SeedHttpServer(object):
             # debugger
             g.user = SSOAuth().debbuger_user()
 
-            g.bussiness_id = UserBussinessCache().get(g.user.id) or -1
+            if g.user:
+                g.bussiness_id = UserBussinessCache().get(g.user.id) or -1
+            else:
+                g.bussiness_id = -1
 
     def register_cors(self):
         from flask_cors import CORS
