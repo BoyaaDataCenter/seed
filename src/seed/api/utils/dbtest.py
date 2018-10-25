@@ -18,7 +18,6 @@ class DatabaseTest(RestfulBaseView):
             success = drive_instance.test_connection()
             message = '数据库连接成功!'
         except Exception as e:
-            raise
             success = False
             message = str(e)
 
