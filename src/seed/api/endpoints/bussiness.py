@@ -73,7 +73,10 @@ class Bussiness(RestfulBaseView):
 
                 un_permission_datas = [data for data in all_datas if data['id'] not in permission_ids]
 
-            bmanagers = self.session.query(BManagerModel.bussiness_id, BManagerModel.user_id, AccountModel.name)\
+            bmanagers = self.session.query(
+                BManagerModel.id, BManagerModel.bussiness_id,
+                BManagerModel.user_id, AccountModel.name
+            )\
             .join(AccountModel, BManagerModel.user_id==AccountModel.id)\
             .as_list()
 
