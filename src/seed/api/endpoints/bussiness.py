@@ -39,7 +39,7 @@ class Bussiness(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
         else:
             # 所有业务
-            permission_datas, un_permission_datas = get_permission_datas_by_user(data, g.user)
+            permission_datas, un_permission_datas = get_permission_datas_by_user(g.user)
 
             bmanagers = self.session.query(
                 BManagerModel.id, BManagerModel.bussiness_id,
