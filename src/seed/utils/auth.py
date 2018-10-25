@@ -192,7 +192,7 @@ class SSOAuth(BaseAuth):
             account.login_at = datetime.utcnow()
         account.save()
         return account
-    
+
     def _sso_verification(self, uid, uid_key):
         check_sso_user_url = "http://sso.ifere.com:8871/api?do=getInfo&uid=%s&key=%s&appid=1172" % (uid, uid_key)
 
@@ -209,9 +209,9 @@ class SSOAuth(BaseAuth):
 
             logging.warning('error: %s' % e)
             return []
-    
+
     def _set_login_cache(self, uid, login_at):
         self.cache().set(':'.join([uid, 'sso_login']), login_at)
-    
+
     def _get_login_cache(self, uid):
         return self.cache().get(':'.join([uid, 'sso_login']))

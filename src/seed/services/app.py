@@ -9,6 +9,7 @@ from flask_cors import CORS
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth
+from seed.cache.user_bussiness import UserBussinessCache
 
 
 class SeedHttpServer(object):
@@ -62,8 +63,7 @@ class SeedHttpServer(object):
             # debugger
             g.user = SSOAuth().debbuger_user()
 
-            # TODO 第一版业务区域逻辑暂时不开发, 留接口等到以后更新
-            g.bussiness_id = 1
+            g.bussiness_id = UserBussinessCache().get(g.user.id) or -1
 
     def register_cors(self):
         from flask_cors import CORS

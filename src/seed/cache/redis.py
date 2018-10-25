@@ -17,14 +17,14 @@ class RedisCache(BaseCache):
             self.redis_client.setex(key, int(timeout), v)
         else:
             self.redis_client.set(key, v)
-    
+
     def get(self, key):
         key = self.make_key(key)
         result = self.redis_client.get(key)
         if result:
             result = json.loads(result)
         return result
-    
+
     def delete(self, key):
         key = self.make_key(key)
         self.redis_client.delete(key)
