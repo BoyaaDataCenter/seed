@@ -1,4 +1,6 @@
 from seed.models.bussiness import Bussiness
+from seed.models.bmanager import BManager
+from seed.models.buser import BUser
 from seed.models._base import session
 
 def get_permission_datas_by_user(user):
@@ -15,8 +17,8 @@ def get_permission_datas_by_user(user):
     else:
         # 管理的业务
         order_datas = session.query(Bussiness)\
-        .join(BManagerModel, Bussiness.id==BManagerModel.bussiness_id)\
-        .filter(BManagerModel.user_id==user.id)\
+        .join(BManager, Bussiness.id==BManager.bussiness_id)\
+        .filter(BManager.user_id==user.id)\
         .all()
         order_datas = [data.row2dict() for data in order_datas]
         for data in order_datas:
