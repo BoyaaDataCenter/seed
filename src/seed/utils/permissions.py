@@ -44,4 +44,4 @@ def get_permission_datas_by_user(user):
 
 def has_bussiness_permission(user, bussiness_id):
     permission_datas, _ = get_permission_datas_by_user(user)
-    return len([True for bussiness in permission_datas if bussiness_id == bussiness['id']])
+    return all([bussiness_id == bussiness['id'] for bussiness in permission_datas])
