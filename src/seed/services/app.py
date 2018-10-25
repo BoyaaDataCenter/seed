@@ -21,11 +21,11 @@ class SeedHttpServer(object):
 
         self.app = self.create_app(config_file)
 
+        self.register_cors()
         self.register_databases()
         self.register_cache()
         self.register_api()
         self.register_hook()
-        self.register_cors()
 
     def create_app(self, config_file):
         app = Flask(__name__)
