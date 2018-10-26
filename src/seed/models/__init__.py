@@ -9,3 +9,5 @@ from .menu import *
 from .role import *
 from .bmanager import *
 from .buser import *
+
+from .event_hook import *

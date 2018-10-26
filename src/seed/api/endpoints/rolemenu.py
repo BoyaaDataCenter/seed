@@ -6,7 +6,7 @@ from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models.rolemenu import RoleMenu as RoleMenuModel
 from seed.models.menu import Menu as MenuModel
-from seed.utils.auth import api_require_super_admin
+from seed.utils.auth import api_require_admin
 
 
 class RoleMenuSchema(BaseSchema):
@@ -19,7 +19,7 @@ class RoleMenu(RestfulBaseView):
     model_class = RoleMenuModel
     schema_class = RoleMenuSchema
 
-    decorators = [api_require_super_admin]
+    decorators = [api_require_admin]
 
     access_methods = [HttpMethods.GET, HttpMethods.PUT]
 

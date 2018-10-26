@@ -1,7 +1,7 @@
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models.role import Role as RoleModel
-from seed.utils.auth import api_require_super_admin
+from seed.utils.auth import api_require_admin
 
 
 class RoleSchema(BaseSchema):
@@ -14,4 +14,4 @@ class Role(RestfulBaseView):
     model_class = RoleModel
     schema_class = RoleSchema
 
-    decorators = [api_require_super_admin]
+    decorators = [api_require_admin]

@@ -1,10 +1,11 @@
 import inspect
 
-from flask import request
+from flask import request, g
 from marshmallow import ValidationError
 
 from seed.models import db
 from seed.api.common import _MethodView
+from seed.models._base import BussinessModel
 
 RESTFUL_METHODS = ['GET', 'POST', 'PUT', 'DELETE']
 
@@ -43,13 +44,15 @@ class RestfulBaseView(_MethodView):
         Arguments:
             model_id {int} -- resource id
         """
+        query_session = self.session.query(self.model_class)
+
+        if issubclass(self.model_class, BussinessModel):
+            query_session = query_session.filter_by(bussiness_id=g.bussiness_id)
+
         if model_id:
-            data = self.session.query(
-                self.model_class
-            ).filter_by(id=model_id).first()
+            data = query_session.filter_by(id=model_id).first()
             data = data.row2dict() if data else {}
         else:
-            query_session = self.session.query(self.model_class)
             data = query_session.all()
             data = [row.row2dict() for row in data] if data else []
 
