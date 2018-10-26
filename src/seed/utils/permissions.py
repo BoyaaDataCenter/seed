@@ -20,6 +20,7 @@ def get_permission_datas_by_user(user):
         .join(BManager, Bussiness.id==BManager.bussiness_id)\
         .filter(BManager.user_id==user.id)\
         .all()
+        order_ids = [data.id for data in order_datas]
         order_datas = [data.row2dict() for data in order_datas]
         for data in order_datas:
             data.update({'edit': True, 'delete': False})
@@ -34,7 +35,7 @@ def get_permission_datas_by_user(user):
         for data in permission_datas:
             data.update({'edit': False, 'delete': False})
 
-        permission_datas = [data for data in order_datas if data['id'] not in permission_ids]
+        permission_datas = [data for data in order_datas if data['id'] not in permission_ids and data['id'] not in order_ids]
         permission_datas = order_datas + permission_datas
         permission_ids = [data['id'] for data in permission_datas]
 
@@ -44,4 +45,4 @@ def get_permission_datas_by_user(user):
 
 def has_bussiness_permission(user, bussiness_id):
     permission_datas, _ = get_permission_datas_by_user(user)
-    return all([bussiness_id == bussiness['id'] for bussiness in permission_datas])
+    return any([bussiness_id == bussiness['id'] for bussiness in permission_datas])
