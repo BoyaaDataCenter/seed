@@ -57,7 +57,7 @@ class UserMenu(RestfulBaseView):
             # TODO 测试
             query_session = self.session.query(MenuModel)\
                 .join(RoleMenu, and_(MenuModel.id==RoleMenu.menu_id, RoleMenu.bussiness_id==g.bussiness_id))\
-                .join(UserRole, and_(RoleMenu.role_id==UserRole.role_id, UserRole.bussiness_id==g.bussiness_id, UserRole.user_id==g.user.id))\
+                .join(BUserRole, and_(RoleMenu.role_id==BUserRole.role_id, BUserRole.bussiness_id==g.bussiness_id, BUserRole.user_id==g.user.id))\
                 .all()
 
         menu_data = query_session.all()
