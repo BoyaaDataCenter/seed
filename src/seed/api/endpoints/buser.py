@@ -3,6 +3,7 @@ from flask import request
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models import BUser as BUserModel
+from seed.models import Account as AccountModel
 
 from seed.utils.auth import api_require_admin
 
@@ -17,24 +18,16 @@ class Buser(RestfulBaseView):
     schema_class = BUserSchema
     deccorators = [api_require_admin]
 
-    def put(self, bussiness_id):
-        input_json = request.get_json()
+    def get(self, bussiness_id):
+        users = self.session.query(BUserModel.id, AccountModel)\
+            .join(AccountModel, AccountModel.id==BUserModel.user_id)\
+            .filter(BUserModel.bussiness_id==bussiness_id)\
+            .all()
 
-        # 删除多余的数据
-        delete_data = [data for data in input_json if data.get('status') == -1]
-        datas, errors = self.schema_class().load(delete_data, many=True)
-        [data.delete() for data in datas]
-
-        # 新增和修改数据
-        modify_data = [data for data in input_json if data.get('status') != -1]
-
-        for data in modify_data:
-            data['bussiness_id'] = bussiness_id
-
-        datas, errors = self.schema_class().load(modify_data, many=True)
-        [data.save() for data in datas]
-        datas = [data.row2dict() for data in datas]
+        datas = []
+        for user in users:
+            data = user.Account.row2dict()
+            data['account_id'], data['id'] = data['id'], user.id
+            datas.append(data)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
-
-    post = put
