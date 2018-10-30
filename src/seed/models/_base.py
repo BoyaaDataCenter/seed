@@ -99,3 +99,13 @@ class BussinessModel(BaseModel):
     def __init__(self, *args, **kwargs):
         self.bussiness_id = g.bussiness_id
         super(BussinessModel, self).__init__(*args, **kwargs)
+
+
+class PageModel(BussinessModel):
+    """ 与页面绑定的Model
+    """
+    __abstract__ = True
+
+    column_filter = ['created', 'updated', 'bussiness_id', 'page_id']
+
+    page_id = db.Column(db.Integer, nullable=False, default=1)

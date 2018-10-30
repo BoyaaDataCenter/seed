@@ -51,12 +51,12 @@ class RestfulBaseView(_MethodView):
 
         if model_id:
             data = query_session.filter_by(id=model_id).first()
-            data = data.row2dict() if data else {}
+            data = self.schema_class().dump(data)
         else:
             data = query_session.all()
-            data = [row.row2dict() for row in data] if data else []
+            data = self.schema_class().dump(data, many=True)
 
-        return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=data.data)
 
     def post(self):
         """ POST
@@ -92,16 +92,16 @@ class RestfulBaseView(_MethodView):
             if errors:
                 return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
             datas.save()
-            datas = datas.row2dict()
+            datas = self.schema_class().dump(datas)
         else:
             datas, errors = self.schema_class().load(input_json, many=True)
             if errors:
                 return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
 
             [data.save() for data in datas]
-            datas = [data.row2dict() for data in datas]
+            datas = self.schema_class().dump(datas, many=True)
 
-        return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=datas.data)
 
     def delete(self, model_id):
         """ DELETE
