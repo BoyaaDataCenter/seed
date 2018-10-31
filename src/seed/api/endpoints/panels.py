@@ -1,13 +1,13 @@
 import json
 
 from flask import request, g
-from marshmallow import pre_dump, pre_load, post_dump
+from marshmallow import pre_load, post_dump
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 
 from seed.models.panels import Panels as PanelsModel
-from seed.utils.auth  import api_require_login
+from seed.utils.auth  import api_require_admin
 
 class PanelSchema(BaseSchema):
     class Meta:
@@ -37,4 +37,4 @@ class Panels(RestfulBaseView):
     """
     model_class = PanelsModel
     schema_class = PanelSchema
-    decorators = [api_require_login]
+    decorators = [api_require_admin]
