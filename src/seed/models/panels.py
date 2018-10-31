@@ -6,16 +6,16 @@ __all__ = ['Panels']
 class Panels(PageModel):
     """ data panels model
     """
-    x = db.Column(db.Integer, nullable=False,
+    x = db.Column(db.Float, nullable=False,
         comment='The panel x coordinate')
 
-    y = db.Column(db.Integer, nullable=False,
+    y = db.Column(db.Float, nullable=False,
         comment='The panel y coordinate')
 
-    w = db.Column(db.Integer, nullable=False,
+    w = db.Column(db.Float, nullable=False,
         comment='The panel width')
 
-    h = db.Column(db.Integer, nullable=False,
+    h = db.Column(db.Float, nullable=False,
         comment='The panel height')
 
     charttype = db.Column(db.Text, nullable=False,
