@@ -51,10 +51,10 @@ class RestfulBaseView(_MethodView):
 
         if model_id:
             data = query_session.filter_by(id=model_id).first()
-            data = self.schema_class().dump(data)
+            data = self.schema_class(exclude=self.model_class.column_filter).dump(data)
         else:
             data = query_session.all()
-            data = self.schema_class().dump(data, many=True)
+            data = self.schema_class(many=True, exclude=self.model_class.column_filter).dump(data)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=data.data)
 

@@ -33,7 +33,7 @@ class Pages(RestfulBaseView):
         query_session = self.session.query(FiltersModel)
 
         filters = query_session.filter_by(page_id=page_id, dtype='page').all()
-        filters, errors = FilterSchema(many=True).dump(filters)
+        filters, errors = FilterSchema(many=True, exclude=FiltersModel.column_filter).dump(filters)
 
         return filters
 
@@ -42,11 +42,11 @@ class Pages(RestfulBaseView):
         """
         panel_query_session = self.session.query(PanelsModel)
         panels = panel_query_session.filter_by(page_id=page_id).all()
-        panels, errors = PanelSchema(many=True).dump(panels)
+        panels, errors = PanelSchema(many=True, exclude=PanelsModel.column_filter).dump(panels)
 
         filter_query_session = self.session.query(FiltersModel)
         filters = filter_query_session.filter_by(page_id=page_id, dtype='model').all()
-        filters, errors = FilterSchema(many=True).dump(filters)
+        filters, errors = FilterSchema(many=True, exclude=FiltersModel.column_filter).dump(filters)
 
         filters_pid_map = {}
         for filter in filters:
