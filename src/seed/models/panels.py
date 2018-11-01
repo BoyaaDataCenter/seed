@@ -18,6 +18,9 @@ class Panels(PageModel):
     h = db.Column(db.Float, nullable=False,
         comment='The panel height')
 
+    db_source = db.Column(db.Integer, nullable=False,
+        comment='Panel sql query database id')
+
     charttype = db.Column(db.Text, nullable=False,
         comment='Panel data chart type')
 
