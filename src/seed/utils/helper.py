@@ -37,3 +37,25 @@ def get_package_members(package, predicate, pre_url=''):
         )
 
     return members
+
+
+def common_batch_crud(schema, model, datas):
+    """ 批量做增改删操作
+    """
+    # 删除多余的数据
+    schema_instance = schema()
+    delete_datas = [data for data in datas if data.get('status') == -1]
+    delete_datas, errors = schema_instance.load(delete_datas, many=True)
+    if errors:
+        raise Exception(errors)
+    [delete_data.delete() for delete_data in delete_datas]
+
+    # 新增和修改数据
+    modify_datas = [data for data in datas if data.get('status') != -1]
+    modify_datas, errors = schema_instance.load(modify_datas, many=True)
+    if errors:
+        raise Exception(errors)
+    [modify_data.save() for modify_data in modify_datas]
+
+    datas = schema(many=True, exclude=model.column_filter).dump(datas)
+    return datas

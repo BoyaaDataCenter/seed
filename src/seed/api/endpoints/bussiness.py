@@ -10,6 +10,7 @@ from seed.models import BManager as BManagerModel
 from seed.models import Account as AccountModel
 
 from seed.utils.permissions import get_permission_datas_by_user
+from seed.utils.helper import common_batch_crud
 
 
 class BussinessSchema(BaseSchema):
@@ -62,7 +63,6 @@ class Bussiness(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 
 
-
     def post(self):
         """ POST
         """
@@ -80,30 +80,9 @@ class Bussiness(RestfulBaseView):
         for manager in managers:
             manager['bussiness_id'] = bussiness.id
 
-        common_batch_crud(BManagerSchema, managers)
+        common_batch_crud(BManagerSchema, BManagerModel, managers)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data={'bussiness_id': bussiness.id})
 
     put = post
 
-
-def common_batch_crud(schema, datas):
-    """ 批量做增改删操作
-    """
-    # 删除多余的数据
-    schema_instance = schema()
-    delete_datas = [data for data in datas if data.get('status') == -1]
-    delete_datas, errors = schema_instance.load(delete_datas, many=True)
-    if errors:
-        raise Exception(errors)
-    [delete_data.delete() for delete_data in delete_datas]
-
-    # 新增和修改数据
-    modify_datas = [data for data in datas if data.get('status') != -1]
-    modify_datas, errors = schema_instance.load(modify_datas, many=True)
-    if errors:
-        raise Exception(errors)
-    [modify_data.save() for modify_data in modify_datas]
-
-    datas = [modify_data.row2dict() for modify_data in modify_datas]
-    return datas

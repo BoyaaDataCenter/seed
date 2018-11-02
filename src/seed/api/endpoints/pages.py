@@ -10,12 +10,13 @@ from seed.models.panels import Panels as PanelsModel
 from seed.api.endpoints.panels import PanelSchema
 
 from seed.utils.auth import api_require_login
+from seed.utils.helper import common_batch_crud
 
 
 class Pages(RestfulBaseView):
     """ 页面
     """
-    access_methods = [HttpMethods.GET]
+    access_methods = [HttpMethods.GET, HttpMethods.PUT]
 
     def get(self, page_id):
         global_filters = self._get_global_filters(page_id)
@@ -26,6 +27,21 @@ class Pages(RestfulBaseView):
             "panels": panels
         }
         return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
+
+    def put(self, page_id):
+        input_data = request.get_json()
+
+        global_filters, panels = input_data['global_filters'], input_data['panels']
+        for global_filter in global_filters:
+            global_filter['bussiness_id'] = g.bussiness_id
+        global_filters = common_batch_crud(FilterSchema, FiltersModel, global_filters)
+
+        panels = self._panels_batch_crud(PanelSchema, panels)
+
+        data = {'global_filters': global_filters, 'panels': panels}
+
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
+
 
     def _get_global_filters(self, page_id):
         """ 获取页面全局过滤组件数据
@@ -56,3 +72,31 @@ class Pages(RestfulBaseView):
             panel['filters'] = filters_pid_map.get(panel['id'], [])
 
         return panels
+
+    def _panels_batch_crud(self, panel_schema, panels):
+        schema_instance = panel_schema()
+
+        # 删除panels
+        saved_panels = []
+        for panel in panels:
+            one_panel, errors = schema_instance.load(panel)
+            if errors:
+                raise Exception(errors)
+
+            if panel.get('status') == -1:
+                # 删除对应的panel
+                panel_schema.delete()
+            else:
+                # 新增和修改对应的panel
+                panel_filters = panel.get('filters')
+
+                for filter in panel_filters:
+                    filter['belong_id'] = one_panel.id
+                    filter['bussiness_id'] = g.bussiness_id
+                    filter['page_id'] = panel.page_id
+
+                panel_filters = common_batch_crud(FilterSchema, FiltersModel, panel_filters)
+            panel, errors = panel_schema(exclude=PanelsModel.column_filter).dump(one_panel)
+            panel['filters'] = panel_filters
+            saved_panels.append(panel)
+        return saved_panels
