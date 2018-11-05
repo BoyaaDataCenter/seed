@@ -21,7 +21,7 @@ class MiddleData(object):
         self.indexs = [item['index'] for item in indexs]
 
     def convert(self):
-        middle_data = {}
+        middle_datas = {}
 
         for row in self.source_data:
 
@@ -30,9 +30,9 @@ class MiddleData(object):
             for dimension in self.dimensions:
                 row_keys[dimension] = row[dimension]
 
-            for dim in self.dims:
+            for index in self.indexs:
                 middle_key = json.dumps(row_keys)
-                if middle_datas.get(middle_key, {}).get(dim) is None:
-                    middle_datas.setdefault(middle_key, {})[dim] = row.get(dim, None)
+                if middle_datas.get(middle_key, {}).get(index) is None:
+                    middle_datas.setdefault(middle_key, {})[index] = row.get(index, None)
 
         return middle_datas

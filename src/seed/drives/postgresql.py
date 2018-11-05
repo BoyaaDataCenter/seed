@@ -65,10 +65,10 @@ class PostgreSQL(BaseDrive):
             # syntax error
             # log.error('Sql programming error:%s' % str(e))
             self._rollback()
-            raise ProgrammingError(str(e))
+            raise Exception(str(e))
         except psycopg2.extensions.QueryCanceledError as e:
             # log.error('The connection has been closed by db, the detail is %s' % str(e))
-            raise QueryCanceledError(str(e))
+            raise psycopg2.QueryCanceledError(str(e))
         except (psycopg2.OperationalError, psycopg2.DatabaseError, psycopg2.InterfaceError) as e:
             # server closed the connection unexpectedly
             # log.error("The connection has been closed, the detail is %s" % str(e))

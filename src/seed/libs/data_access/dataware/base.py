@@ -7,7 +7,7 @@ class DataModel(object):
         self.query = query
 
     def gen_sql(self):
-        return self.sql.format(query)
+        return self.sql.format(self.query)
 
     def query_data(self):
         sql = self.gen_sql()

@@ -40,13 +40,14 @@ class QueryData(RestfulBaseView):
         else:
             panel_data = {}
 
-        panel_data = panel_data.update(query_params)
+        panel_data.update(query_params)
 
         try:
             dtype, db = get_db_by_id(panel_data['db_source'])
             query_datas = DataAccess(dtype, db, **panel_data).get_datas()
         except Exception as e:
-            error_message = str(e)
+            # error_message = str(e)
+            raise
             return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=query_datas)
@@ -74,6 +75,8 @@ class QueryFilters(RestfulBaseView):
                 return self.response_json(self.HttpErrorCode.ERROR, msg=str(errors))
         else:
             filter_data = {}
+
+        filter_data.update(query_params)
 
         if not filter_data:
             return self.response_json(self.HttpErrorCode.ERROR, msg='过滤设置不能为空')

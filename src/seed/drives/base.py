@@ -23,7 +23,7 @@ class BaseDrive(object):
 
     def _raise_retry_count(self, retry_count):
         if retry_count < 0:
-            raise RetryTimeOutError("Retry time out")
+            raise Exception("Retry time out")
 
 class Row(dict):
 

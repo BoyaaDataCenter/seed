@@ -1,4 +1,6 @@
 from seed.libs.data_access.dataware.base import DataModel
+from seed.libs.data_access.middledata.base import MiddleData
+from seed.libs.data_access.formatters.base import FormatterFactory
 
 class DataAccess(object):
     def __init__(self, dtype, db, *args, **kwargs):
@@ -27,7 +29,12 @@ class DataAccess(object):
         return source_data, sql_info
 
     def transfer_middle_data(self, source_data):
-        return {}
+        middle_data = MiddleData(source_data, self.dimensions, self.indexs).convert()
+        return middle_data
 
     def format_data(self, middle_data):
-        return data
+
+        formatter = FormatterFactory(self.charttype, self.indexs, self.dimensions).formatter_instnace()
+        format_data = formatter.format_data(middle_data)
+
+        return format_data
