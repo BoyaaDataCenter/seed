@@ -57,5 +57,5 @@ def common_batch_crud(schema, model, datas):
         raise Exception(errors)
     [modify_data.save() for modify_data in modify_datas]
 
-    datas = schema(many=True, exclude=model.column_filter).dump(datas)
+    datas = schema(many=True, exclude=model.column_filter).dump(modify_datas)
     return datas

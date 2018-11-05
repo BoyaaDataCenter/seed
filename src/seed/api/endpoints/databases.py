@@ -5,6 +5,7 @@ from seed.schema.base import BaseSchema
 from seed.api.endpoints.buser import Buser
 from seed.models.databases import Databases as DatabasesModel
 from seed.utils.auth import api_require_admin
+from seed.utils.helper import common_batch_crud
 
 class DatabasesSchema(BaseSchema):
     class Meta:
@@ -28,14 +29,6 @@ class Databases(Buser):
     def put(self, bussiness_id):
         input_json = request.get_json()
 
-        schema = self.schema_class()
-        databases, errors = schema.load(input_json)
-        if errors:
-            return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
-        databases.save()
+        databases = common_batch_crud(DatabasesSchema, DatabasesModel, input_json)
 
-        common_batch_crud(DatabasesSchema, DatabasesModel, databases)
-
-        datas, errors = DatabasesSchema(many=True).dump(databases)
-
-        return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=databases)
