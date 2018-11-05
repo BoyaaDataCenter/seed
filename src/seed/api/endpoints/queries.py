@@ -8,6 +8,7 @@ from seed.api.endpoints.panels import PanelSchema, PanelsModel
 from seed.api.endpoints.filters import FilterSchema, FiltersModel
 from seed.api.endpoints.databases import DatabasesSchema
 
+from seed.models._base import session
 from seed.models.databases import Databases
 
 from seed.utils.auth import api_require_login
@@ -17,26 +18,33 @@ from seed.libs.data_access.app import DataAccess
 from seed.libs.filter_access.app import FilterAccess
 
 
-class QueriesData(RestfulBaseView):
+class QueryData(RestfulBaseView):
     """ 获取数据
     """
+    url = 'query_data'
     decorators = [api_require_login]
 
     access_methods = [HttpMethods.POST]
 
     def post(self, panel_id=None):
-        query_params = request.get_json()
+        try:
+            query_params = request.get_json()
+        except:
+            query_params = {}
 
         if panel_id:
             panel_data = self.session.query(PanelsModel).filter_by(id=panel_id).first()
-            panel_data = PanelSchema(exclude=PanelsModel.column_filter).dump(panel_data)
+            panel_data, errors = PanelSchema(exclude=PanelsModel.column_filter).dump(panel_data)
+            if errors:
+                return self.response_json(self.HttpErrorCode.ERROR, msg=str(errors))
         else:
             panel_data = {}
 
         panel_data = panel_data.update(query_params)
 
         try:
-            query_datas = DataAccess(**panel_data)
+            db = get_db_instance_by_id(pane_data['db_source'])
+            query_datas = DataAccess(db, **panel_data)
         except Exception as e:
             error_message = str(e)
             return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
@@ -54,7 +62,10 @@ class QueryFilters(RestfulBaseView):
     access_methods = [HttpMethods.POST]
 
     def post(self, filter_id=None):
-        query_params = request.get_json()
+        try:
+            query_params = request.get_json()
+        except:
+            query_params = {}
 
         if filter_id:
             filter_data = self.session.query(FiltersModel).filter_by(id=filter_id).first()
@@ -68,14 +79,21 @@ class QueryFilters(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.ERROR, msg='过滤设置不能为空')
 
         if filter_data['condition_type'] in ('sql'):
-
-            db_data = self.session.query(Databases).filter_by(id=filter_data['db_source']).first()
-            db_conf, errors = DatabasesSchema().dump(db_data)
-            if errors:
-                return self.response_json(self.HttpErrorCode.ERROR, msg=str(errors))
-
-            db = get_db_instance(**db_conf)
+            try:
+                db = get_db_instance_by_id(filter_data['db_source'])
+            except Exception as e:
+                self.response_json(self.HttpErrorCode.ERROR, msg=str(e))
 
             filter_data['conditions'] = FilterAccess(db, filter_data['conditions']).query_datas()
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=filter_data)
+
+
+def get_db_instance_by_id(db_source):
+    db_data = session.query(Databases).filter_by(id=db_source).first()
+    db_conf, errors = DatabasesSchema().dump(db_data)
+    if errors:
+        raise Exception(errors)
+
+    db = get_db_instance(**db_conf)
+    return db
