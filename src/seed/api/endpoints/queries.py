@@ -43,8 +43,8 @@ class QueryData(RestfulBaseView):
         panel_data = panel_data.update(query_params)
 
         try:
-            db = get_db_instance_by_id(pane_data['db_source'])
-            query_datas = DataAccess(db, **panel_data)
+            dtype, db = get_db_by_id(panel_data['db_source'])
+            query_datas = DataAccess(dtype, db, **panel_data).get_datas()
         except Exception as e:
             error_message = str(e)
             return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
@@ -80,20 +80,21 @@ class QueryFilters(RestfulBaseView):
 
         if filter_data['condition_type'] in ('sql'):
             try:
-                db = get_db_instance_by_id(filter_data['db_source'])
+                dtype, db = get_db_by_id(filter_data['db_source'])
             except Exception as e:
-                self.response_json(self.HttpErrorCode.ERROR, msg=str(e))
+                error_message = str(e)
+                return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
 
             filter_data['conditions'] = FilterAccess(db, filter_data['conditions']).query_datas()
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=filter_data)
 
 
-def get_db_instance_by_id(db_source):
+def get_db_by_id(db_source):
     db_data = session.query(Databases).filter_by(id=db_source).first()
     db_conf, errors = DatabasesSchema().dump(db_data)
     if errors:
         raise Exception(errors)
 
     db = get_db_instance(**db_conf)
-    return db
+    return db_conf['dtype'], db
