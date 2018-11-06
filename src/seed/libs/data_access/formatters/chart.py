@@ -1,3 +1,4 @@
+import re
 import json
 
 from seed.libs.data_access.formatters.base import BaseFormatter
@@ -31,7 +32,7 @@ class ChartFormatter(BaseFormatter):
         for key in self.data.keys():
             key = json.loads(key)
             categories.append('-'.join([str(key[category_column]) for category_column in category_columns]))
-            if self.series_columns:
+            if series_columns:
                 series_key = '-'.join([str(key[series_column]) for series_column in series_columns])
                 if series_key not in series:
                     series.append(series_key)
@@ -40,7 +41,7 @@ class ChartFormatter(BaseFormatter):
         categories = self._get_categories_sort_type(categories)
 
         if not series:
-            series = self.dims
+            series = [item['index'] for item in self.indexs]
 
         return categories, series
 
@@ -80,7 +81,7 @@ class ChartFormatter(BaseFormatter):
             res = None
         if all([category.isdigit() for category in categories]):
             categories.sort(key=int)
-        elif res or 'fdate' in self.title_flags:
+        elif res or 'fdate' in [item['dimension'] for item in self.dimensions]:
             # 判断是否全部为数字 如果是 则按照数字进行排序
             categories.sort()
         else:
