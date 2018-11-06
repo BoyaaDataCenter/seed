@@ -48,6 +48,7 @@ class ChartFormatter(BaseFormatter):
     def _convert_series_data(self, categories, series):
         # 从数据中获取到趋势类型的数据
         category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
+        series_map = {index['index']: index for index in self.indexs}
 
         middle_data = {}
         if series_columns:
@@ -67,7 +68,7 @@ class ChartFormatter(BaseFormatter):
             data = []
             for category in categories:
                 data.append(middle_data.get(str(category), {}).get(serie, '-'))
-            series_data.append({'data': data, 'dim': serie, 'name': 'xx'})
+            series_data.append({'data': data, 'dim': serie, 'name': series_map[serie]['name']})
         return series_data
 
     def _get_categories_sort_type(self, categories):
