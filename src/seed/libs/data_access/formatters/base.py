@@ -1,17 +1,19 @@
 
 
 class FormatterFactory(object):
-    def __init__(self, charttype, indexs, dimensions):
+    def __init__(self, charttype):
         self.charttype = charttype
-        self.indexs = indexs
-        self.dimensions = dimensions
 
-    def formatter_instnace(self):
+    def formatter_class(self):
         from seed.libs.data_access.formatters.chart import ChartFormatter
-        return ChartFormatter(self.indexs, self.dimensions)
+        from seed.libs.data_access.formatters.table import TableFormatter
+        if self.charttype == 'table':
+            return TableFormatter
+        return ChartFormatter
 
 
 class BaseFormatter(object):
-    def __init__(self, indexs, dimensions):
+    def __init__(self, indexs, dimensions, data):
         self.indexs = indexs
         self.dimensions = dimensions
+        self.data = data

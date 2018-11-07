@@ -8,9 +8,7 @@ class ChartFormatter(BaseFormatter):
     def __init__(self, *args, **kwargs):
         super(ChartFormatter, self).__init__(*args, **kwargs)
 
-    def format_data(self, middle_data):
-        self.data = middle_data
-
+    def format_data(self):
         # 得到分布项
         categories, series = self._get_chart_categories_and_series()
 

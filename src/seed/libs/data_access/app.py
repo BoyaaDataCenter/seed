@@ -34,7 +34,7 @@ class DataAccess(object):
 
     def format_data(self, middle_data):
 
-        formatter = FormatterFactory(self.charttype, self.indexs, self.dimensions).formatter_instnace()
-        format_data = formatter.format_data(middle_data)
+        formatter = FormatterFactory(self.charttype).formatter_class()
+        format_data = formatter(self.indexs, self.dimensions, middle_data).format_data()
 
         return format_data
