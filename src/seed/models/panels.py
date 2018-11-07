@@ -6,6 +6,12 @@ __all__ = ['Panels']
 class Panels(PageModel):
     """ data panels model
     """
+    name = db.Column(db.Text, nullable=False,
+        comment='Panel name')
+
+    desc = db.Column(db.Text, nullable=False,
+        comment='Panel description')
+
     x = db.Column(db.Float, nullable=False,
         comment='The panel x coordinate')
 
