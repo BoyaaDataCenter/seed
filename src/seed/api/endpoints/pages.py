@@ -85,9 +85,10 @@ class Pages(RestfulBaseView):
 
             if panel.get('status') == -1:
                 # 删除对应的panel
-                panel_schema.delete()
+                one_panel.delete()
             else:
                 # 新增和修改对应的panel
+                one_panel.save()
                 panel_filters = panel.get('filters')
 
                 for filter in panel_filters:
