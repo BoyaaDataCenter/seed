@@ -60,7 +60,7 @@ class SessionMixin(object):
 
 db = SQLAlchemy(query_class=SeedQuery)
 migrate = Migrate()
-session = orm.scoped_session(orm.sessionmaker())
+session = orm.scoped_session(orm.sessionmaker(autocommit=True))
 ma = Marshmallow()
 
 
