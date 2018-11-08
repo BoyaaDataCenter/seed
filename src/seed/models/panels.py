@@ -38,3 +38,6 @@ class Panels(PageModel):
 
     dimensions = db.Column(db.Text, nullable=False,
         comment='Data dimensions configure')
+
+    sort = db.Column(db.Integer, nullable=False,
+        comment='The panel sort')

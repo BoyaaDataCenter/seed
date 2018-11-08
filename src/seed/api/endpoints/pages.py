@@ -57,7 +57,7 @@ class Pages(RestfulBaseView):
         """ 获取过滤组件数据
         """
         panel_query_session = self.session.query(PanelsModel)
-        panels = panel_query_session.filter_by(page_id=page_id).all()
+        panels = panel_query_session.filter_by(page_id=page_id).order_by(PanelsModel.sort).all()
         panels, errors = PanelSchema(many=True, exclude=PanelsModel.column_filter).dump(panels)
 
         filter_query_session = self.session.query(FiltersModel)
