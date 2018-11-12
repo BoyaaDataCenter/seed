@@ -16,7 +16,7 @@ class Filters(PageModel):
         comment='Field english name')
     cname = db.Column(db.Text, nullable=False,
         comment='Field chinese name')
-    cascade_id = db.Column(db.Text, default=0,
+    cascades = db.Column(db.Text, default=0,
         comment='The Filter field cascade id if it exists')
     db_source = db.Column(db.Integer,
         comment='The filter data query database id only for sql')
