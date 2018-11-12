@@ -97,7 +97,7 @@ class Pages(RestfulBaseView):
                     filter['page_id'] = panel.page_id
 
                 panel_filters = common_batch_crud(FilterSchema, FiltersModel, panel_filters)
-            panel, errors = panel_schema(exclude=PanelsModel.column_filter).dump(one_panel)
-            panel['filters'] = panel_filters
-            saved_panels.append(panel)
+                panel, errors = panel_schema(exclude=PanelsModel.column_filter).dump(one_panel)
+                panel['filters'] = panel_filters
+                saved_panels.append(panel)
         return saved_panels
