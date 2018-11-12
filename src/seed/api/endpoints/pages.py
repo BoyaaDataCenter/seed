@@ -89,7 +89,7 @@ class Pages(RestfulBaseView):
             else:
                 # 新增和修改对应的panel
                 one_panel.save()
-                panel_filters = panel.get('filters')
+                panel_filters = panel.get('filters', [])
 
                 for filter in panel_filters:
                     filter['belong_id'] = one_panel.id
