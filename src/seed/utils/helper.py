@@ -51,7 +51,7 @@ def common_batch_crud(schema, model, datas):
     if errors:
         raise Exception(errors)
 
-    for delete_data in delete_datas
+    for delete_data in delete_datas:
         try:
             delete_data.delete()
         except InvalidRequestError:
