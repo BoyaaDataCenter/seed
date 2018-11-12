@@ -1,5 +1,7 @@
 from inspect import getmembers
 
+from sqlalchemy.exc import InvalidRequestError
+
 
 def get_module_members(modules, predicate):
 
@@ -48,7 +50,12 @@ def common_batch_crud(schema, model, datas):
     delete_datas, errors = schema_instance.load(delete_datas, many=True)
     if errors:
         raise Exception(errors)
-    [delete_data.delete() for delete_data in delete_datas]
+
+    for delete_data in delete_datas
+        try:
+            delete_data.delete()
+        except InvalidRequestError:
+            pass
 
     # 新增和修改数据
     modify_datas = [data for data in datas if data.get('status') != -1]

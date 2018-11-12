@@ -1,6 +1,7 @@
 import json
 
 from flask import request, g
+from sqlalchemy.exc import InvalidRequestError
 
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 
@@ -85,7 +86,11 @@ class Pages(RestfulBaseView):
 
             if panel.get('status') == -1:
                 # 删除对应的panel
-                one_panel.delete()
+                try:
+                    one_panel.delete()
+                except InvalidRequestError:
+                    pass
+
             else:
                 # 新增和修改对应的panel
                 one_panel.save()

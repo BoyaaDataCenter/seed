@@ -20,10 +20,10 @@ class FilterSchema(BaseSchema):
         if many:
             for data in in_data:
                 data['conditions'] = json.loads(data['conditions'])
-                data['cascades'] = json.loads(data.get('cascades', {}))
+                data['cascades'] = json.loads(data.get('cascades', '{}'))
         else:
             in_data['conditions'] = json.loads(in_data['conditions'])
-            in_data['cascades'] = json.loads(in_data.get('cascades', {}))
+            in_data['cascades'] = json.loads(in_data.get('cascades', '{}'))
 
         return in_data
 
@@ -32,10 +32,10 @@ class FilterSchema(BaseSchema):
         if many:
             for data in out_data:
                 data['conditions']  = json.dumps(data['conditions'])
-                data['cascades'] = json.dumps(data['cascades'])
+                data['cascades'] = json.dumps(data.get('cascades', {}))
         else:
             out_data['conditions']  = json.dumps(out_data['conditions'])
-            out_data['cascades'] = json.dumps(out_data['cascades'])
+            out_data['cascades'] = json.dumps(out_data.get('cascades', {}))
         return out_data
 
 class Filters(RestfulBaseView):
