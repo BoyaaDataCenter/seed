@@ -6,7 +6,7 @@ from seed.libs.data_access.formatters.base import BaseFormatter
 
 class LineFormatter(BaseFormatter):
     def __init__(self, *args, **kwargs):
-        super(ChartFormatter, self).__init__(*args, **kwargs)
+        super(BaseFormatter, self).__init__(*args, **kwargs)
 
     def format_data(self):
         # 得到分布项
