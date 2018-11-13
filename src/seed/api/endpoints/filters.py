@@ -20,10 +20,10 @@ class FilterSchema(BaseSchema):
         if many:
             for data in in_data:
                 data['conditions'] = json.loads(data['conditions'])
-                data['cascades'] = json.loads(data.get('cascades', '{}'))
+                data['cascades'] = json.loads(data['cascades'] or '{}')
         else:
             in_data['conditions'] = json.loads(in_data['conditions'])
-            in_data['cascades'] = json.loads(in_data.get('cascades', '{}'))
+            in_data['cascades'] = json.loads(in_data['cascades'] or '{}')
 
         return in_data
 

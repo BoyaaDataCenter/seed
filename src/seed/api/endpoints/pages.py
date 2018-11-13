@@ -43,7 +43,6 @@ class Pages(RestfulBaseView):
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
 
-
     def _get_global_filters(self, page_id):
         """ 获取页面全局过滤组件数据
         """
