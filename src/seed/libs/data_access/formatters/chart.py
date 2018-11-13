@@ -24,7 +24,7 @@ class ChartFormatter(BaseFormatter):
         categories = []
         series = []
 
-        category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
+        category_columns, series_columns = self._get_chart_columns()
 
         # 从数据中获取到对应的categories然后通过数据的维度进行组合
         for key in self.data.keys():
@@ -43,9 +43,14 @@ class ChartFormatter(BaseFormatter):
 
         return categories, series
 
+    def _get_chart_columns(self):
+        category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
+        return category_columns, series_columns
+
     def _convert_series_data(self, categories, series):
         # 从数据中获取到趋势类型的数据
-        category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
+        # category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
+        category_columns, series_columns = self._get_chart_columns()
         series_map = {index['index']: index for index in self.indexs}
 
         middle_data = {}
@@ -66,7 +71,7 @@ class ChartFormatter(BaseFormatter):
             data = []
             for category in categories:
                 data.append(middle_data.get(str(category), {}).get(serie, '-'))
-            series_data.append({'data': data, 'dim': serie, 'name': series_map[serie]['name']})
+            series_data.append({'data': data, 'dim': serie, 'name': series_map.get(serie, {}).get('name', serie)})
         return series_data
 
     def _get_categories_sort_type(self, categories):
