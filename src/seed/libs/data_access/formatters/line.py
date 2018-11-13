@@ -4,7 +4,7 @@ import json
 from seed.libs.data_access.formatters.base import BaseFormatter
 
 
-class ChartFormatter(BaseFormatter):
+class LineFormatter(BaseFormatter):
     def __init__(self, *args, **kwargs):
         super(ChartFormatter, self).__init__(*args, **kwargs)
 
