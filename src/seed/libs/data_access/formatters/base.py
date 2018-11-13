@@ -14,7 +14,7 @@ class FormatterFactory(object):
         if self.charttype not in self.registerd_charttypes:
             self._register_charttypes()
 
-        return self.registerd_charttypes.get(self.charttype.lower(), ChartFormatter)
+        return self.registerd_charttypes.get(self.charttype.lower()+'formatter', ChartFormatter)
 
     def _register_charttypes(self):
         from seed.libs.data_access import formatters
