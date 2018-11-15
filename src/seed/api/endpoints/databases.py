@@ -29,6 +29,9 @@ class Databases(Buser):
     def put(self, bussiness_id):
         input_json = request.get_json()
 
+        for database in input_json:
+            database['bussiness_id'] = bussiness_id
+
         databases = common_batch_crud(DatabasesSchema, DatabasesModel, input_json)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=databases)
