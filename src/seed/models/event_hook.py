@@ -65,6 +65,7 @@ def bussiness_after_delete_hook(mapper, connection, target):
         bussiness_id=target.id
     )
 
+
     # 删除业务相关的菜单
     connection.execute(
         Menu.__table__.delete(),
@@ -90,7 +91,6 @@ def menu_after_delete_hook(mapper, connection, target):
     """
     # 删除业务相关的角色菜单
     # TODO menu和page不统一
-    import pdb; pdb.set_trace()
     connection.execute(
         RoleMenu.__table__.delete(),
         bussiness_id=target.bussiness_id,
