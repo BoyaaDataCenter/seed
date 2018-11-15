@@ -35,7 +35,7 @@ def get_permission_datas_by_user(user):
         for data in permission_datas:
             data.update({'edit': False, 'delete': False})
 
-        permission_datas = [data for data in order_datas if data['id'] not in permission_ids and data['id'] not in order_ids]
+        permission_datas = [data for data in permission_datas if data['id'] not in order_ids]
         permission_datas = order_datas + permission_datas
         permission_ids = [data['id'] for data in permission_datas]
 
