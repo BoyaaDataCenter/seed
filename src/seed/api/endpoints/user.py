@@ -30,6 +30,8 @@ class User(RestfulBaseView):
         user = g.user.row2dict()
         user['brole'] = self._get_role(g.user.id)
 
+        user['role'] = 'super_admin' if user['id'] == 1 else user['role']
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
 
     def _get_role(self, uid):
