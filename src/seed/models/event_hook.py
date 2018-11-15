@@ -16,16 +16,34 @@ from seed.models.panels import Panels
 def bussiness_after_insert_hook(mapper, connection, target):
     """ 创建业务之后, 默认添加菜单和角色
     """
+    # 新增默认菜单
+    default_first_menu = connection.execute(
+        Menu.__table__.insert(),
+        bussiness_id=target.id,
+        name='游戏概况'
+    )
     connection.execute(
         Menu.__table__.insert(),
         bussiness_id=target.id,
-        name='活跃用户分析'
+        name='活跃用户',
+        parent_id=default_first_menu.lastrowid
     )
+
+    # 新增默认角色
     connection.execute(
         Role.__table__.insert(),
         bussiness_id=target.id,
         role='商务'
     )
+
+    # TODO 新增默认图表数据
+
+
+@event.listens_for(Menu, 'after_insert')
+def menu_after_insert_hook(mapper, connection, target):
+    """ 创建页面之后, 默认添加菜单和角色
+    """
+    pass
 
 
 @event.listens_for(BUser, 'after_delete')
