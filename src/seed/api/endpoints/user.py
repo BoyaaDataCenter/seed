@@ -56,7 +56,6 @@ class UserMenu(RestfulBaseView):
             query_session = self.session.query(MenuModel, "True").filter(MenuModel.bussiness_id==g.bussiness_id)
         else:
             # 其他角色通过关联用户角色表来获取到当前的菜单
-            # TODO 测试
             query_session = self.session.query(MenuModel, RoleMenu.role_permission)\
                 .join(RoleMenu, and_(MenuModel.id==RoleMenu.menu_id, RoleMenu.bussiness_id==g.bussiness_id))\
                 .join(BUserRole, and_(RoleMenu.role_id==BUserRole.role_id, BUserRole.bussiness_id==g.bussiness_id, BUserRole.user_id==g.user.id))

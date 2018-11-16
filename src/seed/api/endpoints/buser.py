@@ -1,15 +1,18 @@
-from flask import request
+from flask import request, g
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models import BUser as BUserModel
 from seed.models import Account as AccountModel
+from seed.models import BManager as BManagerModel
 
 from seed.utils.auth import api_require_admin
+
 
 class BUserSchema(BaseSchema):
     class Meta:
         model = BUserModel
+
 
 class Buser(RestfulBaseView):
     """ 用户业务映射关系添加
@@ -20,8 +23,8 @@ class Buser(RestfulBaseView):
 
     def get(self, bussiness_id):
         users = self.session.query(BUserModel.id, AccountModel)\
-            .join(AccountModel, AccountModel.id==BUserModel.user_id)\
-            .filter(BUserModel.bussiness_id==bussiness_id)\
+            .join(AccountModel, AccountModel.id == BUserModel.user_id)\
+            .filter(BUserModel.bussiness_id == bussiness_id)\
             .all()
 
         datas = []
@@ -31,3 +34,26 @@ class Buser(RestfulBaseView):
             datas.append(data)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
+
+
+class UnBuserList(RestfulBaseView):
+    """ 不属于当前业务的用户名单
+    """
+    url = 'un_busers'
+    deccorators = [api_require_admin]
+    access_methods = [HttpMethods.GET]
+
+    def get(self):
+
+        in_user_query = self.session.query(BUserModel.user_id)\
+            .filter(BUserModel.bussiness_id == g.bussiness_id)
+
+        b_managers_query = self.session.query(BManagerModel.user_id)\
+            .filter(BManagerModel.bussiness_id == g.bussiness_id)
+
+        users = self.session.query(AccountModel)\
+            .filter(~AccountModel.id.in_(in_user_query))\
+            .filter(~AccountModel.id.in_(b_managers_query))
+
+        users = [user.row2dict() for user in users]
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=users)

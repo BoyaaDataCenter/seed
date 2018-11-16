@@ -9,6 +9,7 @@ from seed.models._base import BussinessModel
 
 RESTFUL_METHODS = ['GET', 'POST', 'PUT', 'DELETE']
 
+
 class HttpMethods(object):
     GET = 'GET'
     POST = 'POST'
