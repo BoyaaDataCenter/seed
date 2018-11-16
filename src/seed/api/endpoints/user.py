@@ -53,22 +53,25 @@ class UserMenu(RestfulBaseView):
     def get(self):
         if require_admin():
             # 如果是业务管理员以上，返回当前业务的所有菜单
-            query_session = self.session.query(MenuModel).filter(MenuModel.bussiness_id==g.bussiness_id)
+            query_session = self.session.query(MenuModel, "True").filter(MenuModel.bussiness_id==g.bussiness_id)
         else:
             # 其他角色通过关联用户角色表来获取到当前的菜单
             # TODO 测试
-            query_session = self.session.query(MenuModel)\
+            query_session = self.session.query(MenuModel, RoleMenu.role_permission)\
                 .join(RoleMenu, and_(MenuModel.id==RoleMenu.menu_id, RoleMenu.bussiness_id==g.bussiness_id))\
-                .join(BUserRole, and_(RoleMenu.role_id==BUserRole.role_id, BUserRole.bussiness_id==g.bussiness_id, BUserRole.user_id==g.user.id))\
-                .all()
+                .join(BUserRole, and_(RoleMenu.role_id==BUserRole.role_id, BUserRole.bussiness_id==g.bussiness_id, BUserRole.user_id==g.user.id))
 
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
-    def _encode_menus(self, menu_data):
-        menu_data = {'-'.join([str(row.parent_id), str(row.left_id)]): row.row2dict() for row in menu_data}
+    def _encode_menus(self, menus):
+        menu_data = {}
+
+        for menu, role_permission in menus:
+            menu_data['-'.join([str(menu.parent_id), str(menu.left_id)])] = menu.row2dict()
+            menu_data['-'.join([str(menu.parent_id), str(menu.left_id)])]['role_permission'] = role_permission
 
         menus = {'id': 0}
         middle_menu = [menus]
@@ -80,8 +83,11 @@ class UserMenu(RestfulBaseView):
                 current_key = '-'.join([str(parent_id), str(left_id)])
                 if current_key not in menu_data:
                     break
-                current_menu.setdefault('sub_menus', []).append(menu_data[current_key])
+                if menu_data[current_key]['role_permission']:
+                    current_menu.setdefault('sub_menus', []).append(menu_data[current_key])
+
                 middle_menu.append(menu_data[current_key])
+
                 left_id = menu_data[current_key]['id']
 
         return menus.get('sub_menus', [])
