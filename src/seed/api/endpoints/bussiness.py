@@ -35,7 +35,7 @@ class Bussiness(RestfulBaseView):
         if bussiness_id:
             data = self.session.query(
                 self.model_class
-            ).filter_by(bussiness_id=bussiness_id).first()
+            ).filter_by(id=bussiness_id).first()
             data = data.row2dict() if data else {}
             return self.response_json(self.HttpErrorCode.SUCCESS, data=data)
         else:
