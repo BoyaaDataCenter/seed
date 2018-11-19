@@ -25,7 +25,7 @@ class DataAccess(object):
         return format_data
 
     def get_source_data(self):
-        source_data, sql_info = DataModel(self.db, self.sql, self.query).query_data()
+        source_data, sql_info = DataModel(self.db, self.sql, self.query, self.dimensions, self.indexs).query_data()
         return source_data, sql_info
 
     def transfer_middle_data(self, source_data):
