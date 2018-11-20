@@ -22,6 +22,7 @@ def get_package_members(package, predicate):
 
     return members
 
+
 def get_immediate_cls_attr(cls, attrname):
     if not issubclass(cls, object):
         return None

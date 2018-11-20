@@ -80,6 +80,6 @@ class TableFormatter(BaseFormatter):
             dim_display_map[item['index']] = item['name']
 
         for key in keys:
-            titles.append({"name": key, "displayName":dim_display_map[key]})
+            titles.append({"name": key, "displayName": dim_display_map[key]})
 
         return titles

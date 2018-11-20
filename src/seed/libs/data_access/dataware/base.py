@@ -1,5 +1,3 @@
-
-
 class DataModel(object):
     def __init__(self, db, sql, query, dimensions, indexs):
         self.db = db
@@ -12,7 +10,8 @@ class DataModel(object):
     def gen_sql(self):
         """ 用维度和指标把SQL包一层
         """
-        select_fileds = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs]
+        select_fileds = [item['dimension'] for item in self.dimensions]\
+            + [item['index'] for item in self.indexs]
         self.sql = """
             SELECT
                 {select_fileds}
@@ -22,6 +21,7 @@ class DataModel(object):
         """.format(select_fileds=','.join(select_fileds), origin_sql=self.sql)
 
     def format_sql(self):
+
         for key, value in self.query.items():
             if isinstance(value, list):
                 self.query[key] = '(%s)' % ', '.join([str(item) for item in value])

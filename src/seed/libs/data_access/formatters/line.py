@@ -66,13 +66,17 @@ class LineFormatter(BaseFormatter):
                 '-'.join([str(json.loads(key)[category_column]) for category_column in category_columns]): value for
                 key, value in self.data.items()}
 
-        series_data = []
+        series_datas = []
         for serie in series:
             data = []
             for category in categories:
                 data.append(middle_data.get(str(category), {}).get(serie, '-'))
-            series_data.append({'data': data, 'dim': serie, 'name': series_map.get(serie, {}).get('name', serie)})
-        return series_data
+
+            series_data = {'data': data, 'dim': serie}
+            series_data.update(series_map.get(serie, {}))
+            series_datas.append(series_data)
+
+        return series_datas
 
     def _get_categories_sort_type(self, categories):
         if not len(categories):

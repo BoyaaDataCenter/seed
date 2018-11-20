@@ -2,6 +2,7 @@ from seed.libs.data_access.dataware.base import DataModel
 from seed.libs.data_access.middledata.base import MiddleData
 from seed.libs.data_access.formatters.base import FormatterFactory
 
+
 class DataAccess(object):
     def __init__(self, dtype, db, *args, **kwargs):
         # self.dtype = dtype
@@ -25,16 +26,22 @@ class DataAccess(object):
         return format_data
 
     def get_source_data(self):
-        source_data, sql_info = DataModel(self.db, self.sql, self.query, self.dimensions, self.indexs).query_data()
+        source_data, sql_info = DataModel(
+            self.db, self.sql, self.query, self.dimensions, self.indexs
+        ).query_data()
         return source_data, sql_info
 
     def transfer_middle_data(self, source_data):
-        middle_data = MiddleData(source_data, self.dimensions, self.indexs).convert()
+        middle_data = MiddleData(
+            source_data, self.dimensions, self.indexs
+        ).convert()
         return middle_data
 
     def format_data(self, middle_data):
 
         formatter = FormatterFactory(self.charttype).formatter_class()
-        format_data = formatter(self.indexs, self.dimensions, middle_data).format_data()
+        format_data = formatter(
+            self.indexs, self.dimensions, middle_data
+        ).format_data()
 
         return format_data
