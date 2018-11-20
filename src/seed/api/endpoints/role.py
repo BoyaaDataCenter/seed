@@ -8,6 +8,7 @@ class RoleSchema(BaseSchema):
     class Meta:
         model = RoleModel
 
+
 class Role(RestfulBaseView):
     """ role
     """

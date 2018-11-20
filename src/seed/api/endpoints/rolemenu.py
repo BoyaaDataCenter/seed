@@ -13,6 +13,7 @@ class RoleMenuSchema(BaseSchema):
     class Meta:
         model = RoleMenuModel
 
+
 class RoleMenu(RestfulBaseView):
     """ 角色菜单设置
     """
@@ -40,11 +41,11 @@ class RoleMenu(RestfulBaseView):
 
     def _get_role_menu(self, model_id):
         role_datas = self.session.query(RoleMenuModel)\
-            .filter(RoleMenuModel.role_id==model_id, RoleMenuModel.bussiness_id==g.bussiness_id).all()
+            .filter(RoleMenuModel.role_id == model_id, RoleMenuModel.bussiness_id == g.bussiness_id).all()
         role_data_map = {role_data.menu_id: role_data for role_data in role_datas}
 
         menu_datas = self.session.query(MenuModel)\
-            .filter(MenuModel.bussiness_id==g.bussiness_id).all()
+            .filter(MenuModel.bussiness_id == g.bussiness_id).all()
 
         menu_datas_with_permission = {}
 
@@ -87,7 +88,7 @@ class RoleMenu(RestfulBaseView):
             # 获取到菜单对应的ID
             # if menu.get('role_permission', False):
             self._insert_or_update_menu(menu, role_id, menu.get('role_permission', False))
-            left_id = current_id = menu['menu_id']
+            current_id = menu['menu_id']
             self._decode_menus(menu.get('sub_menus', []), role_id=role_id, parent_id=current_id, left_id=0)
 
     def _insert_or_update_menu(self, menu, role_id, role_permission):

@@ -9,6 +9,7 @@ from seed.api.endpoints._base import RestfulBaseView
 from seed.models.panels import Panels as PanelsModel
 from seed.utils.auth  import api_require_admin
 
+
 class PanelSchema(BaseSchema):
     class Meta:
         model = PanelsModel

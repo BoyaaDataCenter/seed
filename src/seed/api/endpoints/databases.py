@@ -7,9 +7,11 @@ from seed.models.databases import Databases as DatabasesModel
 from seed.utils.auth import api_require_admin
 from seed.utils.helper import common_batch_crud
 
+
 class DatabasesSchema(BaseSchema):
     class Meta:
         model = DatabasesModel
+
 
 class Databases(Buser):
     """ 数据库设置
@@ -22,7 +24,7 @@ class Databases(Buser):
         """ 通过业务ID得到数据库列表
         """
         query_session = self.session.query(self.model_class)
-        datas = query_session.filter(self.model_class.bussiness_id==bussiness_id).all()
+        datas = query_session.filter(self.model_class.bussiness_id == bussiness_id).all()
         datas = [row.row2dict() for row in datas] if datas else []
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 

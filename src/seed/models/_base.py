@@ -22,6 +22,7 @@ class SeedQuery(BaseQuery):
     def as_list(self, *clolumns):
         return [{key: getattr(row, key, None) for key in row.keys()} for row in self]
 
+
 class SessionMixin(object):
     column_filter = []
 

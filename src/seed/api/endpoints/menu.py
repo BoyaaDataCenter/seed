@@ -55,7 +55,6 @@ class Menu(RestfulBaseView):
 
         return menus.get('sub_menus', [])
 
-
     def _decode_menus(self, menus, parent_id=0, left_id=0):
         if not menus:
             return

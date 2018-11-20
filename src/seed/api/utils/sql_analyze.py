@@ -4,6 +4,7 @@ from flask import request
 
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 
+
 class SqlFieldAnalysis(RestfulBaseView):
     url = 'sql_fields'
 
@@ -17,19 +18,25 @@ class SqlFieldAnalysis(RestfulBaseView):
 
         sqls = input_json['sqls']
 
-        sql_temp = sqls.lower().replace('\n', ' ')  #将换行符替换成空格
-        temp = sql_temp[re.search("select\W+", sql_temp, re.I).end() : re.search("\W+from\W+", sql_temp, re.I).start()]   #截取字符串
-        reg = re.compile(r'\(.*?\) ', re.I)    #查找‘（）’的内容，将他替换掉再来获取才正确
-        temp = reg.sub(' ', temp)
-        s = temp.split(',')  #分割字段
+        sql_str = sqls.lower().replace('\n', ' ')
+        select_fileds = sql_str[
+            re.search("select\W+", sql_str, re.I).end():
+            re.search("\W+from\W+", sql_str, re.I).start()
+        ]
+        reg = re.compile(r'\(.*?\) ', re.I)
+        select_fileds = reg.sub(' ', select_fileds)
+        # 分割字段
+        select_fileds = select_fileds.split(',')
         fields = []
-        for item in s:
-            list = item.split(' ')   #再以空格分割
-            i = len(list)
-            while i>=0:
-                i=i-1
-                if list[i]:#获取最后一个不为空格的字段
+        for select_filed in select_fileds:
+            # 再以空格分割
+            filed_split = select_filed.split(' ')
+            i = len(filed_split)
+            while i:
+                i = i-1
+                # 获取最后一个不为空格的字段
+                if filed_split[i]:
                     fields.append(str(list[i]).strip())
                     break
-
         return self.response_json(self.HttpErrorCode.SUCCESS, data={'fields': fields})
+

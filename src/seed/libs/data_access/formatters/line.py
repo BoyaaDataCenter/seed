@@ -49,7 +49,6 @@ class LineFormatter(BaseFormatter):
 
     def _convert_series_data(self, categories, series):
         # 从数据中获取到趋势类型的数据
-        # category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
         category_columns, series_columns = self._get_chart_columns()
         series_map = {index['index']: index for index in self.indexs}
 

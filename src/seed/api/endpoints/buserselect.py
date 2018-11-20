@@ -1,12 +1,11 @@
-from flask import request, g, current_app
- 
-from seed.schema.base import BaseSchema
+from flask import request, g
 from seed.cache.user_bussiness import UserBussinessCache
 from seed.api.endpoints._base import RestfulBaseView
 
 from seed.utils.permissions import has_bussiness_permission
 
 from seed.utils.auth import api_require_login
+
 
 class BUserSelect(RestfulBaseView):
     """ 用户当前选择业务

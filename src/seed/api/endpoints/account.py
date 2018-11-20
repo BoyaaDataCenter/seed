@@ -9,6 +9,7 @@ class AccountSchema(BaseSchema):
     class Meta:
         model = AccountModel
 
+
 class Account(RestfulBaseView):
     """ Account
     """

@@ -1,5 +1,3 @@
-import json
-
 from flask import request, g
 from sqlalchemy.exc import InvalidRequestError
 
@@ -10,7 +8,6 @@ from seed.api.endpoints.filters import FilterSchema
 from seed.models.panels import Panels as PanelsModel
 from seed.api.endpoints.panels import PanelSchema
 
-from seed.utils.auth import api_require_login
 from seed.utils.helper import common_batch_crud
 
 

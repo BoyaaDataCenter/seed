@@ -62,7 +62,6 @@ class Bussiness(RestfulBaseView):
 
             return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 
-
     def post(self):
         """ POST
         """
@@ -85,4 +84,3 @@ class Bussiness(RestfulBaseView):
         return self.response_json(self.HttpErrorCode.SUCCESS, data={'bussiness_id': bussiness.id})
 
     put = post
-

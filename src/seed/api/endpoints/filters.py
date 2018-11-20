@@ -31,12 +31,13 @@ class FilterSchema(BaseSchema):
     def loads_conditions(self, out_data, many):
         if many:
             for data in out_data:
-                data['conditions']  = json.dumps(data['conditions'])
+                data['conditions'] = json.dumps(data['conditions'])
                 data['cascades'] = json.dumps(data.get('cascades', {}))
         else:
-            out_data['conditions']  = json.dumps(out_data['conditions'])
+            out_data['conditions'] = json.dumps(out_data['conditions'])
             out_data['cascades'] = json.dumps(out_data.get('cascades', {}))
         return out_data
+
 
 class Filters(RestfulBaseView):
     """ 过滤组件
