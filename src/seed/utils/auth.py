@@ -13,6 +13,7 @@ from seed.models.buserrole import BUserRole
 from seed.models.role import Role
 from seed.models import db
 from seed.cache import DefaultCache
+from seed.cache.user_bussiness import UserBussinessCache
 
 class APIRequireRole(object):
     roles = {
@@ -115,16 +116,20 @@ class BaseAuth(object):
 
         user = Account.query.filter_by(id=int(request.args['debugger'])).first()
 
-        if self._is_bussiness_admin(user.id, 1):
+        bussiness_id = UserBussinessCache().get(user.id, 1)
+        if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
             user.role = 'admin'
 
         return user if user else None
 
     def _is_bussiness_admin(self, uid, bussiness=1):
         roles = db.session.query(Role.role)\
-        .join(BUserRole, and_(BUserRole.role_id==Role.id, BUserRole.user_id==uid, BUserRole.bussiness_id==bussiness))\
-        .filter(Role.role=='admin')\
-        .all()
+            .join(BUserRole,
+                  and_(BUserRole.role_id == Role.id,
+                       BUserRole.user_id == uid,
+                       BUserRole.bussiness_id == bussiness))\
+            .filter(Role.role == 'admin')\
+            .all()
         return True if roles else False
 
 
@@ -163,6 +168,11 @@ class SSOAuth(BaseAuth):
             self._set_login_cache(uid, today)
         else:
             user = Account.query.filter_by(sso_id=int(uid)).first()
+
+        bussiness_id = UserBussinessCache().get(user.id, 1)
+        if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
+            user.role = 'admin'
+
         return user
 
     def logout_user(self):
