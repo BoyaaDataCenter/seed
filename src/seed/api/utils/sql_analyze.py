@@ -36,7 +36,6 @@ class SqlFieldAnalysis(RestfulBaseView):
                 i = i-1
                 # 获取最后一个不为空格的字段
                 if filed_split[i]:
-                    fields.append(str(list[i]).strip())
+                    fields.append(str(filed_split[i]).strip())
                     break
         return self.response_json(self.HttpErrorCode.SUCCESS, data={'fields': fields})
-

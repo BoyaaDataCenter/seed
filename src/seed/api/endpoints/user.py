@@ -6,6 +6,7 @@ from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models.account import Account as AccountModel
 from seed.models.role import Role
 from seed.models.buserrole import BUserRole
+from seed.models.bmanager import BManager
 from seed.models.rolemenu import RoleMenu
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_login, require_admin
@@ -31,12 +32,14 @@ class User(RestfulBaseView):
         user['brole'] = self._get_role(g.user.id)
 
         user['role'] = 'super_admin' if user['id'] == 1 else user['role']
+        if self.session.query(BManager).filter(BManager.bussiness_id==g.bussiness_id, BManager.user_id==g.user.id).all():
+            user['role'] = 'admin'
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
 
     def _get_role(self, uid):
         roles = self.session.query(Role.role)\
-            .join(BUserRole, and_(BUserRole.role_id==Role.id, BUserRole.user_id==uid, BUserRole.bussiness_id==1))\
+            .join(BUserRole, and_(BUserRole.role_id==Role.id, BUserRole.user_id==uid, BUserRole.bussiness_id==g.bussiness_id))\
             .all()
         return roles
 
