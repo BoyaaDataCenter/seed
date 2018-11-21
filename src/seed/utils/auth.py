@@ -116,7 +116,7 @@ class BaseAuth(object):
 
         user = Account.query.filter_by(id=int(request.args['debugger'])).first()
 
-        bussiness_id = UserBussinessCache().get(user.id, 1)
+        bussiness_id = UserBussinessCache().get(user.id) or 1
         if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
             user.role = 'admin'
 
@@ -169,7 +169,7 @@ class SSOAuth(BaseAuth):
         else:
             user = Account.query.filter_by(sso_id=int(uid)).first()
 
-        bussiness_id = UserBussinessCache().get(user.id, 1)
+        bussiness_id = UserBussinessCache().get(user.id) or 1
         if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
             user.role = 'admin'
 
