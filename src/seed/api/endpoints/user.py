@@ -11,9 +11,11 @@ from seed.models.rolemenu import RoleMenu
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_login, require_admin
 
+
 class UserSchema(BaseSchema):
     class Meta:
         model = AccountModel
+
 
 class User(RestfulBaseView):
     """ 用户相关

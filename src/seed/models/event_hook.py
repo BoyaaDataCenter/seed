@@ -4,9 +4,7 @@ from seed.models.bussiness import Bussiness
 from seed.models.menu import Menu
 from seed.models.role import Role
 from seed.models.buser import BUser
-from seed.models.bmanager import BManager
 from seed.models.buserrole import BUserRole
-from seed.models.menu import Menu
 from seed.models.rolemenu import RoleMenu
 from seed.models.filters import Filters
 from seed.models.panels import Panels
@@ -41,7 +39,7 @@ def bussiness_after_insert_hook(mapper, connection, target):
 
 @event.listens_for(Menu, 'after_insert')
 def menu_after_insert_hook(mapper, connection, target):
-    """ 创建页面之后, 默认添加菜单和角色
+    """ 创建菜单之后，默认添加数据图表
     """
     pass
 
@@ -51,7 +49,7 @@ def buser_after_delete_hook(mapper, connection, target):
     """  删除业务用户之后，尝试删除该用户在当前业务之下的角色 和 管理员权限
     """
     connection.execute(
-        BManager.__table__.delete(),
+        BUserRole.__table__.delete(),
         bussiness_id=target.bussiness_id,
         user_id=target.id
     )
@@ -82,7 +80,6 @@ def bussiness_after_delete_hook(mapper, connection, target):
         RoleMenu.__table__.delete(),
         bussiness_id=target.id
     )
-
 
     # 删除业务相关的菜单
     connection.execute(

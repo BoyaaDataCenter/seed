@@ -2,6 +2,7 @@ from flask import current_app
 
 from seed.cache.redis import RedisCache
 
+
 class UserBussinessCache(RedisCache):
     def __init__(self):
         self.redis_client = current_app.cache

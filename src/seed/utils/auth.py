@@ -4,17 +4,15 @@ import functools
 from datetime import datetime
 
 import requests
-from sqlalchemy import and_
-from flask import session, current_app, jsonify, g, request
+from flask import current_app, jsonify, g, request
 
 from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
-from seed.models.buserrole import BUserRole
-from seed.models.role import Role
 from seed.models.bmanager import BManager
-from seed.models import db
 from seed.cache import DefaultCache
+from seed.cache.session import SessionCache
 from seed.cache.user_bussiness import UserBussinessCache
+
 
 class APIRequireRole(object):
     roles = {
@@ -48,6 +46,7 @@ class APIRequireRole(object):
             return method(*args, **kwargs)
 
         return wrapper
+
 
 api_require_login = APIRequireRole(None)
 api_require_new = APIRequireRole("new")
@@ -132,7 +131,21 @@ class BaseAuth(object):
 class SessionAuth(BaseAuth):
     """ Session登录权限类
     """
-    pass
+    def get_current_user(self):
+        session_token = request.cookies.get('session_token', '')
+        user_id = SessionCache().get_user_id_by_token(session_token)
+        if not user_id:
+            return None
+
+        user = Account.query.filter_by(id=user_id).first()
+        if user:
+            bussiness_id = UserBussinessCache().get(user.id) or 1
+            if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
+                user.role = 'admin'
+
+            user['role'] = 'super_admin' if user.id == 1 else user.id
+
+        return user
 
 
 class SSOAuth(BaseAuth):
