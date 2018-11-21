@@ -170,6 +170,8 @@ class SSOAuth(BaseAuth):
             if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
                 user.role = 'admin'
 
+            user['role'] = 'super_admin' if user.id == 1 else user.id
+
         return user
 
     def logout_user(self):
