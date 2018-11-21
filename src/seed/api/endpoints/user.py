@@ -32,15 +32,16 @@ class User(RestfulBaseView):
         user['brole'] = self._get_role(g.user.id)
 
         user['role'] = 'super_admin' if user['id'] == 1 else user['role']
-        if self.session.query(BManager).filter(BManager.bussiness_id==g.bussiness_id, BManager.user_id==g.user.id).all():
-            user['role'] = 'admin'
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=user)
 
     def _get_role(self, uid):
         roles = self.session.query(Role.role)\
-            .join(BUserRole, and_(BUserRole.role_id==Role.id, BUserRole.user_id==uid, BUserRole.bussiness_id==g.bussiness_id))\
-            .all()
+            .join(BUserRole, and_(
+                BUserRole.role_id == Role.id,
+                BUserRole.user_id == uid,
+                BUserRole.bussiness_id == g.bussiness_id)
+            ).all()
         return roles
 
 

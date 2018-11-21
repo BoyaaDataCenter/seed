@@ -11,6 +11,7 @@ from seed.utils.response import response, HttpErrorCode
 from seed.models.account import Account
 from seed.models.buserrole import BUserRole
 from seed.models.role import Role
+from seed.models.bmanager import BManager
 from seed.models import db
 from seed.cache import DefaultCache
 from seed.cache.user_bussiness import UserBussinessCache
@@ -116,20 +117,15 @@ class BaseAuth(object):
 
         user = Account.query.filter_by(id=int(request.args['debugger'])).first()
 
-        bussiness_id = UserBussinessCache().get(user.id) or 1
-        if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
-            user.role = 'admin'
+        if user:
+            bussiness_id = UserBussinessCache().get(user.id) or 1
+            if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
+                user.role = 'admin'
 
         return user if user else None
 
     def _is_bussiness_admin(self, uid, bussiness=1):
-        roles = db.session.query(Role.role)\
-            .join(BUserRole,
-                  and_(BUserRole.role_id == Role.id,
-                       BUserRole.user_id == uid,
-                       BUserRole.bussiness_id == bussiness))\
-            .filter(Role.role == 'admin')\
-            .all()
+        roles = BManager.query.filter_by(bussiness_id=bussiness, user_id=uid).all()
         return True if roles else False
 
 
@@ -169,9 +165,10 @@ class SSOAuth(BaseAuth):
         else:
             user = Account.query.filter_by(sso_id=int(uid)).first()
 
-        bussiness_id = UserBussinessCache().get(user.id) or 1
-        if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
-            user.role = 'admin'
+        if user:
+            bussiness_id = UserBussinessCache().get(user.id) or 1
+            if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
+                user.role = 'admin'
 
         return user
 
