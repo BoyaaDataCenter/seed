@@ -143,7 +143,7 @@ class SessionAuth(BaseAuth):
             if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
                 user.role = 'admin'
 
-            user['role'] = 'super_admin' if user.id == 1 else user.id
+            user.role = 'super_admin' if user.id == 1 else user.role
 
         return user
 
@@ -183,7 +183,7 @@ class SSOAuth(BaseAuth):
             if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
                 user.role = 'admin'
 
-            user['role'] = 'super_admin' if user.id == 1 else user.id
+            user.role = 'super_admin' if user.id == 1 else user.role
 
         return user
 

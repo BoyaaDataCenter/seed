@@ -15,6 +15,8 @@ class DataAccess(object):
 
         self.charttype = kwargs.get('charttype', 'chart')
 
+        self.format_args = {'vth_columns': kwargs.get('vth_columns', [])}
+
     def get_datas(self):
         # 获取原数据
         source_data, sql_info = self.get_source_data()
@@ -41,7 +43,7 @@ class DataAccess(object):
 
         formatter = FormatterFactory(self.charttype).formatter_class()
         format_data = formatter(
-            self.indexs, self.dimensions, middle_data
+            self.indexs, self.dimensions, middle_data, self.format_args
         ).format_data()
 
         return format_data

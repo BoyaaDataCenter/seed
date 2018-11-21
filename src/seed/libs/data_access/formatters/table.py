@@ -10,6 +10,9 @@ class TableFormatter(BaseFormatter):
 
     def format_data(self):
         # table_keys = self.title_flags + [*self.dims_set.keys()]
+
+        self._ver_to_hor()
+
         table_keys = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs]
 
         # 得到table的表格数据
@@ -25,6 +28,33 @@ class TableFormatter(BaseFormatter):
         display_name = self._get_display_name(table_keys)
 
         return {"data": table_datas, "displayName": display_name}
+
+    def _ver_to_hor(self):
+        if not self.format_args.get('vth_columns'):
+            return
+
+        converted_data = {}
+
+        index = self.indexs[0]['index']
+        vth_columns = self.format_args.get('vth_columns')
+
+        self.dimensions = [item for item in self.dimensions if item['dimension'] not in vth_columns]
+        self.indexs = []
+
+        for dimensions, values in self.data.items():
+            dimensions = json.loads(dimensions)
+            converted_dimensions, vth_dimensions = {}, []
+            for key, value in dimensions.items():
+                if key in vth_columns:
+                    vth_dimensions.append(str(value))
+                else:
+                    converted_dimensions[key] = value
+            if '-'.join(vth_dimensions) not in self.indexs:
+                self.indexs.append('-'.join(vth_dimensions))
+            converted_data.setdefault(json.dumps(converted_dimensions), {})['-'.join(vth_dimensions)] = values[index]
+
+        self.indexs = [{'index': index, 'name': index} for index in self.indexs]
+        self.data = converted_data
 
     def _convert_table_data(self, table_keys, datas):
         # 将数据从中间格式转换成表格格式

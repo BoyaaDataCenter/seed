@@ -26,7 +26,8 @@ class FormatterFactory(object):
 class BaseFormatter(object):
     __abstract__ = True
 
-    def __init__(self, indexs, dimensions, data):
+    def __init__(self, indexs, dimensions, data, format_args):
         self.indexs = indexs
         self.dimensions = dimensions
         self.data = data
+        self.format_args = format_args
