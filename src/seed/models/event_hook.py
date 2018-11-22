@@ -58,70 +58,69 @@ def buser_after_delete_hook(mapper, connection, target):
 def bussiness_after_delete_hook(mapper, connection, target):
     """ 删除业务之后， 尝试删除业务相关的 业务用户，业务菜单，业务图表， 业务过滤组件， 业务角色
     """
+    pass
     # 删除业务相关的用户权限
-    connection.execute(
-        BUser.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # connection.execute(
+    #     BUser.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    connection.execute(
-        Role.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # connection.execute(
+    #     Role.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    # 删除业务相关的用户角色权限
-    connection.execute(
-        BUserRole.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # # 删除业务相关的用户角色权限
+    # connection.execute(
+    #     BUserRole.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    # 删除业务相关的角色菜单
-    connection.execute(
-        RoleMenu.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # # 删除业务相关的角色菜单
+    # connection.execute(
+    #     RoleMenu.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    # 删除业务相关的菜单
-    connection.execute(
-        Menu.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # # 删除业务相关的菜单
+    # connection.execute(
+    #     Menu.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    # 删除业务相关的数据图表
-    connection.execute(
-        Panels.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # # 删除业务相关的数据图表
+    # connection.execute(
+    #     Panels.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
-    # 删除业务相关的过滤组件
-    connection.execute(
-        Filters.__table__.delete(),
-        bussiness_id=target.id
-    )
+    # # 删除业务相关的过滤组件
+    # connection.execute(
+    #     Filters.__table__.delete(),
+    #     bussiness_id=target.id
+    # )
 
 
 @event.listens_for(Menu, 'after_delete')
 def menu_after_delete_hook(mapper, connection, target):
     """ 删除菜单之后，尝试删除菜单对应的 角色菜单映射，菜单对应的业务图标，业务对应的过滤组件
     """
+    pass
     # 删除业务相关的角色菜单
-    # TODO menu和page不统一
-    connection.execute(
-        RoleMenu.__table__.delete(),
-        bussiness_id=target.bussiness_id,
-        menu_id=target.id
-    )
+    # # TODO menu和page不统一
+    # connection.execute(
+    #     RoleMenu.__table__.delete(),
+    #     menu_id=target.id
+    # )
 
-    # 删除业务相关的数据图表
-    connection.execute(
-        Panels.__table__.delete(),
-        bussiness_id=target.bussiness_id,
-        page_id=target.id
-    )
+    # # 删除业务相关的数据图表
+    # connection.execute(
+    #     Panels.__table__.delete(),
+    #     page_id=target.id
+    # )
 
-    # 删除业务相关的过滤组件
-    connection.execute(
-        Filters.__table__.delete(),
-        bussiness_id=target.bussiness_id,
-        page_id=target.id
-    )
+    # # 删除业务相关的过滤组件
+    # connection.execute(
+    #     Filters.__table__.delete(),
+    #     page_id=target.id
+    # )

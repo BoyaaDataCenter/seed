@@ -180,7 +180,7 @@ class SSOAuth(BaseAuth):
 
         if user:
             bussiness_id = UserBussinessCache().get(user.id) or 1
-            if self._is_bussiness_admin(user.id, bussiness=bussiness_id):
+            if self._is_bussiness_admin(user.id, bussiness=bussiness_id) and user.role != 'super_admin':
                 user.role = 'admin'
 
             user.role = 'super_admin' if user.id == 1 else user.role
