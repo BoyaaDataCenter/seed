@@ -91,9 +91,9 @@ class LineFormatter(BaseFormatter):
         elif res or 'fdate' in [item['dimension'] for item in self.dimensions]:
             # 判断是否全部为数字 如果是 则按照数字进行排序
             categories.sort()
-        else:
-            # 否则按照值进行排序
-            categories = self._categories_sort_by_value()
+        # else:
+        #     # 否则按照值进行排序
+        #     categories = self._categories_sort_by_value()
         return categories
 
     def _categories_sort_by_value(self):
