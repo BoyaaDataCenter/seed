@@ -37,6 +37,9 @@ class Register(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
         account.save()
 
+        # TODO 发送出邮箱请求
+        pass
+
         # TODO 登录, 写入cookie
         res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
 
@@ -44,3 +47,10 @@ class Register(RestfulBaseView):
         res.set_cookie('session_token', session_token, expires=24 * 60 * 60)
 
         return res
+
+
+class Activate(RestfulBaseView):
+    """ 激活账号
+    """
+    def get(self, activate_token):
+        pass

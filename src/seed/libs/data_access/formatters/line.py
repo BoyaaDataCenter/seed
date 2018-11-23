@@ -21,12 +21,22 @@ class LineFormatter(BaseFormatter):
         """
         获取categoies和series的维度
         """
-        categories_dict = []
         series = []
 
         category_columns, series_columns = self._get_chart_columns()
 
         # 从数据中获取到对应的categories然后通过数据的维度进行组合
+        categories = self._get_categories_sort_by_dimensions(category_columns, categories_dict, series_columns, series)
+
+        categories = self._get_categories_sort_by_indexs(categories, category_columns)
+
+        if not series:
+            series = [item['index'] for item in self.indexs]
+
+        return categories, series
+
+    def _get_categories_sort_by_dimensions(self, category_columns, series_columns, series):
+        categories_dict = []
         for key in self.data.keys():
             key = json.loads(key)
             cateogry = {category_column: key[category_column] for category_column in category_columns}
@@ -48,12 +58,7 @@ class LineFormatter(BaseFormatter):
             '-'.join([str(category_dict[category_column]) for category_column in category_columns])
             for category_dict in categories_dict
         ]
-        categories = self._get_categories_sort_type(categories, category_columns)
-
-        if not series:
-            series = [item['index'] for item in self.indexs]
-
-        return categories, series
+        return categories
 
     def _get_chart_columns(self):
         category_columns, series_columns = [item['dimension'] for item in self.dimensions], []
@@ -89,7 +94,7 @@ class LineFormatter(BaseFormatter):
 
         return series_datas
 
-    def _get_categories_sort_type(self, categories, category_columns):
+    def _get_categories_sort_by_indexs(self, categories, category_columns):
         if not len(categories):
             return categories
 
@@ -98,21 +103,6 @@ class LineFormatter(BaseFormatter):
             categories = self._categories_sort_by_value(category_columns)
 
         return categories
-
-        # try:
-        #     res = re.search(r"(\d{2}:\d{2})", categories[0])
-        # except TypeError:
-        #     # categories可能为空
-        #     res = None
-        # if all([category.isdigit() for category in categories]):
-        #     categories.sort(key=int)
-        # elif res or 'fdate' in [item['dimension'] for item in self.dimensions]:
-        #     # 判断是否全部为数字 如果是 则按照数字进行排序
-        #     categories.sort()
-        # else:
-        #     # 否则按照值进行排序
-        #     categories = self._categories_sort_by_value()
-        # return categories
 
     def _categories_sort_by_value(self, category_columns):
         middle_date = {}
