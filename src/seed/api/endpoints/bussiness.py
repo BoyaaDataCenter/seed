@@ -1,11 +1,8 @@
 from flask import request, g
 
-from sqlalchemy import and_, or_
-
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 from seed.models import Bussiness as BussinessModel
-from seed.models import BUser
 from seed.models import BManager as BManagerModel
 from seed.models import Account as AccountModel
 
@@ -46,8 +43,8 @@ class Bussiness(RestfulBaseView):
                 BManagerModel.id, BManagerModel.bussiness_id,
                 BManagerModel.user_id, AccountModel.name
             )\
-            .join(AccountModel, BManagerModel.user_id==AccountModel.id)\
-            .as_list()
+                .join(AccountModel, BManagerModel.user_id==AccountModel.id)\
+                .as_list()
 
             b_managers_map = {}
             for bmanager in bmanagers:

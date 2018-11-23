@@ -26,7 +26,7 @@ class LineFormatter(BaseFormatter):
         category_columns, series_columns = self._get_chart_columns()
 
         # 从数据中获取到对应的categories然后通过数据的维度进行组合
-        categories = self._get_categories_sort_by_dimensions(category_columns, categories_dict, series_columns, series)
+        categories = self._get_categories_sort_by_dimensions(category_columns, series_columns, series)
 
         categories = self._get_categories_sort_by_indexs(categories, category_columns)
 

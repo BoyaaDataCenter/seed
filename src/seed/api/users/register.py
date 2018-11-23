@@ -54,7 +54,6 @@ class Register(RestfulBaseView):
 
         # TODO 登录, 写入cookie
         res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
-
         session_token = SessionCache().create_session(account.id)
         res.set_cookie('session_token', session_token, expires=24 * 60 * 60)
 
