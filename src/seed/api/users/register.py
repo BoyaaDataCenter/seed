@@ -30,6 +30,18 @@ class Register(RestfulBaseView):
                 msg='密码和确认密码不一致'
             )
 
+        if self.session.query(Account).filter_by(account=input_json['account']).first():
+            return self.response_json(
+                self.HttpErrorCode.PARAMS_VALID_ERROR,
+                msg='账号已经被占用了'
+            )
+
+        if self.session.query(Account).filter_by(email=input_json['email']).first():
+            return self.response_json(
+                self.HttpErrorCode.PARAMS_VALID_ERROR,
+                msg='邮箱已经被注册了'
+            )
+
         input_json['password'] = bcrypt.hashpw(input_json['password'].encode('utf-8'), bcrypt.gensalt())
 
         account, errors = AccountSchema().load(input_json, partial=True)
