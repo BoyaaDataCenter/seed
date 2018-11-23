@@ -58,7 +58,6 @@ def buser_after_delete_hook(mapper, connection, target):
 def bussiness_after_delete_hook(mapper, connection, target):
     """ 删除业务之后， 尝试删除业务相关的 业务用户，业务菜单，业务图表， 业务过滤组件， 业务角色
     """
-    pass
     # 删除业务相关的用户权限
     # connection.execute(
     #     BUser.__table__.delete(),
@@ -82,6 +81,8 @@ def bussiness_after_delete_hook(mapper, connection, target):
     #     bussiness_id=target.id
     # )
 
+    menus = Menu.query.filter_by(bussiness_id=target.id).all()
+    [menu.delete() for menu in menus]
     # # 删除业务相关的菜单
     # connection.execute(
     #     Menu.__table__.delete(),

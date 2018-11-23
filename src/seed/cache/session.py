@@ -8,7 +8,7 @@ from seed.cache.redis import RedisCache
 
 class SessionCache(RedisCache):
     def __init__(self):
-        self.redis_client = current_app.redis
+        self.redis_client = current_app.cache
         self.middle_key = 'session'
 
     def make_key(self, key):

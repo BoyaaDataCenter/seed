@@ -21,7 +21,7 @@ class LineFormatter(BaseFormatter):
         """
         获取categoies和series的维度
         """
-        categories = []
+        categories_dict = []
         series = []
 
         category_columns, series_columns = self._get_chart_columns()
@@ -29,14 +29,26 @@ class LineFormatter(BaseFormatter):
         # 从数据中获取到对应的categories然后通过数据的维度进行组合
         for key in self.data.keys():
             key = json.loads(key)
-            categories.append('-'.join([str(key[category_column]) for category_column in category_columns]))
+            cateogry = {category_column: key[category_column] for category_column in category_columns}
+            if cateogry not in categories_dict:
+                categories_dict.append(cateogry)
             if series_columns:
                 series_key = '-'.join([str(key[series_column]) for series_column in series_columns])
                 if series_key not in series:
                     series.append(series_key)
 
-        categories = list(set(categories))
-        categories = self._get_categories_sort_type(categories)
+        # categories排序
+        for dimension in self.dimensions:
+            if dimension['sort'] == 'desc':
+                categories_dict.sort(key=lambda x: x[dimension['dimension']], reverse=True)
+            if dimension['sort'] == 'asc':
+                categories_dict.sort(key=lambda x: x[dimension['dimension']])
+
+        categories = [
+            '-'.join([str(category_dict[category_column]) for category_column in category_columns])
+            for category_dict in categories_dict
+        ]
+        categories = self._get_categories_sort_type(categories, category_columns)
 
         if not series:
             series = [item['index'] for item in self.indexs]
@@ -77,31 +89,47 @@ class LineFormatter(BaseFormatter):
 
         return series_datas
 
-    def _get_categories_sort_type(self, categories):
+    def _get_categories_sort_type(self, categories, category_columns):
         if not len(categories):
             return categories
 
-        try:
-            res = re.search(r"(\d{2}:\d{2})", categories[0])
-        except TypeError:
-            # categories可能为空
-            res = None
-        if all([category.isdigit() for category in categories]):
-            categories.sort(key=int)
-        elif res or 'fdate' in [item['dimension'] for item in self.dimensions]:
-            # 判断是否全部为数字 如果是 则按照数字进行排序
-            categories.sort()
+        if any(index['sort'] in ('desc', 'asc') for index in self.indexs):
+            # 按指标进行排序
+            categories = self._categories_sort_by_value(category_columns)
+
+        return categories
+
+        # try:
+        #     res = re.search(r"(\d{2}:\d{2})", categories[0])
+        # except TypeError:
+        #     # categories可能为空
+        #     res = None
+        # if all([category.isdigit() for category in categories]):
+        #     categories.sort(key=int)
+        # elif res or 'fdate' in [item['dimension'] for item in self.dimensions]:
+        #     # 判断是否全部为数字 如果是 则按照数字进行排序
+        #     categories.sort()
         # else:
         #     # 否则按照值进行排序
         #     categories = self._categories_sort_by_value()
-        return categories
+        # return categories
 
-    def _categories_sort_by_value(self):
+    def _categories_sort_by_value(self, category_columns):
         middle_date = {}
+
+        sort_index = None
+        sort_reverse = None
+        for index in self.indexs:
+            if index['sort'] in ('desc', 'asc'):
+                sort_index = index['index']
+                sort_reverse = True if index['sort'] != 'desc' else False
+                break
+
         for i, j in self.data.items():
             i = json.loads(i)
             middle_date.update(
-                {'-'.join([str(i[category_column]) for category_column in self.category_columns]): j[self.dims[0]]})
-        categories_data = sorted(middle_date.items(), key=lambda d: d[1] if d[1] else 0, reverse=False)
+                {'-'.join([str(i[category_column]) for category_column in category_columns]): j[sort_index]}
+            )
+        categories_data = sorted(middle_date.items(), key=lambda d: d[1] if d[1] else 0, reverse=sort_reverse)
         categories = [v[0] for v in categories_data]
         return categories

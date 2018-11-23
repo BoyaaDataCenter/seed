@@ -1,6 +1,6 @@
 import bcrypt
 
-from flask import request, Response
+from flask import request, make_response
 
 from seed.models.account import Account
 from seed.cache.session import SessionCache
@@ -27,13 +27,13 @@ class Login(RestfulBaseView):
         # 获取账号
         account = Account.query.filter_by(account=account).first()
 
-        if not bcrypt.checkpw(password, account.password):
+        if not bcrypt.checkpw(password.encode('utf-8'), account.password.encode('utf-8')):
             return self.response_json(self.HttpErrorCode.AUTHORIZED_ERROR)
 
         # TODO Cookie设置
-        res = Response(self.response_json(self.HttpErrorCode.SUCCESS))
+        res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
 
-        session_token = SessionCache().create_session(account['id'])
+        session_token = SessionCache().create_session(account.id)
         res.set_cookie('session_token', session_token, expires=24 * 60 * 60)
 
         return res
@@ -51,7 +51,7 @@ class Logout(RestfulBaseView):
 
         SessionCache().delete(session_token)
 
-        res = Response(self.response_json(self.HttpErrorCode.SUCCESS))
+        res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
         res.set_cookie('session_token', session_token, expires=0)
 
         return res
