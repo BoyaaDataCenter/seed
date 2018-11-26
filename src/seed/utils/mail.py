@@ -14,7 +14,7 @@ def send_active_email(to_mail, active_url, redirect_url):
             此链接24小时之后失效，请尽快激活邮箱。
         Seed团队
     """.format(active_url=active_url, redirect_url=redirect_url)
-    Email(current_app.configs).send_mail([to_mail], title, mail_content)
+    Email(current_app.config).send_mail([to_mail], title, mail_content)
 
 
 def send_reset_password_email(to_mail, active_url, redirect_url):
@@ -28,4 +28,4 @@ def send_reset_password_email(to_mail, active_url, redirect_url):
             此链接24小时之后失效，请尽快点击重置密码。
         Seed团队
     """.format(active_url=active_url, redirect_url=redirect_url)
-    Email(current_app.configs).send_mail([to_mail], title, mail_content)
+    Email(current_app.config).send_mail([to_mail], title, mail_content)

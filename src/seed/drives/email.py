@@ -6,13 +6,13 @@ from email.utils import formatdate
 
 class Email(object):
     def __init__(self, configs):
-        self.mail_backend = configs.MAIL_BACKEND
-        self.mail_host = configs.MAIL_HOST
-        self.mail_port = configs.MAIL_PORT
-        self.mail_user = configs.MAIL_USER
-        self.mail_password = configs.MAIL_PASSWORD
-        self.mail_use_tls = configs.MAIL_USE_TLS
-        self.mail_from = configs.MAIL_FROM
+        self.mail_backend = configs['MAIL_BACKEND']
+        self.mail_host = configs['MAIL_HOST']
+        self.mail_port = configs['MAIL_PORT']
+        self.mail_user = configs['MAIL_USER']
+        self.mail_password = configs['MAIL_PASSWORD']
+        self.mail_use_tls = configs['MAIL_USE_TLS']
+        self.mail_from = configs['MAIL_FROM']
 
     def send_mail(self, to_mail_list, title, message, message_type='plain', cc_mail_list=[]):
         to_mails = '; '.join(to_mail_list)
