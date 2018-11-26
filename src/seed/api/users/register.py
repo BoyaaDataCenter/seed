@@ -59,7 +59,7 @@ class Register(RestfulBaseView):
         account.save()
 
         active_token = ActiveAccountCache().create_active_token(account.id)
-        redirect_url = 'seed_server_dev.oa.com/users/active_account?active_token={active_token}'.format(active_token=active_token)
+        redirect_url = 'seed_server_dev.oa.com/users/active_account&active_token={active_token}'.format(active_token=active_token)
         send_active_email(account.email, active_url, redirect_url)
 
         return self.response_json(self.HttpErrorCode.SUCCESS)
