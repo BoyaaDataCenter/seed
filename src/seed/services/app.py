@@ -59,13 +59,13 @@ class SeedHttpServer(object):
         def login_user():
 
             if self.app.config['AUTH_TYPE'] == 'SSO':
-                Auth = SSOAuth()
+                auth = SSOAuth()
             else:
-                Auth = SessionAuth()
+                auth = SessionAuth()
 
-            g.user = Auth.get_current_user()
+            g.user = auth.get_current_user()
             # debugger
-            g.user = Auth.debbuger_user()
+            g.user = auth.debbuger_user()
 
             if g.user:
                 g.bussiness_id = UserBussinessCache().get(g.user.id) or -1
