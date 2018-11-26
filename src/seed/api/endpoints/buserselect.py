@@ -10,7 +10,7 @@ from seed.utils.auth import api_require_login
 class BUserSelect(RestfulBaseView):
     """ 用户当前选择业务
     """
-    deccorators = [api_require_login]
+    decorators = [api_require_login]
 
     def get(self):
         current_bussiness_id = g.bussiness_id

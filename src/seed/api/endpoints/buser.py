@@ -40,7 +40,7 @@ class UnBuserList(RestfulBaseView):
     """ 不属于当前业务的用户名单
     """
     url = 'un_busers'
-    deccorators = [api_require_admin]
+    decorators = [api_require_admin]
     access_methods = [HttpMethods.GET]
 
     def get(self):
