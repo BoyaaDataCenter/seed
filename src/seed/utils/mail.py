@@ -13,7 +13,7 @@ def send_active_email(to_mail, active_url, redirect_url):
         Seed团队
     """.format(active_url=active_url, redirect_url=redirect_url)
     print(mail_context)
-    send_email(to_mail, title, mail_context)
+    send_email([to_mail], title, mail_context)
 
 
 def send_reset_password_email(to_mail, active_url, redirect_url):
@@ -28,4 +28,4 @@ def send_reset_password_email(to_mail, active_url, redirect_url):
         Seed团队
     """.format(active_url=active_url, redirect_url=redirect_url)
     print(mail_context)
-    send_email(to_mail, title, mail_context)
+    send_email([to_mail], title, mail_context)

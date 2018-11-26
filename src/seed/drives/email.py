@@ -63,6 +63,7 @@ def send_email(email_list, title, message, message_type='plain', cc_email_list=[
         smtp.close()
         # print 'send mail succeed'
     except Exception as e:
+        print(e)
         result = False
 
     return result
