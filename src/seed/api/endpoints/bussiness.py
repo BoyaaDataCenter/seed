@@ -8,6 +8,7 @@ from seed.models import Account as AccountModel
 
 from seed.utils.permissions import get_permission_datas_by_user
 from seed.utils.helper import common_batch_crud
+from seed.utils.auth import api_require_login
 
 
 class BussinessSchema(BaseSchema):
@@ -25,6 +26,7 @@ class Bussiness(RestfulBaseView):
     """
     model_class = BussinessModel
     schema_class = BussinessSchema
+    decorators = [api_require_login]
 
     def get(self, bussiness_id=None):
         """ GET

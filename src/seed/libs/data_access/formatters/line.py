@@ -1,4 +1,3 @@
-import re
 import json
 
 from seed.libs.data_access.formatters.base import BaseFormatter

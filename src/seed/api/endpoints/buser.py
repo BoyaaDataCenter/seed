@@ -19,7 +19,7 @@ class Buser(RestfulBaseView):
     """
     model_class = BUserModel
     schema_class = BUserSchema
-    deccorators = [api_require_admin]
+    decorators = [api_require_admin]
 
     def get(self, bussiness_id):
         users = self.session.query(BUserModel.id, AccountModel)\
