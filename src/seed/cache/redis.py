@@ -2,6 +2,7 @@ import json
 
 from seed.cache.base import BaseCache
 
+
 class RedisCache(BaseCache):
     max_size = 50 * 1024 * 1024
 
@@ -14,7 +15,7 @@ class RedisCache(BaseCache):
         if len(v) > self.max_size:
             raise ValueError("Cache value too large: %r %r" %(key, len(value)))
         if timeout:
-            self.redis_client.setex(key, int(timeout), v)
+            self.redis_client.set(key, v, int(timeout))
         else:
             self.redis_client.set(key, v)
 

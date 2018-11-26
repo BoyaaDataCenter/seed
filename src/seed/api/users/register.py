@@ -2,8 +2,10 @@ import bcrypt
 from flask import request, Response, make_response
 
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.cache.active_account import ActiveAccountCache
 from seed.schema.base import BaseSchema
 from seed.models.account import Account
+from seed.utils.mail import send_active_email
 from seed.cache.session import SessionCache
 
 
@@ -30,6 +32,13 @@ class Register(RestfulBaseView):
                 msg='密码和确认密码不一致'
             )
 
+        if 'active_url' not in input_json:
+            return self.response_json(
+                self.HttpErrorCode.PARAMS_VALID_ERROR,
+                msg='active_url缺失'
+            )
+        active_url = input_json['active_url']
+
         if self.session.query(Account).filter_by(account=input_json['account']).first():
             return self.response_json(
                 self.HttpErrorCode.PARAMS_VALID_ERROR,
@@ -49,19 +58,8 @@ class Register(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg=errors)
         account.save()
 
-        # TODO 发送出邮箱请求
-        pass
+        active_token = ActiveAccountCache().create_active_token(account.id)
+        redirect_url = 'seed_server_dev.oa.com/users/active_account?active_token={active_token}'.format(active_token=active_token)
+        send_active_email(account.email, active_url, redirect_url)
 
-        # TODO 登录, 写入cookie
-        res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
-        session_token = SessionCache().create_session(account.id)
-        res.set_cookie('session_token', session_token, expires=24 * 60 * 60)
-
-        return res
-
-
-class Activate(RestfulBaseView):
-    """ 激活账号
-    """
-    def get(self, activate_token):
-        pass
+        return self.response_json(self.HttpErrorCode.SUCCESS)
