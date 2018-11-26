@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
-from seed.utils.auth import SSOAuth
+from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
 
 
@@ -57,10 +57,15 @@ class SeedHttpServer(object):
         """
         @self.app.before_request
         def login_user():
-            g.user = SSOAuth().get_current_user()
 
+            if self.app.config['AUTH_TYPE'] == 'SSO':
+                Auth = SSOAuth()
+            else:
+                Auth = SessionAuth()
+
+            g.user = Auth.get_current_user()
             # debugger
-            g.user = SSOAuth().debbuger_user()
+            g.user = Auth.debbuger_user()
 
             if g.user:
                 g.bussiness_id = UserBussinessCache().get(g.user.id) or -1

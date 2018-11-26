@@ -34,7 +34,7 @@ DEBUG = %(debug_flag)s
 # login user type, you can choice sso and default login type
 # if you choose sso, you must setting XXXX
 
-LOGIN_TYPE = ""
+AUTH_TYPE = ""
 SSO_URL = ""
 
 DEFAULT_TIME_ZONE = "Asia/Shanghai"
