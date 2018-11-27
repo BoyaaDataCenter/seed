@@ -10,7 +10,6 @@ from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
-from seed.utils.converter import RegexConverter
 
 
 class SeedHttpServer(object):
@@ -25,7 +24,6 @@ class SeedHttpServer(object):
         self.register_cors()
         self.register_databases()
         self.register_cache()
-        self.register_regex_converter()
         self.register_api()
         self.register_hook()
 
@@ -59,11 +57,6 @@ class SeedHttpServer(object):
             decode_components=True
         )
         self.app.cache = redis.Redis(connection_pool=redis_pool)
-
-    def register_regex_converter(self):
-        """ 注册正则匹配的路由匹配器
-        """
-        self.app.url_map.converters['regex'] = RegexConverter
 
     def register_api(self):
         register_api(self.app)
