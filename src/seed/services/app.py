@@ -98,3 +98,5 @@ class SeedHttpServer(object):
                 flask_migrate.init(directory)
             flask_migrate.migrate(sql=sql)
             flask_migrate.upgrade(sql=sql)
+
+        # 写入默认数据

@@ -53,7 +53,6 @@ class QueryData(RestfulBaseView):
         return self.response_json(self.HttpErrorCode.SUCCESS, data=query_datas)
 
 
-
 class QueryFilters(RestfulBaseView):
     """ 获取Filters数据
     """
@@ -88,7 +87,7 @@ class QueryFilters(RestfulBaseView):
                 error_message = str(e)
                 return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
 
-            filter_data['conditions'] = FilterAccess(db, filter_data['conditions']).query_datas()
+            filter_data['conditions'] = FilterAccess(db, filter_data['conditions'], filter_data.get('query', {})).query_datas()
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=filter_data)
 
