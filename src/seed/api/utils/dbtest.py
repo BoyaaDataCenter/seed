@@ -3,6 +3,7 @@ from flask import request
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.drives import ALL_DRIVES
 
+
 class DatabaseTest(RestfulBaseView):
     url = 'database_test'
 

@@ -1,15 +1,16 @@
 import os
+from pathlib import Path
 
 import redis
 import flask_migrate
 from flask import Flask, g
-from flask_migrate import Migrate
 from flask_cors import CORS
 
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
+from seed.utils.converter import RegexConverter
 
 
 class SeedHttpServer(object):
@@ -24,11 +25,21 @@ class SeedHttpServer(object):
         self.register_cors()
         self.register_databases()
         self.register_cache()
+        self.register_regex_converter()
         self.register_api()
         self.register_hook()
 
     def create_app(self, config_file):
-        app = Flask(__name__)
+        static_folder_path = os.path.join(
+            Path(os.path.dirname(os.path.realpath(__file__))).parent,
+            'static'
+        )
+        app = Flask(
+            __name__,
+            static_url_path='/static',
+            static_folder=static_folder_path,
+            template_folder=static_folder_path
+        )
 
         app.config.from_pyfile(config_file)
 
@@ -49,8 +60,16 @@ class SeedHttpServer(object):
         )
         self.app.cache = redis.Redis(connection_pool=redis_pool)
 
+    def register_regex_converter(self):
+        """ 注册正则匹配的路由匹配器
+        """
+        self.app.url_map.converters['regex'] = RegexConverter
+
     def register_api(self):
         register_api(self.app)
+
+        from seed.api import front
+        self.app.register_blueprint(front.bp, url_prefix='')
 
     def register_hook(self):
         """ 注册Hook
@@ -64,6 +83,7 @@ class SeedHttpServer(object):
                 auth = SessionAuth()
 
             g.user = auth.get_current_user()
+
             # debugger
             g.user = auth.debbuger_user()
 
@@ -73,7 +93,6 @@ class SeedHttpServer(object):
                 g.bussiness_id = -1
 
     def register_cors(self):
-        from flask_cors import CORS
         CORS(self.app, supports_credentials=True)
 
     def run(self):
