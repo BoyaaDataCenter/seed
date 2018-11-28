@@ -11,14 +11,21 @@ class DataModel(object):
         """ 用维度和指标把SQL包一层
         """
         select_fileds = [item['dimension'] for item in self.dimensions]\
-            + [item['index'] for item in self.indexs]
+            + ['sum('+item['index']+') as ' + item['index'] for item in self.indexs]
+        group_fileds = [item['dimension'] for item in self.dimensions]
         self.sql = """
             SELECT
                 {select_fileds}
             FROM (
                 {origin_sql}
             ) a
-        """.format(select_fileds=','.join(select_fileds), origin_sql=self.sql)
+            GROUP BY
+                {group_fileds}
+        """.format(
+            select_fileds=','.join(select_fileds),
+            origin_sql=self.sql,
+            group_fileds=','.join(group_fileds)
+        )
 
     def format_sql(self):
 
