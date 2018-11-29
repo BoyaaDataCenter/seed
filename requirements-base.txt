@@ -38,7 +38,6 @@ python-editor==1.0.3
 redis==2.10.6
 requests==2.19.1
 rope==0.11.0
--e git+git@192.168.203.235:bydc/seed_server.git@91cfef4c803a8754d313bcbed15f63e45067c0ca#egg=seed
 six==1.11.0
 SQLAlchemy==1.2.10
 SQLAlchemy-Utils==0.33.3
