@@ -9,4 +9,3 @@ class Bussiness(BaseModel):
 
     name = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text)
-

@@ -1,5 +1,4 @@
 import click
-from flask import current_app
 
 
 class AddressParamType(click.ParamType):
