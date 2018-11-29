@@ -1,10 +1,14 @@
 from flask import request, g
+from sqlalchemy import and_
 
 from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.models import BUser as BUserModel
 from seed.models import Account as AccountModel
 from seed.models import BManager as BManagerModel
+
+from seed.models.role import Role
+from seed.models.buserrole import BUserRole
 
 from seed.utils.auth import api_require_admin
 
@@ -31,9 +35,20 @@ class Buser(RestfulBaseView):
         for user in users:
             data = user.Account.row2dict()
             data['account_id'], data['id'] = data['id'], user.id
+            data['brole'] = self._get_role(data['id'])
+
             datas.append(data)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
+
+    def _get_role(self, uid):
+        roles = self.session.query(Role.role)\
+            .join(BUserRole, and_(
+                BUserRole.role_id == Role.id,
+                BUserRole.user_id == uid,
+                BUserRole.bussiness_id == g.bussiness_id)
+            ).all()
+        return roles
 
 
 class UnBuserList(RestfulBaseView):
