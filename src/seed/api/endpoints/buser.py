@@ -42,12 +42,13 @@ class Buser(RestfulBaseView):
         return self.response_json(self.HttpErrorCode.SUCCESS, data=datas)
 
     def _get_role(self, uid):
-        roles = self.session.query(Role.role)\
+        roles = self.session.query(Role)\
             .join(BUserRole, and_(
                 BUserRole.role_id == Role.id,
                 BUserRole.user_id == uid,
                 BUserRole.bussiness_id == g.bussiness_id)
             ).all()
+        roles = [role.row2dict() for role in roles]
         return roles
 
 
