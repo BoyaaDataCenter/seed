@@ -100,3 +100,6 @@ class SeedHttpServer(object):
             flask_migrate.upgrade(sql=sql)
 
         # 写入默认数据
+        # TODO 判断是否为新数据库
+
+        # 写入默认数据

@@ -17,7 +17,7 @@ def index(path):
     """
     如果是静态文件则利用seed_from_directory来进行加载
     """
-    if '.' not in path:
-        return render_template('index.html')
-    else:
+    if os.path.exists(os.path.join(static_folder_path, path)):
         return send_from_directory(static_folder_path, path)
+
+    return render_template('index.html')
