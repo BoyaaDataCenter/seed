@@ -15,5 +15,5 @@ class Files(RestfulBaseView):
         file_path = local_file.save(upload_file)
         if file_path:
             file_url = request.host_url + file_path.replace('\\', '/')
-            return self.response_json(self.HttpErrorCode.SUCCESS, '上传成功', {'image_url': file_url})
+            return self.response_json(self.HttpErrorCode.SUCCESS, '上传成功', {'file_url': file_url})
         return self.response_json(self.HttpErrorCode.ERROR, '上传失败')
