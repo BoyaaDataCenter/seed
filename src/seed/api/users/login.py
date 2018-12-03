@@ -35,7 +35,7 @@ class Login(RestfulBaseView):
         res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
 
         session_token = SessionCache().create_session(account.id)
-        res.set_cookie('session_token', session_token, expires=time.time() + 24 * 60 * 60, domain='.oa.com')
+        res.set_cookie('session_token', session_token, expires=time.time()+24*60*60, domain=request.host)
 
         return res
 
