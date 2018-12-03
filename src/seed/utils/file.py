@@ -13,7 +13,7 @@ class LocalFile(object):
         upload_path = os.path.join(local_file_path, filename)
 
         if not os.path.exists(local_file_path):
-            os.mkdir(local_file_path)
+            os.makedirs(local_file_path)
 
         try:
             file.save(upload_path)
@@ -21,4 +21,4 @@ class LocalFile(object):
             print(e)
             return None
 
-        return os.path.join('static', 'files', filename)
+        return os.path.join('files', filename)
