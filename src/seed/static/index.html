@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SEED自助报表</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="assets/js/bowser.min.js"></script>
+  <script>
+    ;(function () {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (bowser.msie || !bowser.check({chrome: '45'})) {
+          document.body.innerHTML =
+            '<div id="bud-err-msg" style="display: block;">' +
+              '<p style="text-align: center">请使用最新版本的谷歌浏览器打开该网站！</p>' +
+              '<div style="text-align: center;margin-top: 40px;">' +
+                '<i class="fa fa-chrome" aria-hidden="true" style="font-size: 120px;"></i>' +
+              '</div>' +
+            '</div>';
+        }
+      });
+    })();
+
+  </script>
+</head>
+<body style="background-color: #f0f0f0;">
+  <div id="bud-err-msg"></div>
+  <div id="loading-container" style="display: none">
+        <div><h2>随时随地, 定制属于您的报表</h2></div>
+        <div class="cssload-container">
+         <ul class="cssload-flex-container">
+          <li>
+            <span class="cssload-loading cssload-one"></span>
+            <span class="cssload-loading cssload-two"></span>
+            <span class="cssload-loading-center"></span>
+          </li>
+          </ul>
+       </div>
+  </div>
+  <app-root></app-root>
+<script type="text/javascript" src="static/inline.bundle.js"></script><script type="text/javascript" src="static/polyfills.bundle.js"></script><script type="text/javascript" src="static/scripts.bundle.js"></script><script type="text/javascript" src="static/styles.bundle.js"></script><script type="text/javascript" src="static/vendor.bundle.js"></script><script type="text/javascript" src="static/main.bundle.js"></script></body>
+</html>
