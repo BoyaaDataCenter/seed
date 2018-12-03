@@ -18,9 +18,6 @@ def package_files(directory):
         for filename in filenames:
             paths.append(os.path.join(path, filename))
     return paths
-    # for (path, directories, filenames) in os.walk(directory):
-    #     paths.append(os.path.join(path, '*'))
-    # return paths
 
 
 static_files = package_files(os.path.join('src', 'seed', 'static'))
@@ -32,9 +29,6 @@ setup(
     install_requires=install_requires,
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    # package_data={
-    #     '': static_folders
-    # },
     data_files=static_files,
     include_package_data=True,
     entry_points={
