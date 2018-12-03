@@ -140,6 +140,7 @@ class SessionAuth(BaseAuth):
         user = Account.query.filter_by(id=user_id).first()
         if user:
             bussiness_id = UserBussinessCache().get(user.id) or 1
+            # TODO 需要修复db.model自动保存的问题
             if self._is_bussiness_admin(user.id, bussiness=bussiness_id) and user.role != 'super_admin':
                 user.role = 'admin'
 

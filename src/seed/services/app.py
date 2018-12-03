@@ -10,6 +10,7 @@ from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
+from seed.models.init import init_databases, init_analogdata, is_new_databases
 
 
 class SeedHttpServer(object):
@@ -25,10 +26,16 @@ class SeedHttpServer(object):
         self.register_databases()
         self.register_cache()
         self.register_api()
+        print(self.app.url_map)
         self.register_hook()
 
     def create_app(self, config_file):
         static_folder_path = os.path.join(
+            Path(os.path.dirname(os.path.realpath(__file__))).parent,
+            'static',
+            'static'
+        )
+        template_folder_path = os.path.join(
             Path(os.path.dirname(os.path.realpath(__file__))).parent,
             'static'
         )
@@ -36,7 +43,7 @@ class SeedHttpServer(object):
             __name__,
             static_url_path='/static',
             static_folder=static_folder_path,
-            template_folder=static_folder_path
+            template_folder=template_folder_path
         )
 
         app.config.from_pyfile(config_file)
@@ -99,7 +106,9 @@ class SeedHttpServer(object):
             flask_migrate.migrate(sql=sql)
             flask_migrate.upgrade(sql=sql)
 
-        # 写入默认数据
-        # TODO 判断是否为新数据库
-
-        # 写入默认数据
+            if is_new_databases():
+                # 写入默认数据
+                print('初始化模拟数据')
+                init_analogdata()
+                print('初始化默认业务模块')
+                init_databases()

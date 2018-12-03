@@ -15,7 +15,7 @@ class DatabaseTest(RestfulBaseView):
         try:
             drive = ALL_DRIVES[db_conf['dtype']]
             drive_instance = drive(
-                db_conf['ip'], db_conf['port'], db_conf['name'],
+                db_conf['ip'], int(db_conf['port']), db_conf['name'],
                 db_conf['user'], db_conf['password']
             )
             success = drive_instance.test_connection()
