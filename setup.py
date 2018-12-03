@@ -21,6 +21,7 @@ def package_files(directory):
 
 
 static_files = package_files(os.path.join('src', 'seed', 'static'))
+static_files.extend(package_files(os.path.join('src', 'seed', 'data')))
 
 
 setup(
@@ -28,7 +29,9 @@ setup(
     version=VERSION,
     install_requires=install_requires,
     packages=find_packages('src'),
-    package_dir={'': 'src'},
+    package_dir={
+        '': 'src'
+    },
     data_files=static_files,
     include_package_data=True,
     entry_points={
