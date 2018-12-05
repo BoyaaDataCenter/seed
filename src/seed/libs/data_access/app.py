@@ -9,6 +9,9 @@ class DataAccess(object):
         self.db = db
 
         self.sql = kwargs['sql']
+        if not self.sql:
+            raise Exception("SQL不能为空！")
+
         self.indexs = kwargs['indexs']
         if not self.indexs:
             raise Exception("指标不能为空！")
