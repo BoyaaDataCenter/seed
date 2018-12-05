@@ -10,7 +10,13 @@ class DataAccess(object):
 
         self.sql = kwargs['sql']
         self.indexs = kwargs['indexs']
+        if not self.indexs:
+            raise Exception("指标不能为空！")
+
         self.dimensions = kwargs['dimensions']
+        if not self.dimensions:
+            raise Exception("维度不能为空！")
+
         self.query = kwargs.get('query', {})
 
         self.charttype = kwargs.get('charttype', 'chart')
