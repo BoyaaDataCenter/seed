@@ -79,7 +79,8 @@ class LineFormatter(BaseFormatter):
         else:
             middle_data = {
                 '-'.join([str(json.loads(key)[category_column]) for category_column in category_columns]): value for
-                key, value in self.data.items()}
+                key, value in self.data.items()
+            }
 
         series_datas = []
         for serie in series:
@@ -87,7 +88,7 @@ class LineFormatter(BaseFormatter):
             for category in categories:
                 data.append(middle_data.get(str(category), {}).get(serie, '-'))
 
-            series_data = {'data': data, 'dim': serie}
+            series_data = {'data': data, 'dim': serie, 'name': serie}
             series_data.update(series_map.get(serie, {}))
             series_datas.append(series_data)
 
