@@ -46,8 +46,7 @@ class QueryData(RestfulBaseView):
             dtype, db = get_db_by_id(panel_data['db_source'])
             query_datas = DataAccess(dtype, db, **panel_data).get_datas()
         except Exception as e:
-            # error_message = str(e)
-            raise
+            error_message = str(e)
             return self.response_json(self.HttpErrorCode.ERROR, msg=error_message)
 
         return self.response_json(self.HttpErrorCode.SUCCESS, data=query_datas)

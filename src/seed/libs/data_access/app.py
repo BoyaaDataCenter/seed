@@ -19,11 +19,17 @@ class DataAccess(object):
 
     def get_datas(self):
         # 获取原数据
-        source_data, sql_info = self.get_source_data()
-        middle_data = self.transfer_middle_data(source_data)
+        try:
+            source_data, sql_info = self.get_source_data()
+            middle_data = self.transfer_middle_data(source_data)
+        except Exception as e:
+            raise Exception('数据库取数错误: %s' % str(e))
 
         # 格式化
-        format_data = self.format_data(middle_data)
+        try:
+            format_data = self.format_data(middle_data)
+        except Exception as e:
+            raise Exception('数据格式化出错: %s' % str(e))
 
         return format_data
 

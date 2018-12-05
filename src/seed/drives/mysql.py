@@ -17,8 +17,10 @@ class MySQL(PostgreSQL):
             query_data = self._query(cursor, sql, params)
             return query_data
         except (pymysql.OperationalError, pymysql.DatabaseError, pymysql.InterfaceError) as e:
+            if retry_count < 1:
+                raise
             self._connect()
-            return self.query(self, params=params, retry_count=retry_count-1)
+            return self.query(sql, params=params, retry_count=retry_count-1)
         finally:
             cursor.close()
 
