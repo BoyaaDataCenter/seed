@@ -4,6 +4,11 @@
 #############
 # databases #
 #############
+#
+# 系统本身支持MySQL和PostgreSQL数据库
+# PostgreSQL ENGINE 选择 postgresql+psycopg2
+# MySQL ENGINE 选择 mysql+pymysql
+#
 DATABASES = {
     'default': {
         'ENGINE': 'mysql+pymysql',

@@ -34,6 +34,9 @@ class PostgreSQL(BaseDrive):
         except (psycopg2.OperationalError, psycopg2.DatabaseError, psycopg2.InterfaceError) as e:
             # 可能数据库会主动断开连接
             # 尝试重新连接, 并重试
+            if not retry_count:
+                raise
+
             self._connect()
             return self.query(sql, params=params, retry_count=retry_count-1)
         finally:

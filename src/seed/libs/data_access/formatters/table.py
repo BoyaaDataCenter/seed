@@ -71,7 +71,7 @@ class TableFormatter(BaseFormatter):
         return table_datas
 
     def _sort_table_column(self, data):
-        # TODO 进行table类型的排序
+        # 进行table类型的排序
 
         order_fields = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs]
 

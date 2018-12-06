@@ -6,38 +6,62 @@ __all__ = ['Panels']
 class Panels(PageModel):
     """ data panels model
     """
-    name = db.Column(db.Text, nullable=False,
-        comment='Panel name')
+    name = db.Column(
+        db.Text, nullable=False,
+        comment='Panel name'
+    )
 
-    desc = db.Column(db.Text, nullable=False,
-        comment='Panel description')
+    desc = db.Column(
+        db.Text, nullable=False,
+        comment='Panel description'
+    )
 
-    x = db.Column(db.Float, nullable=False,
-        comment='The panel x coordinate')
+    x = db.Column(
+        db.Float, nullable=False,
+        comment='The panel x coordinate'
+    )
 
-    y = db.Column(db.Float, nullable=False,
-        comment='The panel y coordinate')
+    y = db.Column(
+        db.Float, nullable=False,
+        comment='The panel y coordinate'
+    )
 
-    w = db.Column(db.Float, nullable=False,
-        comment='The panel width')
+    w = db.Column(
+        db.Float, nullable=False,
+        comment='The panel width'
+    )
 
-    h = db.Column(db.Float, nullable=False,
-        comment='The panel height')
+    h = db.Column(
+        db.Float, nullable=False,
+        comment='The panel height'
+    )
 
-    db_source = db.Column(db.Integer, nullable=False,
-        comment='Panel sql query database id')
+    db_source = db.Column(
+        db.Integer, nullable=False,
+        comment='Panel sql query database id'
+    )
 
-    charttype = db.Column(db.Text, nullable=False,
-        comment='Panel data chart type')
+    charttype = db.Column(
+        db.Text, nullable=False,
+        comment='Panel data chart type'
+    )
 
-    sql = db.Column(db.Text, nullable=False,
-        comment='Panel sql string')
+    sql = db.Column(
+        db.Text, nullable=False,
+        comment='Panel sql string'
+    )
 
-    indexs = db.Column(db.Text, nullable=False,
-        comment='Data index json configure')
+    indexs = db.Column(
+        db.Text, nullable=False,
+        comment='Data index json configure'
+    )
 
-    dimensions = db.Column(db.Text, nullable=False,
-        comment='Data dimensions configure')
+    dimensions = db.Column(
+        db.Text, nullable=False,
+        comment='Data dimensions configure'
+    )
 
-    sort = db.Column(db.Integer, nullable=False,
-        comment='The panel sort')
+    sort = db.Column(
+        db.Integer, nullable=False,
+        comment='The panel sort'
+    )

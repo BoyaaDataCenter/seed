@@ -10,40 +10,6 @@ from seed.models.filters import Filters
 from seed.models.panels import Panels
 
 
-@event.listens_for(Bussiness, 'after_insert')
-def bussiness_after_insert_hook(mapper, connection, target):
-    """ 创建业务之后, 默认添加菜单和角色
-    """
-    # 新增默认菜单
-    default_first_menu = connection.execute(
-        Menu.__table__.insert(),
-        bussiness_id=target.id,
-        name='游戏概况'
-    )
-    connection.execute(
-        Menu.__table__.insert(),
-        bussiness_id=target.id,
-        name='活跃用户',
-        parent_id=default_first_menu.lastrowid
-    )
-
-    # 新增默认角色
-    connection.execute(
-        Role.__table__.insert(),
-        bussiness_id=target.id,
-        role='商务'
-    )
-
-    # TODO 新增默认图表数据
-
-
-@event.listens_for(Menu, 'after_insert')
-def menu_after_insert_hook(mapper, connection, target):
-    """ 创建菜单之后，默认添加数据图表
-    """
-    pass
-
-
 @event.listens_for(BUser, 'after_delete')
 def buser_after_delete_hook(mapper, connection, target):
     """  删除业务用户之后，尝试删除该用户在当前业务之下的角色 和 管理员权限
@@ -108,7 +74,7 @@ def menu_after_delete_hook(mapper, connection, target):
     """
     pass
     # 删除业务相关的角色菜单
-    # # TODO menu和page不统一
+    # TODO menu和page不统一
     # connection.execute(
     #     RoleMenu.__table__.delete(),
     #     menu_id=target.id

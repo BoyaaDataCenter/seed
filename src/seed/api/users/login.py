@@ -31,7 +31,7 @@ class Login(RestfulBaseView):
         if not bcrypt.checkpw(password.encode('utf-8'), account.password.encode('utf-8')):
             return self.response_json(self.HttpErrorCode.AUTHORIZED_ERROR)
 
-        # TODO Cookie设置
+        # Cookie设置
         res = make_response(self.response_json(self.HttpErrorCode.SUCCESS))
 
         session_token = SessionCache().create_session(account.id)

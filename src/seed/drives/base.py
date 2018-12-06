@@ -25,6 +25,7 @@ class BaseDrive(object):
         if retry_count < 0:
             raise Exception("Retry time out")
 
+
 class Row(dict):
 
     """访问对象那样访问dict,行结果"""
