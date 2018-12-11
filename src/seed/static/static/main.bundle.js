@@ -84,34 +84,32 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__routing_routing_module__ = __webpack_require__("./src/app/routing/routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_core_module__ = __webpack_require__("./src/app/core/core.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__main_main_component__ = __webpack_require__("./src/app/main/main.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__set_set_component__ = __webpack_require__("./src/app/set/set.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__user_info_user_info_component__ = __webpack_require__("./src/app/user-info/user-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__user_list_user_list_component__ = __webpack_require__("./src/app/user-list/user-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__role_role_component__ = __webpack_require__("./src/app/role/role.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__menu_menu_component__ = __webpack_require__("./src/app/menu/menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__debugger_debugger_component__ = __webpack_require__("./src/app/debugger/debugger.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__role_menu_role_menu_component__ = __webpack_require__("./src/app/role-menu/role-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__report_page_report_page_component__ = __webpack_require__("./src/app/report-page/report-page.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__business_config_business_config_component__ = __webpack_require__("./src/app/business-config/business-config.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__sys_user_list_sys_user_list_component__ = __webpack_require__("./src/app/sys-user-list/sys-user-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__report_config_report_config_component__ = __webpack_require__("./src/app/report-config/report-config.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__report_element_report_element_component__ = __webpack_require__("./src/app/report-element/report-element.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__report_query_report_query_component__ = __webpack_require__("./src/app/report-query/report-query.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__sys_header_sys_header_component__ = __webpack_require__("./src/app/sys-header/sys-header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__reset_password_reset_password_component__ = __webpack_require__("./src/app/reset-password/reset-password.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__global_header_global_header_component__ = __webpack_require__("./src/app/global-header/global-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_core_module__ = __webpack_require__("./src/app/core/core.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__main_main_component__ = __webpack_require__("./src/app/main/main.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__user_info_user_info_component__ = __webpack_require__("./src/app/user-info/user-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__user_list_user_list_component__ = __webpack_require__("./src/app/user-list/user-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__role_role_component__ = __webpack_require__("./src/app/role/role.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__menu_menu_component__ = __webpack_require__("./src/app/menu/menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__debugger_debugger_component__ = __webpack_require__("./src/app/debugger/debugger.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__role_menu_role_menu_component__ = __webpack_require__("./src/app/role-menu/role-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__report_page_report_page_component__ = __webpack_require__("./src/app/report-page/report-page.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__business_config_business_config_component__ = __webpack_require__("./src/app/business-config/business-config.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__sys_user_list_sys_user_list_component__ = __webpack_require__("./src/app/sys-user-list/sys-user-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__report_config_report_config_component__ = __webpack_require__("./src/app/report-config/report-config.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__report_element_report_element_component__ = __webpack_require__("./src/app/report-element/report-element.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__report_query_report_query_component__ = __webpack_require__("./src/app/report-query/report-query.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__sys_header_sys_header_component__ = __webpack_require__("./src/app/sys-header/sys-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__reset_password_reset_password_component__ = __webpack_require__("./src/app/reset-password/reset-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__global_header_global_header_component__ = __webpack_require__("./src/app/global-header/global-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__no_page_no_page_component__ = __webpack_require__("./src/app/no-page/no-page.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -148,26 +146,25 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__main_main_component__["a" /* MainComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__set_set_component__["a" /* SetComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__user_info_user_info_component__["a" /* UserInfoComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__user_list_user_list_component__["a" /* UserListComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__role_role_component__["a" /* RoleComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__menu_menu_component__["a" /* MenuComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__debugger_debugger_component__["a" /* DebuggerComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__role_menu_role_menu_component__["a" /* RoleMenuComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__report_page_report_page_component__["a" /* ReportPageComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__business_config_business_config_component__["a" /* BusinessConfigComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__sys_user_list_sys_user_list_component__["a" /* SysUserListComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__report_config_report_config_component__["a" /* ReportConfigComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__report_element_report_element_component__["a" /* ReportElementComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__report_query_report_query_component__["a" /* ReportQueryComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__sys_header_sys_header_component__["a" /* SysHeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__register_register_component__["a" /* RegisterComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__reset_password_reset_password_component__["a" /* ResetPasswordComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__global_header_global_header_component__["a" /* GlobalHeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__main_main_component__["a" /* MainComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__user_info_user_info_component__["a" /* UserInfoComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__user_list_user_list_component__["a" /* UserListComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__role_role_component__["a" /* RoleComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__menu_menu_component__["a" /* MenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__debugger_debugger_component__["a" /* DebuggerComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__role_menu_role_menu_component__["a" /* RoleMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__report_page_report_page_component__["a" /* ReportPageComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__business_config_business_config_component__["a" /* BusinessConfigComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__sys_user_list_sys_user_list_component__["a" /* SysUserListComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__report_config_report_config_component__["a" /* ReportConfigComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__report_element_report_element_component__["a" /* ReportElementComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__report_query_report_query_component__["a" /* ReportQueryComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__sys_header_sys_header_component__["a" /* SysHeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__register_register_component__["a" /* RegisterComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__reset_password_reset_password_component__["a" /* ResetPasswordComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__global_header_global_header_component__["a" /* GlobalHeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__no_page_no_page_component__["a" /* NoPageComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -175,7 +172,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_6__routing_routing_module__["a" /* RoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_8__core_core_module__["a" /* CoreModule */]
+            __WEBPACK_IMPORTED_MODULE_7__core_core_module__["a" /* CoreModule */]
         ],
         providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
@@ -301,13 +298,7 @@ var BusinessConfigComponent = (function () {
         this.isShowData = false;
     }
     BusinessConfigComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.userInfo = this.globalDataService.getParams().userInfo;
-        if (this.userInfo.role == 'super_admin') {
-            this.userListService.getSysUserList().subscribe(function (listData) {
-                _this.userList = listData;
-            });
-        }
         this.getBusinessList();
     };
     // 获取业务列表
@@ -315,6 +306,19 @@ var BusinessConfigComponent = (function () {
         var _this = this;
         this.businessConfigService.getBusinessList().subscribe(function (listData) {
             _this.businessList = listData;
+            var flag = false;
+            for (var i = 0; i < _this.businessList.my_bussiness.length; i++) {
+                if (_this.businessList.my_bussiness[i]['edit'] == true) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                // 业务管理员和超级管理员有编辑权限，编辑业务需要系统用户列表
+                _this.userListService.getSysUserList().subscribe(function (userList) {
+                    _this.userList = userList;
+                });
+            }
             _this.isShowData = true;
         });
     };
@@ -400,6 +404,7 @@ var BusinessConfigComponent = (function () {
                 }
             }
             var temp = this.businessInfo.managers, temp_ = [];
+            // 处理管理员数据
             for (var i = 0; i < this.userList.length; i++) {
                 var item = this.userList[i];
                 if (temp.indexOf(item.id) > -1) {
@@ -418,7 +423,7 @@ var BusinessConfigComponent = (function () {
                         this.businessInfo['managers_new'] = temp_;
                         if (this.businessInfo['managers_old']) {
                             Object.keys(this.businessInfo['managers_old']).forEach(function (key, index) {
-                                if (_this.businessInfo['managers'].indexOf(parseInt(key)) == -1) {
+                                if (_this.businessInfo['managers'].indexOf(parseInt(key, 10)) == -1) {
                                     _this.businessInfo['managers_new'].push(_this.businessInfo['managers_old'][key]);
                                 }
                             });
@@ -486,7 +491,6 @@ var BusinessConfigComponent = (function () {
         var _this = this;
         this.businessConfigService.getDbTypeList().subscribe(function (listData) {
             _this.dbTypeList = listData;
-            // this.dbTypeList.unshift(['label':''])
             _this.dbInfo = {
                 'dtype': '',
                 'name': '',
@@ -566,7 +570,7 @@ var BusinessConfigComponent = (function () {
                 _this.businessConfigService.setBusinessId(item.id);
                 _this.businessConfigService.setBusinessName(item.name);
                 if (menuData.length == 0) {
-                    _this.configService.setPathName('/userInfo/' + item.id);
+                    _this.configService.setPathName('/noPage/' + item.id);
                     window.location.href = '/';
                 }
                 else {
@@ -589,17 +593,6 @@ var BusinessConfigComponent = (function () {
         else {
             return menu.id;
         }
-    };
-    BusinessConfigComponent.prototype.signOut = function () {
-        var _this = this;
-        this.configService.loginOut().subscribe(function () {
-            _this.configService.clearBusinessInfo();
-            _this.router.navigateByUrl('/login');
-        });
-    };
-    // 查看用户信息
-    BusinessConfigComponent.prototype.checkUserInfo = function () {
-        this.router.navigateByUrl('/userInfo');
     };
     return BusinessConfigComponent;
 }());
@@ -2991,7 +2984,6 @@ var UserListService = (function () {
     UserListService.prototype.getSysUserList = function () {
         return this.fetch.get('/endpoints/account', null);
     };
-    ///endpoints/account
     /**
      * 编辑系统用户账号信息
      * @returns {Observable<any>}
@@ -3123,7 +3115,6 @@ var DebuggerComponent = (function () {
         this.debuggerService.simulateUser(userInfo.id);
         this.globalDataService.removeBusinessId();
         window.location.href = '/';
-        // this.router.navigateByUrl('/businessConfig');
     };
     // 清除模拟用户
     DebuggerComponent.prototype.clearSimulationUser = function () {
@@ -3312,67 +3303,6 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ "./src/app/home/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  暂无任何菜单哦!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/home/home.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "./src/app/home/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var HomeComponent = (function () {
-    function HomeComponent() {
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-    };
-    return HomeComponent;
-}());
-HomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-home',
-        template: __webpack_require__("./src/app/home/home.component.html"),
-        styles: [__webpack_require__("./src/app/home/home.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], HomeComponent);
-
-//# sourceMappingURL=home.component.js.map
-
-/***/ }),
-
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
@@ -3389,7 +3319,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n#loginPage {\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n  /*右上动画*/\n  /*向右来回重复动画*/\n  /*向左来回重复动画*/\n  /*向左动画*/ }\n  #loginPage #login {\n    position: absolute;\n    top: 40%;\n    left: 50%;\n    transform: translate(-50%, -50%); }\n    #loginPage #login .sysName {\n      font-size: 22px;\n      margin-left: 200px;\n      font-weight: bold;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      margin-bottom: 40px; }\n      #loginPage #login .sysName .desc {\n        font-family: cursive;\n        color: #30bc73;\n        margin-left: 20px;\n        font-size: 18px; }\n    #loginPage #login .container {\n      width: 1240px;\n      margin: 0 auto;\n      position: relative;\n      height: 550px; }\n    #loginPage #login .cloud1, #loginPage #login .cloud2, #loginPage #login .cloud3, #loginPage #login .airplane1, #loginPage #login .airplane2, #loginPage #login .niao, #loginPage #login .btn_bottom {\n      background: url(" + escape(__webpack_require__("./src/assets/images/cloudPlane.png")) + ") no-repeat 0 0;\n      position: absolute;\n      display: block;\n      z-index: 100; }\n    #loginPage #login .mans {\n      z-index: 101;\n      background: url(" + escape(__webpack_require__("./src/assets/images/mans.png")) + ") no-repeat 0 0;\n      position: absolute;\n      left: 135px;\n      top: 66px;\n      width: 354px;\n      height: 337px; }\n    #loginPage #login .cloud1 {\n      width: 71px;\n      height: 37px;\n      left: 197px;\n      top: 158px; }\n    #loginPage #login .niao {\n      width: 44px;\n      height: 29px;\n      background-position: -51px -70px;\n      left: 77px;\n      top: 183px; }\n    #loginPage #login .cloud2 {\n      width: 51px;\n      height: 28px;\n      left: 564px;\n      top: 195px;\n      background-position: 0 -37px; }\n    #loginPage #login .cloud3 {\n      width: 51px;\n      height: 28px;\n      left: 108px;\n      top: 287px;\n      background-position: 0 -37px; }\n    #loginPage #login .airplane1 {\n      width: 62px;\n      height: 46px;\n      left: 557px;\n      top: 95px;\n      background-position: -71px 0px; }\n    #loginPage #login .airplane2 {\n      width: 34px;\n      height: 24px;\n      left: 529px;\n      top: 167px;\n      background-position: -51px -46px; }\n    #loginPage #login .wenzi {\n      position: absolute;\n      left: 205px;\n      top: 404px;\n      width: 281px;\n      height: 79px;\n      font-size: 40px;\n      line-height: 79px;\n      color: #30bc73;\n      text-align: center; }\n      #loginPage #login .wenzi:hover {\n        transform: rotate(2deg); }\n    #loginPage #login .ico_t {\n      width: 700px;\n      height: 560px;\n      position: relative; }\n    #loginPage #login .login_box {\n      box-shadow: 0px 5px 12px #e7e8ed;\n      font-size: 14px;\n      width: 421px;\n      background: #fff;\n      border: 1px solid #e0e5f3;\n      position: absolute;\n      top: 35px;\n      right: 20px;\n      overflow: hidden; }\n      #loginPage #login .login_box .face {\n        width: 90px;\n        height: 90px;\n        margin: 40px auto 20px;\n        position: relative; }\n        #loginPage #login .login_box .face em {\n          display: block;\n          width: 90px;\n          height: 90px;\n          overflow: hidden; }\n      #loginPage #login .login_box > ul {\n        padding: 30px; }\n        #loginPage #login .login_box > ul li {\n          position: relative;\n          margin-bottom: 20px;\n          list-style: none; }\n          #loginPage #login .login_box > ul li:last-child {\n            margin-top: 20px; }\n      #loginPage #login .login_box .user, #loginPage #login .login_box .pass {\n        padding-top: 1px; }\n      #loginPage #login .login_box .txt {\n        padding-left: 40px;\n        width: 100%;\n        height: 56px;\n        line-height: 56px;\n        border: 1px solid #e0e5f3;\n        border-radius: 4px;\n        font-size: 14px;\n        color: #282d37; }\n        #loginPage #login .login_box .txt:focus {\n          outline: none;\n          border-color: #30bc73;\n          box-shadow: 0 0 6px #4ebc7b; }\n      #loginPage #login .login_box .erro_tips {\n        color: #e75f3c;\n        margin: 0;\n        font-size: 16px; }\n      #loginPage #login .login_box .user i, #loginPage #login .login_box .pass i {\n        width: 16px;\n        height: 16px;\n        background: url(" + escape(__webpack_require__("./src/assets/images/loginIcon.png")) + ") no-repeat 0 0;\n        background-size: 100% 200%;\n        display: block;\n        position: absolute;\n        top: 21px;\n        left: 17px; }\n      #loginPage #login .login_box .user i.on {\n        background-position: -1px 0px; }\n      #loginPage #login .login_box .pass i.on {\n        background-position: -1px -16px; }\n      #loginPage #login .login_box .pass .tips {\n        font-size: 14px;\n        color: #e0e5f3;\n        position: absolute;\n        left: 40px;\n        line-height: 56px;\n        height: 56px; }\n      #loginPage #login .login_box .btn {\n        display: block;\n        width: 360px;\n        height: 54px;\n        font-size: 20px;\n        text-align: center;\n        line-height: 54px;\n        color: #fff;\n        background-color: #30bc73;\n        border-radius: 4px;\n        cursor: pointer; }\n        #loginPage #login .login_box .btn:hover {\n          background-color: #44cf86; }\n      #loginPage #login .login_box .opers {\n        text-align: right;\n        color: #555;\n        cursor: pointer;\n        margin-bottom: 0;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n        height: 20px; }\n        #loginPage #login .login_box .opers span:hover {\n          color: #1b1d1f;\n          border-bottom: 1px solid #1b1d1f;\n          padding-bottom: 4px; }\n\n@keyframes to-tr {\n  from {\n    opacity: 0;\n    transform: translate(-80px, 80px); }\n  to {\n    opacity: 1;\n    transform: translate(0, 0); } }\n  #loginPage .to-tr {\n    animation: to-tr 2s ease;\n    animation-fill-mode: backwards; }\n\n@keyframes to-le {\n  from {\n    opacity: 0;\n    transform: translate(-80px, -80px); }\n  to {\n    opacity: 1;\n    transform: translate(0, 0); } }\n  #loginPage .to-le {\n    animation: to-le 4s ease;\n    animation-fill-mode: backwards; }\n\n@keyframes moveRight {\n  0% {\n    transform: translateX(0); }\n  50% {\n    transform: translateX(200px); }\n  100% {\n    transform: translateX(0); } }\n  #loginPage .moveRight {\n    animation: moveRight 20s infinite linear;\n    animation-fill-mode: backwards; }\n\n@keyframes moveLeft {\n  0% {\n    transform: translateX(0); }\n  50% {\n    transform: translateX(-200px); }\n  100% {\n    transform: translateX(0); } }\n  #loginPage .moveLeft {\n    animation: moveLeft 20s infinite linear;\n    animation-fill-mode: backwards; }\n\n@keyframes toleft {\n  from {\n    opacity: 0;\n    transform: translateX(40px); }\n  to {\n    opacity: 1;\n    transform: translateX(0); } }\n  #loginPage .toleft {\n    animation: toleft 2s ease 1s;\n    animation-fill-mode: backwards; }\n\n@keyframes toright {\n  from {\n    opacity: 0;\n    transform: translateX(-40px); }\n  to {\n    opacity: 1;\n    transform: translateX(0); } }\n  #loginPage .toright {\n    animation: toright 2s ease 1s;\n    animation-fill-mode: backwards; }\n  #loginPage .trans {\n    transition: all .3s ease-in-out; }\n  #loginPage .time0-5 {\n    animation-delay: .5s; }\n  #loginPage .time1 {\n    animation-delay: 1s; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n#loginPage {\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n  /*右上动画*/\n  /*向右来回重复动画*/\n  /*向左来回重复动画*/\n  /*向左动画*/ }\n  #loginPage #login {\n    position: absolute;\n    top: 40%;\n    left: 50%;\n    transform: translate(-50%, -50%); }\n    #loginPage #login .sysName {\n      font-size: 22px;\n      margin-left: 200px;\n      font-weight: bold;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      margin-bottom: 40px; }\n      #loginPage #login .sysName .desc {\n        font-family: cursive;\n        color: #30bc73;\n        margin-left: 20px;\n        font-size: 18px; }\n    #loginPage #login .container {\n      width: 1240px;\n      margin: 0 auto;\n      position: relative;\n      height: 550px; }\n    #loginPage #login .cloud1, #loginPage #login .cloud2, #loginPage #login .cloud3, #loginPage #login .airplane1, #loginPage #login .airplane2, #loginPage #login .niao, #loginPage #login .btn_bottom {\n      background: url(" + escape(__webpack_require__("./src/assets/images/cloudPlane.png")) + ") no-repeat 0 0;\n      position: absolute;\n      display: block;\n      z-index: 100; }\n    #loginPage #login .mans {\n      z-index: 101;\n      background: url(" + escape(__webpack_require__("./src/assets/images/mans.png")) + ") no-repeat 0 0;\n      position: absolute;\n      left: 135px;\n      top: 66px;\n      width: 354px;\n      height: 337px; }\n    #loginPage #login .cloud1 {\n      width: 71px;\n      height: 37px;\n      left: 197px;\n      top: 158px; }\n    #loginPage #login .niao {\n      width: 44px;\n      height: 29px;\n      background-position: -51px -70px;\n      left: 77px;\n      top: 183px; }\n    #loginPage #login .cloud2 {\n      width: 51px;\n      height: 28px;\n      left: 564px;\n      top: 195px;\n      background-position: 0 -37px; }\n    #loginPage #login .cloud3 {\n      width: 51px;\n      height: 28px;\n      left: 108px;\n      top: 287px;\n      background-position: 0 -37px; }\n    #loginPage #login .airplane1 {\n      width: 62px;\n      height: 46px;\n      left: 557px;\n      top: 95px;\n      background-position: -71px 0px; }\n    #loginPage #login .airplane2 {\n      width: 34px;\n      height: 24px;\n      left: 529px;\n      top: 167px;\n      background-position: -51px -46px; }\n    #loginPage #login .wenzi {\n      position: absolute;\n      left: 205px;\n      top: 404px;\n      width: 281px;\n      height: 79px;\n      font-size: 40px;\n      line-height: 79px;\n      color: #30bc73;\n      text-align: center; }\n      #loginPage #login .wenzi:hover {\n        transform: rotate(2deg); }\n    #loginPage #login .ico_t {\n      width: 700px;\n      height: 560px;\n      position: relative; }\n    #loginPage #login .login_box {\n      box-shadow: 0px 5px 12px #e7e8ed;\n      font-size: 14px;\n      width: 421px;\n      background: #fff;\n      border: 1px solid #e0e5f3;\n      position: absolute;\n      top: 35px;\n      right: 20px;\n      overflow: hidden; }\n      #loginPage #login .login_box .face {\n        width: 90px;\n        height: 90px;\n        margin: 40px auto 20px;\n        position: relative; }\n        #loginPage #login .login_box .face em {\n          display: block;\n          width: 90px;\n          height: 90px;\n          overflow: hidden; }\n      #loginPage #login .login_box > ul {\n        padding: 30px; }\n        #loginPage #login .login_box > ul li {\n          position: relative;\n          margin-bottom: 20px;\n          list-style: none; }\n          #loginPage #login .login_box > ul li:last-child {\n            margin-top: 20px; }\n      #loginPage #login .login_box .user, #loginPage #login .login_box .pass {\n        padding-top: 1px; }\n      #loginPage #login .login_box .txt {\n        padding-left: 40px;\n        width: 100%;\n        height: 56px;\n        line-height: 56px;\n        border: 1px solid #e0e5f3;\n        border-radius: 4px;\n        font-size: 14px;\n        color: #282d37; }\n        #loginPage #login .login_box .txt:focus {\n          outline: none;\n          border-color: #30bc73;\n          box-shadow: 0 0 6px #4ebc7b; }\n      #loginPage #login .login_box .erro_tips {\n        color: #e75f3c;\n        margin: 0 0 10px 0;\n        font-size: 16px; }\n      #loginPage #login .login_box .user i, #loginPage #login .login_box .pass i {\n        width: 16px;\n        height: 16px;\n        background: url(" + escape(__webpack_require__("./src/assets/images/loginIcon.png")) + ") no-repeat 0 0;\n        background-size: 100% 200%;\n        display: block;\n        position: absolute;\n        top: 21px;\n        left: 17px; }\n      #loginPage #login .login_box .user i.on {\n        background-position: -1px 0px; }\n      #loginPage #login .login_box .pass i.on {\n        background-position: -1px -16px; }\n      #loginPage #login .login_box .pass .tips {\n        font-size: 14px;\n        color: #e0e5f3;\n        position: absolute;\n        left: 40px;\n        line-height: 56px;\n        height: 56px; }\n      #loginPage #login .login_box .btn {\n        display: block;\n        width: 360px;\n        height: 54px;\n        font-size: 20px;\n        text-align: center;\n        line-height: 54px;\n        color: #fff;\n        background-color: #30bc73;\n        border-radius: 4px;\n        cursor: pointer; }\n        #loginPage #login .login_box .btn:hover {\n          background-color: #44cf86; }\n      #loginPage #login .login_box .opers {\n        text-align: right;\n        color: #555;\n        cursor: pointer;\n        margin-bottom: 0;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n        height: 20px; }\n        #loginPage #login .login_box .opers span:hover {\n          color: #1b1d1f;\n          border-bottom: 1px solid #1b1d1f;\n          padding-bottom: 4px; }\n\n@keyframes to-tr {\n  from {\n    opacity: 0;\n    transform: translate(-80px, 80px); }\n  to {\n    opacity: 1;\n    transform: translate(0, 0); } }\n  #loginPage .to-tr {\n    animation: to-tr 2s ease;\n    animation-fill-mode: backwards; }\n\n@keyframes to-le {\n  from {\n    opacity: 0;\n    transform: translate(-80px, -80px); }\n  to {\n    opacity: 1;\n    transform: translate(0, 0); } }\n  #loginPage .to-le {\n    animation: to-le 4s ease;\n    animation-fill-mode: backwards; }\n\n@keyframes moveRight {\n  0% {\n    transform: translateX(0); }\n  50% {\n    transform: translateX(200px); }\n  100% {\n    transform: translateX(0); } }\n  #loginPage .moveRight {\n    animation: moveRight 20s infinite linear;\n    animation-fill-mode: backwards; }\n\n@keyframes moveLeft {\n  0% {\n    transform: translateX(0); }\n  50% {\n    transform: translateX(-200px); }\n  100% {\n    transform: translateX(0); } }\n  #loginPage .moveLeft {\n    animation: moveLeft 20s infinite linear;\n    animation-fill-mode: backwards; }\n\n@keyframes toleft {\n  from {\n    opacity: 0;\n    transform: translateX(40px); }\n  to {\n    opacity: 1;\n    transform: translateX(0); } }\n  #loginPage .toleft {\n    animation: toleft 2s ease 1s;\n    animation-fill-mode: backwards; }\n\n@keyframes toright {\n  from {\n    opacity: 0;\n    transform: translateX(-40px); }\n  to {\n    opacity: 1;\n    transform: translateX(0); } }\n  #loginPage .toright {\n    animation: toright 2s ease 1s;\n    animation-fill-mode: backwards; }\n  #loginPage .trans {\n    transition: all .3s ease-in-out; }\n  #loginPage .time0-5 {\n    animation-delay: .5s; }\n  #loginPage .time1 {\n    animation-delay: 1s; }\n", ""]);
 
 // exports
 
@@ -3440,9 +3370,11 @@ var LoginComponent = (function () {
     LoginComponent.prototype.inputStart = function () {
         this.errorMsg = '';
     };
+    // 去注册
     LoginComponent.prototype.goToRegister = function () {
         this.router.navigateByUrl('/register');
     };
+    // 重置密码
     LoginComponent.prototype.goToReset = function () {
         this.router.navigateByUrl('/resetPassword');
     };
@@ -3465,7 +3397,7 @@ var _a, _b;
 /***/ "./src/app/main/main.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-main\">\n  <!--主页-->\n  <nav class=\"bud-nav\" style=\"min-width: 160px;\"  *ngIf=\"menuListVisible\">\n    <!--logo 及标题-->\n    <div class=\"top\" (mouseleave)=\"businessListVisible = false\">\n      <a class=\"logo\">\n        <img [attr.src]=\"'assets/images/logo1.png'\" alt=\"\" (click)=\"jumpToBusinessList()\">\n      </a>\n      <span class=\"title\">{{businessSelected.name}}</span>\n      <span class=\"trigger\" [ngClass]=\"{'-active': businessListVisible}\" (mouseenter)=\"businessListVisible = true\" >\n        <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i>\n      </span>\n      <div class=\"bud-nav-game-list\" [ngClass]=\"{'-active': businessListVisible}\">\n        <div class=\"item paddingItem\"\n             *ngFor=\"let item of businessList;\"\n             (click)=\"changeBusiness(item)\"\n             [ngClass]=\"{'-active': item.id == businessSelected.id}\">\n          <span>{{item.name}}</span>\n        </div>\n        <div class=\"item checkAll paddingItem\"\n             (click)=\"jumpToBusinessList()\">\n          <i class=\"fa fa-list-alt\"></i><span>查看所有业务</span>\n        </div>\n      </div>\n    </div>\n    <!--/logo 及标题-->\n    <!--导航菜单-->\n    <div class=\"bud-nav-menu-wrap bud-scroll\" appSealScroll>\n      <p-panelMenu [model]=\"items\"></p-panelMenu>\n    </div>\n    <div class=\"drawer\">\n      <!--<i class=\"fa fa-angle-double-right\"></i>-->\n      <!--<i class=\"fa fa-angle-double-left\"></i>-->\n    </div>\n  </nav>\n  <div class=\"bud-main\" [ngClass]=\"{'margin-left0': !menuListVisible}\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n\n<p-confirmDialog\n  header=\"确认操作\"\n  acceptLabel=\"确认\"\n  rejectLabel=\"取消\"\n  icon=\"fa fa-question-circle\" width=\"425\"></p-confirmDialog>\n"
+module.exports = "<div class=\"app-main\">\r\n  <!--主页-->\r\n  <nav class=\"bud-nav\" style=\"min-width: 160px;\"  *ngIf=\"menuListVisible\">\r\n    <!--logo 及标题-->\r\n    <div class=\"top\" (mouseleave)=\"businessListVisible = false\">\r\n      <a class=\"logo\">\r\n        <img [attr.src]=\"'assets/images/logo1.png'\" alt=\"\" (click)=\"jumpToBusinessList()\">\r\n      </a>\r\n      <span class=\"title\">{{businessSelected.name}}</span>\r\n      <span class=\"trigger\" [ngClass]=\"{'-active': businessListVisible}\" (mouseenter)=\"businessListVisible = true\" >\r\n        <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i>\r\n      </span>\r\n      <div class=\"bud-nav-game-list\" [ngClass]=\"{'-active': businessListVisible}\">\r\n        <div class=\"item paddingItem\"\r\n             *ngFor=\"let item of businessList;\"\r\n             (click)=\"changeBusiness(item)\"\r\n             [ngClass]=\"{'-active': item.id == businessSelected.id}\">\r\n          <span>{{item.name}}</span>\r\n        </div>\r\n        <div class=\"item checkAll paddingItem\"\r\n             (click)=\"jumpToBusinessList()\">\r\n          <i class=\"fa fa-list-alt\"></i><span>查看所有业务</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <!--/logo 及标题-->\r\n    <!--导航菜单-->\r\n    <div class=\"bud-nav-menu-wrap bud-scroll\" appSealScroll>\r\n      <p-panelMenu [model]=\"items\"></p-panelMenu>\r\n    </div>\r\n  </nav>\r\n  <div class=\"bud-main\" [ngClass]=\"{'margin-left0': !menuListVisible}\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>\r\n\r\n<p-confirmDialog\r\n  header=\"确认操作\"\r\n  acceptLabel=\"确认\"\r\n  rejectLabel=\"取消\"\r\n  icon=\"fa fa-question-circle\" width=\"425\"></p-confirmDialog>\r\n"
 
 /***/ }),
 
@@ -3477,7 +3409,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".app-main {\n  display: -ms-flexbox;\n  display: flex; }\n\n.switch {\n  position: fixed;\n  bottom: 25px;\n  right: 0;\n  height: 96px;\n  z-index: 999; }\n  .switch a {\n    color: inherit; }\n  .switch h1, .switch h2, .switch h3, .switch h4 {\n    margin: 0;\n    margin-bottom: 10px;\n    margin-top: 10px; }\n  .switch h1 {\n    font-size: 3em; }\n  .switch .menu {\n    filter: url(\"#shadowed-goo\"); }\n  .switch .menu-item, .switch .menu-open-button {\n    background: #30bc73;\n    border-radius: 100%;\n    width: 60px;\n    height: 60px;\n    position: absolute;\n    color: #FFF;\n    text-align: center;\n    line-height: 60px;\n    transform: translate3d(0, 0, 0);\n    transition: transform ease-out 200ms; }\n  .switch .menu-open {\n    display: none; }\n  .switch .hamburger {\n    width: 25px;\n    height: 3px;\n    background: #FFF;\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin-left: -12.5px;\n    margin-top: -1.5px;\n    transition: transform 200ms; }\n  .switch .hamburger-1 {\n    transform: translate3d(0, -8px, 0); }\n  .switch .hamburger-2 {\n    transform: translate3d(0, 0, 0); }\n  .switch .hamburger-3 {\n    transform: translate3d(0, 8px, 0); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-1 {\n    transform: translate3d(0, 0, 0) rotate(45deg); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-2 {\n    transform: translate3d(0, 0, 0) scale(0.1, 1); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-3 {\n    transform: translate3d(0, 0, 0) rotate(-45deg); }\n  .switch .menu {\n    position: absolute;\n    right: 96px;\n    box-sizing: border-box;\n    font-size: 20px;\n    text-align: right; }\n  .switch .menu-item {\n    transition: 1s all; }\n    .switch .menu-item:hover {\n      background: white;\n      color: #30bc73; }\n    .switch .menu-item:nth-child(3) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(4) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(5) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(6) {\n      transition-duration: 180ms; }\n  .switch .menu-open-button {\n    z-index: 2;\n    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n    transition-duration: 400ms;\n    transform: scale(1.1, 1.1) translate3d(0, 0, 0);\n    cursor: pointer; }\n  .switch .menu-open-button:hover {\n    transform: scale(1.2, 1.2) translate3d(0, 0, 0); }\n  .switch .menu-open:checked + .menu-open-button {\n    transition-timing-function: linear;\n    transition-duration: 200ms;\n    transform: scale(0.8, 0.8) translate3d(0, 0, 0); }\n  .switch .menu-open:checked ~ .menu-item {\n    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); }\n    .switch .menu-open:checked ~ .menu-item:nth-child(3) {\n      transition-duration: 190ms;\n      margin-left: -80px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(4) {\n      transition-duration: 290ms;\n      margin-left: -160px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(5) {\n      transition-duration: 390ms;\n      margin-left: -240px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(6) {\n      transition-duration: 490ms;\n      margin-left: -320px; }\n\n.switch-svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  right: 0;\n  bottom: 0; }\n\n.bud-main {\n  margin-left: 16%;\n  min-width: 860px;\n  padding: 0;\n  background-color: #f0f0f0;\n  min-height: 100vh;\n  width: 100%; }\n\n.testClass {\n  text-decoration: none;\n  color: #a3b0bf;\n  padding: 18px 0 18px 15px;\n  font-size: 14px;\n  line-height: 0;\n  cursor: pointer; }\n\ntestClass:hover {\n  color: #ffffff; }\n\n.fa-caret-down, .fa-caret-right {\n  position: absolute;\n  right: 10px; }\n\n:host ::ng-deep .bud-nav-menu-wrap {\n  bottom: 20px; }\n  :host ::ng-deep .bud-nav-menu-wrap .fa-caret-right, :host ::ng-deep .bud-nav-menu-wrap .fa-caret-down {\n    position: absolute;\n    right: 10px; }\n  :host ::ng-deep .bud-nav-menu-wrap .ui-panelmenu .ui-menuitem {\n    padding: 4px 0; }\n  :host ::ng-deep .bud-nav-menu-wrap .ui-panelmenu .ui-menu-list {\n    padding: 0; }\n\n.margin-left0 {\n  margin-left: 0; }\n\n.checkAll > i {\n  margin-right: 6px; }\n\n.paddingItem {\n  padding: 18px 14px; }\n", ""]);
+exports.push([module.i, ".app-main {\n  display: -ms-flexbox;\n  display: flex; }\n\n.switch {\n  position: fixed;\n  bottom: 25px;\n  right: 0;\n  height: 96px;\n  z-index: 999; }\n  .switch a {\n    color: inherit; }\n  .switch h1, .switch h2, .switch h3, .switch h4 {\n    margin: 0;\n    margin-bottom: 10px;\n    margin-top: 10px; }\n  .switch h1 {\n    font-size: 3em; }\n  .switch .menu {\n    filter: url(\"#shadowed-goo\"); }\n  .switch .menu-item, .switch .menu-open-button {\n    background: #30bc73;\n    border-radius: 100%;\n    width: 60px;\n    height: 60px;\n    position: absolute;\n    color: #FFF;\n    text-align: center;\n    line-height: 60px;\n    transform: translate3d(0, 0, 0);\n    transition: transform ease-out 200ms; }\n  .switch .menu-open {\n    display: none; }\n  .switch .hamburger {\n    width: 25px;\n    height: 3px;\n    background: #FFF;\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin-left: -12.5px;\n    margin-top: -1.5px;\n    transition: transform 200ms; }\n  .switch .hamburger-1 {\n    transform: translate3d(0, -8px, 0); }\n  .switch .hamburger-2 {\n    transform: translate3d(0, 0, 0); }\n  .switch .hamburger-3 {\n    transform: translate3d(0, 8px, 0); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-1 {\n    transform: translate3d(0, 0, 0) rotate(45deg); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-2 {\n    transform: translate3d(0, 0, 0) scale(0.1, 1); }\n  .switch .menu-open:checked + .menu-open-button .hamburger-3 {\n    transform: translate3d(0, 0, 0) rotate(-45deg); }\n  .switch .menu {\n    position: absolute;\n    right: 96px;\n    box-sizing: border-box;\n    font-size: 20px;\n    text-align: right; }\n  .switch .menu-item {\n    transition: 1s all; }\n    .switch .menu-item:hover {\n      background: white;\n      color: #30bc73; }\n    .switch .menu-item:nth-child(3) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(4) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(5) {\n      transition-duration: 180ms; }\n    .switch .menu-item:nth-child(6) {\n      transition-duration: 180ms; }\n  .switch .menu-open-button {\n    z-index: 2;\n    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n    transition-duration: 400ms;\n    transform: scale(1.1, 1.1) translate3d(0, 0, 0);\n    cursor: pointer; }\n  .switch .menu-open-button:hover {\n    transform: scale(1.2, 1.2) translate3d(0, 0, 0); }\n  .switch .menu-open:checked + .menu-open-button {\n    transition-timing-function: linear;\n    transition-duration: 200ms;\n    transform: scale(0.8, 0.8) translate3d(0, 0, 0); }\n  .switch .menu-open:checked ~ .menu-item {\n    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); }\n    .switch .menu-open:checked ~ .menu-item:nth-child(3) {\n      transition-duration: 190ms;\n      margin-left: -80px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(4) {\n      transition-duration: 290ms;\n      margin-left: -160px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(5) {\n      transition-duration: 390ms;\n      margin-left: -240px; }\n    .switch .menu-open:checked ~ .menu-item:nth-child(6) {\n      transition-duration: 490ms;\n      margin-left: -320px; }\n\n.switch-svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  right: 0;\n  bottom: 0; }\n\n.bud-main {\n  margin-left: 16%;\n  min-width: 860px;\n  padding: 0;\n  background-color: #f0f0f0;\n  min-height: 100vh;\n  width: 100%; }\n\n.testClass {\n  text-decoration: none;\n  color: #a3b0bf;\n  padding: 18px 0 18px 15px;\n  font-size: 14px;\n  line-height: 0;\n  cursor: pointer; }\n\ntestClass:hover {\n  color: #ffffff; }\n\n.fa-caret-down, .fa-caret-right {\n  position: absolute;\n  right: 10px; }\n\n:host ::ng-deep .bud-nav-menu-wrap {\n  bottom: 0; }\n\n.margin-left0 {\n  margin-left: 0; }\n\n.checkAll > i {\n  margin-right: 6px; }\n\n.paddingItem {\n  padding: 18px 14px; }\n", ""]);
 
 // exports
 
@@ -3524,8 +3456,6 @@ var MainComponent = (function () {
         this.globalDataService = globalDataService;
         // 导航菜单
         this.items = [];
-        // 系统菜单显示状态
-        this.toggleState = false;
         this.userInfo = { 'name': '', 'role': '' };
         this.menuList = [];
         this.menuListVisible = false;
@@ -3540,38 +3470,8 @@ var MainComponent = (function () {
         this.menuSubscribe$ = globalDataService.menuChange$.subscribe(function () {
             _this.items = [];
             _this.initMenu();
-            // this.configService.getUserMenu().subscribe((listData) => {
-            //   this.menuList = listData;
-            //   this.items = [];
-            //   this.initMenu();
-            // });
         });
     }
-    /**
-     * 返回业务列表
-     * @param ev
-     */
-    MainComponent.prototype.jumpToBusinessList = function () {
-        this.configService.clearBusinessInfo();
-        this.router.navigateByUrl("/businessConfig");
-    };
-    /**
-     * 切换系统菜单状态
-     * @param ev
-     */
-    MainComponent.prototype.toggle = function (ev) {
-        ev.stopPropagation();
-        this.toggleState = !this.toggleState;
-    };
-    /**
-     * 点击页面其它地方隐藏系统菜单
-     * @param ev
-     */
-    MainComponent.prototype.onDocumentClick = function (ev) {
-        if (this.toggleState) {
-            this.toggleState = false;
-        }
-    };
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         // 根据是否已登录进行处理
@@ -3603,17 +3503,20 @@ var MainComponent = (function () {
                 }
                 _this.businessSelected.id = _this.configService.getBusinessId();
                 _this.businessSelected.name = _this.configService.getBusinessName();
-                // 用户拥有的菜单列表
-                // this.menuList = data['userInfo'].menuData;
                 _this.initMenu();
                 _this.businessConfigService.getBusinessList().subscribe(function (listData) {
                     _this.businessList = listData.my_bussiness;
                 });
-                _this.router.navigate([_this.configService.getPathName()]);
+                var pathName = _this.configService.getPathName();
+                _this.configService.clearBusinessInfo();
+                _this.router.navigate([pathName]);
             }
         });
     };
-    MainComponent.prototype.ngAfterViewInit = function () {
+    // 返回业务列表
+    MainComponent.prototype.jumpToBusinessList = function () {
+        this.configService.clearBusinessInfo();
+        this.router.navigateByUrl("/businessConfig");
     };
     MainComponent.prototype.dealHideMenu = function () {
         // 是否隐藏菜单列表
@@ -3654,18 +3557,6 @@ var MainComponent = (function () {
                 _this.items.push({ label: v.name, icon: 'fa-list-ul' });
             }
         });
-        // 插入用户详情菜单（去掉了）
-        /*this.items.push({
-          label: '用户中心',
-          icon: 'fa-address-card',
-          items: [
-            {
-              label: '用户详情',
-              routerLink: ['/userInfo/' + this.businessSelected.id],
-              command: this.changeActiveNav.bind(this)
-            }
-          ]
-        });*/
         // 管理员和超级管理员可见
         if (this.userInfo.role != 'user') {
             this.items.push({
@@ -3748,9 +3639,7 @@ var MainComponent = (function () {
             return item;
         });
     };
-    /**
-     * 根据点击左侧菜单栏改变选中状态
-     */
+    // 根据点击左侧菜单栏改变选中状态
     MainComponent.prototype.changeActiveNav = function (e) {
         if (e.item.active) {
             return;
@@ -3796,15 +3685,18 @@ var MainComponent = (function () {
         this.businessConfigService.setBusinessId(item.id);
         this.businessConfigService.setBusinessName(item.name);
         this.businessListVisible = false;
-        // window.location.href = '/';
         this.configService.selectBusiness({ 'bussiness_id': parseInt(item.id, 10) }).subscribe(function () {
             _this.configService.getUserMenu().subscribe(function (menuList) {
                 _this.businessSelected.id = item.id;
                 _this.businessSelected.name = item.name;
                 _this.menuList = menuList;
                 _this.dealMenu();
-                _this.router.navigateByUrl('/reportPage/' + item.id + '/' + _this.checkMenu(menuList[0]));
-                // setTimeout(() => {this.dealMenu();}, 20);
+                if (_this.menuList.length == 0) {
+                    _this.router.navigateByUrl('/noPage/' + item.id);
+                }
+                else {
+                    _this.router.navigateByUrl('/reportPage/' + item.id + '/' + _this.checkMenu(menuList[0]));
+                }
             });
         });
     };
@@ -3823,12 +3715,6 @@ var MainComponent = (function () {
     };
     return MainComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], MainComponent.prototype, "onDocumentClick", null);
 MainComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-main',
@@ -4202,6 +4088,67 @@ MenuComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=menu.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/no-page/no-page.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-sys-header></app-sys-header>\r\n<div id=\"noPage\">\r\n  <div class=\"tips\">\r\n    <img src=\"./../../assets/images/businessNo.png\">\r\n    <p>空空如也，请联系管理员添加报表吧~</p>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/no-page/no-page.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#noPage {\n  width: 100%;\n  height: calc( 100% - 50px); }\n  #noPage .tips {\n    text-align: center;\n    margin-top: 150px; }\n    #noPage .tips img {\n      width: 200px; }\n    #noPage .tips p {\n      font-size: 15px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/no-page/no-page.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoPageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NoPageComponent = (function () {
+    function NoPageComponent() {
+    }
+    NoPageComponent.prototype.ngOnInit = function () {
+    };
+    return NoPageComponent;
+}());
+NoPageComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-no-page',
+        template: __webpack_require__("./src/app/no-page/no-page.component.html"),
+        styles: [__webpack_require__("./src/app/no-page/no-page.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], NoPageComponent);
+
+//# sourceMappingURL=no-page.component.js.map
 
 /***/ }),
 
@@ -16451,7 +16398,10 @@ var MultiSelect = (function () {
     MultiSelect.prototype.setDisabledState = function (val) {
         this.disabled = val;
     };
-    MultiSelect.prototype.onItemClick = function (event, value) {
+    MultiSelect.prototype.onItemClick = function (event, value, option) {
+        if (option.disabled) {
+            return false;
+        }
         var selectionIndex = this.findSelectionIndex(value);
         if (selectionIndex != -1)
             this.value = this.value.filter(function (val, i) { return i != selectionIndex; });
@@ -16706,7 +16656,7 @@ __decorate([
 MultiSelect = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'p-multiSelect',
-        template: "\n        <div #container [ngClass]=\"{'ui-multiselect ui-widget ui-state-default ui-corner-all':true,'ui-state-focus':focus,'ui-state-disabled': disabled}\" [ngStyle]=\"style\" [class]=\"styleClass\"\n            (click)=\"onMouseclick($event,in)\">\n            <div class=\"ui-helper-hidden-accessible\">\n                <input #in type=\"text\" readonly=\"readonly\" [attr.id]=\"inputId\" (focus)=\"onFocus($event)\" (blur)=\"onInputBlur($event)\" [disabled]=\"disabled\" [attr.tabindex]=\"tabindex\">\n            </div>\n            <div class=\"ui-multiselect-label-container\" [title]=\"valuesAsString\">\n                <label class=\"ui-multiselect-label ui-corner-all\">{{valuesAsString}}</label>\n            </div>\n            <div [ngClass]=\"{'ui-multiselect-trigger ui-state-default ui-corner-right':true}\">\n                <span class=\"fa fa-fw fa-caret-down ui-c\"></span>\n            </div>\n            <div #panel class=\"ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-shadow\" [style.display]=\"overlayVisible ? 'block' : 'none'\" (click)=\"panelClick=true\">\n                <div class=\"ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix\">\n                    <div class=\"ui-chkbox ui-widget\">\n                        <div class=\"ui-helper-hidden-accessible\">\n                            <input #cb type=\"checkbox\" readonly=\"readonly\" [checked]=\"isAllChecked()\">\n                        </div>\n                        <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isAllChecked()}\" (click)=\"toggleAll($event,cb)\">\n                            <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isAllChecked()}\"></span>\n                        </div>\n                    </div>\n                    <div class=\"ui-multiselect-filter-container\" *ngIf=\"filter\">\n                        <input type=\"text\" role=\"textbox\" (input)=\"onFilter($event)\"\n                                    class=\"ui-inputtext ui-widget ui-state-default ui-corner-all\">\n                        <span class=\"fa fa-fw fa-search\"></span>\n                    </div>\n                    <a class=\"ui-multiselect-close ui-corner-all\" href=\"#\" (click)=\"close($event)\">\n                        <span class=\"fa fa-close\"></span>\n                    </a>\n                </div>\n                <div class=\"ui-multiselect-items-wrapper\">\n                    <ul class=\"ui-multiselect-items ui-multiselect-list ui-widget-content ui-widget ui-corner-all ui-helper-reset\" [style.max-height]=\"scrollHeight||'auto'\">\n                        <li *ngFor=\"let option of options\" class=\"ui-multiselect-item ui-corner-all\" (click)=\"onItemClick($event,option.value||option.id)\" \n                            [style.display]=\"isItemVisible(option) ? 'block' : 'none'\" [ngClass]=\"{'ui-state-highlight':isSelected(option.value||option.id)}\">\n                            <div class=\"ui-chkbox ui-widget\">\n                                <div class=\"ui-helper-hidden-accessible\">\n                                    <input type=\"checkbox\" readonly=\"readonly\" [checked]=\"isSelected(option.value||option.id)\">\n                                </div>\n                                <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isSelected(option.value||option.id)}\">\n                                    <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isSelected(option.value||option.id)}\"></span>\n                                </div>\n                            </div>\n                            <label>{{option.label||option.name}}</label>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    ",
+        template: "\n        <div #container [ngClass]=\"{'ui-multiselect ui-widget ui-state-default ui-corner-all':true,'ui-state-focus':focus,'ui-state-disabled': disabled}\" [ngStyle]=\"style\" [class]=\"styleClass\"\n            (click)=\"onMouseclick($event,in)\">\n            <div class=\"ui-helper-hidden-accessible\">\n                <input #in type=\"text\" readonly=\"readonly\" [attr.id]=\"inputId\" (focus)=\"onFocus($event)\" (blur)=\"onInputBlur($event)\" [disabled]=\"disabled\" [attr.tabindex]=\"tabindex\">\n            </div>\n            <div class=\"ui-multiselect-label-container\" [title]=\"valuesAsString\">\n                <label class=\"ui-multiselect-label ui-corner-all\">{{valuesAsString}}</label>\n            </div>\n            <div [ngClass]=\"{'ui-multiselect-trigger ui-state-default ui-corner-right':true}\">\n                <span class=\"fa fa-fw fa-caret-down ui-c\"></span>\n            </div>\n            <div #panel class=\"ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-shadow\" [style.display]=\"overlayVisible ? 'block' : 'none'\" (click)=\"panelClick=true\">\n                <div class=\"ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix\">\n                    <div class=\"ui-chkbox ui-widget\">\n                        <div class=\"ui-helper-hidden-accessible\">\n                            <input #cb type=\"checkbox\" readonly=\"readonly\" [checked]=\"isAllChecked()\">\n                        </div>\n                        <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isAllChecked()}\" (click)=\"toggleAll($event,cb)\">\n                            <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isAllChecked()}\"></span>\n                        </div>\n                    </div>\n                    <div class=\"ui-multiselect-filter-container\" *ngIf=\"filter\">\n                        <input type=\"text\" role=\"textbox\" (input)=\"onFilter($event)\"\n                                    class=\"ui-inputtext ui-widget ui-state-default ui-corner-all\">\n                        <span class=\"fa fa-fw fa-search\"></span>\n                    </div>\n                    <a class=\"ui-multiselect-close ui-corner-all\" href=\"#\" (click)=\"close($event)\">\n                        <span class=\"fa fa-close\"></span>\n                    </a>\n                </div>\n                <div class=\"ui-multiselect-items-wrapper\">\n                    <ul class=\"ui-multiselect-items ui-multiselect-list ui-widget-content ui-widget ui-corner-all ui-helper-reset\" [style.max-height]=\"scrollHeight||'auto'\">\n                        <li *ngFor=\"let option of options\" class=\"ui-multiselect-item ui-corner-all\" (click)=\"onItemClick($event,option.value||option.id, option)\" \n                            [style.display]=\"isItemVisible(option) ? 'block' : 'none'\" [ngClass]=\"{'ui-state-highlight':isSelected(option.value||option.id), 'ui-state-disabled': option.disabled}\">\n                            <div class=\"ui-chkbox ui-widget\">\n                                <div class=\"ui-helper-hidden-accessible\">\n                                    <input type=\"checkbox\" readonly=\"readonly\" [checked]=\"isSelected(option.value||option.id)\">\n                                </div>\n                                <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isSelected(option.value||option.id)}\">\n                                    <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isSelected(option.value||option.id)}\"></span>\n                                </div>\n                            </div>\n                            <label>{{option.label||option.name}}</label>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    ",
         providers: [__WEBPACK_IMPORTED_MODULE_2__dom_domhandler__["a" /* DomHandler */], __WEBPACK_IMPORTED_MODULE_3__utils_ObjectUtils__["a" /* ObjectUtils */], MULTISELECT_VALUE_ACCESSOR]
     }),
     __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__dom_domhandler__["a" /* DomHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__dom_domhandler__["a" /* DomHandler */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* IterableDiffers */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* IterableDiffers */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_3__utils_ObjectUtils__["a" /* ObjectUtils */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__utils_ObjectUtils__["a" /* ObjectUtils */]) === "function" && _k || Object])
@@ -23086,8 +23036,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_login_service__ = __webpack_require__("./src/app/core/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__primeng_components_common_api__ = __webpack_require__("./src/app/primeng/components/common/api.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23100,12 +23049,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
+var iziToast = __webpack_require__("./node_modules/izitoast/dist/js/iziToast.js");
 var RegisterComponent = (function () {
-    function RegisterComponent(loginService, router, confirmationService) {
+    function RegisterComponent(loginService, router) {
         this.loginService = loginService;
         this.router = router;
-        this.confirmationService = confirmationService;
         this.errorMsg = '';
         this.account = '';
         this.password = '';
@@ -23166,10 +23114,15 @@ var RegisterComponent = (function () {
             'active_url': location.protocol + '//' + location.host + '/register'
         };
         this.loginService.userRegister(param).subscribe(function (succData) {
-            _this.confirmationService.confirm({
-                message: "\u6211\u4EEC\u5DF2\u7ECF\u7ED9\u60A8\u7684\u90AE\u7BB1\u53D1\u9001\u4E86\u4E00\u4EFD\u786E\u8BA4\u90AE\u4EF6\uFF0C\u8BF7\u524D\u5F80\u90AE\u7BB1\u67E5\u770B\u5427",
-                accept: function () { }
+            iziToast.success({
+                position: 'topRight',
+                title: '注册成功!',
+                message: "\u5373\u5C06\u8DF3\u8F6C\u5230\u767B\u5F55\u9875",
+                timeout: 1500
             });
+            setTimeout(function () {
+                _this.goToLogin();
+            }, 2000);
         }, function (error) {
             _this.errorMsg = error.message;
         });
@@ -23177,9 +23130,11 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.inputStart = function () {
         this.errorMsg = '';
     };
+    // 去登陆
     RegisterComponent.prototype.goToLogin = function () {
         this.router.navigateByUrl('/login');
     };
+    // 激活用户
     RegisterComponent.prototype.confirm = function () {
         this.loginService.userActive('/users/active_account', { 'active_token': this.token }).subscribe(function () { });
     };
@@ -23191,10 +23146,10 @@ RegisterComponent = __decorate([
         template: __webpack_require__("./src/app/register/register.component.html"),
         styles: [__webpack_require__("./src/app/register/register.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__primeng_components_common_api__["a" /* ConfirmationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__primeng_components_common_api__["a" /* ConfirmationService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
 ], RegisterComponent);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=register.component.js.map
 
 /***/ }),
@@ -23202,7 +23157,7 @@ var _a, _b, _c;
 /***/ "./src/app/report-config/report-config.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-sys-header></app-sys-header>\n<div id=\"reportConfig\">\n  <div class=\"compMenu\">\n    <div class=\"compGroup\" [ngClass] = \"{'active': compList[0].active}\">\n      <div class=\"groupTitle\" (click)=\"targetList(0)\">\n        <a>{{compList[0].groupTitle}}</a>\n        <span class=\"ui-panelmenu-icon fa ng-tns-c2-1\" [ngClass] = \"{'fa-caret-down': compList[0].active, 'fa-caret-right': !compList[0].active}\"></span>\n      </div>\n      <div class=\"itemList\" id=\"chartList\">\n        <div class=\"item\" *ngFor=\"let item of compList[0].groupList; let i = index\" [attr._type]=\"item.type\">\n          <img [src]=\"item.icon\">\n          <p>{{item.name}}</p>\n        </div>\n      </div>\n    </div>\n    <div class=\"compGroup\" (click)=\"targetList(1)\" [ngClass] = \"{'active': compList[1].active}\">\n      <div class=\"groupTitle\">\n        <a>{{compList[1].groupTitle}}</a>\n        <span class=\"ui-panelmenu-icon fa ng-tns-c2-1\" [ngClass] = \"{'fa-caret-down': compList[1].active, 'fa-caret-right': !compList[1].active}\"></span>\n      </div>\n      <div class=\"itemList\" id=\"queryList\">\n        <div class=\"item\" *ngFor=\"let item of compList[1].groupList; let i = index\" [attr._type]=\"item.type\">\n          <img [src]=\"item.icon\">\n          <p>{{item.name}}</p>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"main\">\n      <div class=\"goBack\" (click)=\"goBack()\">退出编辑</div>\n      <div class=\"savePage\" (click)=\"savePage()\">保存页面</div>\n      <div class=\"header\" id=\"queryBody\">\n        <app-report-query\n          [headerCompList]=\"headerCompList\"\n          [panelQueryParam]=\"globalQueryParam\"\n          [isGlobal]=\"true\"\n          [isCanSet]=\"true\"\n          (deleteComp)=\"onDeleteComp($event)\"\n        ></app-report-query>\n      </div>\n      <div class=\"body\" id=\"chartBody\">\n        <ng-container *ngFor=\"let item of panelCompList;let i = index;\" >\n          <div class=\"content\" *ngIf=\"!item.status\" [style.width] = \"item.w + '%'\"  [attr._cid]=\"i\">\n            <div class=\"header\"></div>\n            <div class=\"main\">\n              <app-report-element\n                [reportInfo]=\"item\"\n                [cid]=\"i\"\n                [isCanSet]=\"true\"\n                [isShowAddBtn]=\"true\"\n                (deletePanelComp)=\"onDeletePanelComp($event)\"\n                (compConfigChange)=\"onCompConfigChange($event)\"\n              >\n              </app-report-element>\n            </div>\n            <!--<span class=\"resizableHandle\" (mousedown)=\"resizable($event,i)\"></span>-->\n          </div>\n        </ng-container>\n        <!--<ng-container *ngFor=\"let item of panelCompList;let i = index;\">-->\n\n        <!--</ng-container>-->\n      </div>\n  </div>\n</div>\n"
+module.exports = "<app-sys-header></app-sys-header>\r\n<div id=\"reportConfig\">\r\n  <div class=\"compMenu\">\r\n    <div class=\"compGroup\" [ngClass] = \"{'active': compList[0].active}\">\r\n      <div class=\"groupTitle\" (click)=\"targetList(0)\">\r\n        <a>{{compList[0].groupTitle}}</a>\r\n        <span class=\"ui-panelmenu-icon fa ng-tns-c2-1\" [ngClass] = \"{'fa-caret-down': compList[0].active, 'fa-caret-right': !compList[0].active}\"></span>\r\n      </div>\r\n      <div class=\"itemList\" id=\"chartList\">\r\n        <div class=\"item\" *ngFor=\"let item of compList[0].groupList; let i = index\" [attr._type]=\"item.type\">\r\n          <img [src]=\"item.icon\">\r\n          <p>{{item.name}}</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"compGroup\" (click)=\"targetList(1)\" [ngClass] = \"{'active': compList[1].active}\">\r\n      <div class=\"groupTitle\">\r\n        <a>{{compList[1].groupTitle}}</a>\r\n        <span class=\"ui-panelmenu-icon fa ng-tns-c2-1\" [ngClass] = \"{'fa-caret-down': compList[1].active, 'fa-caret-right': !compList[1].active}\"></span>\r\n      </div>\r\n      <div class=\"itemList\" id=\"queryList\">\r\n        <div class=\"item\" *ngFor=\"let item of compList[1].groupList; let i = index\" [attr._type]=\"item.type\">\r\n          <img [src]=\"item.icon\">\r\n          <p>{{item.name}}</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"main\">\r\n      <div class=\"goBack\" (click)=\"goBack()\">退出编辑</div>\r\n      <div class=\"savePage\" (click)=\"savePage()\">保存页面</div>\r\n      <div class=\"header\" id=\"queryBody\">\r\n        <app-report-query\r\n          [headerCompList]=\"headerCompList\"\r\n          [panelQueryParam]=\"globalQueryParam\"\r\n          [isGlobal]=\"true\"\r\n          [isCanSet]=\"true\"\r\n          (deleteComp)=\"onDeleteComp($event)\"\r\n        ></app-report-query>\r\n      </div>\r\n      <div class=\"body\" id=\"chartBody\">\r\n        <ng-container *ngFor=\"let item of panelCompList;let i = index;\" >\r\n          <div class=\"content\" *ngIf=\"!item.status\" [style.width] = \"item.w + '%'\"  [attr._cid]=\"i\">\r\n            <div class=\"header\"></div>\r\n            <div class=\"main\">\r\n              <app-report-element\r\n                [reportInfo]=\"item\"\r\n                [cid]=\"i\"\r\n                [isCanSet]=\"true\"\r\n                [isShowAddBtn]=\"true\"\r\n                (deletePanelComp)=\"onDeletePanelComp($event)\"\r\n                (configChange)=\"onConfigChange($event)\"\r\n              >\r\n              </app-report-element>\r\n            </div>\r\n            <!--<span class=\"resizableHandle\" (mousedown)=\"resizable($event,i)\"></span>-->\r\n          </div>\r\n        </ng-container>\r\n        <!--<ng-container *ngFor=\"let item of panelCompList;let i = index;\">-->\r\n\r\n        <!--</ng-container>-->\r\n      </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -23260,6 +23215,7 @@ var ReportConfigComponent = (function () {
         this.compList = [];
         this.headerCompList = [];
         this.panelCompList = [];
+        // 组件配置变化
         this.compChange$ = globalDataService.compChange$.subscribe(function (data) {
             if (data.isGlobal) {
                 Object.keys(data.param).forEach(function (key) {
@@ -23272,31 +23228,38 @@ var ReportConfigComponent = (function () {
                 });
             }
         });
+        // 全局查询条件的值变化
         this.queryChange$ = globalDataService.queryChange$.subscribe(function (data) {
             _this.globalQueryParam = globalDataService.getQueryParams('global');
         });
     }
     ReportConfigComponent.prototype.ngOnInit = function () {
+        // 清除缓存的查询条件
         this.globalDataService.resetQueryParams();
         var temp_ = window.location.pathname.split('/');
         this.pid = parseInt(temp_[temp_.length - 1], 10);
         this.bid = parseInt(temp_[temp_.length - 2], 10);
         var userRole = this.globalDataService.getParams().userInfo;
+        // 如果是普通用户，没有权限操作这个页面
         if (userRole.role == 'user') {
             this.goBack(0);
             return false;
         }
+        // 左侧的组件列表
         this.compList = CompConfig.config_.list;
+        // 设置第一个分类为展开状态
         this.compList.forEach(function (item, index) {
             item['active'] = index == 0;
         });
         this.getData();
     };
+    // 获取页面的报表数据
     ReportConfigComponent.prototype.getData = function () {
         var _this = this;
         this.headerCompList = [];
         this.panelCompList = [];
         this.reportConfigService.getPageData(this.pid).subscribe(function (succData) {
+            // 处理报表数据，将后端字段转化为前端需要的字段
             succData.panels.forEach(function (item) {
                 var data;
                 item.filters.forEach(function (item_, index) {
@@ -23314,6 +23277,7 @@ var ReportConfigComponent = (function () {
                 });
             });
             _this.panelCompList = succData.panels;
+            // 处理全局查询组件数据
             succData.global_filters.forEach(function (item) {
                 var data;
                 if (item.stype == 'flatpickr') {
@@ -23328,6 +23292,7 @@ var ReportConfigComponent = (function () {
                 }
                 _this.headerCompList.push(data);
             });
+            // 设置全局查询条件数量
             _this.globalDataService.setQueryParamsNum(_this.headerCompList.length);
         });
     };
@@ -23352,7 +23317,8 @@ var ReportConfigComponent = (function () {
             onAdd: function (evt) {
                 var type = jQuery(evt.item).attr('_type');
                 var data = { 'bussiness_id': that_.bid, 'charttype': type, 'dimensions': [], 'filters': [], 'h': 30, 'indexs': [],
-                    'page_id': that_.pid, 'sql': '', 'w': 48.2, 'x': 0, 'y': 0, 'name': '', 'desc': '', 'db_source': 0, 'sort': that_.panelCompList.length, 'cascades': {} };
+                    'page_id': that_.pid, 'sql': '', 'w': 48.2, 'x': 0, 'y': 0, 'name': '', 'desc': '', 'db_source': 0,
+                    'sort': that_.panelCompList.length, 'cascades': {} };
                 that_.panelCompList.push(data);
                 jQuery(evt.item).remove();
             },
@@ -23486,9 +23452,11 @@ var ReportConfigComponent = (function () {
     ReportConfigComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         setTimeout(function () {
+            // 初始化拖拽
             _this.initSortable();
         }, 20);
     };
+    // 菜单的切换
     ReportConfigComponent.prototype.targetList = function (index) {
         this.compList.forEach(function (item, i) {
             item.active = index == i;
@@ -23507,19 +23475,18 @@ var ReportConfigComponent = (function () {
     ReportConfigComponent.prototype.onDeletePanelComp = function (cid) {
         if (this.panelCompList[cid].id) {
             this.panelCompList[cid]['status'] = -1;
+            console.log('this.panelCompList[cid][\'status\']', this.panelCompList[cid]['status']);
         }
         else {
             this.panelCompList.splice(cid, 1);
         }
     };
-    ReportConfigComponent.prototype.onCompConfigChange = function (data) {
+    // 过滤组件配置变化
+    ReportConfigComponent.prototype.onConfigChange = function (data) {
         var target = this.panelCompList[data.cid]['filters'][data.data.cid];
         Object.keys(data.data.param).forEach(function (key) {
             target[key] = data.data.param[key];
         });
-    };
-    ReportConfigComponent.prototype.deepClone = function (data) {
-        return JSON.parse(JSON.stringify(data));
     };
     ReportConfigComponent.prototype.ngOnDestroy = function () {
         this.globalDataService.resetQueryParams();
@@ -23618,7 +23585,7 @@ var ReportElementComponent = (function () {
         // 删除组件
         this.deletePanelComp = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         // 配置变化
-        this.compConfigChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.configChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         // 加载状态
         this.loading = false;
         this.requestErr = false;
@@ -23670,12 +23637,10 @@ var ReportElementComponent = (function () {
         this.indexsSelected = '';
         // 维度选择器的值
         this.dimSelected = [];
-        // 表格指标选择器的值
-        this.tableIndexsSelected = '';
-        // 表格维度选择器的值
-        this.tableDimSelected = [];
+        // 监听全局过滤条件加载完毕
         this.queryChange$ = globalDataService.queryChange$.subscribe(function (data) {
             _this.globalQueryReady = true;
+            // 如果报表是已经配置来的报表，并且报表的局部过滤条件也加载完毕，则获取报表数据
             if (_this.hasConfig && _this.panelQueryReady) {
                 _this.getData(1);
             }
@@ -23689,9 +23654,11 @@ var ReportElementComponent = (function () {
         this.JQuery = jQuery;
         // 获取报表配置
         this.reportConfig = ReportConfig.config_;
+        // 报表可布局区域大小
         this.bodySize = { 'width': this.JQuery('#chartBody').width(), 'height': window.innerHeight - 70 };
         this.rw = this.reportInfo.w;
         this.rh = this.reportInfo.h;
+        // 根据报表的id来判断是否显示“提示配置”文字图片
         this.showConfigTip = !(this.reportInfo.id && this.reportInfo.id > 0);
         var chartType = this.reportInfo.charttype.split('_');
         // 报表类型
@@ -23705,8 +23672,9 @@ var ReportElementComponent = (function () {
             reverse: this.reportType !== 'row'
         };
         this.reportInfoTemp = this.deepClone(this.reportInfo);
-        // 通过是否配置了sql来标识该报表已配置
+        // 通过是否配置了sql来标识该报表已配置（不能通过id，因为新建的报表在没有保存整个页面的时候是没有id的，这里通过sql在简单判断）
         this.hasConfig = this.reportInfoTemp.sql.length > 0;
+        // 指标和维度列表
         this.dimList = [];
         this.reportInfoTemp.dimensions.forEach(function (item) {
             _this.dimList.push({ 'label': item.name, 'value': item.dimension, 'type': 'dimensions', 'rate': item.rate || false,
@@ -23732,6 +23700,7 @@ var ReportElementComponent = (function () {
         this.chartTypeConfig.reverse = type == 'bar';
         this.getData();
     };
+    // 生成查询条件
     ReportElementComponent.prototype.dealQueryParam = function () {
         var _this = this;
         var globalParam = this.globalDataService.getQueryParams('global');
@@ -23772,14 +23741,18 @@ var ReportElementComponent = (function () {
             this.reportInfo.dimensions.forEach(function (item) {
                 _this.dimList.push({ 'label': item.name, 'value': item.dimension, 'type': 'dimensions', 'rate': item.rate || false,
                     'sort': item.sort || 'default', 'default': item.default || '' });
-                _this.dimensionsList.push({ 'label': item.name, 'value': item.dimension });
+                if (chartType_1 == 'linestack' && item.dimension == 'fdate') {
+                    _this.dimensionsList.push({ 'label': item.name, 'value': item.dimension, 'disabled': true });
+                }
+                else {
+                    _this.dimensionsList.push({ 'label': item.name, 'value': item.dimension });
+                }
             });
             this.reportInfo.indexs.forEach(function (item) {
+                // 折线图不需要指标选择器，但是有展示类型和多个y轴
                 if (chartType_1 == 'line') {
                     _this.dimList.push({ 'label': item.name, 'value': item.index, 'type': 'indexs', 'rate': item.rate,
                         'show_type': item.show_type, 'yAxis': item.yAxis, 'sort': item.sort || 'default' });
-                    // 折线图不需要指标选择器
-                    // this.indexsList.push({'label': item.name, 'value': item.index});
                 }
                 else {
                     _this.dimList.push({ 'label': item.name, 'value': item.index, 'type': 'indexs', 'rate': item.rate, 'sort': item.sort || 'default' });
@@ -23859,9 +23832,11 @@ var ReportElementComponent = (function () {
     ReportElementComponent.prototype.loadingHide = function () {
         this.loading = false;
     };
+    // 获取图片的配置
     ReportElementComponent.prototype.setChartOption = function () {
         this.chartOption = this.chartService.getChartOptionByType(this.chartTypeConfig, this.deepClone(this.chartData));
     };
+    // 设置table表的配置
     ReportElementComponent.prototype.setTableData = function () {
         var _this = this;
         var columns = [];
@@ -23908,10 +23883,6 @@ var ReportElementComponent = (function () {
             this.showChart = (type !== 'table');
             // 返回报表的时候默认显示上次显示的图标类型，避免类型闪切
             this.curChartType = type;
-            // 如果已加载过报表数据的话，不需要重新加载，只有第一次才需要去拉数据
-            // if (((type == 'table' || this.curChartType == 'table') && !this.tableData) || (this.curChartType != 'table' && !this.chartData)) {
-            //   this.getData(1);
-            // }
             this.getData(1);
         }
     };
@@ -23968,6 +23939,7 @@ var ReportElementComponent = (function () {
     ReportElementComponent.prototype.dialogHide = function () {
         this.dialogVisible = false;
     };
+    // 根据sql申请指标和维度列表
     ReportElementComponent.prototype.getSqlDim = function () {
         var _this = this;
         if (this.reportInfoTemp.sql.length == 0) {
@@ -24051,11 +24023,11 @@ var ReportElementComponent = (function () {
                 // 如果报表是对比趋势图
                 if (chartType == 'linestack') {
                     // 如果报表是对比趋势图，最少需要两个维度， 其中一个带fdate
-                    if (item.dimension == 'fdate') {
+                    if (item.value == 'fdate') {
                         data['dimensions'].push(dataTemp);
                         _this.currentDimensions.push(dataTemp);
                     }
-                    else if (data['dimensions'].length == 0 || (data['dimensions'][0].length == 1 && data['dimensions'][0].dimension == 'fdate')
+                    else if (data['dimensions'].length == 0 || (data['dimensions'].length == 1 && data['dimensions'][0].dimension == 'fdate')
                         || item.default) {
                         data['dimensions'].push(dataTemp);
                         _this.currentDimensions.push(dataTemp);
@@ -24067,13 +24039,13 @@ var ReportElementComponent = (function () {
                 }
                 else {
                     if (item.default) {
-                        // data['dimensions'].push(dataTemp);
                         _this.currentDimensions.push(dataTemp);
                     }
                     data['dimensions'].push(dataTemp);
                 }
                 _this.reportInfoTemp['dimensions'].push(dataTemp);
-                _this.dimensionsList.push({ 'label': item.label, 'value': item.value });
+                _this.dimensionsList.push({ 'label': item.label, 'value': item.value,
+                    'disabled': (chartType == 'linestack' && item.value == 'fdate') ? true : false });
             }
         });
         var reportConfig = this.reportConfig[this.curChartType];
@@ -24119,8 +24091,6 @@ var ReportElementComponent = (function () {
         this.currentDimensions.forEach(function (item) {
             _this.dimSelected.push(item.dimension);
         });
-        // this.tableIndexsSelected = this.indexsSelected;
-        // this.tableDimSelected = [].concat(this.dimSelected);
         this.reportElementService.getSqlData(data).subscribe(function (succData) {
             _this.showConfigTip = false;
             _this.hasConfig = true;
@@ -24171,11 +24141,11 @@ var ReportElementComponent = (function () {
             };
         });
     };
-    // 删除组件
+    // 删除过滤组件
     ReportElementComponent.prototype.onDeleteComp = function (cid) {
         delete this.panelQueryParam[this.reportInfo.filters[cid]['ename']];
         delete this.panelQuery[this.reportInfo.filters[cid]['ename']];
-        if (!this.reportInfo.filters[cid]['ename']) {
+        if (this.reportInfo.filters[cid]['ename']) {
             this.reportInfo.filters[cid]['status'] = -1;
         }
         else {
@@ -24183,7 +24153,7 @@ var ReportElementComponent = (function () {
         }
         this.shouldGetData();
     };
-    // 判断是否全部过滤条件加载完毕
+    // 判断是否全部过滤条件加载完毕，是则加载数据
     ReportElementComponent.prototype.shouldGetData = function () {
         var filters = 0;
         for (var i = 0; i < this.reportInfo.filters.length; i++) {
@@ -24199,15 +24169,18 @@ var ReportElementComponent = (function () {
             this.panelQueryReady = false;
         }
     };
-    // 报表配置改变
+    // 报表选择条件配置改变
     ReportElementComponent.prototype.onConfigChange = function (data) {
-        this.compConfigChange.emit({ cid: this.cid, data: data });
+        this.configChange.emit({ cid: this.cid, data: data });
     };
+    // 局部查询条件值变化
     ReportElementComponent.prototype.onSelectedChange = function (data) {
+        // 如果该组件更换了ename，则删除旧的ename，添加新的ename
         if (data.backUp && data.backUp.length > 0) {
             delete this.panelQueryParam[data.backUp];
             delete this.panelQuery[data.backUp];
         }
+        // 储存局部查询条件的值
         this.panelQueryParam[data.ename] = data['data'];
         this.panelQuery[data.ename] = data['data'];
         // 如果是级联组件，且是父组件，则不需要加载报表数据，等子组件加载就好
@@ -24215,6 +24188,7 @@ var ReportElementComponent = (function () {
             this.shouldGetData();
         }
     };
+    // 报表的指标或者维度组合变化
     ReportElementComponent.prototype.echartSelectChange = function (data) {
         var _this = this;
         this.loadingShow();
@@ -24261,6 +24235,7 @@ var ReportElementComponent = (function () {
             _this.loadingHide();
         });
     };
+    // 表格的维度变化
     ReportElementComponent.prototype.tableDimChange = function (data) {
         var _this = this;
         this.loadingShow();
@@ -24379,7 +24354,7 @@ __decorate([
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", Object)
-], ReportElementComponent.prototype, "compConfigChange", void 0);
+], ReportElementComponent.prototype, "configChange", void 0);
 ReportElementComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-report-element',
@@ -24441,10 +24416,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var iziToast = __webpack_require__("./node_modules/izitoast/dist/js/iziToast.js");
 var ReportPageComponent = (function () {
     function ReportPageComponent(reportPageService, router, globalDataService, route) {
-        var _this = this;
         this.reportPageService = reportPageService;
         this.router = router;
         this.globalDataService = globalDataService;
@@ -24453,23 +24426,12 @@ var ReportPageComponent = (function () {
         this.panelCompList = [];
         // 是否显示编辑按钮  对普通用户不可见
         this.showConfigBtn = false;
-        this.compChange$ = globalDataService.compChange$.subscribe(function (data) {
-            if (data.isGlobal) {
-                Object.keys(data.param).forEach(function (key) {
-                    _this.headerCompList[data['cid']][key] = data.param[key];
-                });
-            }
-            else {
-                Object.keys(data.param).forEach(function (key) {
-                    _this.panelCompList[data['cid']][key] = data.param[key];
-                });
-            }
-        });
     }
     ReportPageComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params.subscribe(function (params) {
+        this.route.params.subscribe(function () {
             _this.globalDataService.resetQueryParams();
+            // 管理员和超级管理员则显示编辑按钮
             _this.showConfigBtn = _this.globalDataService.getParams().userInfo.role != 'user';
             _this.initData();
         });
@@ -24479,9 +24441,10 @@ var ReportPageComponent = (function () {
         this.headerCompList = [];
         this.panelCompList = [];
         var temp_ = window.location.pathname.split('/');
-        this.pid = parseInt(temp_[temp_.length - 1]);
-        this.bid = parseInt(temp_[temp_.length - 2]);
+        this.pid = parseInt(temp_[temp_.length - 1], 10);
+        this.bid = parseInt(temp_[temp_.length - 2], 10);
         this.reportPageService.getPageData(this.pid).subscribe(function (succData) {
+            // 处理全局过滤条件，将后端接口字段转为前端自己需要的字段
             succData.global_filters.forEach(function (item) {
                 var data;
                 if (item.stype == 'flatpickr') {
@@ -24496,7 +24459,9 @@ var ReportPageComponent = (function () {
                 }
                 _this.headerCompList.push(data);
             });
+            // 储存页面的全局过滤条件数量，之后需要这个数量来判断是否全局条件数据都加载完毕
             _this.globalDataService.setQueryParamsNum(_this.headerCompList.length);
+            // 处理全局过滤条件，将后端接口字段转为前端自己需要的字段
             succData.panels.forEach(function (item) {
                 var data;
                 item.filters.forEach(function (item_, index) {
@@ -24516,14 +24481,12 @@ var ReportPageComponent = (function () {
             _this.panelCompList = succData.panels;
         });
     };
+    // 跳转到报表配置页面
     ReportPageComponent.prototype.editPage = function () {
         this.router.navigateByUrl('/reportConfig/' + this.bid + '/' + this.pid);
     };
     ReportPageComponent.prototype.ngOnDestroy = function () {
         this.globalDataService.resetQueryParams();
-        if (this.compChange$) {
-            this.compChange$.unsubscribe();
-        }
     };
     return ReportPageComponent;
 }());
@@ -24584,7 +24547,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var iziToast = __webpack_require__("./node_modules/izitoast/dist/js/iziToast.js");
 var CompConfig = __webpack_require__("./src/assets/compConfig/compConfig.js");
 var ReportQueryComponent = (function () {
     function ReportQueryComponent(globalDataService) {
@@ -24602,8 +24564,6 @@ var ReportQueryComponent = (function () {
         // 过滤组件列表
         this.compList = [];
         this.compListName = [];
-        // 已选列表
-        this.selectedList = [];
     }
     ReportQueryComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24615,8 +24575,7 @@ var ReportQueryComponent = (function () {
             _this.compListName.push({ 'label': item.name, 'value': index });
         });
     };
-    ReportQueryComponent.prototype.ngAfterViewInit = function () {
-    };
+    // 删除组件
     ReportQueryComponent.prototype.onDeleteComp = function (cid) {
         if (this.isGlobal) {
             if (this.headerCompList[cid].ename) {
@@ -24657,10 +24616,11 @@ var ReportQueryComponent = (function () {
         ;
         this.dialogHide();
     };
-    // onConfigChange
+    // 组件过略配置信息变化
     ReportQueryComponent.prototype.onConfigChange = function (data) {
         this.configChange.emit({ 'cid': data.cid, 'backUp': data.backUp, 'param': data.param });
     };
+    // 组件选择值变化
     ReportQueryComponent.prototype.onSelectedChange = function (data) {
         this.selectedChange.emit(data);
     };
@@ -24845,6 +24805,7 @@ var ResetPasswordComponent = (function () {
     ResetPasswordComponent.prototype.inputStart = function () {
         this.errorMsg = '';
     };
+    // 去登陆
     ResetPasswordComponent.prototype.goToLogin = function () {
         this.router.navigateByUrl('/login');
     };
@@ -24898,7 +24859,6 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_global_data_service__ = __webpack_require__("./src/app/core/global-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_role_menu_service__ = __webpack_require__("./src/app/core/services/role-menu.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_role_service__ = __webpack_require__("./src/app/core/services/role.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24912,14 +24872,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var iziToast = __webpack_require__("./node_modules/izitoast/dist/js/iziToast.js");
 var RoleMenuComponent = (function () {
-    function RoleMenuComponent(globalDataService, roleMenuService, roleService, router) {
+    function RoleMenuComponent(globalDataService, roleMenuService, roleService) {
         this.globalDataService = globalDataService;
         this.roleMenuService = roleMenuService;
         this.roleService = roleService;
-        this.router = router;
         // 角色ID列表
         this.roleIdList = [];
         // 角色名称列表
@@ -25058,10 +25016,10 @@ RoleMenuComponent = __decorate([
         template: __webpack_require__("./src/app/role-menu/role-menu.component.html"),
         styles: [__webpack_require__("./src/app/role-menu/role-menu.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_role_menu_service__["a" /* RoleMenuService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_role_menu_service__["a" /* RoleMenuService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_role_service__["a" /* RoleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_role_service__["a" /* RoleService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_role_menu_service__["a" /* RoleMenuService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_role_menu_service__["a" /* RoleMenuService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_role_service__["a" /* RoleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_role_service__["a" /* RoleService */]) === "function" && _c || Object])
 ], RoleMenuComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c;
 //# sourceMappingURL=role-menu.component.js.map
 
 /***/ }),
@@ -25278,13 +25236,15 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__reset_password_reset_password_component__ = __webpack_require__("./src/app/reset-password/reset-password.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__user_info_resolve_service__ = __webpack_require__("./src/app/routing/user-info-resolve.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__no_page_no_page_component__ = __webpack_require__("./src/app/no-page/no-page.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__user_info_resolve_service__ = __webpack_require__("./src/app/routing/user-info-resolve.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -25315,7 +25275,7 @@ RoutingModule = __decorate([
                     path: '',
                     component: __WEBPACK_IMPORTED_MODULE_5__main_main_component__["a" /* MainComponent */],
                     resolve: {
-                        userInfo: __WEBPACK_IMPORTED_MODULE_16__user_info_resolve_service__["a" /* UserInfoResolveService */]
+                        userInfo: __WEBPACK_IMPORTED_MODULE_17__user_info_resolve_service__["a" /* UserInfoResolveService */]
                     },
                     children: [
                         {
@@ -25351,6 +25311,10 @@ RoutingModule = __decorate([
                             component: __WEBPACK_IMPORTED_MODULE_11__report_config_report_config_component__["a" /* ReportConfigComponent */]
                         },
                         {
+                            path: 'noPage/:bid',
+                            component: __WEBPACK_IMPORTED_MODULE_16__no_page_no_page_component__["a" /* NoPageComponent */]
+                        },
+                        {
                             path: 'businessConfig',
                             component: __WEBPACK_IMPORTED_MODULE_12__business_config_business_config_component__["a" /* BusinessConfigComponent */]
                         },
@@ -25376,7 +25340,7 @@ RoutingModule = __decorate([
             ])
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_16__user_info_resolve_service__["a" /* UserInfoResolveService */]
+            __WEBPACK_IMPORTED_MODULE_17__user_info_resolve_service__["a" /* UserInfoResolveService */]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]
@@ -25471,29 +25435,6 @@ var UserInfoResolveService = (function () {
                                             sub.next(temp);
                                             sub.complete();
                                             _this.removeLoading();
-                                            /*// 获取用户菜单
-                                            this.configService.getUserMenu().subscribe({
-                                              next: (menuData) => {
-                                                let temp = {
-                                                  userInfo: userInfo,
-                                                  menuData: []
-                                                };
-                                                temp.menuData = menuData;
-                                                sub.next(temp);
-                                                sub.complete();
-                                                this.removeLoading();
-                                              },
-                                              error: (err) => {
-                                                let temp = {
-                                                  userInfo: userInfo,
-                                                  menuData: []
-                                                };
-                                                sub.next(temp);
-                                                sub.complete();
-                                                this.removeLoading();
-                                                this.setErrInfoMsg(err['code'], err['message']);
-                                              }
-                                            });*/
                                         },
                                         error: function (err) {
                                             sub.error();
@@ -25510,7 +25451,6 @@ var UserInfoResolveService = (function () {
                             });
                         },
                         error: function (err) {
-                            console.log(232323);
                             if (typeof err['code'] !== 'undefined') {
                                 if (err['code'] !== 401) {
                                     _this.setErrInfoMsg(err['code'], err['message']);
@@ -25615,254 +25555,6 @@ UserInfoResolveService = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=user-info-resolve.service.js.map
-
-/***/ }),
-
-/***/ "./src/app/set/set.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"set-bar\">\n  <span>业务管理</span>\n  <button pButton type=\"button\" (click)=\"edit(null, 0)\" label=\"新增\" icon=\"fa fa-plus\"></button>\n</div>\n\n<!--表格-->\n<div class=\"set-table\">\n  <p-dataTable [value]=\"businessList\">\n    <p-column [style]=\"{'width': '80px', 'padding': '0 10px'}\" field=\"fbusiness_id\" header=\"业务ID\"></p-column>\n    <p-column [style]=\"{'width': '180px', 'padding': '0 10px'}\" field=\"fbusiness_cname\" header=\"业务名称\"></p-column>\n    <p-column header=\"业务配置人\">\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n        <span *ngFor=\"let item of rowd.fconfig_users\">{{item.fuser_name}}、</span>\n      </ng-template>\n    </p-column>\n    <p-column header=\"数据库信息\">\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n        <span *ngFor=\"let item of rowd.fdatabase_infos\">{{item.fdb_name}}、</span>\n      </ng-template>\n    </p-column>\n    <p-column [style]=\"{'width': '80px', 'padding': '0 10px'}\" header=\"操作\">\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n        <i class=\"fa fa-cogs bud-icon-button\" (click)=\"edit(rowd, 1)\" title=\"更改\"></i>\n        &nbsp;\n        <i class=\"fa fa-trash bud-icon-button\" (click)=\"del(rowd)\" title=\"删除\"></i>\n      </ng-template>\n    </p-column>\n  </p-dataTable>\n</div>\n\n<!--添加 or 编辑-->\n<div class=\"bud-overlay\" *ngIf=\"editDialogVisible\">\n  <div class=\"bud-operate-modal -small\" style=\"width: 800px; height: 700px; margin-left: -400px;\">\n    <div class=\"header\">\n      <span *ngIf=\"!editType\">新增</span>\n      <span *ngIf=\"editType\">编辑</span>\n      <i class=\"fa fa-times\" (click)=\"editDialogHide()\"></i>\n    </div>\n    <div class=\"body\"  style=\"position: inherit;\">\n      <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>业务英文名</label>\n      <input placeholder=\"请输入\"\n             type=\"text\"\n             class=\"bud-input\"\n             [(ngModel)]=\"fbusiness_name\"\n      />\n      <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>业务中文名</label>\n      <input placeholder=\"请输入\"\n             type=\"text\"\n             class=\"bud-input\"\n             [(ngModel)]=\"fbusiness_cname\"\n      />\n      <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>数据配置人</label>\n      <p-multiSelect [options]=\"userList\"\n                     [defaultLabel]=\"'请选择'\"\n                     [displaySelectedLabel]=\"false\"\n                     [style]=\"{'line-height': '24px', 'width': '100%'}\"\n                     [(ngModel)]=\"fconfig_users\"\n      ></p-multiSelect>\n      <div *ngIf=\"userList.length > 0\" >\n    \t\t  \t<span class=\"label\" *ngFor=\"let item of fconfig_users\">{{getMemberInfo(item)}}\n    \t\t  \t<i class=\"fa fa-times remove-tec\" (click)=\"removeTec(item)\"></i>\n    \t\t  \t</span>\n      </div>\n      <div class=\"set-btn\">\n        <button pButton type=\"button\" (click)=\"editBusiness()\" label=\"提交\"></button>\n      </div>\n      <div class=\"set-btn\" style=\"border-top: 1px solid #ccc; padding-top: 10px;\" *ngIf=\"editType\">\n        <button pButton type=\"button\" (click)=\"editDatabase(null, 0)\" label=\"新增\"></button>\n      </div>\n      <p-dataTable [value]=\"fdatabase_infos\" class=\"set-table\" *ngIf=\"editType\">\n        <p-column field=\"fdb_type\" header=\"类型\"></p-column>\n        <p-column field=\"fdb_name\" header=\"名称\"></p-column>\n        <p-column field=\"fdb_ip\" header=\"IP\"></p-column>\n        <p-column field=\"fdb_port\" header=\"接口\"></p-column>\n        <p-column field=\"fdb_user\" header=\"用户\"></p-column>\n        <p-column field=\"fdb_password\" header=\"密码\"></p-column>\n        <p-column [style]=\"{'width': '80px', 'padding': '0 10px'}\" header=\"操作\">\n          <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n            <i class=\"fa fa-cogs bud-icon-button\" (click)=\"editDatabase(rowd, 1)\" title=\"更改\"></i>\n            &nbsp;\n            <i class=\"fa fa-trash bud-icon-button\" (click)=\"delDatabase(rowd)\" title=\"删除\"></i>\n          </ng-template>\n        </p-column>\n      </p-dataTable>\n      <!--添加 or 编辑-->\n      <div class=\"bud-overlay\" *ngIf=\"dataDialogVisible\">\n        <div class=\"bud-operate-modal -small\" style=\"width: 700px; height: 600px; margin-left: -350px; top: 15%;\">\n          <div class=\"header\">\n            <span *ngIf=\"!editType\">添加</span>\n            <span *ngIf=\"editType\">编辑</span>\n            <i class=\"fa fa-times\" (click)=\"dataDialogHide()\"></i>\n          </div>\n          <div class=\"body\"  style=\"position: inherit;\">\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>数据库类型</label>\n            <p-dropdown [options]=\"dbTypeList\"\n                        [(ngModel)]=\"fdb_type\"\n                        class=\"drop-down\"\n                        [style]=\"{'width': '100%','line-height': '26px','border-radius': '4px','margin': '0 0 0.9rem'}\"\n                        [placeholder]=\"'请选择'\"\n            ></p-dropdown>\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>数据库名称</label>\n            <input placeholder=\"请输入\"\n                   type=\"text\"\n                   class=\"bud-input\"\n                   [(ngModel)]=\"fdb_name\"\n            />\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>IP</label>\n            <input placeholder=\"请输入\"\n                   type=\"text\"\n                   class=\"bud-input\"\n                   [(ngModel)]=\"fdb_ip\"\n            />\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>端口</label>\n            <input placeholder=\"请输入\"\n                   type=\"text\"\n                   class=\"bud-input\"\n                   [(ngModel)]=\"fdb_port\"\n            />\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>用户</label>\n            <input placeholder=\"请输入\"\n                   type=\"text\"\n                   class=\"bud-input\"\n                   [(ngModel)]=\"fdb_user\"\n            />\n            <label class=\"bud-label\"><span class=\"requiredFiled\">*</span>密码</label>\n            <input placeholder=\"请输入\"\n                   type=\"text\"\n                   class=\"bud-input\"\n                   [(ngModel)]=\"fdb_password\"\n            />\n            <div class=\"set-btn\">\n              <button pButton type=\"button\" (click)=\"editDB()\" label=\"提交\"></button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!--删除-->\n<div class=\"bud-overlay\" *ngIf=\"delDialogVisible\">\n  <div class=\"bud-operate-modal -small\" style=\"width: 400px; height: 180px; margin-left: -200px;\">\n    <div class=\"header\">\n      &nbsp;\n    </div>\n    <div class=\"body\"  style=\"position: inherit;\">\n      业务{{fbusiness_cname}}（{{fbusiness_name}}）被删除之后，与他相关的所有数据都会被删除\n    </div>\n    <div class=\"footer\">\n      <button class=\"bud-text-button slds-col--bump-left slds-m-right--small\" (click)=\"delDialogHide()\">取消</button>\n      <button class=\"bud-button -origin\" (click)=\"delBusiness()\">删除</button>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/set/set.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".set-bar {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  position: fixed;\n  width: 84%;\n  top: 0;\n  left: 16%;\n  z-index: 999;\n  padding-left: 15px;\n  padding-right: 15px;\n  height: 50px;\n  background: #FBFBFB;\n  border-bottom: 1px solid #DDD; }\n\n.set-table {\n  margin-top: 60px;\n  text-align: right; }\n\n.set-btn {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end;\n  margin: 10px 0; }\n\n.label {\n  display: inline-block;\n  padding: 0 .5em;\n  font-size: 75%;\n  font-weight: 700;\n  line-height: 20px;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em;\n  background-color: #dc756e;\n  margin: 5px; }\n  .label i {\n    cursor: pointer; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "./src/app/set/set.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SetComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_set_service__ = __webpack_require__("./src/app/core/services/set.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var SetComponent = (function () {
-    function SetComponent(setService, router) {
-        this.setService = setService;
-        this.router = router;
-        this.businessList = [];
-        this.dbTypeList = [];
-        this.delDialogVisible = false;
-        this.editDialogVisible = false;
-        this.fconfig_users = [];
-        this.fdatabase_infos = [];
-        this.userList = [];
-        this.dataDialogVisible = false;
-    }
-    SetComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.setService.getCommonDbtypeList().subscribe(function (data) {
-            _this.dbTypeList = data.map(function (v) {
-                return {
-                    label: v,
-                    value: v
-                };
-            });
-        });
-        this.getTable();
-    };
-    // 获取业务列表
-    SetComponent.prototype.getTable = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            _this.setService.getBusinessList().subscribe(function (data) {
-                _this.businessList = data;
-                resolve();
-            });
-        });
-    };
-    // 删除业务
-    SetComponent.prototype.del = function (list) {
-        this.fbusiness_id = list.fbusiness_id;
-        this.fbusiness_name = list.fbusiness_name;
-        this.fbusiness_cname = list.fbusiness_cname;
-        this.delDialogVisible = true;
-    };
-    SetComponent.prototype.delBusiness = function () {
-        var _this = this;
-        this.setService.postBusinessDelete({ business_id: this.fbusiness_id }).subscribe(function () {
-            _this.getTable();
-            _this.delDialogHide();
-        });
-    };
-    // 隐藏删除
-    SetComponent.prototype.delDialogHide = function () {
-        this.fbusiness_id = null;
-        this.fbusiness_name = null;
-        this.fbusiness_cname = null;
-        this.delDialogVisible = false;
-    };
-    // 添加 or 编辑页
-    SetComponent.prototype.edit = function (list, type) {
-        var _this = this;
-        this.editType = type;
-        if (type) {
-            this.fbusiness_id = list.fbusiness_id;
-            this.fbusiness_name = list.fbusiness_name;
-            this.fbusiness_cname = list.fbusiness_cname;
-            this.fdatabase_infos = list.fdatabase_infos;
-            this.fconfig_users = list.fconfig_users.map(function (v) {
-                return v.fworkid;
-            });
-        }
-        this.setService.getUserList().subscribe(function (data) {
-            _this.userList = data.map(function (v) {
-                return {
-                    label: v.fuser_cname + "\uFF08" + v.fuser_name + "\uFF09",
-                    value: v.fworkid
-                };
-            });
-        });
-        this.editDialogVisible = true;
-    };
-    // 人物选择器
-    SetComponent.prototype.getMemberInfo = function (uid) {
-        var name = uid;
-        this.userList.forEach(function (v) {
-            if (v.value.toString() === uid.toString()) {
-                name = v.label;
-            }
-        });
-        return name;
-    };
-    SetComponent.prototype.removeTec = function (v) {
-        var index = this.fconfig_users.indexOf(v);
-        if (index > -1) {
-            this.fconfig_users.splice(index, 1);
-        }
-    };
-    // 提交修改
-    SetComponent.prototype.editBusiness = function () {
-        var _this = this;
-        var params = {
-            fbusiness_id: this.fbusiness_id,
-            fbusiness_name: this.fbusiness_name,
-            fbusiness_cname: this.fbusiness_cname,
-            fconfig_users: this.fconfig_users.toString()
-        };
-        this.setService.postBusinessUpsert(params).subscribe(function (data) {
-            _this.editDialogHide();
-            _this.getTable();
-        });
-    };
-    // 关闭页面
-    SetComponent.prototype.editDialogHide = function () {
-        this.fbusiness_id = null;
-        this.fbusiness_name = null;
-        this.fbusiness_cname = null;
-        this.fdatabase_infos = [];
-        this.fconfig_users = [];
-        this.editDialogVisible = false;
-    };
-    // 新增 or 编辑db
-    SetComponent.prototype.editDatabase = function (list, type) {
-        this.dbType = type;
-        if (type) {
-            this.fdb_port = list.fdb_port;
-            this.fdb_ip = list.fdb_ip;
-            this.fdb_name = list.fdb_name;
-            this.fdb_type = list.fdb_type;
-            this.fdb_user = list.fdb_user;
-            this.fdb_password = list.fdb_password;
-            this.fdb_id = list.fdb_id;
-        }
-        this.dataDialogVisible = true;
-    };
-    // 提交修改db
-    SetComponent.prototype.editDB = function () {
-        var _this = this;
-        var params = {
-            fdb_port: this.fdb_port,
-            fdb_ip: this.fdb_ip,
-            fdb_name: this.fdb_name,
-            fdb_type: this.fdb_type,
-            fdb_user: this.fdb_user,
-            fdb_password: this.fdb_password,
-            fdb_id: this.fdb_id,
-            fbusiness_id: this.fbusiness_id
-        };
-        this.setService.postBusinessDatabaseUpsert(params).subscribe(function () {
-            _this.getTable().then(function () {
-                var list;
-                _this.businessList.map(function (v) {
-                    if (v.fbusiness_id === _this.fbusiness_id) {
-                        list = v;
-                    }
-                });
-                _this.edit(list, 1);
-                _this.dataDialogHide();
-            });
-        });
-    };
-    // 删除db
-    SetComponent.prototype.delDatabase = function (list) {
-        var _this = this;
-        this.setService.postBusinessDatabaseDelete({
-            fbusiness_id: this.fbusiness_id,
-            fdb_id: list.fdb_id
-        }).subscribe(function () {
-            _this.getTable().then(function () {
-                var list;
-                _this.businessList.map(function (v) {
-                    if (v.fbusiness_id === _this.fbusiness_id) {
-                        list = v;
-                    }
-                });
-                _this.edit(list, 1);
-            });
-        });
-    };
-    // 隐藏编辑
-    SetComponent.prototype.dataDialogHide = function () {
-        this.fdb_port = null;
-        this.fdb_ip = null;
-        this.fdb_name = null;
-        this.fdb_type = null;
-        this.fdb_user = null;
-        this.fdb_password = null;
-        this.fdb_id = null;
-        this.dataDialogVisible = false;
-    };
-    return SetComponent;
-}());
-SetComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-set',
-        template: __webpack_require__("./src/app/set/set.component.html"),
-        styles: [__webpack_require__("./src/app/set/set.component.scss")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_set_service__["a" /* SetService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_set_service__["a" /* SetService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
-], SetComponent);
-
-var _a, _b;
-//# sourceMappingURL=set.component.js.map
 
 /***/ }),
 
@@ -26387,6 +26079,8 @@ var DropdownComponent = (function () {
         this.isMultiValueChange = false;
         this.isNew = false;
         this.queryParam = [];
+        // 组件的所有查询条件，当为global时，与panelQueryParam一致，否则则相当于panelQueryParam加上全局查询条件
+        this.queryParamData = {};
         this.queryChange$ = queryDataService.queryChange$.subscribe(function (data) {
             if ((data.type == 'global' || (data.type == 'panel' && data.pCid == _this.pCid)) && data.ename == _this.cascades.parent[0]) {
                 if (_this.shouldLoadData) {
@@ -26395,7 +26089,7 @@ var DropdownComponent = (function () {
             }
         });
         this.setQueryChild$ = this.queryDataService.setQueryChild$.subscribe(function (data) {
-            if ((data.type == 'global' || (data.type == 'panel' && data.pCid == _this.pCid)) && data.key == _this.ename) {
+            if ((data.cascadesType == 'global' || (data.type == 'panel' && data.pCid == _this.pCid)) && data.key == _this.ename) {
                 _this.cascades['child'] = [data.ename];
             }
         });
@@ -26462,7 +26156,7 @@ var DropdownComponent = (function () {
             var data = { 'type': 'global',
                 'ename': this.ename, 'data': { 'cid': this.cid, 'cname': this.cname, 'value': this.selectedOption, 'compType': 'dropdown' } };
             if (this.cascades && this.cascades.child && this.cascades.child.length > 0) {
-                data['child'] = true;
+                // data['child'] = true; 全局过滤条件不需要这个限制
                 this.globalDataService.setQueryParams(data);
             }
             else {
@@ -26556,9 +26250,15 @@ var DropdownComponent = (function () {
                 _this.dbList.push({ 'label': item.name, 'value': item.id });
             });
             _this.queryParam = [];
-            Object.keys(_this.panelQueryParam).forEach(function (key) {
+            if (_this.globalComp) {
+                _this.queryParamData = _this.panelQueryParam;
+            }
+            else {
+                _this.queryParamData = Object.assign({}, _this.globalDataService.getQueryParams('global'), _this.panelQueryParam);
+            }
+            Object.keys(_this.queryParamData).forEach(function (key) {
                 if (key != _this.ename) {
-                    _this.queryParam.push([key, _this.panelQueryParam[key]['cname']]);
+                    _this.queryParam.push([key, _this.queryParamData[key]['cname']]);
                 }
             });
             _this.enameTemp = _this.ename;
@@ -26567,7 +26267,7 @@ var DropdownComponent = (function () {
     };
     // 删除组件
     DropdownComponent.prototype.deleteComponent = function (event) {
-        if (this.cascades && this.cascades.child) {
+        if (this.cascades && this.cascades.child && this.cascades.child.length > 0) {
             iziToast.error({
                 position: 'topRight',
                 title: '删除失败!',
@@ -26687,7 +26387,7 @@ var DropdownComponent = (function () {
             return false;
         }
         var index = this.JQuery('.dropdownDialogBody .sqlConfig')[0].selectionStart;
-        var target = this.panelQueryParam[key];
+        var target = this.queryParamData[key];
         if (target.compType == 'flatpickr') {
             this.sqlSource = this.sqlSource.slice(0, index) + ' ' + key
                 + '>= {' + key + '_sdate} and ' + key + '<= {' + key + '_edate} ' + this.sqlSource.slice(index);
@@ -26706,11 +26406,13 @@ var DropdownComponent = (function () {
     DropdownComponent.prototype.checkCascades = function () {
         var _this = this;
         var data;
+        var panelQuery = this.panelQueryParam;
+        var globalQuery = this.globalDataService.getQueryParams('global');
         if (this.globalComp) {
-            data = this.globalDataService.getQueryParams('global');
+            data = globalQuery;
         }
         else {
-            data = this.panelQueryParam;
+            data = Object.assign({}, globalQuery, panelQuery);
         }
         this.cascades.parent = [];
         Object.keys(data).forEach(function (key) {
@@ -26734,8 +26436,9 @@ var DropdownComponent = (function () {
                 else {
                     _this.cascadesValue = data[key].value;
                 }
+                // type字段是旧字段，为了兼容旧数据   cascadesType为级联的组件类型（全局或者局部）
                 _this.queryDataService.onSetQueryChild({ 'ename': _this.ename, 'pCid': _this.pCid, 'type': _this.globalComp ? 'global' : 'panel',
-                    'key': key });
+                    'cascadesType': panelQuery[key] ? 'panel' : 'global', 'key': key });
             }
         });
     };
@@ -29385,12 +29088,6 @@ var SysUserListComponent = (function () {
             _this.pageList = _this.userList.slice(0, _this.pageRows);
         });
     };
-    // 跳转到用户详情也
-    /*jumpToUserInfo(item) {
-      this.globalDataService.setParams({ pageParam: {user_id : item.id, user_type: 1}});
-      // 手动路由跳转，路由参数
-      this.router.navigateByUrl('/userInfo');
-    }*/
     // 显示编辑弹窗
     SysUserListComponent.prototype.userEdit = function (item, index) {
         this.curIndex = this.pageRows * this.curPage + index;
@@ -29440,22 +29137,6 @@ var SysUserListComponent = (function () {
     SysUserListComponent.prototype.onSelectedChange = function (event) {
         this.userTypeTemp = event.value;
     };
-    SysUserListComponent.prototype.goBack = function () {
-        window.history.go(-1);
-    };
-    // 退出登录
-    SysUserListComponent.prototype.signOut = function () {
-        var _this = this;
-        this.configService.loginOut().subscribe(function () {
-            _this.configService.clearBusinessInfo();
-            _this.router.navigateByUrl('/login');
-        });
-    };
-    // 去到首页
-    SysUserListComponent.prototype.goIndex = function () {
-        this.configService.clearBusinessInfo();
-        this.router.navigateByUrl('/businessConfig');
-    };
     return SysUserListComponent;
 }());
 SysUserListComponent = __decorate([
@@ -29475,7 +29156,7 @@ var _a, _b, _c, _d, _e;
 /***/ "./src/app/user-info/user-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"userInfo\">\n  <div class=\"header\">\n    <app-global-header></app-global-header>\n  </div>\n\n  <div class=\"main\">\n    <div class=\"account-user-header\">\n      用户信息\n    </div>\n    <div class=\"account-user-main\">\n      <div class=\"opersBtn\">\n        <div class=\"editBtn\" (click)=\"editUserInfo()\" *ngIf=\"!isEditing\">修改信息</div>\n        <div class=\"saveBtn\" (click)=\"saveUserInfo()\" *ngIf=\"isEditing\">保存修改</div>\n      </div>\n      <div class=\"panel-body\">\n        <a class=\"avatar\">\n          <img alt=\"头像\" #avatarImg>\n          <div class=\"upDateBtn\">\n            上传头像\n            <form id=\"uploadFrom\" method=\"post\" enctype=\"multipart/form-data\">\n              <input type=\"file\" id=\"uploadImage\" accept=\"image/png,image/jpg,image/jpeg\" name=\"avatar\" (click)=\"uploadImg($event)\">\n            </form>\n          </div>\n        </a>\n        <div class=\"user-msg\">\n          <div class=\"account-msg\">\n            <p *ngIf=\"!isEditing\"><span>姓名：</span>{{userInfo.name || '未知'}}</p>\n            <p *ngIf=\"isEditing\"><span>姓名：</span><input  class=\"bud-input\" [(ngModel)]=\"userInfo.name\"></p>\n            <p *ngIf=\"!isEditing\"><span>邮箱：</span>{{userInfo.email || '未知'}}</p>\n            <p *ngIf=\"isEditing\"><span>邮箱：</span><input  class=\"bud-input\" [(ngModel)]=\"userInfo.email\"></p>\n            <p *ngIf=\"!isEditing\"><span>性别：</span>{{sexList[userInfo.sex] || '未知'}}</p>\n            <p *ngIf=\"isEditing\"><span>性别：</span>\n              <p-dropdown [options]=\"sexSelectList\" [(ngModel)]=\"userInfo.sex\" [placeholder]=\"'请选择'\" [style]=\"{'width': '80px'}\"></p-dropdown>\n            </p>\n            <p><span>账号名：</span>{{userInfo.account || '未知'}}</p>\n            <p><span>用户类型：</span>{{roleType[userInfo.role] || '未知'}}</p>\n            <p><span>注册时间：</span>{{userInfo.created || '未知'}}</p>\n            <p><span>最后登录时间：</span>{{userInfo.login_at || '未知'}}</p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n"
+module.exports = "<div id=\"userInfo\">\r\n  <div class=\"header\">\r\n    <app-global-header></app-global-header>\r\n  </div>\r\n  <div class=\"main\">\r\n    <div class=\"account-user-header\">\r\n      用户信息\r\n    </div>\r\n    <div class=\"account-user-main\">\r\n      <div class=\"opersBtn\">\r\n        <div class=\"editBtn\" (click)=\"editUserInfo()\" *ngIf=\"!isEditing\">修改信息</div>\r\n        <div class=\"saveBtn\" (click)=\"saveUserInfo()\" *ngIf=\"isEditing\">保存修改</div>\r\n      </div>\r\n      <div class=\"panel-body\">\r\n        <a class=\"avatar\">\r\n          <img alt=\"头像\" #avatarImg>\r\n          <div class=\"upDateBtn\">\r\n            上传头像\r\n            <form id=\"uploadFrom\" method=\"post\" enctype=\"multipart/form-data\">\r\n              <input type=\"file\" id=\"uploadImage\" accept=\"image/png,image/jpg,image/jpeg\" name=\"avatar\" (click)=\"uploadImg($event)\">\r\n            </form>\r\n          </div>\r\n        </a>\r\n        <div class=\"user-msg\">\r\n          <div class=\"account-msg\">\r\n            <p *ngIf=\"!isEditing\"><span>姓名：</span>{{userInfo.name || '未知'}}</p>\r\n            <p *ngIf=\"isEditing\"><span>姓名：</span><input  class=\"bud-input\" [(ngModel)]=\"userInfo.name\"></p>\r\n            <p *ngIf=\"!isEditing\"><span>邮箱：</span>{{userInfo.email || '未知'}}</p>\r\n            <p *ngIf=\"isEditing\"><span>邮箱：</span><input  class=\"bud-input\" [(ngModel)]=\"userInfo.email\"></p>\r\n            <p *ngIf=\"!isEditing\"><span>性别：</span>{{sexList[userInfo.sex] || '未知'}}</p>\r\n            <p *ngIf=\"isEditing\"><span>性别：</span>\r\n              <p-dropdown [options]=\"sexSelectList\" [(ngModel)]=\"userInfo.sex\" [placeholder]=\"'请选择'\" [style]=\"{'width': '80px'}\"></p-dropdown>\r\n            </p>\r\n            <p><span>账号名：</span>{{userInfo.account || '未知'}}</p>\r\n            <p><span>用户类型：</span>{{roleType[userInfo.role] || '未知'}}</p>\r\n            <p><span>注册时间：</span>{{userInfo.created || '未知'}}</p>\r\n            <p><span>最后登录时间：</span>{{userInfo.login_at || '未知'}}</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -29546,9 +29227,11 @@ var UserInfoComponent = (function () {
             userImgDom.src = 'assets/images/avatar.jpg';
         };
     };
+    // 编辑用户信息状态，显示编辑框
     UserInfoComponent.prototype.editUserInfo = function () {
         this.isEditing = true;
     };
+    // 保存用户信息
     UserInfoComponent.prototype.saveUserInfo = function (data) {
         var _this = this;
         var data_ = data ? data : { 'name': this.userInfo.name, 'email': this.userInfo.email, 'sex': this.userInfo.sex };
@@ -29568,6 +29251,7 @@ var UserInfoComponent = (function () {
             });
         });
     };
+    // 上传头像
     UserInfoComponent.prototype.uploadImg = function (event) {
         var _this = this;
         jQuery('.upDateBtn #uploadImage').on('change', function () {
@@ -29594,14 +29278,6 @@ var UserInfoComponent = (function () {
             _this.configService.clearBusinessInfo();
             _this.router.navigateByUrl('/login');
         });
-    };
-    // 去到首页
-    UserInfoComponent.prototype.goIndex = function () {
-        this.configService.clearBusinessInfo();
-        this.router.navigateByUrl('/businessConfig');
-    };
-    UserInfoComponent.prototype.goBack = function () {
-        window.history.go(-1);
     };
     return UserInfoComponent;
 }());
@@ -29743,12 +29419,6 @@ var UserListComponent = (function () {
             _this.roleDialogVisible = true;
         });
     };
-    /*// 跳转到用户详情也
-    jumpToUserInfo(item) {
-      this.globalDataService.setParams({ pageParam: {user_id : item.account_id, user_type : 1}}); // user_type 1:业务用户  2：系统用户
-      // 手动路由跳转，路由参数
-      this.router.navigateByUrl('/userInfo/' + this.bid);
-    }*/
     // 隐藏编辑弹窗
     UserListComponent.prototype.dialogHide = function () {
         this.dialogVisible = false;
@@ -29767,6 +29437,7 @@ var UserListComponent = (function () {
             }
         });
     };
+    // 储存编辑对象信息
     UserListComponent.prototype.userEdit = function (item, index) {
         var _this = this;
         this.roleIdList = [];
@@ -29809,10 +29480,7 @@ var UserListComponent = (function () {
         this.curPage = event.page;
         this.pageList = this.userList.slice(this.pageRows * event.page, this.pageRows * (event.page + 1));
     };
-    // 跳转到系统用户列表
-    UserListComponent.prototype.showSysUserList = function () {
-        this.router.navigateByUrl('/sysUserList');
-    };
+    // 更新用户角色
     UserListComponent.prototype.userRoleUpdate = function () {
         var _this = this;
         var data = [];
@@ -29865,22 +29533,22 @@ const config_ = {
       "groupList": [
         {
           "name": "折线图",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "line"
         },
         {
           "name": "对比图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/dbt.png",
           "type": "bar_cross"
         },
         {
           "name": "饼状图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/bt.png",
           "type": "pie"
         },
         {
           "name": "对比趋势图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/dbqst.png",
           "type": "linestack"
         }
         // {
@@ -29896,19 +29564,19 @@ const config_ = {
       "groupList": [
         {
           "name": "单日期",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "flatpickr_single",
           "cascades": {}
         },
         {
           "name": "双日期",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "flatpickr_range",
           "cascades": {}
         },
         {
           "name": "下拉单选",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "singleSelect",
           "list": [],
           "value": "",
@@ -29921,7 +29589,7 @@ const config_ = {
         },
         {
           "name": "下拉多选",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "multiSelect",
           "list": [],
           "value": "",
@@ -30028,9 +29696,13 @@ module.exports = __webpack_require__.p + "mans.1302759b8be148f12915.png";
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `angular-cli.json`.
+// The file contents for the current environment will overwrite these during build.
 var environment = {
     production: true,
-    // apiUrl: '//seed_server_dev.oa.com',
     apiUrl: window.location.origin,
     loginUrl: '//sso.oa.com/Index/login/appid/1661'
 };

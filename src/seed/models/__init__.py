@@ -10,5 +10,3 @@ from .panels import *
 from .filters import *
 
 from .analogdatas import *
-
-from .event_hook import *

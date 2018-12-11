@@ -45,7 +45,7 @@ class Bussiness(RestfulBaseView):
                 BManagerModel.id, BManagerModel.bussiness_id,
                 BManagerModel.user_id, AccountModel.name
             )\
-                .join(AccountModel, BManagerModel.user_id==AccountModel.id)\
+                .join(AccountModel, BManagerModel.user_id == AccountModel.id)\
                 .as_list()
 
             b_managers_map = {}

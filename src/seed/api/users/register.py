@@ -1,12 +1,11 @@
 import bcrypt
-from flask import request, Response, make_response
+from flask import request
 
 from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 from seed.cache.active_account import ActiveAccountCache
 from seed.schema.base import BaseSchema
 from seed.models.account import Account
 from seed.utils.mail import send_active_email
-from seed.cache.session import SessionCache
 
 
 class AccountSchema(BaseSchema):
@@ -59,7 +58,7 @@ class Register(RestfulBaseView):
         account.save()
 
         active_token = ActiveAccountCache().create_active_token(account.id)
-        redirect_url = 'seed_server_dev.oa.com/users/active_account&active_token={active_token}'.format(active_token=active_token)
+        redirect_url = '{active_host}/users/active_account&active_token={active_token}'.format(active_host=request.host, active_token=active_token)
         try:
             send_active_email(account.email, active_url, redirect_url)
         except Exception as e:

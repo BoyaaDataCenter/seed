@@ -6,22 +6,22 @@ const config_ = {
       "groupList": [
         {
           "name": "折线图",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "line"
         },
         {
           "name": "对比图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/dbt.png",
           "type": "bar_cross"
         },
         {
           "name": "饼状图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/bt.png",
           "type": "pie"
         },
         {
           "name": "对比趋势图",
-          "icon": "./../../assets/images/zzt.jpg",
+          "icon": "./../../assets/images/dbqst.png",
           "type": "linestack"
         }
         // {
@@ -37,19 +37,19 @@ const config_ = {
       "groupList": [
         {
           "name": "单日期",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "flatpickr_single",
           "cascades": {}
         },
         {
           "name": "双日期",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "flatpickr_range",
           "cascades": {}
         },
         {
           "name": "下拉单选",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "singleSelect",
           "list": [],
           "value": "",
@@ -62,7 +62,7 @@ const config_ = {
         },
         {
           "name": "下拉多选",
-          "icon": "./../../assets/images/zxt.jpg",
+          "icon": "./../../assets/images/zxt.png",
           "type": "multiSelect",
           "list": [],
           "value": "",

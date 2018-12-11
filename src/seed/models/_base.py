@@ -5,6 +5,8 @@ from flask import g
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from sqlalchemy.sql import sqltypes
+from sqlalchemy.ext.declarative import declared_attr
+
 from flask_sqlalchemy import SQLAlchemy, BaseQuery, orm
 
 from seed.utils.time import convert_utc_to_local
@@ -95,7 +97,10 @@ class BussinessModel(BaseModel):
     __abstract__ = True
     column_filter = ['created', 'updated', 'bussiness_id']
 
-    bussiness_id = db.Column(db.Integer, nullable=False, default=1)
+    @declared_attr
+    def bussiness_id(cls):
+        return db.Column(db.Integer, db.ForeignKey('bussiness.id'))
+    # bussiness_id = db.Column(db.Integer, nullable=False, default=1)
 
     def __init__(self, *args, **kwargs):
         self.bussiness_id = g.bussiness_id
@@ -109,4 +114,6 @@ class PageModel(BussinessModel):
 
     column_filter = ['created', 'updated', 'bussiness_id', 'page_id']
 
-    page_id = db.Column(db.Integer, nullable=False, default=1)
+    @declared_attr
+    def page_id(cls):
+        return db.Column(db.Integer, db.ForeignKey('menu.id'))

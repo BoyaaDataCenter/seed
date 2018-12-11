@@ -12,7 +12,7 @@ def register_api(app):
     """
 
     predicate = lambda m: isclass(m) and issubclass(m, _MethodView) and not get_immediate_cls_attr(m, '__abstract__')
-    members = get_package_members(api, predicate, '') 
+    members = get_package_members(api, predicate, '')
     for pre_url, handlers in members.items():
         bp = Blueprint(pre_url, __name__)
         for handler in set(handlers):

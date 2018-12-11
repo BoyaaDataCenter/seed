@@ -43,7 +43,7 @@ class ForgetPassword(RestfulBaseView):
             )
 
         reset_token = ResetPasswordCache().create_active_token(account.id)
-        reset_redirect_url = 'seed_server_dev.oa.com/users/reset_password&reset_token={reset_token}'.format(reset_token=reset_token)
+        reset_redirect_url = '{active_host}/users/reset_password&reset_token={reset_token}'.format(active_host=request.host, reset_token=reset_token)
         send_reset_password_email(account.email, reset_url, reset_redirect_url)
 
         return self.response_json(self.HttpErrorCode.SUCCESS)

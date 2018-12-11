@@ -20,7 +20,7 @@ class BUserRole(RestfulBaseView):
 
     def get(self, model_id):
         query_session = self.session.query(self.model_class)
-        datas = query_session.filter(self.model_class.user_id==model_id).all()
+        datas = query_session.filter(self.model_class.user_id == model_id).all()
         datas = [row.row2dict() for row in datas] if datas else []
 
         roles = RoleModel.get_roles(g.bussiness_id)
@@ -36,7 +36,7 @@ class BUserRole(RestfulBaseView):
 
         # 删除旧数据
         query_session = self.session.query(self.model_class)
-        query_session.filter(self.model_class.user_id==model_id).delete()
+        query_session.filter(self.model_class.user_id == model_id).delete()
         self.session.commit()
 
         # 添加新数据
