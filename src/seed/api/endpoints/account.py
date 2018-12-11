@@ -1,8 +1,9 @@
+from flask import g
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api.endpoints._base import RestfulBaseView, HttpMethods
 
 from seed.models.account import Account as AccountModel
-from seed.utils.auth import api_require_admin
+from seed.utils.auth import api_require_user, require_super_admin
 
 
 class AccountSchema(BaseSchema):
@@ -13,7 +14,21 @@ class AccountSchema(BaseSchema):
 class Account(RestfulBaseView):
     """ Account
     """
-    decorators = [api_require_admin]
-
     model_class = AccountModel
     schema_class = AccountSchema
+
+    access_methods = [HttpMethods.GET, HttpMethods.PUT, HttpMethods.DELETE]
+
+    decorators = [api_require_user]
+
+    def put(self, model_id=None):
+        if require_super_admin() or g.user.id == model_id:
+            return self.response_json(self.HttpErrorCode.FORBIDDEN)
+
+        return super(Account, self).put(model_id=model_id)
+
+    def delete(self, model_id):
+        if not require_super_admin():
+            return self.response_json(self.HttpErrorCode.FORBIDDEN)
+
+        return super(Account, self).delete(model_id=model_id)

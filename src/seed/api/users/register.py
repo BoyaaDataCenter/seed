@@ -60,6 +60,12 @@ class Register(RestfulBaseView):
 
         active_token = ActiveAccountCache().create_active_token(account.id)
         redirect_url = 'seed_server_dev.oa.com/users/active_account&active_token={active_token}'.format(active_token=active_token)
-        send_active_email(account.email, active_url, redirect_url)
+        try:
+            send_active_email(account.email, active_url, redirect_url)
+        except Exception as e:
+            # 如果邮件发送失败，则放弃邮件验证
+            print(e)
+            account.role = 'user'
+            account.save()
 
         return self.response_json(self.HttpErrorCode.SUCCESS)

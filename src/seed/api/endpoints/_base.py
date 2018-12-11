@@ -140,22 +140,24 @@ class RestfulBaseView(_MethodView):
             if defaults:
                 app.add_url_rule(
                     url, defaults=defaults,
-                    view_func=view_func, methods=[method,],
+                    view_func=view_func,
+                    methods=[method],
                 )
                 app.add_url_rule(
                     '%s/<%s:%s>' % (url, cls.pk_type, pk),
                     view_func=view_func,
-                    methods=[method,]
+                    methods=[method]
                 )
             elif len(method_params) > 1:
                 app.add_url_rule(
                     '%s/<%s:%s>' % (url, cls.pk_type, pk),
                     view_func=view_func,
-                    methods=[method,]
+                    methods=[method]
                 )
             else:
                 app.add_url_rule(
-                    url,view_func=view_func, methods=[method],
+                    url,
+                    view_func=view_func, methods=[method]
                 )
 
         return app

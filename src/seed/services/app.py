@@ -6,6 +6,7 @@ import flask_migrate
 from flask import Flask, g
 from flask_cors import CORS
 
+from seed import ROOT_PATH
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
@@ -26,7 +27,6 @@ class SeedHttpServer(object):
         self.register_databases()
         self.register_cache()
         self.register_api()
-        print(self.app.url_map)
         self.register_hook()
 
     def create_app(self, config_file):
@@ -99,12 +99,21 @@ class SeedHttpServer(object):
         self.app.run(self.host, self.port)
 
     def upgrade(self, sql):
-        directory = self.app.extensions['migrate'].directory
+        print('数据库开始初始化')
         with self.app.app_context():
-            if not os.path.exists(os.path.join(directory, 'alembic.ini')):
-                flask_migrate.init(directory)
-            flask_migrate.migrate(sql=sql)
-            flask_migrate.upgrade(sql=sql)
+            migrate_directory = self.app.extensions['migrate'].directory
+
+            migrate_path = os.path.join(ROOT_PATH, migrate_directory)
+            if not os.path.exists(os.path.join(migrate_path, 'alembic.ini')):
+                # 判断是不是第一次初始化数据库
+                is_empty = input('第一次初始化数据库，请确保你的数据库是空的。Y/N? ')
+                if is_empty != 'Y':
+                    return
+
+                flask_migrate.init(migrate_path)
+
+            flask_migrate.migrate(migrate_path, sql=sql)
+            flask_migrate.upgrade(migrate_path, sql=sql)
 
             if is_new_databases():
                 # 写入默认数据
@@ -112,3 +121,5 @@ class SeedHttpServer(object):
                 init_analogdata()
                 print('初始化默认业务模块')
                 init_databases()
+
+        print("数据库升级完成")
