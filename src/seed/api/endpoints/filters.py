@@ -14,6 +14,7 @@ from seed.utils.auth  import api_require_login
 class FilterSchema(BaseSchema):
     class Meta:
         model = FiltersModel
+        include_fk = True
 
     @post_dump(pass_many=True)
     def dumps_index(self, in_data, many):

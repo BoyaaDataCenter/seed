@@ -13,6 +13,7 @@ from seed.utils.auth  import api_require_admin
 class PanelSchema(BaseSchema):
     class Meta:
         model = PanelsModel
+        include_fk = True
 
     @post_dump(pass_many=True)
     def dumps_indexs(self, in_data, many):

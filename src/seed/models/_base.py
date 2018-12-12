@@ -100,7 +100,6 @@ class BussinessModel(BaseModel):
     @declared_attr
     def bussiness_id(cls):
         return db.Column(db.Integer, db.ForeignKey('bussiness.id'))
-    # bussiness_id = db.Column(db.Integer, nullable=False, default=1)
 
     def __init__(self, *args, **kwargs):
         self.bussiness_id = g.bussiness_id
