@@ -8,7 +8,7 @@ from seed.schema.base import BaseSchema
 from seed.api.endpoints._base import RestfulBaseView
 
 from seed.models.filters import Filters as FiltersModel
-from seed.utils.auth  import api_require_login
+from seed.utils.auth import api_require_login
 
 
 class FilterSchema(BaseSchema):

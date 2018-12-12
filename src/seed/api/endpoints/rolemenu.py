@@ -12,6 +12,7 @@ from seed.utils.auth import api_require_admin
 class RoleMenuSchema(BaseSchema):
     class Meta:
         model = RoleMenuModel
+        include_fk = True
 
 
 class RoleMenu(RestfulBaseView):

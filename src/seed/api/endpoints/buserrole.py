@@ -10,6 +10,8 @@ from seed.utils.auth import api_require_login
 class BUserRoleSchema(BaseSchema):
     class Meta:
         model = BUserRoleModel
+        include_fk = True
+
 
 class BUserRole(RestfulBaseView):
     """ 用户角色

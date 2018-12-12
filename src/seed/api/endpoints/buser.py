@@ -16,6 +16,7 @@ from seed.utils.auth import api_require_admin
 class BUserSchema(BaseSchema):
     class Meta:
         model = BUserModel
+        include_fk = True
 
 
 class Buser(RestfulBaseView):
