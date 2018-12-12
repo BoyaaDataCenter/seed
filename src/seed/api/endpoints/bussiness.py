@@ -19,6 +19,7 @@ class BussinessSchema(BaseSchema):
 class BManagerSchema(BaseSchema):
     class Meta:
         model = BManagerModel
+        include_fk = True
 
 
 class Bussiness(RestfulBaseView):

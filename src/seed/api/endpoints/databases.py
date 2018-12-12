@@ -11,6 +11,7 @@ from seed.utils.helper import common_batch_crud
 class DatabasesSchema(BaseSchema):
     class Meta:
         model = DatabasesModel
+        include_fk = True
 
 
 class Databases(Buser):
