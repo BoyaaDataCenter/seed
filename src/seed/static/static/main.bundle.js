@@ -3827,6 +3827,7 @@ var MenuComponent = (function () {
                 title: '请求成功!',
                 message: "\u83DC\u5355\u66F4\u65B0\u6210\u529F",
             });
+            _this.menuList = succData;
             _this.globalDataService.onMenuChange();
         }, function (err) {
             iziToast.error({
