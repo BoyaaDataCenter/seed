@@ -6,7 +6,8 @@ import flask_migrate
 from flask import Flask, g
 from flask_cors import CORS
 
-from seed import ROOT_PATH
+from seed.runner.setting import discover_configs
+
 from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
@@ -103,7 +104,9 @@ class SeedHttpServer(object):
         with self.app.app_context():
             migrate_directory = self.app.extensions['migrate'].directory
 
-            migrate_path = os.path.join(ROOT_PATH, migrate_directory)
+            migrate_path, _, _ = discover_configs()
+            migrate_path = os.path.join(migrate_path, migrate_directory)
+
             if not os.path.exists(os.path.join(migrate_path, 'alembic.ini')):
                 # 判断是不是第一次初始化数据库
                 is_empty = input('第一次初始化数据库，请确保你的数据库是空的。Y/N? ')
