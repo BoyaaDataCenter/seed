@@ -34,7 +34,12 @@ class Menu(RestfulBaseView):
         """
         menus = request.get_json()
         self._decode_menus(menus)
-        return self.response_json(self.HttpErrorCode.SUCCESS)
+
+        query_session = self.session.query(self.model_class).filter(self.model_class.bussiness_id==g.bussiness_id)
+        menu_data = query_session.all()
+        menus = self._encode_menus(menu_data)
+
+        return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
     def _encode_menus(self, menu_data):
         menu_data = {'-'.join([str(row.parent_id), str(row.left_id)]): row.row2dict() for row in menu_data}

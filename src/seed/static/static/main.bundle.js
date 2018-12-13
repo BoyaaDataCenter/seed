@@ -23169,7 +23169,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "#reportConfig {\n  width: 100%;\n  height: calc( 100% - 50px); }\n  #reportConfig > .compMenu {\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    position: fixed;\n    z-index: 1000;\n    -webkit-transform: translateZ(0);\n    top: 0;\n    left: 0;\n    bottom: 0;\n    width: 240px;\n    background: #353b43; }\n    #reportConfig > .compMenu .compGroup {\n      width: 100%; }\n      #reportConfig > .compMenu .compGroup .groupTitle {\n        display: block;\n        border-radius: 0;\n        border: 0;\n        background: #353b43;\n        position: relative;\n        cursor: pointer; }\n        #reportConfig > .compMenu .compGroup .groupTitle a {\n          text-decoration: none;\n          color: #a3b0bf;\n          padding: 18px 0 18px 15px;\n          font-size: 14px;\n          line-height: 14px;\n          display: block; }\n        #reportConfig > .compMenu .compGroup .groupTitle span {\n          position: absolute;\n          right: 10px;\n          top: 17px;\n          color: #a3b0bf; }\n      #reportConfig > .compMenu .compGroup .groupTitle:hover {\n        background-color: #262a2f; }\n      #reportConfig > .compMenu .compGroup .itemList {\n        background-color: #262a2f;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n        height: 0;\n        overflow: hidden; }\n        #reportConfig > .compMenu .compGroup .itemList .item {\n          line-height: 1.2;\n          color: #a3b0bf;\n          border: 0;\n          border-radius: 0;\n          display: block;\n          outline: none;\n          text-decoration: none;\n          font-weight: 400;\n          padding: 10px; }\n          #reportConfig > .compMenu .compGroup .itemList .item img {\n            width: 100px;\n            height: 100px;\n            cursor: pointer; }\n          #reportConfig > .compMenu .compGroup .itemList .item p {\n            margin: 0;\n            padding: 0;\n            text-align: center;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n    #reportConfig > .compMenu .compGroup.active .groupTitle a {\n      color: #fff3ec;\n      font-weight: bold; }\n    #reportConfig > .compMenu .compGroup.active .groupTitle span {\n      color: #fff3ec; }\n    #reportConfig > .compMenu .compGroup.active .itemList {\n      height: 100%; }\n  #reportConfig > .main {\n    margin-left: 240px;\n    min-width: 860px;\n    background-color: #f0f0f0;\n    position: relative;\n    height: 100%; }\n    #reportConfig > .main > .header {\n      height: 50px;\n      width: 100%;\n      background-color: #fbfbfb;\n      border-bottom: 1px solid #ddd; }\n      #reportConfig > .main > .header .item {\n        display: none; }\n    #reportConfig > .main > .body {\n      position: relative;\n      padding: 10px 15px;\n      height: calc( 100% - 50px); }\n      #reportConfig > .main > .body .item {\n        display: inline-block; }\n      #reportConfig > .main > .body .drag > img, #reportConfig > .main > .body .drag > p {\n        display: none; }\n      #reportConfig > .main > .body .content {\n        min-width: 300px;\n        min-height: 150px;\n        border-radius: 4px;\n        border: 1px solid #cccccc;\n        display: -ms-inline-flexbox;\n        display: inline-flex;\n        margin: 10px;\n        position: relative; }\n        #reportConfig > .main > .body .content > .header {\n          height: 30px;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n          -ms-flex-align: center;\n              align-items: center;\n          cursor: move; }\n        #reportConfig > .main > .body .content > .main {\n          height: 100%;\n          width: 100%; }\n        #reportConfig > .main > .body .content .resizableHandle {\n          background-image: none;\n          cursor: nwse-resize;\n          position: absolute;\n          width: 20px;\n          height: 20px;\n          bottom: 0;\n          right: 0;\n          cursor: nwse-resize;\n          z-index: 10; }\n        #reportConfig > .main > .body .content .resizableHandle:after, #reportConfig > .main > .body .content .resizableHandle:before {\n          content: \"\";\n          display: block;\n          position: absolute;\n          height: 2px;\n          border-radius: 1px;\n          background-color: #888888;\n          transition: background-color .25s ease;\n          top: 50%;\n          left: 50%;\n          border: 0; }\n        #reportConfig > .main > .body .content .resizableHandle:before {\n          width: 20px;\n          transform: translate(-50%, -50%) rotate(-45deg); }\n        #reportConfig > .main > .body .content .resizableHandle:after {\n          width: 12px;\n          transform: translate(-3px, 2px) rotate(-45deg); }\n        #reportConfig > .main > .body .content .resizableHandle:hover:after, #reportConfig > .main > .body .content .resizableHandle:hover:before {\n          background-color: #aaaaaa; }\n    #reportConfig > .main .savePage, #reportConfig > .main .goBack {\n      vertical-align: middle;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis;\n      border-radius: 3px;\n      cursor: pointer;\n      color: #fff;\n      background: #df4f00;\n      border: 1px solid #c04400;\n      padding: 0 10px;\n      line-height: 22px;\n      position: absolute;\n      right: 10px;\n      top: 13px;\n      z-index: 10; }\n      #reportConfig > .main .savePage:hover, #reportConfig > .main .goBack:hover {\n        background: #e2601a; }\n    #reportConfig > .main .goBack {\n      right: 100px; }\n", ""]);
+exports.push([module.i, "#reportConfig {\n  width: 100%;\n  height: calc( 100% - 50px); }\n  #reportConfig > .compMenu {\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    position: fixed;\n    z-index: 1000;\n    -webkit-transform: translateZ(0);\n    top: 0;\n    left: 0;\n    bottom: 0;\n    width: 240px;\n    background: #353b43; }\n    #reportConfig > .compMenu .compGroup {\n      width: 100%; }\n      #reportConfig > .compMenu .compGroup .groupTitle {\n        display: block;\n        border-radius: 0;\n        border: 0;\n        background: #353b43;\n        position: relative;\n        cursor: pointer; }\n        #reportConfig > .compMenu .compGroup .groupTitle a {\n          text-decoration: none;\n          color: #a3b0bf;\n          padding: 18px 0 18px 15px;\n          font-size: 14px;\n          line-height: 14px;\n          display: block; }\n        #reportConfig > .compMenu .compGroup .groupTitle span {\n          position: absolute;\n          right: 10px;\n          top: 17px;\n          color: #a3b0bf; }\n      #reportConfig > .compMenu .compGroup .groupTitle:hover {\n        background-color: #262a2f; }\n      #reportConfig > .compMenu .compGroup .itemList {\n        background-color: #262a2f;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n        height: 0;\n        overflow: hidden; }\n        #reportConfig > .compMenu .compGroup .itemList .item {\n          line-height: 1.2;\n          color: #a3b0bf;\n          border: 0;\n          border-radius: 0;\n          display: block;\n          outline: none;\n          text-decoration: none;\n          font-weight: 400;\n          padding: 10px; }\n          #reportConfig > .compMenu .compGroup .itemList .item img {\n            width: 100px;\n            height: 62px;\n            cursor: pointer; }\n          #reportConfig > .compMenu .compGroup .itemList .item p {\n            margin: 0;\n            padding: 0;\n            text-align: center;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n    #reportConfig > .compMenu .compGroup.active .groupTitle a {\n      color: #fff3ec;\n      font-weight: bold; }\n    #reportConfig > .compMenu .compGroup.active .groupTitle span {\n      color: #fff3ec; }\n    #reportConfig > .compMenu .compGroup.active .itemList {\n      height: 100%; }\n  #reportConfig > .main {\n    margin-left: 240px;\n    min-width: 860px;\n    background-color: #f0f0f0;\n    position: relative;\n    height: 100%; }\n    #reportConfig > .main > .header {\n      height: 50px;\n      width: 100%;\n      background-color: #fbfbfb;\n      border-bottom: 1px solid #ddd; }\n      #reportConfig > .main > .header .item {\n        display: none; }\n    #reportConfig > .main > .body {\n      position: relative;\n      padding: 10px 15px;\n      height: calc( 100% - 50px); }\n      #reportConfig > .main > .body .item {\n        display: inline-block; }\n      #reportConfig > .main > .body .drag > img, #reportConfig > .main > .body .drag > p {\n        display: none; }\n      #reportConfig > .main > .body .content {\n        min-width: 300px;\n        min-height: 150px;\n        border-radius: 4px;\n        border: 1px solid #cccccc;\n        display: -ms-inline-flexbox;\n        display: inline-flex;\n        margin: 10px;\n        position: relative; }\n        #reportConfig > .main > .body .content > .header {\n          height: 30px;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n          -ms-flex-align: center;\n              align-items: center;\n          cursor: move; }\n        #reportConfig > .main > .body .content > .main {\n          height: 100%;\n          width: 100%; }\n        #reportConfig > .main > .body .content .resizableHandle {\n          background-image: none;\n          cursor: nwse-resize;\n          position: absolute;\n          width: 20px;\n          height: 20px;\n          bottom: 0;\n          right: 0;\n          cursor: nwse-resize;\n          z-index: 10; }\n        #reportConfig > .main > .body .content .resizableHandle:after, #reportConfig > .main > .body .content .resizableHandle:before {\n          content: \"\";\n          display: block;\n          position: absolute;\n          height: 2px;\n          border-radius: 1px;\n          background-color: #888888;\n          transition: background-color .25s ease;\n          top: 50%;\n          left: 50%;\n          border: 0; }\n        #reportConfig > .main > .body .content .resizableHandle:before {\n          width: 20px;\n          transform: translate(-50%, -50%) rotate(-45deg); }\n        #reportConfig > .main > .body .content .resizableHandle:after {\n          width: 12px;\n          transform: translate(-3px, 2px) rotate(-45deg); }\n        #reportConfig > .main > .body .content .resizableHandle:hover:after, #reportConfig > .main > .body .content .resizableHandle:hover:before {\n          background-color: #aaaaaa; }\n    #reportConfig > .main .savePage, #reportConfig > .main .goBack {\n      vertical-align: middle;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis;\n      border-radius: 3px;\n      cursor: pointer;\n      color: #fff;\n      background: #df4f00;\n      border: 1px solid #c04400;\n      padding: 0 10px;\n      line-height: 22px;\n      position: absolute;\n      right: 10px;\n      top: 13px;\n      z-index: 10; }\n      #reportConfig > .main .savePage:hover, #reportConfig > .main .goBack:hover {\n        background: #e2601a; }\n    #reportConfig > .main .goBack {\n      right: 100px; }\n", ""]);
 
 // exports
 
@@ -29533,29 +29533,24 @@ const config_ = {
       "groupList": [
         {
           "name": "折线图",
-          "icon": "./../../assets/images/zxt.png",
+          "icon": "./../../assets/images/zxt.jpg",
           "type": "line"
         },
         {
           "name": "对比图",
-          "icon": "./../../assets/images/dbt.png",
+          "icon": "./../../assets/images/dbt.jpg",
           "type": "bar_cross"
         },
         {
           "name": "饼状图",
-          "icon": "./../../assets/images/bt.png",
+          "icon": "./../../assets/images/bt.jpg",
           "type": "pie"
         },
         {
           "name": "对比趋势图",
-          "icon": "./../../assets/images/dbqst.png",
+          "icon": "./../../assets/images/dbqst.jpg",
           "type": "linestack"
         }
-        // {
-        //   "name": "横型柱状图",
-        //   "icon": "./../../assets/images/zzt.jpg",
-        //   "type": "bar_cross"
-        // }
       ]
     },
     {
@@ -29564,19 +29559,19 @@ const config_ = {
       "groupList": [
         {
           "name": "单日期",
-          "icon": "./../../assets/images/zxt.png",
+          "icon": "./../../assets/images/drq.jpg",
           "type": "flatpickr_single",
           "cascades": {}
         },
         {
           "name": "双日期",
-          "icon": "./../../assets/images/zxt.png",
+          "icon": "./../../assets/images/srq.jpg",
           "type": "flatpickr_range",
           "cascades": {}
         },
         {
           "name": "下拉单选",
-          "icon": "./../../assets/images/zxt.png",
+          "icon": "./../../assets/images/xldx.jpg",
           "type": "singleSelect",
           "list": [],
           "value": "",
@@ -29589,7 +29584,7 @@ const config_ = {
         },
         {
           "name": "下拉多选",
-          "icon": "./../../assets/images/zxt.png",
+          "icon": "./../../assets/images/xlfx.jpg",
           "type": "multiSelect",
           "list": [],
           "value": "",
