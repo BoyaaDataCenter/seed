@@ -19,7 +19,7 @@ class AnalogdataGamedatas(db.Model):
     """ 测试数据-数据表
     """
     id = db.Column(db.Integer, primary_key=True)
-    fdate = db.Column(db.Date)
+    fdate = db.Column(db.Text)
     game_id = db.Column(db.Integer)
     platform_id = db.Column(db.Integer)
     version_id = db.Column(db.Integer)
