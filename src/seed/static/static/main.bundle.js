@@ -16321,6 +16321,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+var iziToast = __webpack_require__("./node_modules/izitoast/dist/js/iziToast.js");
 var MULTISELECT_VALUE_ACCESSOR = {
     provide: __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
     useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_24" /* forwardRef */])(function () { return MultiSelect; }),
@@ -16337,6 +16338,7 @@ var MultiSelect = (function () {
         this.onBlur = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.scrollHeight = '200px';
         this.defaultLabel = 'Choose';
+        this.limitNum = 0;
         this.filter = true;
         this.displaySelectedLabel = true;
         this.maxSelectedLabels = 3;
@@ -16403,13 +16405,24 @@ var MultiSelect = (function () {
         if (option.disabled) {
             return false;
         }
+        var valueTemp = [].concat(this.value);
         var selectionIndex = this.findSelectionIndex(value);
         if (selectionIndex != -1)
-            this.value = this.value.filter(function (val, i) { return i != selectionIndex; });
+            valueTemp = valueTemp.filter(function (val, i) { return i != selectionIndex; });
         else
-            this.value = (this.value || []).concat([value]);
-        this.onModelChange(this.value);
-        this.onChange.emit({ originalEvent: event, value: this.value, clickObj: value, checked: selectionIndex > -1 ? false : true });
+            valueTemp = (valueTemp || []).concat([value]);
+        if (valueTemp.length < this.limitNum) {
+            iziToast.error({
+                position: 'topRight',
+                title: '选择无效!',
+                message: "\u8BF7\u81F3\u5C11\u9009\u62E9" + this.limitNum + "\u4E2A\u9009\u9879",
+            });
+        }
+        else {
+            this.value = valueTemp;
+            this.onModelChange(this.value);
+            this.onChange.emit({ originalEvent: event, value: this.value, clickObj: value, checked: selectionIndex > -1 ? false : true });
+        }
     };
     MultiSelect.prototype.isSelected = function (value) {
         return this.findSelectionIndex(value) != -1;
@@ -16428,6 +16441,14 @@ var MultiSelect = (function () {
     };
     MultiSelect.prototype.toggleAll = function (event, checkbox) {
         if (checkbox.checked) {
+            if (this.limitNum > 0) {
+                iziToast.error({
+                    position: 'topRight',
+                    title: '选择无效!',
+                    message: "\u8BF7\u81F3\u5C11\u9009\u62E9" + this.limitNum + "\u4E2A\u9009\u9879",
+                });
+                return false;
+            }
             this.value = [];
         }
         else {
@@ -16614,6 +16635,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", Boolean)
 ], MultiSelect.prototype, "disabled", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], MultiSelect.prototype, "limitNum", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", Boolean)
@@ -23517,7 +23542,7 @@ var _a, _b, _c, _d;
 /***/ "./src/app/report-element/report-element.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--表格-->\r\n<div class=\"bud-panel reoprt-element-panel\" [ngClass]=\"'reoprt-element-panel_'+cid\">\r\n  <!-- 报表头部信息 -->\r\n  <div class=\"header handleHeader\">\r\n    <span>\r\n      {{reportInfo.name}}\r\n    </span>\r\n    <app-help-info [dimHelp]=\"reportInfo.desc\" *ngIf=\"reportInfo.desc.length>0\"></app-help-info>\r\n    <div class=\"slds-m-left--small\">\r\n      <app-report-query\r\n        [headerCompList]=\"reportInfo.filters\"\r\n        [isGlobal]=\"false\"\r\n        [isCanSet]=\"isCanSet\"\r\n        [showAddBtn]=\"isShowAddBtn\"\r\n        [panelQueryParam]=\"panelQueryParam\"\r\n        [pCid] = \"cid\"\r\n        (deleteComp)=\"onDeleteComp($event)\"\r\n        (configChange)=\"onConfigChange($event)\"\r\n        (selectedChange)=\"onSelectedChange($event)\"\r\n      ></app-report-query>\r\n    </div>\r\n    <div class=\"slds-col--bump-left\">\r\n      <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n         [ngClass]=\"{'fa-pie-chart': reportInfo.charttype=='pie', 'fa-bar-chart': reportInfo.charttype=='bar_cross',\r\n         'fa-line-chart':reportInfo.charttype=='line' || reportInfo.charttype=='linestack'  || reportInfo.charttype=='chart'}\"\r\n         style=\"margin-left:10px;\"\r\n         [class.-active]=\"showChart\"\r\n         title=\"切换为图\"  (click)=\"toggle(reportInfo.charttype);\" *ngIf=\"chartChangeList.length==0\"></i>\r\n      <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n         [ngClass]=\"{'fa-pie-chart': chartTypeConfig.base=='pie', 'fa-bar-chart': chartTypeConfig.base=='bar', 'fa-line-chart':chartTypeConfig.base=='line'}\"\r\n         style=\"margin-left:10px;\"\r\n         [class.-active]=\"showChart\"\r\n         title=\"切换图标类型\"  (click)=\"showChart ? showMenuToggle() : toggle(chartTypeConfig.base != 'line' ? chartTypeConfig.base : (reportInfo.charttype == 'linestack' ? 'linestack' : 'line'));\" *ngIf=\"chartChangeList.length>0\" style=\"position: relative\">\r\n        <div class=\"slideMenu\" *ngIf=\"showMenu\">\r\n          <ul>\r\n            <li (click)=\"changeChartType(item[0])\" *ngFor=\"let item of chartChangeList\">\r\n              <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n                 [ngClass]=\"{'fa-pie-chart': 'pie'==item[0], 'fa-bar-chart': 'bar'==item[0], 'fa-line-chart':'line'==item[0] || 'linestack'==item[0]}\"\r\n                 [class.-active]=\"curChartType==item[0]\"></i><span>{{item[1]}}</span>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </i>\r\n      <i class=\"fa fa-table bud-icon-button _bud-size-large\"\r\n         [class.-active]=\"!showChart\"\r\n         (click)=\"toggle('table')\" title=\"切换为表\"></i>\r\n      <span class=\"set-btn fa fa-cog\" title=\"配置\" (click)=\"setDefault($event)\" *ngIf=\"isCanSet\"></span>\r\n      <span class=\"delete-btn fa fa-trash\" title=\"删除\" (click)=\"deleteComponent($event)\" *ngIf=\"isCanSet\"></span>\r\n    </div>\r\n  </div>\r\n  <!-- 报表头部信息 -->\r\n  <!-- 报表内容 -->\r\n  <div class=\"body\">\r\n    <app-loading [loading]=\"loading\" [msg]=\"errMsg\"></app-loading>\r\n    <div *ngIf=\"showChart && noChange\">\r\n      <app-echarts\r\n        [option]=\"chartOption\"\r\n        [height]=\"rh / 100 * bodySize.height + 'px'\"\r\n        [dimList]=\"dimensionsList\"\r\n        [indexsList]=\"indexsList\"\r\n        [dimSelected]=\"dimSelected\"\r\n        [indexsSelected]=\"indexsSelected\"\r\n        (selectChange)=\"echartSelectChange($event)\"\r\n      ></app-echarts>\r\n    </div>\r\n    <app-data-table\r\n      *ngIf=\"!showChart\"\r\n      [groupField]=\"tableGroupField\"\r\n      [oneScreenShow]=\"tableOneScreenShow\"\r\n      [paginator]=\"tablePaginator\"\r\n      [rows]=\"tableRows\"\r\n      [dimsList]=\"tableDimsList\"\r\n      [exportFilename]=\"reportInfo.name\"\r\n      [trendConfig]=\"trendConfig\"\r\n      [columns]=\"tableColumns\"\r\n      [data]=\"tableData\"\r\n      [dimList]=\"dimensionsList\"\r\n      [dimSelected]=\"dimSelected\"\r\n      (selectChange)=\"echartSelectChange($event)\"\r\n      (tableDimChange)=\"tableDimChange($event)\">\r\n    </app-data-table>\r\n    <div *ngIf=\"showConfigTip\" class=\"configTips\">\r\n      <img src=\"../../assets/images/arrow.png\">\r\n    </div>\r\n  </div>\r\n  <span class=\"resizableHandle\" (mousedown)=\"resizable($event)\" *ngIf=\"isCanSet\"></span>\r\n  <!-- 报表内容 -->\r\n</div>\r\n<!-- 弹窗 -->\r\n<div class=\"bud-overlay\" *ngIf=\"dialogVisible\">\r\n  <div class=\"bud-operate-modal -small\" style=\"width:850px;height: 800px\">\r\n    <div class=\"header\">\r\n      报表配置\r\n      <i class=\"fa fa-times\" (click)=\"dialogHide()\"></i>\r\n    </div>\r\n    <div class=\"body reportDialogBody\">\r\n      <div class=\"item\">\r\n        <div>报表名称</div>\r\n        <div>\r\n          <input class=\"bud-input\" [(ngModel)]=\"reportInfoTemp.name\">\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>报表描述</div>\r\n        <div>\r\n          <textarea class=\"bud-input\" [(ngModel)]=\"reportInfoTemp.desc\"></textarea>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>数据源</div>\r\n        <div>\r\n          <p-dropdown [options]=\"dbList\" [ngModel]=\"reportInfoTemp.db_source\" [autoWidth]=\"false\" (onChange)=\"onDbChange($event, true)\" [style]=\"{width:'100%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'150px'\"></p-dropdown>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>SQL配置</div>\r\n        <div>\r\n          <textarea class=\"bud-input sqlConfig\" [(ngModel)]=\"reportInfoTemp.sql\"></textarea>\r\n        </div>\r\n        <div>\r\n          <span *ngFor=\"let item of queryList\" class=\"queryItem\" (click)=\"clickQueryItem(item[0], item[2])\" title=\"点击插入SQL\">{{item[1]}}</span>\r\n        </div>\r\n        <div style=\"text-align: right;\">\r\n          <div class=\"getSqlDim\" (click)=\"getSqlDim()\">生成指标和纬度</div>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>指标和纬度</div>\r\n        <div *ngIf=\"tips.length>0\">\r\n          <p class=\"tipText\">{{tips}}</p>\r\n        </div>\r\n        <ng-container *ngIf=\"curChartType!='line'\">\r\n          <div class=\"dimList\">\r\n            <div style=\"width: 20%\">字段名</div>\r\n            <div style=\"width: 20%\">中文名</div>\r\n            <div style=\"width: 15%\">指标或维度</div>\r\n            <div style=\"width: 15%\">百分比显示</div>\r\n            <div style=\"width: 15%\">排序</div>\r\n            <div style=\"width: 15%\">默认展示</div>\r\n          </div>\r\n          <div *ngFor=\"let item of dimList; let i of index\" class=\"dimList\">\r\n            <div style=\"width: 20%\">{{item.value}}</div>\r\n            <div style=\"width: 20%\"><input [(ngModel)]=\"item.label\" style=\"width: 80%;\"></div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"typeList\" [(ngModel)]=\"item.type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"rateList\" [(ngModel)]=\"item.rate\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"sortList\" [(ngModel)]=\"item.sort\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"defaultSelectedList\" [(ngModel)]=\"item.default\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'dimensions'\"></p-dropdown>\r\n            </div>\r\n          </div>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"curChartType=='line'\">\r\n          <div class=\"dimList\">\r\n            <div style=\"width: 15%\">字段名</div>\r\n            <div style=\"width: 15%\">中文名</div>\r\n            <div style=\"width: 14%\">指标或维度</div>\r\n            <div style=\"width: 14%\">百分比显示</div>\r\n            <div style=\"width: 14%\">排序</div>\r\n            <div style=\"width: 14%\">显示类型</div>\r\n            <div style=\"width: 14%\">y轴位置</div>\r\n          </div>\r\n          <div *ngFor=\"let item of dimList; let i of index\" class=\"dimList\">\r\n            <div style=\"width: 15%\">{{item.value}}</div>\r\n            <div style=\"width: 15%\"><input [(ngModel)]=\"item.label\" style=\"width: 80%;\"></div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"typeList\" [(ngModel)]=\"item.type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"rateList\" [(ngModel)]=\"item.rate\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"sortList\" [(ngModel)]=\"item.sort\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"showTypeList\" [(ngModel)]=\"item.show_type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'indexs'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"yAxisList\" [(ngModel)]=\"item.yAxis\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'indexs'\"></p-dropdown>\r\n            </div>\r\n          </div>\r\n        </ng-container>\r\n\r\n        <div class=\"dimList\" *ngIf=\"!dimList.length\">\r\n          <div class=\"noList\">请先配置SQL生成指标和维度</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"footer\">\r\n      <button class=\"bud-text-button slds-col--bump-left slds-m-right--small\" (click)=\"dialogHide()\">取消</button>\r\n      <button class=\"bud-button -origin\" (click)=\"save()\">保存</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<!--表格-->\r\n<div class=\"bud-panel reoprt-element-panel\" [ngClass]=\"'reoprt-element-panel_'+cid\">\r\n  <!-- 报表头部信息 -->\r\n  <div class=\"header handleHeader\">\r\n    <span>\r\n      {{reportInfo.name}}\r\n    </span>\r\n    <app-help-info [dimHelp]=\"reportInfo.desc\" *ngIf=\"reportInfo.desc.length>0\"></app-help-info>\r\n    <div class=\"slds-m-left--small\">\r\n      <app-report-query\r\n        [headerCompList]=\"reportInfo.filters\"\r\n        [isGlobal]=\"false\"\r\n        [isCanSet]=\"isCanSet\"\r\n        [showAddBtn]=\"isShowAddBtn\"\r\n        [panelQueryParam]=\"panelQueryParam\"\r\n        [pCid] = \"cid\"\r\n        (deleteComp)=\"onDeleteComp($event)\"\r\n        (configChange)=\"onConfigChange($event)\"\r\n        (selectedChange)=\"onSelectedChange($event)\"\r\n      ></app-report-query>\r\n    </div>\r\n    <div class=\"slds-col--bump-left\">\r\n      <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n         [ngClass]=\"{'fa-pie-chart': reportInfo.charttype=='pie', 'fa-bar-chart': reportInfo.charttype=='bar_cross',\r\n         'fa-line-chart':reportInfo.charttype=='line' || reportInfo.charttype=='linestack'  || reportInfo.charttype=='chart'}\"\r\n         style=\"margin-left:10px;\"\r\n         [class.-active]=\"showChart\"\r\n         title=\"切换为图\"  (click)=\"toggle(reportInfo.charttype);\" *ngIf=\"chartChangeList.length==0\"></i>\r\n      <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n         [ngClass]=\"{'fa-pie-chart': chartTypeConfig.base=='pie', 'fa-bar-chart': chartTypeConfig.base=='bar', 'fa-line-chart':chartTypeConfig.base=='line'}\"\r\n         style=\"margin-left:10px;\"\r\n         [class.-active]=\"showChart\"\r\n         title=\"切换图标类型\"  (click)=\"showChart ? showMenuToggle() : toggle(chartTypeConfig.base != 'line' ? chartTypeConfig.base : (reportInfo.charttype == 'linestack' ? 'linestack' : 'line'));\" *ngIf=\"chartChangeList.length>0\" style=\"position: relative\">\r\n        <div class=\"slideMenu\" *ngIf=\"showMenu\">\r\n          <ul>\r\n            <li (click)=\"changeChartType(item[0])\" *ngFor=\"let item of chartChangeList\">\r\n              <i class=\"fa slds-m-right--x-small bud-icon-button _bud-size-large\"\r\n                 [ngClass]=\"{'fa-pie-chart': 'pie'==item[0], 'fa-bar-chart': 'bar'==item[0], 'fa-line-chart':'line'==item[0] || 'linestack'==item[0]}\"\r\n                 [class.-active]=\"curChartType==item[0]\"></i><span>{{item[1]}}</span>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </i>\r\n      <i class=\"fa fa-table bud-icon-button _bud-size-large\"\r\n         [class.-active]=\"!showChart\"\r\n         (click)=\"toggle('table')\" title=\"切换为表\"></i>\r\n      <span class=\"set-btn fa fa-cog\" title=\"配置\" (click)=\"setDefault($event)\" *ngIf=\"isCanSet\"></span>\r\n      <span class=\"delete-btn fa fa-trash\" title=\"删除\" (click)=\"deleteComponent($event)\" *ngIf=\"isCanSet\"></span>\r\n    </div>\r\n  </div>\r\n  <!-- 报表头部信息 -->\r\n  <!-- 报表内容 -->\r\n  <div class=\"body\">\r\n    <app-loading [loading]=\"loading\" [msg]=\"errMsg\"></app-loading>\r\n    <div *ngIf=\"showChart && noChange\">\r\n      <app-echarts\r\n        [option]=\"chartOption\"\r\n        [height]=\"rh / 100 * bodySize.height + 'px'\"\r\n        [dimList]=\"dimensionsList\"\r\n        [indexsList]=\"indexsList\"\r\n        [limitNum]=\"limitNum\"\r\n        [dimSelected]=\"dimSelected\"\r\n        [indexsSelected]=\"indexsSelected\"\r\n        (selectChange)=\"echartSelectChange($event)\"\r\n      ></app-echarts>\r\n    </div>\r\n    <app-data-table\r\n      *ngIf=\"!showChart\"\r\n      [groupField]=\"tableGroupField\"\r\n      [oneScreenShow]=\"tableOneScreenShow\"\r\n      [paginator]=\"tablePaginator\"\r\n      [rows]=\"tableRows\"\r\n      [dimsList]=\"tableDimsList\"\r\n      [limitNum]=\"limitNum\"\r\n      [exportFilename]=\"reportInfo.name\"\r\n      [trendConfig]=\"trendConfig\"\r\n      [columns]=\"tableColumns\"\r\n      [data]=\"tableData\"\r\n      [dimList]=\"dimensionsList\"\r\n      [dimSelected]=\"dimSelected\"\r\n      (selectChange)=\"echartSelectChange($event)\"\r\n      (tableDimChange)=\"tableDimChange($event)\">\r\n    </app-data-table>\r\n    <div *ngIf=\"showConfigTip\" class=\"configTips\">\r\n      <img src=\"../../assets/images/arrow.png\">\r\n    </div>\r\n  </div>\r\n  <span class=\"resizableHandle\" (mousedown)=\"resizable($event)\" *ngIf=\"isCanSet\"></span>\r\n  <!-- 报表内容 -->\r\n</div>\r\n<!-- 弹窗 -->\r\n<div class=\"bud-overlay\" *ngIf=\"dialogVisible\">\r\n  <div class=\"bud-operate-modal -small\" style=\"width:850px;height: 800px\">\r\n    <div class=\"header\">\r\n      报表配置\r\n      <i class=\"fa fa-times\" (click)=\"dialogHide()\"></i>\r\n    </div>\r\n    <div class=\"body reportDialogBody\">\r\n      <div class=\"item\">\r\n        <div>报表名称</div>\r\n        <div>\r\n          <input class=\"bud-input\" [(ngModel)]=\"reportInfoTemp.name\">\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>报表描述</div>\r\n        <div>\r\n          <textarea class=\"bud-input\" [(ngModel)]=\"reportInfoTemp.desc\"></textarea>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>数据源</div>\r\n        <div>\r\n          <p-dropdown [options]=\"dbList\" [ngModel]=\"reportInfoTemp.db_source\" [autoWidth]=\"false\" (onChange)=\"onDbChange($event, true)\" [style]=\"{width:'100%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'150px'\"></p-dropdown>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>SQL配置</div>\r\n        <div>\r\n          <textarea class=\"bud-input sqlConfig\" [(ngModel)]=\"reportInfoTemp.sql\"></textarea>\r\n        </div>\r\n        <div>\r\n          <span *ngFor=\"let item of queryList\" class=\"queryItem\" (click)=\"clickQueryItem(item[0], item[2])\" title=\"点击插入SQL\">{{item[1]}}</span>\r\n        </div>\r\n        <div style=\"text-align: right;\">\r\n          <div class=\"getSqlDim\" (click)=\"getSqlDim()\">生成指标和纬度</div>\r\n        </div>\r\n      </div>\r\n      <div class=\"item\">\r\n        <div>指标和纬度</div>\r\n        <div *ngIf=\"tips.length>0\">\r\n          <p class=\"tipText\">{{tips}}</p>\r\n        </div>\r\n        <ng-container *ngIf=\"curChartType!='line'\">\r\n          <div class=\"dimList\">\r\n            <div style=\"width: 20%\">字段名</div>\r\n            <div style=\"width: 20%\">中文名</div>\r\n            <div style=\"width: 15%\">指标或维度</div>\r\n            <div style=\"width: 15%\">百分比显示</div>\r\n            <div style=\"width: 15%\">排序</div>\r\n            <div style=\"width: 15%\">默认展示</div>\r\n          </div>\r\n          <div *ngFor=\"let item of dimList; let i of index\" class=\"dimList\">\r\n            <div style=\"width: 20%\">{{item.value}}</div>\r\n            <div style=\"width: 20%\"><input [(ngModel)]=\"item.label\" style=\"width: 80%;\"></div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"typeList\" [(ngModel)]=\"item.type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"rateList\" [(ngModel)]=\"item.rate\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"sortList\" [(ngModel)]=\"item.sort\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 15%\">\r\n              <p-dropdown [options]=\"defaultSelectedList\" [(ngModel)]=\"item.default\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'dimensions'\"></p-dropdown>\r\n            </div>\r\n          </div>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"curChartType=='line'\">\r\n          <div class=\"dimList\">\r\n            <div style=\"width: 15%\">字段名</div>\r\n            <div style=\"width: 15%\">中文名</div>\r\n            <div style=\"width: 14%\">指标或维度</div>\r\n            <div style=\"width: 14%\">百分比显示</div>\r\n            <div style=\"width: 14%\">排序</div>\r\n            <div style=\"width: 14%\">显示类型</div>\r\n            <div style=\"width: 14%\">y轴位置</div>\r\n          </div>\r\n          <div *ngFor=\"let item of dimList; let i of index\" class=\"dimList\">\r\n            <div style=\"width: 15%\">{{item.value}}</div>\r\n            <div style=\"width: 15%\"><input [(ngModel)]=\"item.label\" style=\"width: 80%;\"></div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"typeList\" [(ngModel)]=\"item.type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"rateList\" [(ngModel)]=\"item.rate\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"sortList\" [(ngModel)]=\"item.sort\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"showTypeList\" [(ngModel)]=\"item.show_type\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'indexs'\"></p-dropdown>\r\n            </div>\r\n            <div style=\"width: 14%\">\r\n              <p-dropdown [options]=\"yAxisList\" [(ngModel)]=\"item.yAxis\" [autoWidth]=\"false\" [style]=\"{width:'80%'}\" [placeholder]=\"'请选择'\" [scrollHeight]=\"'100px'\" *ngIf=\"item.type == 'indexs'\"></p-dropdown>\r\n            </div>\r\n          </div>\r\n        </ng-container>\r\n\r\n        <div class=\"dimList\" *ngIf=\"!dimList.length\">\r\n          <div class=\"noList\">请先配置SQL生成指标和维度</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"footer\">\r\n      <button class=\"bud-text-button slds-col--bump-left slds-m-right--small\" (click)=\"dialogHide()\">取消</button>\r\n      <button class=\"bud-button -origin\" (click)=\"save()\">保存</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -23638,6 +23663,8 @@ var ReportElementComponent = (function () {
         this.indexsSelected = '';
         // 维度选择器的值
         this.dimSelected = [];
+        // 维度限制的个数
+        this.limitNum = 0;
         // 监听全局过滤条件加载完毕
         this.queryChange$ = globalDataService.queryChange$.subscribe(function (data) {
             _this.globalQueryReady = true;
@@ -23672,6 +23699,7 @@ var ReportElementComponent = (function () {
             base: chartType[0] == 'linestack' || chartType[0] == 'chart' ? 'line' : chartType[0],
             reverse: this.reportType !== 'row'
         };
+        this.limitNum = this.reportConfig[this.curChartType]['dimensionsLimit'] || 0;
         this.reportInfoTemp = this.deepClone(this.reportInfo);
         // 通过是否配置了sql来标识该报表已配置（不能通过id，因为新建的报表在没有保存整个页面的时候是没有id的，这里通过sql在简单判断）
         this.hasConfig = this.reportInfoTemp.sql.length > 0;
@@ -24192,7 +24220,6 @@ var ReportElementComponent = (function () {
     // 报表的指标或者维度组合变化
     ReportElementComponent.prototype.echartSelectChange = function (data) {
         var _this = this;
-        this.loadingShow();
         var indexs = [], dimensions = [];
         if (data.type == 'indexs') {
             // 指标变化，则维度使用上一次的值
@@ -24214,8 +24241,17 @@ var ReportElementComponent = (function () {
                     dimensions.push(item);
                 }
             });
+            /*if (dimensions.length < this.reportConfig[this.curChartType]['dimensionsLimit']) {
+              iziToast.error({
+                position: 'topRight',
+                title: '维度选择错误!',
+                message: `请至少选择${this.reportConfig[this.curChartType]['dimensionsLimit']}个维度`,
+              });
+              return false;
+            }*/
             this.currentDimensions = dimensions;
         }
+        this.loadingShow();
         var dataObject = {
             'charttype': this.curChartType,
             'sql': this.reportInfo.sql,
@@ -25562,7 +25598,7 @@ var _a, _b;
 /***/ "./src/app/shared/data-table/data-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"slds-grid slds-grid--vertical-align-center\" style=\"padding: 2.5px 7px;\">\n    <div class=\"bud-search\">\n      <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n      <input type=\"text\" pInputText placeholder=\"输入关键字搜索\" #gb/>\n    </div>\n    <div class=\"slds-col--bump-left\">\n      <span class=\"dimSelect slds-m-right--small\" *ngIf=\"dimList.length>0\">\n        <span class=\"slds-m-right--small\">维度选择</span>\n        <p-multiSelect [options]=\"dimList\" [(ngModel)]=\"dimSelected\" (onChange)=\"selectDimValue($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\n                       [maxSelectedLabels]=\"3\"></p-multiSelect>\n      </span>\n      <span class=\"dimSelect slds-m-right--small\" *ngIf=\"dimList.length>0\">\n        <span class=\"slds-m-right--small\">按维度展开</span>\n        <p-multiSelect [options]=\"tableDim\" [(ngModel)]=\"tableDimValue\" (onChange)=\"changeDataByDim($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\n                       [maxSelectedLabels]=\"3\"></p-multiSelect>\n      </span>\n      <span (click)=\"copyClipboard()\" class=\"bud-icon-text-button slds-m-right--small\">\n        <i class=\"fa fa-clipboard slds-m-right--x-small\"></i>复制\n      </span>\n      <span (click)=\"exportCSV()\" class=\"bud-icon-text-button\">\n        <i class=\"fa fa-download slds-m-right--x-small\"></i>导出 CSV\n      </span>\n    </div>\n  </div>\n  <p-dataTable\n    #myDataTable\n    [rowGroupMode]=\"groupField?'subheader':null\"\n    [groupField]=\"groupField\"\n    [scrollHeight]=\"scrollHeight\"\n    [frozenWidth]=\"frozenWidth + 'px'\"\n    [unfrozenWidth]=\"unfrozenWidth + 'px'\"\n    [scrollable]=\"scrollXAble || scrollYAble\"\n    [exportFilename]=\"exportFilename\"\n    [value]=\"_data\"\n    [rows]=\"rows\"\n    [paginator]=\"paginator\"\n    [pageLinks]=\"5\"\n    [globalFilter]=\"gb\"\n    [rowsPerPageOptions]=\"[5,10,20,50,99]\">\n    <p-column\n      *ngIf=\"hasOperate || hasLink || hasEdit || hasDelete || hasDetail\"\n      header=\"操作\"\n      [frozen]=\"otherFrozen\"\n      [style]=\"{'width':'50px'}\">\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n        <div class=\"slds-grid slds-grid--align-center slds-grid--vertical-align-center\" style=\"height: 25px;\">\n          <i *ngIf=\"hasLink\" class=\"fa fa-external-link bud-icon-button slds-m-right--small\" (click)=\"linkToDetail(rowd)\" title=\"查看详情\"></i>\n          <i *ngIf=\"hasDetail\" class=\"fa fa-external-link bud-icon-button slds-m-right--small\" (click)=\"rowDetail(rowd)\" title=\"查看详情\"></i>\n          <i *ngIf=\"hasOperate\" class=\"fa fa-bar-chart bud-icon-button\" (click)=\"showTrend(rowd)\" title=\"查看趋势\"></i>\n          <i *ngIf=\"hasEdit\" class=\"fa fa-pencil-square-o bud-icon-button\" (click)=\"rowEdit(rowd)\" title=\"编辑\"></i>\n          <i *ngIf=\"hasDelete && rowd._hasDelete\" class=\"fa fa-trash-o bud-icon-button slds-m-left--small\" (click)=\"rowDelete(rowd)\" title=\"删除\"></i>\n        </div>\n      </ng-template>\n    </p-column>\n    <p-column *ngFor=\"let col of _columns\"\n              [field]=\"col.field\"\n              [header]=\"col.header\"\n              [sortable]=\"col.sortable\"\n              [frozen]=\"col.frozen\"\n              [style]=\"{'width': col.width ? col.width + 'px' : columnWidth + 'px'}\">\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\n        <div class=\"slds-grid slds-grid--vertical-align-center\"\n             [ngClass]=\"{'slds-grid--align-end': !rowd['_alignLeft']}\"\n             style=\"height: 25px;\">\n          <span *ngIf=\"isNumber(rowd[col.field])\"\n                class=\"slds-col slds-grow \">{{rowd[col.field]|numberFormat:2}}</span>\n          <span *ngIf=\"!isNumber(rowd[col.field])\"\n                [ngClass]=\"addPercentClass(rowd[col.field])\"\n                class=\"table-td\" title=\"{{rowd[col.field]}}\">\n            {{rowd[col.field] || '-'}}\n          </span>\n          <span *ngIf=\"showRatio(rowd[col.field + '_ratio'])\"\n                  class=\"dim-ratio slds-text-align--right slds-col slds-no-flex\"\n                  style=\"width: 45px;\"\n                  [ngClass]=\"addPercentClass(rowd[col.field + '_ratio'])\">\n            {{formatRatio(rowd[col.field + '_ratio'])}}\n          </span>\n        </div>\n      </ng-template>\n    </p-column>\n  </p-dataTable>\n</div>\n\n\n"
+module.exports = "<div>\r\n  <div class=\"slds-grid slds-grid--vertical-align-center\" style=\"padding: 2.5px 7px;\">\r\n    <div class=\"bud-search\">\r\n      <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n      <input type=\"text\" pInputText placeholder=\"输入关键字搜索\" #gb/>\r\n    </div>\r\n    <div class=\"slds-col--bump-left\">\r\n      <span class=\"dimSelect slds-m-right--small\" *ngIf=\"dimList.length>0\">\r\n        <span class=\"slds-m-right--small\">维度选择</span>\r\n        <p-multiSelect [options]=\"dimList\" [(ngModel)]=\"dimSelected\" (onChange)=\"selectDimValue($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\r\n                       [maxSelectedLabels]=\"3\" [limitNum]=\"limitNum\"></p-multiSelect>\r\n      </span>\r\n      <span class=\"dimSelect slds-m-right--small\" *ngIf=\"dimList.length>0\">\r\n        <span class=\"slds-m-right--small\">按维度展开</span>\r\n        <p-multiSelect [options]=\"tableDim\" [(ngModel)]=\"tableDimValue\" (onChange)=\"changeDataByDim($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\r\n                       [maxSelectedLabels]=\"3\"></p-multiSelect>\r\n      </span>\r\n      <span (click)=\"copyClipboard()\" class=\"bud-icon-text-button slds-m-right--small\">\r\n        <i class=\"fa fa-clipboard slds-m-right--x-small\"></i>复制\r\n      </span>\r\n      <span (click)=\"exportCSV()\" class=\"bud-icon-text-button\">\r\n        <i class=\"fa fa-download slds-m-right--x-small\"></i>导出 CSV\r\n      </span>\r\n    </div>\r\n  </div>\r\n  <p-dataTable\r\n    #myDataTable\r\n    [rowGroupMode]=\"groupField?'subheader':null\"\r\n    [groupField]=\"groupField\"\r\n    [scrollHeight]=\"scrollHeight\"\r\n    [frozenWidth]=\"frozenWidth + 'px'\"\r\n    [unfrozenWidth]=\"unfrozenWidth + 'px'\"\r\n    [scrollable]=\"scrollXAble || scrollYAble\"\r\n    [exportFilename]=\"exportFilename\"\r\n    [value]=\"_data\"\r\n    [rows]=\"rows\"\r\n    [paginator]=\"paginator\"\r\n    [pageLinks]=\"5\"\r\n    [globalFilter]=\"gb\"\r\n    [rowsPerPageOptions]=\"[5,10,20,50,99]\">\r\n    <p-column\r\n      *ngIf=\"hasOperate || hasLink || hasEdit || hasDelete || hasDetail\"\r\n      header=\"操作\"\r\n      [frozen]=\"otherFrozen\"\r\n      [style]=\"{'width':'50px'}\">\r\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\r\n        <div class=\"slds-grid slds-grid--align-center slds-grid--vertical-align-center\" style=\"height: 25px;\">\r\n          <i *ngIf=\"hasLink\" class=\"fa fa-external-link bud-icon-button slds-m-right--small\" (click)=\"linkToDetail(rowd)\" title=\"查看详情\"></i>\r\n          <i *ngIf=\"hasDetail\" class=\"fa fa-external-link bud-icon-button slds-m-right--small\" (click)=\"rowDetail(rowd)\" title=\"查看详情\"></i>\r\n          <i *ngIf=\"hasOperate\" class=\"fa fa-bar-chart bud-icon-button\" (click)=\"showTrend(rowd)\" title=\"查看趋势\"></i>\r\n          <i *ngIf=\"hasEdit\" class=\"fa fa-pencil-square-o bud-icon-button\" (click)=\"rowEdit(rowd)\" title=\"编辑\"></i>\r\n          <i *ngIf=\"hasDelete && rowd._hasDelete\" class=\"fa fa-trash-o bud-icon-button slds-m-left--small\" (click)=\"rowDelete(rowd)\" title=\"删除\"></i>\r\n        </div>\r\n      </ng-template>\r\n    </p-column>\r\n    <p-column *ngFor=\"let col of _columns\"\r\n              [field]=\"col.field\"\r\n              [header]=\"col.header\"\r\n              [sortable]=\"col.sortable\"\r\n              [frozen]=\"col.frozen\"\r\n              [style]=\"{'width': col.width ? col.width + 'px' : columnWidth + 'px'}\">\r\n      <ng-template let-col let-rowd=\"rowData\" pTemplate=\"body\">\r\n        <div class=\"slds-grid slds-grid--vertical-align-center\"\r\n             [ngClass]=\"{'slds-grid--align-end': !rowd['_alignLeft']}\"\r\n             style=\"height: 25px;\">\r\n          <span *ngIf=\"isNumber(rowd[col.field])\"\r\n                class=\"slds-col slds-grow \">{{rowd[col.field]|numberFormat:2}}</span>\r\n          <span *ngIf=\"!isNumber(rowd[col.field])\"\r\n                [ngClass]=\"addPercentClass(rowd[col.field])\"\r\n                class=\"table-td\" title=\"{{rowd[col.field]}}\">\r\n            {{rowd[col.field] || '-'}}\r\n          </span>\r\n          <span *ngIf=\"showRatio(rowd[col.field + '_ratio'])\"\r\n                  class=\"dim-ratio slds-text-align--right slds-col slds-no-flex\"\r\n                  style=\"width: 45px;\"\r\n                  [ngClass]=\"addPercentClass(rowd[col.field + '_ratio'])\">\r\n            {{formatRatio(rowd[col.field + '_ratio'])}}\r\n          </span>\r\n        </div>\r\n      </ng-template>\r\n    </p-column>\r\n  </p-dataTable>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -25652,6 +25688,7 @@ var DataTableComponent = (function () {
         this.selectChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         // 根据维度展开图表
         this.tableDimChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.limitNum = 0;
         // 是否有趋势按钮
         this.hasOperate = false;
         // 是否有链接按钮
@@ -25692,7 +25729,7 @@ var DataTableComponent = (function () {
         this.tableDim = [];
         this.dimList.forEach(function (item) {
             if (_this.dimSelected.indexOf(item.value) > -1) {
-                _this.tableDim.push(item);
+                _this.tableDim.push({ 'label': item.label, 'value': item.value });
             }
         });
         this.tableDimValue = [];
@@ -25875,18 +25912,17 @@ var DataTableComponent = (function () {
     };
     DataTableComponent.prototype.selectDimValue = function (target) {
         var _this = this;
-        console.log('target', target);
         this.dimSelected = target.value;
         this.tableDim = [];
+        this.tableDimValue = [];
         this.dimList.forEach(function (item) {
             if (target.value.indexOf(item.value) > -1) {
-                _this.tableDim.push(item);
+                _this.tableDim.push({ 'label': item.label, 'value': item.value });
             }
         });
         this.selectChange.emit({ 'type': 'dimensions', 'value': this.dimSelected });
     };
     DataTableComponent.prototype.changeDataByDim = function (target) {
-        console.log('changeDataByDim', target);
         this.tableDimChange.emit(target.value);
     };
     return DataTableComponent;
@@ -25984,6 +26020,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
 ], DataTableComponent.prototype, "tableDimChange", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], DataTableComponent.prototype, "limitNum", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('window:resize', ['$event']),
     __metadata("design:type", Function),
@@ -26602,7 +26642,7 @@ var _a;
 /***/ "./src/app/shared/echarts/echarts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div [style.padding-bottom]=\"pageShow ? '25px': '0px'\"\n  >\n    <div class=\"chart-bar\">\n      <div class=\"indexs-select\" *ngIf=\"indexsList.length>0\">\n        <span>指标选择</span>\n        <p-dropdown [options]=\"indexsList\" [ngModel]=\"indexsSelected\" [autoWidth]=\"false\" (onChange)=\"selectIndexsValue($event, true)\" [placeholder]=\"'请选择'\" [style]=\"{'min-width':'100px'}\"></p-dropdown>\n      </div>\n      <div class=\"dim-select\" *ngIf=\"dimList.length>0\">\n        <span>维度选择</span>\n        <p-multiSelect [options]=\"dimList\" [(ngModel)]=\"dimSelected\" (onChange)=\"selectDimValue($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\n                       [maxSelectedLabels]=\"3\"></p-multiSelect>\n        <!--<p-dropdown [options]=\"dimList\" [ngModel]=\"dimSelected\" [autoWidth]=\"false\"  [placeholder]=\"'请选择'\" [style]=\"{'min-width':'100px'}\"></p-dropdown>-->\n      </div>\n    </div>\n    <div #chart\n    [style.height]=\"height\"\n    [style.width]=\"width\"\n    ></div>\n  </div>\n  <div class=\"paginator\">\n    <p-paginator\n      *ngIf=\"pageShow\"\n      [style]=\"{'border-left': 0, 'border-right': 0, 'border-bottom': 0}\"\n      (onPageChange)=\"paginate($event)\"\n      [rows]=\"pageRows\" [totalRecords]=\"pageTotalRecords\"></p-paginator>\n  </div>\n</div>\n"
+module.exports = "<div>\r\n  <div [style.padding-bottom]=\"pageShow ? '25px': '0px'\"\r\n  >\r\n    <div class=\"chart-bar\">\r\n      <div class=\"indexs-select\" *ngIf=\"indexsList.length>0\">\r\n        <span>指标选择</span>\r\n        <p-dropdown [options]=\"indexsList\" [ngModel]=\"indexsSelected\" [autoWidth]=\"false\" (onChange)=\"selectIndexsValue($event, true)\" [placeholder]=\"'请选择'\" [style]=\"{'min-width':'100px'}\"></p-dropdown>\r\n      </div>\r\n      <div class=\"dim-select\" *ngIf=\"dimList.length>0\">\r\n        <span>维度选择</span>\r\n        <p-multiSelect [options]=\"dimList\" [(ngModel)]=\"dimSelected\" (onChange)=\"selectDimValue($event, true)\" defaultLabel=\"请选择\" [style]=\"{minWidth:'100px'}\" [selectedItemsLabel]=\"'已选{0}个维度'\"\r\n                       [maxSelectedLabels]=\"3\" [limitNum]=\"limitNum\"></p-multiSelect>\r\n        <!--<p-dropdown [options]=\"dimList\" [ngModel]=\"dimSelected\" [autoWidth]=\"false\"  [placeholder]=\"'请选择'\" [style]=\"{'min-width':'100px'}\"></p-dropdown>-->\r\n      </div>\r\n    </div>\r\n    <div #chart\r\n    [style.height]=\"height\"\r\n    [style.width]=\"width\"\r\n    ></div>\r\n  </div>\r\n  <div class=\"paginator\">\r\n    <p-paginator\r\n      *ngIf=\"pageShow\"\r\n      [style]=\"{'border-left': 0, 'border-right': 0, 'border-bottom': 0}\"\r\n      (onPageChange)=\"paginate($event)\"\r\n      [rows]=\"pageRows\" [totalRecords]=\"pageTotalRecords\"></p-paginator>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -26656,6 +26696,7 @@ var EchartsComponent = EchartsComponent_1 = (function () {
         this.dimList = [];
         this.indexsSelected = '';
         this.dimSelected = [];
+        this.limitNum = 0;
         // 图表完成实例化事件
         this.init = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         // 图表指标维度变化
@@ -26804,6 +26845,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", Object)
 ], EchartsComponent.prototype, "dimSelected", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], EchartsComponent.prototype, "limitNum", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
@@ -29075,8 +29120,8 @@ var SysUserListComponent = (function () {
         // 当前操作的项的序号
         this.curIndex = 0;
         // 账号的类型
-        this.userTypeList = [{ 'value': 'user', 'label': 'user' }, { 'value': 'admin', 'label': 'admin' },
-            { 'value': 'super_admin', 'label': 'super_admin' }];
+        this.userTypeList = [{ 'value': 'user', 'label': '普通用户' }, { 'value': 'admin', 'label': '业务管理员' },
+            { 'value': 'super_admin', 'label': '超级管理员' }];
     }
     SysUserListComponent.prototype.ngOnInit = function () {
         this.getUserList();
@@ -29617,6 +29662,7 @@ const config_ = {
     "totalNum": 100,  // 指标纬度个数总和
     "dimensionsNum": 100,  // 维度的个数
     "indexsNum": 100,  //指标的个数
+    "dimensionsLimit":1, // 维度至少的个数
     "tips": "提示：该报表支持多指标多维度配置！请至少配置一个指标和一个维度~",
     "changeList":[]
   },
@@ -29625,6 +29671,7 @@ const config_ = {
     "totalNum": 100,  // 指标纬度个数总和
     "dimensionsNum": 100,  // 维度的个数
     "indexsNum": 100,  //指标的个数
+    "dimensionsLimit":1, // 维度至少的个数
     "tips": "提示：该报表支持多指标多维度配置！请至少配置一个指标和一个维度~",
     "changeList":[['bar', '对比图'], ['pie', '饼状图']]
   },
@@ -29632,6 +29679,7 @@ const config_ = {
     "totalNum": 100,  // 指标纬度个数总和
     "dimensionsNum": 100,  // 维度的个数
     "indexsNum": 100,  //指标的个数
+    "dimensionsLimit":1, // 维度至少的个数
     "tips": "提示：该报表支持多指标多维度配置！请至少配置一个指标和一个维度~",
     "changeList":[['pie', '饼状图'], ['bar', '对比图']]
   },
@@ -29639,6 +29687,7 @@ const config_ = {
     "totalNum": 100,  // 指标纬度个数总和
     "dimensionsNum": 100,  // 维度的个数
     "indexsNum": 1,  //指标的个数
+    "dimensionsLimit":2, // 维度至少的个数
     "tips": "提示：该报表只支持单指标多维度配置！维度中必须有fdate这个维度",
     "changeList":[['linestack', '对比趋势图'],['bar', '对比图'], ['pie', '饼状图']],
     "limit": {
