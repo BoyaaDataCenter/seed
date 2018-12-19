@@ -22,7 +22,7 @@ class Account(RestfulBaseView):
     decorators = [api_require_user]
 
     def put(self, model_id=None):
-        if not require_super_admin() or g.user.id != int(model_id): 
+        if not require_super_admin() and g.user.id != int(model_id): 
             return self.response_json(self.HttpErrorCode.FORBIDDEN)
 
         return super(Account, self).put(model_id=model_id)
