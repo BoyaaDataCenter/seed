@@ -2,6 +2,7 @@ from ._base import db, BussinessModel
 
 __all__ = ["BUserRole", ]
 
+
 class BUserRole(BussinessModel):
     """ 用户权限模型
     """
