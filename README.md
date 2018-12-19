@@ -1,5 +1,10 @@
 # 项目概述
 Seed自助数据展示系统只是一款简易的BI系统，它方便快捷，可以通过简易的拖拽并配置报表，使只会SQL的统计人员都能快速搭建出属于自己的数据可视化报表。
+<div align="center">
+<img src="docs/其他图片/默认首页.png" height="300px" alt="首页" >
+<img src="docs/其他图片/默认业务图.png" height="300px" alt="默认业务" >
+</div>
+
 
 ## 测试网址
 http://seed.boyaa.com
