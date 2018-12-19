@@ -3,6 +3,8 @@ from setuptools import setup, find_packages
 
 VERSION = '0.1'
 
+with open('README.md', 'r', encoding='utf-8') as fh:
+    long_description = fh.read()
 
 def get_requirements(env):
     with open('requirements-{}.txt'.format(env)) as fp:
@@ -25,18 +27,29 @@ static_files.extend(package_files(os.path.join('src', 'seed', 'data')))
 
 
 setup(
-    name='seed',
+    name="boyaa-seed",
     version=VERSION,
+    auther="Boyaa DataCenter",
+    auther_email="d@boyaa.com",
+    description="seed data report system",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="http://seed.boyaa.com",
     install_requires=install_requires,
-    packages=find_packages('src'),
+    packages=find_packages("src"),
     package_dir={
-        '': 'src'
+        "": "src"
     },
     data_files=static_files,
     include_package_data=True,
     entry_points={
-        'console_scripts': [
-            'seed = seed.runner:main',
+        "console_scripts": [
+            "seed = seed.runner:main",
         ]
-    }
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+        "Operating System :: OS Independent",
+    ]
 )

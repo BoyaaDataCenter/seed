@@ -11,10 +11,17 @@ Seed自助数据展示系统只是一款简易的BI系统，它方便快捷，�
 
     注: 数据库一定要使用空库。
     ```
-2. 打包seed
+2. 安装
+- pip安装
     ```
-    进入seed项目根目录
-    运行 python setup.py install
+    pip install boyaa-seed
+    ```
+
+- 编译安装
+    ```
+    获取代码 git clone git@github.com:BoyaaDataCenter/seed.git
+    进入文件夹 cd seed
+    编译代码 python setup.py install
     ```
 3. 初始化seed的config文件
     ```
