@@ -3,7 +3,7 @@ import click
 
 
 @click.command()
-@click.option('--sql', default=False,
+@click.option('--sql', is_flag=False,
               help=("Don't emit SQL to database - dump to standard "
                     "output instead"))
 @click.pass_context

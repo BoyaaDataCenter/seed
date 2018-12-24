@@ -11,16 +11,19 @@ from flask import current_app, g
 
 
 def is_new_databases():
-    if session.query(Panels).first():
-        return False
+    try:
+        if session.query(Panels).first():
+            return False
 
-    if session.query(Filters).first():
+        if session.query(Filters).first():
+            return False
+    except Exception as e:
         return False
 
     return True
 
 
-def init_analogdata():
+def init_database_default_analogdata():
     sql = """
         insert into analogdata_dimensions
         (game_id, game_name, platform_id, platform_name, version_id, version_name)
@@ -306,7 +309,7 @@ def init_analogdata():
     session.execute(sql)
 
 
-def init_databases():
+def init_database_default_datas():
     # 创建业务
     bussiness = Bussiness(name='默认业务', description='这是默认业务')
     bussiness.save()
