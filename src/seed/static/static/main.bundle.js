@@ -29741,15 +29741,12 @@ module.exports = __webpack_require__.p + "mans.1302759b8be148f12915.png";
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `angular-cli.json`.
-// The file contents for the current environment will overwrite these during build.
+// 正式环境
+// 正式环境
 var environment = {
     production: true,
     apiUrl: window.location.origin,
-    loginUrl: '//sso.oa.com/Index/login/appid/1661'
+    loginUrl: ''
 };
 //# sourceMappingURL=environment.js.map
 
