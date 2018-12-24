@@ -51,7 +51,7 @@ class SeedHttpServer(object):
     def register_cache(self):
         redis_pool = redis.ConnectionPool.from_url(
             self.app.config['REDIS_URL'],
-            decode_components=True,
+            decode_responses=True,
             charset="utf-8",
         )
         self.app.cache = redis.Redis(connection_pool=redis_pool)
