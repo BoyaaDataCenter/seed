@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 from inspect import getmembers
 
 from sqlalchemy.exc import InvalidRequestError
@@ -66,3 +68,13 @@ def common_batch_crud(schema, model, datas):
 
     datas = schema(many=True, exclude=model.column_filter).dump(modify_datas)
     return datas
+
+
+template_folder_path = os.path.join(
+    str(Path(os.path.dirname(os.path.realpath(__file__))).parent),
+    'static'
+)
+
+static_folder_path = os.path.join(template_folder_path, 'static',)
+
+local_file_path = os.path.join(template_folder_path, 'files')

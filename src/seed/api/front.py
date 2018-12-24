@@ -1,14 +1,12 @@
 import os
-from pathlib import Path
 
 from flask import Blueprint, render_template, send_from_directory
+
+from seed.utils.helper import static_folder_path
 
 
 bp = Blueprint('front', __name__)
 
-static_folder_path = os.path.join(
-    Path(os.path.dirname(os.path.realpath(__file__))).parent, 'static'
-)
 
 @bp.route('/', defaults={'path': ''})
 @bp.route('/<path:path>')

@@ -1,10 +1,7 @@
 import os
-from pathlib import Path
 import time
 
-local_file_path = os.path.join(
-    Path(os.path.dirname(os.path.realpath(__file__))).parent, 'static', 'files'
-)
+from seed.utils.helper import local_file_path
 
 
 class LocalFile(object):

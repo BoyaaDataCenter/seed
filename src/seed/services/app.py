@@ -1,6 +1,3 @@
-import os
-from pathlib import Path
-
 import redis
 import flask_migrate
 from flask import Flask, g
@@ -12,7 +9,8 @@ from seed.models import db, migrate, session, ma
 from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
-from seed.models.init import init_databases, init_analogdata, is_new_databases
+from seed.models.init import init_database_default_analogdata, init_database_default_datas, is_new_databases
+from seed.utils.helper import template_folder_path, static_folder_path
 
 
 class SeedHttpServer(object):
@@ -31,15 +29,6 @@ class SeedHttpServer(object):
         self.register_hook()
 
     def create_app(self, config_file):
-        static_folder_path = os.path.join(
-            Path(os.path.dirname(os.path.realpath(__file__))).parent,
-            'static',
-            'static'
-        )
-        template_folder_path = os.path.join(
-            Path(os.path.dirname(os.path.realpath(__file__))).parent,
-            'static'
-        )
         app = Flask(
             __name__,
             static_url_path='/static',
@@ -122,8 +111,8 @@ class SeedHttpServer(object):
             if is_new_databases():
                 # 写入默认数据
                 print('初始化模拟数据')
-                init_analogdata()
+                init_database_default_analogdata()
                 print('初始化默认业务模块')
-                init_databases()
+                init_database_default_datas()
 
         print("数据库升级完成")
