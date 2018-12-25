@@ -300,26 +300,21 @@ var BusinessConfigComponent = (function () {
     BusinessConfigComponent.prototype.ngOnInit = function () {
         this.userInfo = this.globalDataService.getParams().userInfo;
         this.getBusinessList();
+        this.getUserList();
     };
     // 获取业务列表
     BusinessConfigComponent.prototype.getBusinessList = function () {
         var _this = this;
         this.businessConfigService.getBusinessList().subscribe(function (listData) {
             _this.businessList = listData;
-            var flag = false;
-            for (var i = 0; i < _this.businessList.my_bussiness.length; i++) {
-                if (_this.businessList.my_bussiness[i]['edit'] == true) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag) {
-                // 业务管理员和超级管理员有编辑权限，编辑业务需要系统用户列表
-                _this.userListService.getSysUserList().subscribe(function (userList) {
-                    _this.userList = userList;
-                });
-            }
             _this.isShowData = true;
+        });
+    };
+    BusinessConfigComponent.prototype.getUserList = function () {
+        var _this = this;
+        // 业务管理员和超级管理员有编辑权限，编辑业务需要系统用户列表
+        this.userListService.getSysUserList().subscribe(function (userList) {
+            _this.userList = userList;
         });
     };
     // 删除业务
