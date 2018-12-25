@@ -1,3 +1,5 @@
+import os
+
 import redis
 import flask_migrate
 from flask import Flask, g
