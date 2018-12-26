@@ -57,12 +57,12 @@ class UserMenu(RestfulBaseView):
     def get(self):
         if require_admin():
             # 如果是业务管理员以上，返回当前业务的所有菜单
-            query_session = self.session.query(MenuModel, "True").filter(MenuModel.bussiness_id==g.bussiness_id)
+            query_session = self.session.query(MenuModel, "True").filter(MenuModel.bussiness_id == g.bussiness_id)
         else:
             # 其他角色通过关联用户角色表来获取到当前的菜单
             query_session = self.session.query(MenuModel, RoleMenu.role_permission)\
-                .join(RoleMenu, and_(MenuModel.id==RoleMenu.menu_id, RoleMenu.bussiness_id==g.bussiness_id))\
-                .join(BUserRole, and_(RoleMenu.role_id==BUserRole.role_id, BUserRole.bussiness_id==g.bussiness_id, BUserRole.user_id==g.user.id))
+                .join(RoleMenu, and_(MenuModel.id == RoleMenu.menu_id, RoleMenu.bussiness_id == g.bussiness_id))\
+                .join(BUserRole, and_(RoleMenu.role_id == BUserRole.role_id, BUserRole.bussiness_id == g.bussiness_id, BUserRole.user_id==g.user.id))
 
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)

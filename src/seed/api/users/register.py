@@ -58,7 +58,8 @@ class Register(RestfulBaseView):
         account.save()
 
         active_token = ActiveAccountCache().create_active_token(account.id)
-        redirect_url = '{active_host}/users/active_account&active_token={active_token}'.format(active_host=request.host, active_token=active_token)
+        redirect_url = '{active_host}/users/active_account&active_token={active_token}'
+        redirect_url = redirect_url.format(active_host=request.host, active_token=active_token)
         try:
             send_active_email(account.email, active_url, redirect_url)
         except Exception as e:
