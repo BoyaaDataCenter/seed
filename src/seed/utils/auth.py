@@ -188,9 +188,6 @@ class SSOAuth(BaseAuth):
 
         return user
 
-    def logout_user(self):
-        session = []
-
     def cache(self):
         return DefaultCache(current_app.cache)
 

@@ -3,11 +3,12 @@ import decimal
 import pymysql
 from datetime import datetime, date
 
-from seed.drives.postgresql import PostgreSQL
+# from seed.drives.postgresql import PostgreSQL
+from seed.drives.base import BaseDrive, DEFUALT_RETRY_COUNT
 
 
-class MySQL(PostgreSQL):
-    def query(self, sql, params=[], retry_count=1):
+class MySQL(BaseDrive):
+    def query(self, sql, params=[], retry_count=DEFUALT_RETRY_COUNT):
         """ 查询SQL语句
         """
         self._raise_retry_count(retry_count)
@@ -17,8 +18,9 @@ class MySQL(PostgreSQL):
             query_data = self._query(cursor, sql, params)
             return query_data
         except (pymysql.OperationalError, pymysql.DatabaseError, pymysql.InterfaceError) as e:
-            if retry_count < 1:
+            if not retry_count:
                 raise
+
             self._connect()
             return self.query(sql, params=params, retry_count=retry_count-1)
         finally:

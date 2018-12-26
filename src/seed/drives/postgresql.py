@@ -1,14 +1,14 @@
 import psycopg2
 
-from seed.drives.base import BaseDrive, Row
+from seed.drives.base import BaseDrive, DEFUALT_RETRY_COUNT
 
-# 解决 pg TypeError: Decimal('30737') is not JSON serializable， 的bug
+# 解决 pg TypeError: Decimal('30737') is not JSON serializable的问题
 DEC2FLOAT = psycopg2.extensions.new_type(
     psycopg2.extensions.DECIMAL.values,
     'DEC2FLOAT',
     lambda value, curs: float(value) if value is not None else None)
 psycopg2.extensions.register_type(DEC2FLOAT)
-# 解决DataTime is not Json serializable的bug
+# 解决DataTime is not Json serializable的问题
 DATE2STR = psycopg2.extensions.new_type(
     psycopg2.extensions.PYDATE.values,
     'DATE2STR',
@@ -22,7 +22,7 @@ psycopg2.extensions.register_type(DATETIME2STR)
 
 
 class PostgreSQL(BaseDrive):
-    def query(self, sql, params=[], retry_count=1):
+    def query(self, sql, params=[], retry_count=DEFUALT_RETRY_COUNT):
         """ 查询SQL语句
         """
         self._raise_retry_count(retry_count)
@@ -70,20 +70,6 @@ class PostgreSQL(BaseDrive):
             self._rollback()
             raise
 
-    def _get_connection(self):
-        if self.alive():
-            self._connect()
-
-    def _commit(self):
-        """ 完成SQL执行
-        """
-        self.conn.commit()
-
-    def _rollback(self):
-        """ 回滚SQL
-        """
-        self.conn.rollback()
-
     def _connect(self):
         try:
             self.conn = psycopg2.connect(
@@ -97,19 +83,13 @@ class PostgreSQL(BaseDrive):
         except Exception as e:
             raise
 
-    def _gen_cursor(self):
-        cursor = self.conn.cursor()
-        return cursor
 
-    def alive(self):
-        """ 测试连接是否还存在
-        """
-        if self.conn:
-            return True if self.conn.closed == 0 else False
+class Row(dict):
 
-        return False
+    """访问对象那样访问dict,行结果"""
 
-    def close(self):
-        """ 关闭连接
-        """
-        self.conn.close()
+    def __getattr__(self, name):
+        try:
+            return self[name]
+        except KeyError:
+            raise AttributeError(name)

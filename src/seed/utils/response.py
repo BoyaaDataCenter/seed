@@ -1,4 +1,5 @@
-from flask  import jsonify
+from flask import jsonify
+
 
 class HttpErrorCode(object):
     SUCCESS = 200
