@@ -6,6 +6,7 @@ VERSION = '0.1'
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
+
 def get_requirements(env):
     with open('requirements-{}.txt'.format(env)) as fp:
         return [x.strip() for x in fp.read().split('\n') if not x.startswith('#')]

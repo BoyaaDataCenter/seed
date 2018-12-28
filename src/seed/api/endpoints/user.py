@@ -2,7 +2,7 @@ from sqlalchemy import and_
 from flask import current_app, g
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 from seed.models.account import Account as AccountModel
 from seed.models.role import Role
 from seed.models.buserrole import BUserRole

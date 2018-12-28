@@ -2,7 +2,7 @@
 from flask import request
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 
 from seed.api.endpoints.panels import PanelSchema, PanelsModel
 from seed.api.endpoints.filters import FilterSchema, FiltersModel

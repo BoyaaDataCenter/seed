@@ -1,7 +1,7 @@
 from flask import request, g
 
 from seed.schema.base import BaseSchema
-# from seed.api.endpoints._base import RestfulBaseView
+# from seed.api._base import RestfulBaseView
 from seed.api.endpoints.buser import Buser
 from seed.models.databases import Databases as DatabasesModel
 from seed.utils.auth import api_require_admin

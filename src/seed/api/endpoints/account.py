@@ -1,6 +1,6 @@
 from flask import g
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 
 from seed.models.account import Account as AccountModel
 from seed.utils.auth import api_require_user, require_super_admin

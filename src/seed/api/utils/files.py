@@ -2,7 +2,7 @@ from flask import request
 
 # from seed.api.common import _MethodView
 from seed.utils.file import LocalFile
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 
 
 class Files(RestfulBaseView):

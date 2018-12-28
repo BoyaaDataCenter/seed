@@ -1,7 +1,7 @@
 from flask import request, g
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api._base import RestfulBaseView
 from seed.models.buserrole import BUserRole as BUserRoleModel
 from seed.models.role import Role as RoleModel
 from seed.utils.auth import api_require_login

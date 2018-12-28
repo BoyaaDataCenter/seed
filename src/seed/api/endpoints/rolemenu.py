@@ -3,7 +3,7 @@ from flask import request, g
 from sqlalchemy import and_
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 from seed.models.rolemenu import RoleMenu as RoleMenuModel
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_admin

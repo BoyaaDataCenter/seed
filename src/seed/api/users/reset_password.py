@@ -2,7 +2,7 @@ import bcrypt
 from flask import request
 
 from seed.models.account import Account
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 from seed.cache.reset_password import ResetPasswordCache
 from seed.utils.mail import send_reset_password_email
 

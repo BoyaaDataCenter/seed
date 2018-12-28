@@ -1,7 +1,7 @@
 from flask import request, g
 from sqlalchemy.exc import InvalidRequestError
 
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 
 from seed.models.filters import Filters as FiltersModel
 from seed.api.endpoints.filters import FilterSchema

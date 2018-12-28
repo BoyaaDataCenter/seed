@@ -6,7 +6,7 @@ from flask import request, make_response
 from seed.models.account import Account
 from seed.cache.session import SessionCache
 
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 
 
 class Login(RestfulBaseView):

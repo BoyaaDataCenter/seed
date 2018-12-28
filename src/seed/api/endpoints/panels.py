@@ -4,7 +4,7 @@ from flask import request, g
 from marshmallow import pre_load, post_dump
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api._base import RestfulBaseView
 
 from seed.models.panels import Panels as PanelsModel
 from seed.utils.auth  import api_require_admin

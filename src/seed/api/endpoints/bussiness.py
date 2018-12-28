@@ -1,7 +1,7 @@
 from flask import request, g
 
 from seed.schema.base import BaseSchema
-from seed.api.endpoints._base import RestfulBaseView
+from seed.api._base import RestfulBaseView
 from seed.models import Bussiness as BussinessModel
 from seed.models import BManager as BManagerModel
 from seed.models import Account as AccountModel

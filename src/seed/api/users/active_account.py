@@ -1,6 +1,6 @@
 from flask import request
 
-from seed.api.endpoints._base import RestfulBaseView, HttpMethods
+from seed.api._base import RestfulBaseView, HttpMethods
 from seed.cache.active_account import ActiveAccountCache
 from seed.models.account import Account
 
