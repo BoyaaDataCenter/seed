@@ -34,8 +34,8 @@ static_files.extend(package_files(os.path.join('src', 'seed', 'data')))
 
 class SeedBuildCommand(BuildCommand):
     def run(self):
-        BuildCommand.run(self)
         self.run_command('build_assets')
+        BuildCommand.run(self)
 
 
 class SeedDevelopCommand(DevelopCommand):
