@@ -14,9 +14,12 @@ class BaseBuildCommand(Command):
     ]
 
     def initialize_options(self):
-        self.work_path = None
+        self.work_path = '.'
 
     def finalize_options(self):
+        pass
+
+    def update_mainfests(self):
         pass
 
     def _setup_git(self):
@@ -35,9 +38,9 @@ class BaseBuildCommand(Command):
             except OSError as e:
                 log.fatal(
                     'Cannot find {app} excutable. Please install {app}'
-                    'and try again.'.format(app)
+                    'and try again.'.format(app=app)
                 )
-            sys.exit(1)
+                sys.exit(1)
 
         log.info('using node ({0}) and npm ({1})'.format(*node_version))
         self._run_command(['npm', 'install'])
@@ -45,7 +48,7 @@ class BaseBuildCommand(Command):
     def _run_command(self, cmd, env=None):
         log.debug('running [%s]' % (' '.join(cmd), ))
         try:
-            return check_output(cmd, cwd=self.work_path, env=env)
+            return check_output(cmd, cwd=self.work_path, env=env, shell=True)
         except Exception:
             log.error('command failed [%s] via [%s]' % (' '.join(cmd), self.work_path, ))
             raise

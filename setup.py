@@ -1,6 +1,8 @@
 import os
 from setuptools import setup, find_packages
 
+from seed.utils.distutils.build_assets import BuildAssetsCommand
+
 VERSION = '0.1'
 
 with open('README.md', 'r', encoding='utf-8') as fh:
@@ -27,6 +29,11 @@ static_files = package_files(os.path.join('src', 'seed', 'static'))
 static_files.extend(package_files(os.path.join('src', 'seed', 'data')))
 
 
+cmdclass = {
+    'build': BuildAssetsCommand
+}
+
+
 setup(
     name="boyaa-seed",
     version=VERSION,
@@ -48,6 +55,7 @@ setup(
             "seed = seed.runner:main",
         ]
     },
+    cmdclass=cmdclass,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
