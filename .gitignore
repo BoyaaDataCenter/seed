@@ -21,6 +21,3 @@ config.py
 sftp-config.json
 self_script
 *.rdb
-
-# static files
-static
