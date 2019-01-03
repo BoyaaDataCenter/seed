@@ -1,5 +1,8 @@
 import os
 from setuptools import setup, find_packages
+from distutils.command.build import build as BuildCommand
+from setuptools.command.develop import develop as DevelopCommand
+from setuptools.command.install import install as InstallCommand
 
 from seed.utils.distutils.build_assets import BuildAssetsCommand
 
@@ -29,9 +32,29 @@ static_files = package_files(os.path.join('src', 'seed', 'static'))
 static_files.extend(package_files(os.path.join('src', 'seed', 'data')))
 
 
+class SeedBuildCommand(BuildCommand):
+    def run(self):
+        BuildCommand.run(self)
+        self.run_command('build_assets')
+
+
+class SeedDevelopCommand(DevelopCommand):
+    def run(self):
+        DevelopCommand.run(self)
+
+
+class SeedInstallCommand(InstallCommand):
+    def run(self):
+        InstallCommand.run(self)
+
+
 cmdclass = {
-    'build': BuildAssetsCommand
+    'build': SeedBuildCommand,
+    'develop': SeedDevelopCommand,
+    'install': SeedInstallCommand,
+    'build_assets': BuildAssetsCommand
 }
+
 
 
 setup(
@@ -59,6 +82,6 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
-        "Operating System :: OS Independent",
+        "Operating System :: OS Independent"
     ]
 )
