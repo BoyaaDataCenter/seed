@@ -36,6 +36,10 @@ SQLALCHEMY_POOL_RECYCEL = 3600
 
 DEBUG = %(debug_flag)s
 
+# Web server host and port
+HOST = '127.0.0.1'
+PORT = 5000
+
 # login user type, you can choice sso and default login type
 # if you choose sso, you must setting XXXX
 

@@ -28,10 +28,7 @@ def run():
 
 @run.command()
 @click.option(
-    '--bind', '-b', default=None, help='Bind address.', type=Address
-)
-@click.option(
-    '--workers', '-w', default=0,
+    '--workers', '-w', default=5,
     help='The number of worker process for handling requests'
 )
 @click.option(
@@ -44,8 +41,6 @@ def web(bind, workers, debug):
 
     _, config_file, _ = discover_configs()
     http_server = SeedHttpServer(
-        host=bind[0],
-        port=bind[1],
         workers=workers,
         config_file=config_file
     )

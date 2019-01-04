@@ -56,7 +56,6 @@ cmdclass = {
 }
 
 
-
 setup(
     name="boyaa-seed",
     version=VERSION,

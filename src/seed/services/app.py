@@ -17,9 +17,8 @@ from seed.utils.helper import template_folder_path, static_folder_path
 
 class SeedHttpServer(object):
     def __init__(
-        self, host, port, workers, config_file, extra_options=None
+        self, workers, config_file, extra_options=None
     ):
-        self.host, self.port = host, port
         self.workers = workers
 
         self.app = self.create_app(config_file)
@@ -89,7 +88,7 @@ class SeedHttpServer(object):
         CORS(self.app, supports_credentials=True)
 
     def run(self):
-        self.app.run(self.host, self.port)
+        self.app.run(self.app.config['HOST'], self.app.config['PORT'])
 
     def upgrade(self, sql):
         print('数据库开始初始化')

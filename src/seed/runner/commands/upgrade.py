@@ -15,8 +15,6 @@ def upgrade(ctx, sql=False):
 
     _, config_file, _ = discover_configs()
     SeedHttpServer(
-        host='127.0.0.1',
-        port='5000',
         workers=1,
         config_file=config_file
     ).upgrade(sql)
