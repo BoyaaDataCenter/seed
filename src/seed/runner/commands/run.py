@@ -28,20 +28,10 @@ def run():
 
 @run.command()
 @click.option(
-    '--workers', '-w', default=5,
-    help='The number of worker process for handling requests'
-)
-@click.option(
     '--debug', '-d', default=False,
     help='The debug option for web'
 )
-def web(bind, workers, debug):
-    from seed.services.app import SeedHttpServer
-    from seed.runner.setting import discover_configs
-
-    _, config_file, _ = discover_configs()
-    http_server = SeedHttpServer(
-        workers=workers,
-        config_file=config_file
-    )
-    http_server.run()
+def web(debug):
+    from seed.services.app import application
+    from seed.services.wsgi import SeedWSGIHttpServer
+    SeedWSGIHttpServer(application).run()

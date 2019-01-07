@@ -17,13 +17,11 @@ from seed.utils.helper import template_folder_path, static_folder_path
 
 class SeedHttpServer(object):
     def __init__(
-        self, workers, config_file, extra_options=None
+        self, config_file, extra_options=None
     ):
-        self.workers = workers
-
         self.app = self.create_app(config_file)
-
         self.register_cors()
+
         self.register_databases()
         self.register_cache()
         self.register_api()
@@ -117,3 +115,14 @@ class SeedHttpServer(object):
                 init_database_default_datas()
 
         print("数据库升级完成")
+
+
+def apply_application():
+    _, config_file, _ = discover_configs()
+    http_server = SeedHttpServer(
+        config_file=config_file
+    )
+    return http_server.app
+
+
+application = apply_application()
