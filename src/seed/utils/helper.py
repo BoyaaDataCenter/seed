@@ -78,6 +78,4 @@ template_folder_path = os.path.join(
 
 root_path = str(Path(os.path.dirname(os.path.realpath(__file__))).parent)
 
-static_folder_path = os.path.join(template_folder_path, 'static',)
-
 local_file_path = os.path.join(template_folder_path, 'files')

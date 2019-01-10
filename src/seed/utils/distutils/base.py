@@ -32,8 +32,10 @@ class BaseBuildCommand(Command):
     def _setup_npm(self):
         node_version = []
 
+        log.info("setup node and npm.....")
         for app in ['node', 'npm']:
             try:
+                log.info('testing %s version.....' % app)
                 node_version.append(self._run_command([app, '--version']).rstrip())
             except OSError as e:
                 log.fatal(
@@ -42,13 +44,17 @@ class BaseBuildCommand(Command):
                 )
                 sys.exit(1)
 
+        if node_version[0] != 'v6.8.1':
+            log.fatal('The node version need v7.8.1')
+            sys.exit(1)
+
         log.info('using node ({0}) and npm ({1})'.format(*node_version))
         self._run_command(['npm', 'install'])
 
     def _run_command(self, cmd, env=None):
         log.debug('running [%s]' % (' '.join(cmd), ))
         try:
-            return check_output(cmd, cwd=self.work_path, env=env, shell=True)
+            return check_output(cmd, cwd=self.work_path, env=env)
         except Exception:
             log.error('command failed [%s] via [%s]' % (' '.join(cmd), self.work_path, ))
             raise

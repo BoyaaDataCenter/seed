@@ -44,10 +44,10 @@ class SeedWSGIHttpServer(object):
         for key, value in convert_options_to_uwsgi_env(self.options):
             env.setdefault(key, value)
 
-        # virtualenv_path = os.path.dirname(os.path.abspath(sys.argv[0]))
-        # current_path = str(os.path.realpath(__file__))
-        # if virtualenv_path not in current_path:
-        #     env['PATH'] = '%s:%s' % (virtualenv_path, current_path)
+        virtualenv_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+        current_path = str(os.path.realpath(__file__))
+        if virtualenv_path not in current_path:
+            env['PATH'] = '%s:%s' % (virtualenv_path, current_path)
 
     def run(self):
         self.prepare_environment()

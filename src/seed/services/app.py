@@ -15,7 +15,7 @@ from seed.api.urls import register_api
 from seed.utils.auth import SSOAuth, SessionAuth
 from seed.cache.user_bussiness import UserBussinessCache
 from seed.models.init import init_database_default_analogdata, init_database_default_datas, is_new_databases
-from seed.utils.helper import template_folder_path, static_folder_path
+from seed.utils.helper import template_folder_path
 
 
 class SeedHttpServer(object):
@@ -34,7 +34,7 @@ class SeedHttpServer(object):
         app = Flask(
             __name__,
             static_url_path='/static',
-            static_folder=static_folder_path,
+            static_folder=template_folder_path,
             template_folder=template_folder_path
         )
 
