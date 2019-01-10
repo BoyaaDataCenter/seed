@@ -1,12 +1,21 @@
 import os
+import sys
+
 from setuptools import setup, find_packages
 from distutils.command.build import build as BuildCommand
 from setuptools.command.develop import develop as DevelopCommand
 from setuptools.command.install import install as InstallCommand
 
+ROOT = os.path.realpath(os.path.join(os.path.dirname(
+    sys.modules['__main__'].__file__)))
+
+# Add Sentry to path so we can import distutils
+sys.path.insert(0, os.path.join(ROOT, 'src'))
+
 from seed.utils.distutils.build_assets import BuildAssetsCommand
 
-VERSION = '0.1'
+
+VERSION = '0.1.2'
 
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()

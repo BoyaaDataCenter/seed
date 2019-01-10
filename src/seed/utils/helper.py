@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 from inspect import getmembers
 
@@ -74,6 +75,8 @@ template_folder_path = os.path.join(
     str(Path(os.path.dirname(os.path.realpath(__file__))).parent),
     'static'
 )
+
+root_path = str(Path(os.path.dirname(os.path.realpath(__file__))).parent)
 
 static_folder_path = os.path.join(template_folder_path, 'static',)
 

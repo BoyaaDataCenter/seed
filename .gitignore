@@ -1,6 +1,7 @@
 # Compiled python files.
 *.py[cod]
 build
+dist
 
 # Packages.
 __pycache__

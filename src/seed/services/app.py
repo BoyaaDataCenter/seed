@@ -1,4 +1,7 @@
 import os
+import sys
+
+print(os.path.realpath(sys.argv[0]))
 
 import redis
 import flask_migrate
