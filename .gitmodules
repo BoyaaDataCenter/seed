@@ -1,0 +1,3 @@
+[submodule "seed_static"]
+	path = seed_static
+	url = https://github.com/BoyaaDataCenter/seed_static.git
