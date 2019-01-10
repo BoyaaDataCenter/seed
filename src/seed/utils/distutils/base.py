@@ -44,8 +44,8 @@ class BaseBuildCommand(Command):
                 )
                 sys.exit(1)
 
-        if node_version[0] != 'v6.8.1':
-            log.fatal('The node version need v7.8.1')
+        if node_version[0] >= b'v6.8.1':
+            log.fatal('The node version need v6.8.1, the current node version is %s' % node_version[0])
             sys.exit(1)
 
         log.info('using node ({0}) and npm ({1})'.format(*node_version))
@@ -54,7 +54,7 @@ class BaseBuildCommand(Command):
     def _run_command(self, cmd, env=None):
         log.debug('running [%s]' % (' '.join(cmd), ))
         try:
-            return check_output(cmd, cwd=self.work_path, env=env)
+            return check_output(cmd, cwd=self.work_path, env=env, shell=True)
         except Exception:
             log.error('command failed [%s] via [%s]' % (' '.join(cmd), self.work_path, ))
             raise
