@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, 'src'))
 from seed.utils.distutils.build_assets import BuildAssetsCommand
 
 
-VERSION = '0.1.2'
+VERSION = '0.1.3'
 
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
