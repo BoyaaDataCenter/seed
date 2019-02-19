@@ -39,7 +39,7 @@ class BuildAssetsCommand(BaseBuildCommand):
         self._run_command(['npm', 'install'])
 
         log.info('Seed static start build static files.')
-        self._run_command(['npm', 'run', 'buildDev'])
+        self._run_command(['npm', 'run', 'build'])
 
         log.info('Seed static start build finish.')
         os.chdir('..')
