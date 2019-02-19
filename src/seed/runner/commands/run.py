@@ -34,4 +34,8 @@ def run():
 def web(debug):
     from seed.services.app import application
     from seed.services.wsgi import SeedWSGIHttpServer
-    SeedWSGIHttpServer(application).run()
+
+    if debug:
+        application.run()
+    else:
+        SeedWSGIHttpServer(application).run()

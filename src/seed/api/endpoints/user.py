@@ -8,6 +8,7 @@ from seed.models.role import Role
 from seed.models.buserrole import BUserRole
 from seed.models.bmanager import BManager
 from seed.models.rolemenu import RoleMenu
+from seed.models.buser import BUser
 from seed.models.menu import Menu as MenuModel
 from seed.utils.auth import api_require_login, require_admin
 
@@ -61,8 +62,9 @@ class UserMenu(RestfulBaseView):
         else:
             # 其他角色通过关联用户角色表来获取到当前的菜单
             query_session = self.session.query(MenuModel, RoleMenu.role_permission)\
-                .join(RoleMenu, and_(MenuModel.id == RoleMenu.menu_id, RoleMenu.bussiness_id == g.bussiness_id))\
-                .join(BUserRole, and_(RoleMenu.role_id == BUserRole.role_id, BUserRole.bussiness_id == g.bussiness_id, BUserRole.user_id==g.user.id))
+                .join(RoleMenu, and_(RoleMenu.bussiness_id == g.bussiness_id, MenuModel.id == RoleMenu.menu_id))\
+                .join(BUser, and_(BUser.bussiness_id==g.bussiness_id, BUser.user_id==g.user.id))\
+                .join(BUserRole, and_(BUserRole.bussiness_id == g.bussiness_id, RoleMenu.role_id == BUserRole.role_id, BUserRole.user_id==BUser.id))
 
         menu_data = query_session.all()
         menus = self._encode_menus(menu_data)

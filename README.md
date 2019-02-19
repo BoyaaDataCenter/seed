@@ -91,5 +91,5 @@ http://seed.boyaa.com
     ```
 4. 运行web
     ```
-    seed run web
+    seed run web --debug=True
     ```

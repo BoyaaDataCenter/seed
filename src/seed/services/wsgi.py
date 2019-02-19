@@ -1,6 +1,9 @@
 import os
 import sys
 
+DEFAULT_HOST = '127.0.0.1'
+DEFAULT_PORT = 5000
+
 
 def convert_options_to_uwsgi_env(options):
     for key, value in options.items():
@@ -30,7 +33,10 @@ class SeedWSGIHttpServer(object):
         )
 
         from seed.services.app import application
-        options.setdefault('%s-socket' % options['protocol'], '%s:%s' % (application.config['HOST'], application.config['PORT']))
+        options.setdefault('%s-socket' % options['protocol'], '%s:%s' % (
+            application.config.get('HOST', DEFAULT_HOST),
+            application.config.get('PORT', DEFAULT_PORT)
+        ))
 
         options['master'] = True
         options['enable-threads'] = True
