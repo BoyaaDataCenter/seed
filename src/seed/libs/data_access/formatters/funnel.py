@@ -15,7 +15,7 @@ class FunnelFormatter(LineFormatter):
             namelist = [dimen.get("dimension", "") for dimen in self.dimensions]
             infoname = []
             for name in namelist:
-                infoname.append(dimendict.get(name, ""))
+                infoname.append(str(dimendict.get(name, "")))
 
             info["name"] = "-".join(infoname)
             info["value"] = 0
