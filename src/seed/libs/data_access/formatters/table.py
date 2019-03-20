@@ -22,7 +22,7 @@ class TableFormatter(BaseFormatter):
         table_datas = self._sort_table_column(table_datas)
 
         # 处理比率类型数据
-        # table_datas = self._convert_rate_data(table_keys, table_datas)
+        table_datas = self._convert_rate_data(table_keys, table_datas)
 
         # 得到table的显示项
         display_name = self._get_display_name(table_keys)
@@ -84,18 +84,36 @@ class TableFormatter(BaseFormatter):
 
         return data
 
-    # def _convert_rate_data(self, table_keys, datas):
-    #     """处理比率类型指标的数据"""
-    #     table_datas = []
+    def _convert_rate_data(self, table_keys, datas):
+        """处理比率类型指标的数据"""
+        table_datas = []
 
-    #     for data in datas:
-    #         row = {}
-    #         for index in self.indexs:
-    #             row[key] = format_data(index['rate'], data.get(key, '-'))
+        indexs = self.indexs[:]
+        temp_indexs = [i['index'] for i in indexs]
 
-    #         table_datas.append(row)
+        for tk in table_keys:
+            if tk not in temp_indexs:
+                indexs.append({"index": tk})
 
-    #     return table_datas
+        for data in datas:
+            row = {}
+            for index in indexs:
+                row[index['index']] = self._format_rate_data(index.get('rate'), data.get(index['index'], '-'))
+
+            table_datas.append(row)
+
+        return table_datas
+
+    def _format_rate_data(self, israte, data):
+        """转换比例数据"""
+        if not israte:
+            return data
+
+        if isinstance(data, (float, int)):
+            ratedata = str(round(data*100, 2)) + '%'
+            return ratedata
+
+        return data
 
     def _get_display_name(self, keys):
         # 获取displayName格式的数据显示
