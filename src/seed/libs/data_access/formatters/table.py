@@ -78,7 +78,8 @@ class TableFormatter(BaseFormatter):
         # 改成按多种排序
         data = sorted(
             data,
-            key=lambda k: [(k[order_field] if k[order_field] else 0) for order_field in order_fields],
+            key=lambda k: [(k[order_field] if isinstance(k[order_field], (float, int)) else 0) for order_field in
+                           order_fields],
             reverse=True
         )
 

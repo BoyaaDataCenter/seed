@@ -22,6 +22,8 @@ class MiddleData(object):
 
     def convert(self):
         middle_datas = {}
+        # 兼容表格指标可以为空的情况
+        self.indexs = self.dimensions if not self.indexs else self.indexs
 
         for row in self.source_data:
 
