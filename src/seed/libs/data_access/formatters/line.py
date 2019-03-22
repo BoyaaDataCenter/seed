@@ -36,11 +36,18 @@ class LineFormatter(BaseFormatter):
 
     def _get_categories_sort_by_dimensions(self, category_columns, series_columns, series):
         categories_dict = []
+
         for key in self.data.keys():
             key = json.loads(key)
+            temp_dict = {}
             cateogry = {category_column: key[category_column] for category_column in category_columns}
-            if cateogry not in categories_dict:
-                categories_dict.append(cateogry)
+            ser_key = {series_column: key[series_column] for series_column in series_columns}
+            temp_dict.update(cateogry)
+            temp_dict.update(ser_key)
+
+            if temp_dict not in categories_dict:
+                categories_dict.append(temp_dict)
+
             if series_columns:
                 series_key = '-'.join([str(key[series_column]) for series_column in series_columns])
                 if series_key not in series:

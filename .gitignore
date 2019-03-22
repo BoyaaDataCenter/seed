@@ -2,6 +2,7 @@
 *.py[cod]
 build
 dist
+seed_static
 
 # Packages.
 __pycache__
