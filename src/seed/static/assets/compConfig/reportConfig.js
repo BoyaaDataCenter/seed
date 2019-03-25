@@ -34,6 +34,21 @@ const config_ = {
     "limit": {
       "dimensions": ["fdate"]
     }
+  },
+  "funnel":{
+    "totalNum": 100,  // 指标纬度个数总和
+    "dimensionsNum": 100,  // 维度的个数
+    "indexsNum": 100,  //指标的个数
+    "dimensionsLimit":1, // 维度至少的个数
+    "tips": "提示：该报表支持多指标多维度配置！请至少配置一个指标和一个维度~"
+  },
+  "table":{
+    "totalNum": 100,  // 指标纬度个数总和
+    "dimensionsNum": 100,  // 维度的个数
+    "indexsNum": 100,  //指标的个数
+    "needIndexs": false,  //是否必须有指标
+    "dimensionsLimit":1, // 维度至少的个数
+    "tips": "提示：该报表支持多指标多维度配置！"
   }
 }
 
