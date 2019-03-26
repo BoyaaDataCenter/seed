@@ -23,6 +23,16 @@ const config_ = {
           "name": "对比趋势图",
           "icon": "./../../assets/images/dbqst.jpg",
           "type": "linestack"
+        },
+        {
+          "name": "漏斗图",
+          "icon": "./../../assets/images/ldt.jpg",
+          "type": "funnel"
+        },
+        {
+          "name": "表格",
+          "icon": "./../../assets/images/bgt.jpg",
+          "type": "table"
         }
       ]
     },
