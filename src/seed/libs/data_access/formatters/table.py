@@ -24,6 +24,9 @@ class TableFormatter(BaseFormatter):
         # 处理比率类型数据
         table_datas = self._convert_rate_data(table_keys, table_datas)
 
+        # 计算总值均值数据
+        table_datas = self._compute_total_and_mean(table_datas)
+
         # 得到table的显示项
         display_name = self._get_display_name(table_keys)
 
@@ -115,6 +118,43 @@ class TableFormatter(BaseFormatter):
             return ratedata
 
         return data
+
+    def _compute_total_and_mean(self, datas):
+        """计算总值均值数据"""
+
+        rate_dimension = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs if item["rate"]]
+        num = len(datas)
+
+        total_dict = {}
+        mean_dict = {}
+
+        for data in datas:
+            for key, value in data.items():
+                total_dict[key] = total_dict.setdefault(key, 0) + (value if value and isinstance(value, (int, float)) else 0)
+
+        for k, v in total_dict.items():
+            mean_dict[k] = round(v / float(num), 2)
+
+        first_dimension = self.dimensions[0]["dimension"]
+
+        for k, v in total_dict.items():
+            if k in rate_dimension:
+                total_dict[k] = '-'
+            else:
+                total_dict[k] = round(v, 2)
+
+        total_dict[first_dimension] = "总值"
+
+        for k, v in mean_dict.items():
+            if k in rate_dimension:
+                mean_dict[k] = '-'
+
+        mean_dict[first_dimension] = "均值"
+
+        datas.append(total_dict)
+        datas.append(mean_dict)
+
+        return datas
 
     def _get_display_name(self, keys):
         # 获取displayName格式的数据显示
