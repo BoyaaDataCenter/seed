@@ -28,14 +28,23 @@ class DataModel(object):
         )
 
     def format_sql(self):
-
+        query_list = []
         for key, value in self.query.items():
             if isinstance(value, list):
-                self.query[key] = '(%s)' % ', '.join([str(item) for item in value])
+                # SQL in 连接条件只有一个元素时,不能带逗号. 故需分开处理
+                if len(value) > 1:
+                    for va in value:
+                        query_list.append(va)
+
+                    self.query[key] = tuple(query_list)
+                else:
+                    self.query[key] = "('%s')" % ', '.join([str(item) for item in value])
 
         return self.sql.format(**self.query)
 
     def query_data(self):
         sql = self.format_sql()
+        # SQL中双引号会被视为列,故需替换为单引号
+        sql.replace('"', "'")
         print(sql)
         return self.db.query(sql), sql
