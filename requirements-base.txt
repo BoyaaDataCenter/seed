@@ -50,4 +50,5 @@ WTForms==2.2.1
 WTForms-Alchemy==0.16.7
 WTForms-Components==0.10.3
 bcrypt==3.1.4
+uWSGI==2.0.18
 
