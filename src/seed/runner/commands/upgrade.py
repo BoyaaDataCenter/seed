@@ -15,6 +15,5 @@ def upgrade(ctx, sql=False):
 
     _, config_file, _ = discover_configs()
     SeedHttpServer(
-        workers=1,
         config_file=config_file
     ).upgrade(sql)
