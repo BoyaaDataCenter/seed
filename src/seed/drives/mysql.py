@@ -8,7 +8,7 @@ from seed.drives.base import BaseDrive, DEFUALT_RETRY_COUNT
 
 
 class MySQL(BaseDrive):
-    def query(self, sql, params=[], retry_count=DEFUALT_RETRY_COUNT):
+    def query(self, sql, params=None, retry_count=DEFUALT_RETRY_COUNT):
         """ 查询SQL语句
         """
         self._raise_retry_count(retry_count)
@@ -33,7 +33,7 @@ class MySQL(BaseDrive):
         datas = list(cursor.fetchall())
         return self._replace_type(datas)
 
-    def _execute(self, cursor, sql, params=[]):
+    def _execute(self, cursor, sql, params=None):
         """ 执行SQL
         """
         try:

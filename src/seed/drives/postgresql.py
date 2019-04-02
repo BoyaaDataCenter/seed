@@ -22,7 +22,7 @@ psycopg2.extensions.register_type(DATETIME2STR)
 
 
 class PostgreSQL(BaseDrive):
-    def query(self, sql, params=[], retry_count=DEFUALT_RETRY_COUNT):
+    def query(self, sql, params=None, retry_count=DEFUALT_RETRY_COUNT):
         """ 查询SQL语句
         """
         self._raise_retry_count(retry_count)
@@ -51,7 +51,7 @@ class PostgreSQL(BaseDrive):
 
         return query_datas
 
-    def _execute(self, cursor, sql, params=[]):
+    def _execute(self, cursor, sql, params=None):
         """ 执行SQL
         """
         try:

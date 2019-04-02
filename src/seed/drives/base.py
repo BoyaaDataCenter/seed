@@ -11,10 +11,10 @@ class BaseDrive(object):
 
         self._connect()
 
-    def query(self, sql, params=[], retry_count=1):
+    def query(self, sql, params=None, retry_count=1):
         raise NotImplementedError("Need to implemented!")
 
-    def execute(self, sql, params=[]):
+    def execute(self, sql, params=None):
         raise NotImplementedError("Need to implemented!")
 
     def test_connection(self):
