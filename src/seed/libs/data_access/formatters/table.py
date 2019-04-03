@@ -75,16 +75,25 @@ class TableFormatter(BaseFormatter):
 
     def _sort_table_column(self, data):
         # 进行table类型的排序
+        dimen_indexs = self.dimensions + self.indexs
 
-        order_fields = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs]
+        field_list = []
+        for di in dimen_indexs:
+            tmp = {}
+            if di.get("dimension"):
+                tmp["field"] = di.get("dimension")
+            elif di.get("index"):
+                tmp["field"] = di.get("index")
 
-        # 改成按多种排序
-        data = sorted(
-            data,
-            key=lambda k: [(k[order_field] if isinstance(k[order_field], (float, int)) else 0) for order_field in
-                           order_fields],
-            reverse=True
-        )
+            tmp["sort"] = di.get("sort")
+            field_list.append(tmp)
+
+        for field in field_list:
+            if field['sort'] == 'desc':
+                data.sort(key=lambda x: x[field["field"]] if isinstance(x[field["field"]], (float, int)) else 0,
+                          reverse=True)
+            if field['sort'] == 'asc':
+                data.sort(key=lambda x: x[field["field"]] if isinstance(x[field["field"]], (float, int)) else 0)
 
         return data
 
@@ -114,7 +123,7 @@ class TableFormatter(BaseFormatter):
             return data
 
         if isinstance(data, (float, int)):
-            ratedata = str(round(data*100, 2)) + '%'
+            ratedata = str(round(data * 100, 2)) + '%'
             return ratedata
 
         return data
@@ -122,7 +131,8 @@ class TableFormatter(BaseFormatter):
     def _compute_total_and_mean(self, datas):
         """计算总值均值数据"""
 
-        rate_dimension = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs if item["rate"]]
+        rate_dimension = [item['dimension'] for item in self.dimensions] + [item['index'] for item in self.indexs if
+                                                                            item["rate"]]
         num = len(datas)
 
         total_dict = {}
@@ -130,7 +140,8 @@ class TableFormatter(BaseFormatter):
 
         for data in datas:
             for key, value in data.items():
-                total_dict[key] = total_dict.setdefault(key, 0) + (value if value and isinstance(value, (int, float)) else 0)
+                total_dict[key] = total_dict.setdefault(key, 0) + (
+                value if value and isinstance(value, (int, float)) else 0)
 
         for k, v in total_dict.items():
             mean_dict[k] = round(v / float(num), 2)
