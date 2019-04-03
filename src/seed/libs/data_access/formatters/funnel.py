@@ -4,7 +4,7 @@ from seed.libs.data_access.formatters.line import LineFormatter
 
 class FunnelFormatter(LineFormatter):
     def __init__(self, *args, **kwargs):
-        super(LineFormatter, self).__init__(*args, **kwargs)
+        super(FunnelFormatter, self).__init__(*args, **kwargs)
 
     def format_data(self):
         result = {"series": []}

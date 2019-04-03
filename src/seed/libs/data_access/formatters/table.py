@@ -9,7 +9,6 @@ class TableFormatter(BaseFormatter):
         super(TableFormatter, self).__init__(*args, **kwargs)
 
     def format_data(self):
-        # table_keys = self.title_flags + [*self.dims_set.keys()]
 
         self._ver_to_hor()
 
