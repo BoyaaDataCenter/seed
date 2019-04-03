@@ -87,6 +87,9 @@ class TableFormatter(BaseFormatter):
             tmp["sort"] = di.get("sort")
             field_list.append(tmp)
 
+        # 倒序让排序时维度排序为主
+        field_list.reverse()
+
         for field in field_list:
             if field['sort'] == 'desc':
                 data.sort(key=lambda x: x[field["field"]] if isinstance(x[field["field"]], (float, int)) else 0,
