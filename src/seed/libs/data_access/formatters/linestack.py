@@ -18,15 +18,12 @@ class LineStackFormatter(LineFormatter):
 
         # 全是数字
         is_num = all([isinstance(c, (int, float)) for c in categories]) if categories else False
-        # 全是字符串
-        is_str = all([isinstance(c, (str,)) for c in categories]) if categories else False
+        # 全是字符串数字
+        is_strnum = all([isinstance(c, (str,)) and c.isdigit() for c in categories]) if categories else False
 
-        if is_num:
+        if is_num or is_strnum:
+            categories = sorted(categories, key=lambda k: float(k))
+        else:
             categories = sorted(categories)
-        elif is_str:
-            categories = sorted(
-                categories,
-                key=lambda k: [(float(k) if category.isdigit() else 0) for category in categories]
-            )
 
         return categories, series
