@@ -41,9 +41,9 @@ http://seed.boyaa.com
     ```
 4. config文件设置
     ```
-    打开用户根目录下的.seed/seed_config.py文件
+    打开用户根目录下的.seed/seed_conf.py文件
     进行数据库等相关的配置
-    如: vim ~/.seed/seed_config.py
+    如: vim ~/.seed/seed_conf.py
     ```
 5. 初始化数据库
     ```
