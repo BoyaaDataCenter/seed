@@ -72,5 +72,5 @@ class MySQL(BaseDrive):
                 if isinstance(value, date):
                     data[key] = value.strftime('%Y-%m-%d')
                 if isinstance(value, decimal.Decimal):
-                    data[key] = int(value)
+                    data[key] = float(value)
         return datas
