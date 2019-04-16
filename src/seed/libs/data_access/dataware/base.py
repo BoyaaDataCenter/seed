@@ -46,5 +46,5 @@ class DataModel(object):
         sql = self.format_sql()
         # SQL中双引号会被视为列,故需替换为单引号
         sql.replace('"', "'")
-        print(sql)
+        print("formated sql:", sql)
         return self.db.query(sql), sql

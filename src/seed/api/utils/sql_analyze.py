@@ -1,6 +1,9 @@
 import re
 
 from flask import request
+import sqlparse
+from sqlparse.tokens import Keyword
+from sqlparse.sql import IdentifierList, Identifier
 
 from seed.api._base import RestfulBaseView, HttpMethods
 
@@ -17,25 +20,24 @@ class SqlFieldAnalysis(RestfulBaseView):
             return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg='获取SQL失败')
 
         sqls = input_json['sqls']
-
+        print("origin_sql:", sqls)
         sql_str = sqls.lower().replace('\n', ' ')
-        select_fileds = sql_str[
-            re.search("select\W+", sql_str, re.I).end():
-            re.search("\W+from\W+", sql_str, re.I).start()
-        ]
-        reg = re.compile(r'\(.*?\) ', re.I)
-        select_fileds = reg.sub(' ', select_fileds)
-        # 分割字段
-        select_fileds = select_fileds.split(',')
+
+        # 去除注释信息,否则列名会被解析错误
+        sql = sqlparse.format(sql_str, strip_comments=True)
+        stmt = sqlparse.parse(sql)[0]
+        tokens_list = stmt.tokens
+
         fields = []
-        for select_filed in select_fileds:
-            # 再以空格分割
-            filed_split = select_filed.split(' ')
-            i = len(filed_split)
-            while i:
-                i = i-1
-                # 获取最后一个不为空格的字段
-                if filed_split[i]:
-                    fields.append(str(filed_split[i]).strip())
-                    break
+
+        for token in tokens_list:
+            if token.ttype is Keyword:
+                continue
+            if isinstance(token, IdentifierList):
+                for identifier in token.get_identifiers():
+                    field_name = identifier.get_name()
+                    fields.append(field_name)
+            elif isinstance(token, Identifier):
+                break
+
         return self.response_json(self.HttpErrorCode.SUCCESS, data={'fields': fields})
