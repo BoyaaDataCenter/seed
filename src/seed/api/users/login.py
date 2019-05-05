@@ -61,11 +61,8 @@ class Logout(RestfulBaseView):
         else:
             response = make_response(self.response_json(self.HttpErrorCode.SUCCESS, data=login_url))
 
-        if not session_token:
-            for k in request.cookies:
-                response.set_cookie(k, '', expires=0)
-
-            return response
+        response.set_cookie("admin_uid", '', expires=0, domain=".oa.com")
+        response.set_cookie("admin_key", '', expires=0, domain=".oa.com")
 
         SessionCache().delete(session_token)
 
