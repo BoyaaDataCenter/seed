@@ -30,7 +30,13 @@ class APIRequireRole(object):
         def wrapper(*args, **kwargs):
             if not g.user:
                 # 未登录
-                return jsonify(response(HttpErrorCode.UNAUTHORIZED))
+                auth_type = current_app.config["AUTH_TYPE"]
+                sso_url = current_app.config["SSO_URL"]
+                login_url = request.host_url + "login"
+                if sso_url and auth_type == "SSO":
+                    return jsonify(response(HttpErrorCode.UNAUTHORIZED, data=sso_url))
+                else:
+                    return jsonify(response(HttpErrorCode.UNAUTHORIZED, data=login_url))
 
             if g.user.status == -1:
                 # 废弃账号
