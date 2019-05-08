@@ -41,8 +41,8 @@ class SqlFieldAnalysis(RestfulBaseView):
             elif isinstance(token, Identifier):
                 break
 
-        sankey_fields = ["source", "target", "value"]
-        map_fields = ["region_name", "lat", "lng", "value"]
+        sankey_fields = ["source", "target"]
+        map_fields = ["region_name", "lat", "lng"]
 
         # 桑基图和地图SQL中必须包含指定字段
         if chartype == "sankey":
