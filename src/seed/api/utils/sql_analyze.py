@@ -19,10 +19,10 @@ class SqlFieldAnalysis(RestfulBaseView):
         if 'sqls' not in input_json:
             return self.response_json(self.HttpErrorCode.PARAMS_VALID_ERROR, msg='获取SQL失败')
 
-        chartype = input_json.get("chartype")
+        chartype = input_json.get("chartType")
         sqls = input_json['sqls']
         print("origin_sql:", sqls)
-        sql_str = sqls.lower().replace('\n', ' ')
+        sql_str = sqls.lower().replace('\n', ' ').replace('\t', ' ')
 
         # 去除注释信息,否则列名会被解析错误
         sql = sqlparse.format(sql_str, strip_comments=True)
