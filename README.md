@@ -54,6 +54,7 @@ http://seed.boyaa.com
 6. 运行web程序
     ```
     执行 seed run web运行web系统
+    注:因uwsgi模块不支持Windows,故只能以开放模式运行:seed run web --debug=True
     ```
 7. 访问
     ```
