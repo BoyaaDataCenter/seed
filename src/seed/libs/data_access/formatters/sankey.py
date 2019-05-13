@@ -15,12 +15,15 @@ class SankeyFormatter(BaseFormatter):
             for _, v in data.items():
                 node_list.append(v)
 
-            data.update(value)
+            tmp = {}
+            for _, v in value.items():
+                tmp['value'] = v
+
+            data.update(tmp)
             links.append(data)
 
         node_list = list(set(node_list))
-
         for n in node_list:
             nodes.append({"name": n})
-            
+
         return {"links": links, "nodes": nodes}
