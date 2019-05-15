@@ -27,7 +27,7 @@ class BaseBuildCommand(Command):
         if os.path.exists(os.path.join(work_path, '.git')):
             log.info("initializing git submodules")
             self._run_command(['git', 'submodule', 'init'])
-            self._run_command(['git', 'submodule', 'update'])
+            self._run_command(['git', 'submodule', 'update', '--remote'])
 
     def _setup_npm(self):
         node_version = []
@@ -44,8 +44,8 @@ class BaseBuildCommand(Command):
                 )
                 sys.exit(1)
 
-        if node_version[0] >= b'v6.8.1':
-            log.fatal('The node version need v7.8.1, the current node version is %s' % node_version[0])
+        if node_version[0] < b'v6.8.1':
+            log.fatal('The node version need v6.8.1, the current node version is %s' % node_version[0])
             sys.exit(1)
 
         log.info('using node ({0}) and npm ({1})'.format(*node_version))
