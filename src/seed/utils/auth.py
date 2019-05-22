@@ -34,7 +34,7 @@ class APIRequireRole(object):
                 sso_url = current_app.config["SSO_URL"]
                 login_url = request.host_url + "login"
                 if sso_url and auth_type == "SSO":
-                    return jsonify(response(HttpErrorCode.UNAUTHORIZED, data=sso_url))
+                    return jsonify(response(-14, data=sso_url))
                 else:
                     return jsonify(response(HttpErrorCode.UNAUTHORIZED, data=login_url))
 

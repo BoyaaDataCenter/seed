@@ -57,9 +57,9 @@ class Logout(RestfulBaseView):
         sso_url = current_app.config["SSO_URL"]
         login_url = request.host_url + "login"
         if sso_url and auth_type == "SSO":
-            response = make_response(self.response_json(self.HttpErrorCode.UNAUTHORIZED, data=sso_url))
+            response = make_response(self.response_json(-14, data=sso_url))
         else:
-            response = make_response(self.response_json(self.HttpErrorCode.UNAUTHORIZED, data=login_url))
+            response = make_response(self.response_json(self.HttpErrorCode.SUCCESS, data=login_url))
 
         response.set_cookie("admin_uid", '', expires=0, domain=".oa.com")
         response.set_cookie("admin_key", '', expires=0, domain=".oa.com")
