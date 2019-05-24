@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, 'src'))
 from seed.utils.distutils.build_assets import BuildAssetsCommand
 
 
-VERSION = '0.1.5.4'
+VERSION = '0.1.5.6'
 
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
@@ -78,6 +78,9 @@ setup(
     packages=find_packages("src"),
     package_dir={
         "": "src"
+    },
+    package_data={
+        "seed": ["static/*"]
     },
     data_files=static_files,
     include_package_data=True,
