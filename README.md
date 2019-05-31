@@ -173,13 +173,13 @@ GROUP BY address,province
 区域名称
 区域id
 区域上级id
-区域级别id(此分类必须和以下一致,否则可能导致数据显示错乱)
-1-国家
-2-省份
-3-地市
-4-区县/乡镇(街道)
-7-社区
-8-具体位置
+区域级别id(注:区域级别需按以下分类,否则可能导致数据显示混乱)
+   1-国家
+   2-省份
+   3-地市
+   4-区县/乡镇(街道)
+   7-社区
+   8-具体位置
 ```
 
 ##### 数据示例说明(以mysql为例):
@@ -272,4 +272,4 @@ WHERE region_id = {region_id}
   AND cast(lng AS decimal(20, 10)) > {slng}
   AND cast(lng AS decimal(20, 10))< {elng}
   AND CASE {fpid}=true WHEN TRUE THEN fpid={fpid} ELSE 1=1 END
-```  
+```
