@@ -97,27 +97,29 @@ http://seed.boyaa.com
     ```
 
 
-
 ## 图形说明
 
 ### 1、桑基图使用规范
 桑基图源数据需可以将数据按照以下形式组合:
+```
 selet source, target ,value  from table
 union all
 selet source, target ,value from table
+```
 (上面一条sql的target需要和下一条sql的source相同,否则就不能形成桑基图形式
 source, target 这两个字段别名已固定)
 
 
 ##### 数据示例说明(以mysql为例):
-
+```
 CREATE TABLE `sankey_testdata` (
   `state` varchar(20) ,
   `address` varchar(20) ,
   `province` varchar(20) ,
   `value` int
 ) ENGINE=innodb  DEFAULT CHARSET=utf8;
-
+```
+```
 insert into sankey_testdata values
 ('东部地区',  '东三省',  '黑龙江',246),
 ('东部地区',  '东三省',  '吉林', 319),
@@ -143,8 +145,9 @@ insert into sankey_testdata values
 ('西部地区',  '西北',     '山西', 119),
 ('西部地区',  '西北',     '新疆', 984),
 ('西部地区',  '西南',     '云南', 611);
-
+```
 ##### 桑基图查询SQL示例:
+```
 SELECT
   state as source,
   address as target,
@@ -158,11 +161,13 @@ SELECT
   sum(value) as value
 FROM sankey_testdata
 GROUP BY address,province
-
+```
 
 
 ### 2、地图使用规范
+
 地图源数据至少需要以下字段
+```
 经度
 纬度
 区域名称
@@ -175,10 +180,10 @@ GROUP BY address,province
 4-区县/乡镇(街道)
 7-社区
 8-具体位置
-
+```
 
 ##### 数据示例说明(以mysql为例):
-
+```
 CREATE TABLE `map_testdata` (
   `fdate` date,
   `fid` int comment '区域id',
@@ -191,8 +196,8 @@ CREATE TABLE `map_testdata` (
   `lat` varchar(100) comment '经度',
   `lng` varchar(100) comment '纬度'
 ) ENGINE=innodb  DEFAULT CHARSET=utf8;
-
-
+```
+```
 insert into map_testdata values
 ('2019-05-08',1,'中国',0,1,25000,10000,20000,'37.550339','104.114129'),
 ('2019-05-08',107712,'广东省',1,2,5000,3000,1000,'23.408003729025','113.39481755876'),
@@ -224,7 +229,7 @@ insert into map_testdata values
 ('2019-05-08',null,null,'112313',7,1,1,1,'22.52459','113.873619'),
 ('2019-05-08',null,null,'112313',7,54,54,54,'22.51644502','113.9074763'),
 ('2019-05-08',null,null,'112313',7,110,120,135,'22.54528264','113.9450687');
-
+```
 
 
 ##### 地图查询SQL示例:
@@ -232,6 +237,7 @@ insert into map_testdata values
 region_id,slat,elat,slng,elng,fpid均为必须参数
 
 postgresql写法:
+```
 SELECT
    a.region_name,
    a.fid as fpid,
@@ -247,9 +253,10 @@ WHERE region_id = {region_id}
   AND cast(lng AS decimal(20, 10)) > {slng}
   AND cast(lng AS decimal(20, 10))< {elng}
   AND CASE cast( {fpid} AS bool ) WHEN TRUE THEN fpid={fpid} ELSE 1=1 END
-
+```
 
 mysql写法:
+```
 SELECT
    a.region_name,
    a.fid as fpid,
@@ -265,3 +272,4 @@ WHERE region_id = {region_id}
   AND cast(lng AS decimal(20, 10)) > {slng}
   AND cast(lng AS decimal(20, 10))< {elng}
   AND CASE {fpid}=true WHEN TRUE THEN fpid={fpid} ELSE 1=1 END
+```  
