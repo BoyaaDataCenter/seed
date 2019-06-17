@@ -4,7 +4,7 @@ from seed.drives.postgresql import PostgreSQL
 
 
 ALL_DRIVES = {
-    # 'impala': Impala,
+    'impala': Impala,
     'mysql': MySQL,
     'postgresql': PostgreSQL
 }

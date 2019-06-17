@@ -42,7 +42,6 @@ class PostgreSQL(BaseDrive):
         finally:
             cursor.close()
 
-        return []
 
     def _query(self, cursor, sql, params):
         self._execute(cursor, sql, params=params)
