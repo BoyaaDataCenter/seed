@@ -45,7 +45,7 @@ class QueryData(RestfulBaseView):
             query_params.get("query", {}).setdefault("username", user.name)
         else:
             username = request.cookies.get('admin_name', None)
-            user = Account.query.filter_by(name=username).first()
+            user = Account.query.filter_by(account=username).first()
             query_params.get("query", {}).setdefault("username", username)
 
         if user and user.role in ('super_admin', 'admin'):
