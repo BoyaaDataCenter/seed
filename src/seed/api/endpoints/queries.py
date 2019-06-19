@@ -10,12 +10,15 @@ from seed.api.endpoints.databases import DatabasesSchema
 
 from seed.models._base import session
 from seed.models.databases import Databases
+from seed.models.account import Account
 
 from seed.utils.auth import api_require_login
 from seed.utils.database import get_db_instance
 
 from seed.libs.data_access.app import DataAccess
 from seed.libs.filter_access.app import FilterAccess
+
+from seed.cache.session import SessionCache
 
 
 class QueryData(RestfulBaseView):
@@ -32,6 +35,22 @@ class QueryData(RestfulBaseView):
         except:
             query_params = {}
 
+        # 用户名称添加到参数中
+        session_token = request.cookies.get('session_token', '')
+        user = None
+        query_params.get("query", {}).setdefault("isadmin", 0)
+        if session_token:
+            user_id = SessionCache().get_user_id_by_token(session_token)
+            user = Account.query.filter_by(id=user_id).first()
+            query_params.get("query", {}).setdefault("username", user.name)
+        else:
+            username = request.cookies.get('admin_name', None)
+            user = Account.query.filter_by(name=username).first()
+            query_params.get("query", {}).setdefault("username", username)
+
+        if user and user.role in ('super_admin', 'admin'):
+            query_params.get("query", {}).update({"isadmin": 1})
+
         if panel_id:
             panel_data = self.session.query(PanelsModel).filter_by(id=panel_id).first()
             panel_data, errors = PanelSchema(exclude=PanelsModel.column_filter).dump(panel_data)
@@ -41,7 +60,6 @@ class QueryData(RestfulBaseView):
             panel_data = {}
 
         panel_data.update(query_params)
-
         try:
             dtype, db = get_db_by_id(panel_data['db_source'])
             query_datas = DataAccess(dtype, db, **panel_data).get_datas()
