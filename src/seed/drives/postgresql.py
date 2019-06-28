@@ -1,3 +1,6 @@
+import decimal
+from datetime import datetime, date
+
 import psycopg2
 
 from seed.drives.base import BaseDrive, DEFUALT_RETRY_COUNT
@@ -42,13 +45,12 @@ class PostgreSQL(BaseDrive):
         finally:
             cursor.close()
 
-
     def _query(self, cursor, sql, params):
         self._execute(cursor, sql, params=params)
         columns_name = [d[0] for d in cursor.description]
         query_datas = [Row(zip(columns_name, row)) for row in cursor]
 
-        return query_datas
+        return self._replace_type(query_datas)
 
     def _execute(self, cursor, sql, params=None):
         """ 执行SQL
@@ -81,6 +83,19 @@ class PostgreSQL(BaseDrive):
             )
         except Exception as e:
             raise
+
+    def _replace_type(self, datas):
+        """ 替换数据类型
+        """
+        for data in datas:
+            for key, value in data.items():
+                if isinstance(value, datetime):
+                    data[key] = value.strftime('%Y-%m-%d')
+                if isinstance(value, date):
+                    data[key] = value.strftime('%Y-%m-%d')
+                if isinstance(value, decimal.Decimal):
+                    data[key] = float(value)
+        return datas
 
 
 class Row(dict):
