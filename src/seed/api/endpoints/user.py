@@ -72,27 +72,12 @@ class UserMenu(RestfulBaseView):
         return self.response_json(self.HttpErrorCode.SUCCESS, data=menus)
 
     def _encode_menus(self, menus):
-        menu_data = {}
+        menu_data = []
 
         for menu, role_permission in menus:
-            menu_data['-'.join([str(menu.parent_id), str(menu.left_id)])] = menu.row2dict()
-            menu_data['-'.join([str(menu.parent_id), str(menu.left_id)])]['role_permission'] = role_permission
+            if role_permission:
+                temp = menu.row2dict()
+                temp.update({"role_permission": True})
+                menu_data.append(temp)
 
-        menus = {'id': 0}
-        middle_menu = [menus]
-        while middle_menu:
-            current_menu = middle_menu.pop()
-            parent_id, left_id = current_menu['id'], 0
-
-            while True:
-                current_key = '-'.join([str(parent_id), str(left_id)])
-                if current_key not in menu_data:
-                    break
-                if menu_data[current_key]['role_permission']:
-                    current_menu.setdefault('sub_menus', []).append(menu_data[current_key])
-
-                middle_menu.append(menu_data[current_key])
-
-                left_id = menu_data[current_key]['id']
-
-        return menus.get('sub_menus', [])
+        return menu_data
