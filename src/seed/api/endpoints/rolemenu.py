@@ -66,27 +66,14 @@ class RoleMenu(RestfulBaseView):
         return menu_datas_with_permission
 
     def _encode_menus(self, menu_data):
-        menus = {'id': 0}
-        middle_menu = [menus]
-        while middle_menu:
-            current_menu = middle_menu.pop()
-            parent_id, left_id = current_menu['id'], 0
+        menu_list = []
+        for key, value in menu_data.items():
+            if not value.get('id'):
+                value.pop('id')
 
-            while True:
-                current_key = '-'.join([str(parent_id), str(left_id)])
-                if current_key not in menu_data:
-                    break
-                current_menu.setdefault('sub_menus', []).append(menu_data[current_key])
-                middle_menu.append(menu_data[current_key])
-                left_id = menu_data[current_key]['id']
+            menu_list.append(value)
 
-        # 解决多个角色菜单管理修改权限覆盖问题
-        menu_info = menus.get('sub_menus', [])
-        for m in menu_info:
-            if not m.get('id'):
-                m.pop('id')
-
-        return menu_info
+        return menu_list
 
     def _decode_menus(self, menus, role_id, parent_id=0, left_id=0):
         if not menus:
