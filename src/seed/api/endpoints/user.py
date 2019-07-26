@@ -80,4 +80,15 @@ class UserMenu(RestfulBaseView):
                 temp.update({"role_permission": True})
                 menu_data.append(temp)
 
+        del_list = []
+        for j in menu_data:
+            menu_id = j["id"]
+            for i in menu_data:
+                if menu_id == i["parent_id"]:
+                    j.setdefault("sub_menus", []).append(i)
+                    del_list.append(i)
+
+        for del_m in del_list:
+            menu_data.remove(del_m)
+
         return menu_data
