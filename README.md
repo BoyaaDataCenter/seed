@@ -102,9 +102,9 @@ http://seed.boyaa.com
 ### 1、桑基图使用规范
 桑基图源数据需可以将数据按照以下形式组合:
 ```
-selet source, target ,value  from table
+selet source, target, value  from table
 union all
-selet source, target ,value from table
+selet source, target, value from table
 ```
 (上面一条sql的target需要和下一条sql的source相同,否则就不能形成桑基图形式
 source, target 这两个字段别名已固定)
