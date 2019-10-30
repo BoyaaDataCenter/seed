@@ -44,7 +44,7 @@ SQLAlchemy-Utils==0.33.3
 typed-ast==1.1.0
 urllib3==1.25
 validators==0.12.2
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wrapt==1.10.11
 WTForms==2.2.1
 WTForms-Alchemy==0.16.7
